@@ -1,1155 +1,639 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-PT" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Plano de Aceleração - Thiago Grabski</title>
-    <!-- Fontes Premium -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GL Pro | Supremacia Capilar 8K | Ultra Luxury Engineering</title>
+    
+    <!-- Metadados de SEO Premium -->
+    <meta name="keywords" content="Engenharia Capilar, Lógica Híbrida, GL PRO, Liso Soberano 8K, Sistema Trindade, Realinhamento Molecular, Luxo Brasil, Sérum Inteligente e Córtex, Molecular Platinum Infusion">
+    <meta name="description" content="O ecossistema definitivo de Engenharia Molecular Capilar. A evolução para a Supremacia 8K com os lançamentos Inteligente & Córtex e Molecular Platinum Infusion.">
+
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gl_gold: '#D4AF37', 
+                        gl_gold_muted: '#AA8C2C',
+                        gl_dark: '#050505',
+                        gl_light: '#FDFDFD',
+                        gl_surface_dark: '#111111',
+                        gl_surface_light: '#F4F4F4',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    letterSpacing: {
+                        'ultra-wide': '0.3em',
+                        'mega-wide': '0.45em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fontes Editoriais e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- 1. CORE STYLES (ULTRA LUXURY) --- */
-        :root {
-            --bg-dark: #050505;
-            --bg-panel: #111111;
-            --text-primary: #f2f2f2;
-            --text-secondary: #b0b0b0;
-            --text-muted: #666;
-            
-            /* Gold Gradient - Champagne */
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #d4af37 100%);
-            --gold-solid: #d4af37;
-            
-            --success: #27ae60;
-            --danger: #c0392b;
-            --warning: #f39c12;
-            
-            /* Score Colors */
-            --score-red: #e74c3c;
-            --score-yellow: #f1c40f;
-            --score-green: #2ecc71;
-            
-            --border-light: rgba(255, 255, 255, 0.1);
+        /* Base & Reset */
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { 
+            background-color: #FDFDFD; color: #050505; 
+            transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 1.2s ease; 
+            overflow-x: hidden; -webkit-font-smoothing: antialiased; 
         }
-
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            height: 100vh;
-            overflow: hidden;
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* --- 2. LOADER --- */
-        #loader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 99999;
-            display: flex; justify-content: center; align-items: center;
-            flex-direction: column;
-            transition: opacity 0.8s ease-out, visibility 0.8s;
-        }
-        .loader-logo {
-            font-family: 'Cormorant Garamond', serif; font-size: 3em; color: var(--gold-solid);
-            animation: pulseGold 2s infinite; margin-bottom: 20px;
-        }
-        .loader-bar { width: 200px; height: 2px; background: #333; position: relative; overflow: hidden; border-radius: 2px; }
-        .loader-progress {
-            position: absolute; top: 0; left: 0; height: 100%; width: 0%; 
-            background: var(--gold-gradient);
-            animation: loadProgress 2s ease-in-out forwards;
-        }
-
-        /* --- 3. NAVEGAÇÃO --- */
-        .nav-tabs {
-            display: flex;
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
-            position: fixed; top: 0; width: 100%; z-index: 100; height: 70px;
-            align-items: center; padding: 0 20px; 
-            overflow-x: auto;
-            border-bottom: 1px solid var(--border-light);
-            gap: 10px;
-            -ms-overflow-style: none; scrollbar-width: none;
-        }
-        .nav-tabs::-webkit-scrollbar { display: none; }
-
-        .tab-btn {
-            background: transparent; border: none; color: var(--text-muted);
-            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
-            padding: 10px 16px; white-space: nowrap; transition: all 0.3s ease;
-            border-radius: 4px; display: flex; align-items: center; gap: 5px;
-        }
-        .tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
-        .tab-btn.active {
-            color: #fff;
-            background: rgba(212, 175, 55, 0.15);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-        }
-        .lock-icon { font-size: 0.9em; margin-left: 4px; }
-
-        /* --- 4. LAYOUT & CONTEÚDO --- */
-        .tab-content {
-            display: none;
-            padding: 100px 20px 160px; /* Padding bottom extra p/ footer */
-            height: 100%;
-            overflow-y: auto;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        .tab-content.active { display: flex; animation: fadeIn 0.6s ease forwards; }
-
-        .container { width: 100%; max-width: 1000px; text-align: center; margin: 0 auto; position: relative;}
-
-        /* Tipografia */
-        h1 { font-family: 'Playfair Display', serif; font-size: 3em; margin-bottom: 10px; color: #fff; letter-spacing: -0.5px; line-height: 1.1;}
-        .subtitle { font-family: 'Montserrat', sans-serif; font-size: 1.1em; color: var(--text-secondary); margin-bottom: 40px; font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto;}
+        .dark body { background-color: #050505; color: #FDFDFD; }
         
-        .gold-text { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
-        .text-highlight-red { color: var(--danger); font-weight: 800; text-shadow: 0 0 15px rgba(231, 76, 60, 0.4); }
-        .text-highlight-gold { color: var(--gold-solid); font-weight: 800; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.5); }
 
-        /* --- 5. COMPONENTES --- */
+        .editorial-title { letter-spacing: -0.03em; line-height: 0.9; }
         
-        /* Intro */
-        .intro-card {
-            background: rgba(15,15,17,0.9); padding: 50px; border-radius: 16px; 
-            border: 1px solid var(--border-light); box-shadow: 0 30px 80px rgba(0,0,0,0.8);
-            max-width: 800px; width: 100%;
-        }
-        .tech-pill {
-            font-size: 0.65em; border: 1px solid rgba(255,255,255,0.2); padding: 6px 14px;
-            color: #888; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin: 5px;
-            border-radius: 20px; font-weight: 600;
-        }
+        .text-gold-adaptive { color: #A67C00; }
+        .dark .text-gold-adaptive { color: #D4AF37; }
+        .border-adaptive { border-color: rgba(0,0,0,0.1); }
+        .dark .border-adaptive { border-color: rgba(255,255,255,0.1); }
+        .bg-surface-adaptive { background-color: #F4F4F4; }
+        .dark .bg-surface-adaptive { background-color: #111111; }
 
-        /* Consultant Badge */
-        .consultant-badge {
-            display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 30px; margin-top: 30px;
-            opacity: 0; animation: fadeUp 1s forwards 1.5s;
-        }
-        .consultant-img { width: 50px; height: 50px; border-radius: 50%; background: #222; border: 2px solid var(--gold-solid); }
-        .consultant-text { text-align: left; }
-        .consultant-name { font-weight: 700; color: #fff; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; display: block;}
-        .consultant-role { color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 400; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Score Gauge */
-        .score-gauge-wrapper {
-            background: var(--bg-panel); padding: 30px; border-radius: 12px; border: 1px solid var(--border-light);
-            display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); width: 100%;
-        }
-        .score-val-big { font-family: 'Cormorant Garamond'; font-size: 3.5em; font-weight: 700; color: var(--score-red); line-height: 0.9; }
-        .score-bar-container { 
-            flex: 1; height: 16px; background: #333; border-radius: 10px; 
-            margin: 0 30px; position: relative; border: 1px solid rgba(255,255,255,0.1); 
-            overflow: visible;
-        }
-        .score-bar-fill {
-            width: 100%; height: 100%; border-radius: 10px;
-            background: linear-gradient(90deg, var(--score-red) 0%, var(--score-yellow) 50%, var(--score-green) 100%);
-        }
-        .score-pointer {
-            position: absolute; top: -6px; width: 6px; height: 28px; background: #fff;
-            border: 2px solid #000; box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            left: 15%; /* Posição do Score 15 */
-            transform: translateX(-50%); z-index: 5;
-        }
-        .score-text { text-align: left; min-width: 120px; }
-        .score-value-display { font-family: 'Cormorant Garamond'; font-size: 3.5em; font-weight: 700; color: var(--score-red); line-height: 1;}
-        .score-desc { font-size: 0.7em; text-transform: uppercase; color: #888; letter-spacing: 2px; }
-
-        /* Browser Mockup */
-        .browser-mockup {
-            background: #fff; border-radius: 8px; overflow: hidden; width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 40px 0;
-            text-align: left; color: #333; font-family: Arial, sans-serif;
-        }
-        .browser-bar { background: #f1f1f1; padding: 10px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #ddd; }
-        .traffic-lights { display: flex; gap: 6px; margin-right: 10px; }
-        .light { width: 10px; height: 10px; border-radius: 50%; }
-        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-        .address-bar {
-            background: #fff; flex: 1; border-radius: 3px; padding: 5px 10px; font-size: 0.75em; color: #555; text-align: center;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); border: 1px solid #e0e0e0;
-        }
-        .search-results { padding: 20px; }
-        .result-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-        .result-item:last-child { border-bottom: none; }
-        .result-title { color: #1a0dab; font-size: 18px; cursor: pointer; display: block; margin-bottom: 2px; text-decoration: none;}
-        .result-title:hover { text-decoration: underline; }
-        .result-url { color: #006621; font-size: 14px; margin-bottom: 2px; display: block; }
-        .star-rating { color: #f39c12; font-size: 12px; }
-        .result-desc { color: #545454; font-size: 14px; line-height: 1.4; margin-top: 5px; }
-        .warning-tag {
-            background: #fce8e6; color: #c5221f; font-size: 11px; padding: 2px 6px; border-radius: 4px;
-            font-weight: bold; display: inline-block; margin-left: 8px; border: 1px solid #fad2cf; vertical-align: middle;
-        }
-
-        /* Cards & Calculadoras */
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; margin-bottom: 30px; }
-        .feature-card {
-            background: var(--bg-panel); border: 1px solid var(--border-light); padding: 30px; border-radius: 8px; text-align: left;
-            transition: transform 0.3s;
-        }
-        .feature-card:hover { border-color: var(--gold-solid); transform: translateY(-5px); }
-        .feature-card h4 { color: #fff; font-size: 1.1em; margin: 0 0 10px 0; font-family: 'Montserrat'; font-weight: 700; }
-        .feature-card p { color: #888; font-size: 0.9em; margin: 0; line-height: 1.6; }
-        
-        .strat-list { list-style:none; padding:0; color:var(--text-secondary); font-size:0.85em; margin-top:15px; }
-        .strat-list li { margin-bottom: 12px; }
-        .strat-desc { display: block; font-size: 0.8em; color: #666; margin-top: 3px; font-weight: 300; }
-        
-        .calc-wrapper {
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-light);
-            padding: 30px; border-radius: 12px; margin-bottom: 40px; width: 100%;
-        }
-        .loss-calculator {
-            background: rgba(192, 57, 43, 0.08); border: 1px solid rgba(192, 57, 43, 0.3);
-            padding: 20px; border-radius: 8px; margin-top: 30px; display: flex; align-items: center; justify-content: space-around;
-            flex-wrap: wrap; gap: 20px;
-        }
-        .loss-input { 
-            background: rgba(0,0,0,0.3); border: 1px solid #555; color: #fff; padding: 10px; border-radius: 4px; width: 120px; text-align: center; font-size: 1.1em;
-        }
-        .form-group { text-align: left; margin-bottom: 15px; }
-        .form-label { display: block; font-size: 0.7em; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; font-weight: 700;}
-        .form-input {
-            width: 100%; background: #000; border: 1px solid #333; color: #fff; padding: 12px;
-            font-family: 'Montserrat'; font-size: 1em; border-radius: 4px;
-        }
-        .form-input:focus { border-color: var(--gold-solid); outline: none;}
-        .big-number { font-family: 'Playfair Display'; font-size: 3em; color: var(--success); line-height: 1; margin: 10px 0; }
-
-        /* Botões */
-        .btn-primary {
-            background: var(--gold-gradient); color: #000; padding: 16px 40px; border: none; border-radius: 4px;
-            font-size: 0.85em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            cursor: pointer; transition: 0.3s; margin-top: 20px; box-shadow: 0 5px 20px rgba(212,175,55,0.2);
-        }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,175,55,0.4); }
-        
-        .btn-approve {
-            background: #000; color: #fff; padding: 14px 35px; border-radius: 50px; border: none;
-            font-weight: 700; text-transform: uppercase; font-size: 0.75em; cursor: pointer; transition: 0.3s;
-        }
-        .btn-approve:hover { background: var(--success); }
-
-        /* PHONE MOCKUP REFINED (APP LIKE) */
-        .phone-frame {
-            width: 340px; height: 700px; background: #000; border-radius: 45px; border: 6px solid #222;
-            margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 50px 120px rgba(0,0,0,0.9);
-            transition: all 0.5s ease;
-            display: flex; flex-direction: column;
-        }
-        .phone-frame.fullscreen {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; max-width: 100%; border: none; border-radius: 0; z-index: 9999;
-        }
-        .phone-screen {
-            width: 100%; height: 100%; background: #0a0a0a; position: relative;
-            display: flex; flex-direction: column;
-        }
-        .phone-scroll-area {
-            flex: 1; overflow-y: auto; overflow-x: hidden; padding-bottom: 120px;
-            scrollbar-width: none;
-        }
-        .phone-scroll-area::-webkit-scrollbar { display: none; }
-
-        /* Neuro Content Elements */
-        .n-header-fixed {
-            position: absolute; top: 0; left: 0; width: 100%; padding: 40px 20px 15px; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-            z-index: 10; display: flex; justify-content: space-between; align-items: center;
-        }
-        .n-brand { font-family: 'Playfair Display'; color: #fff; letter-spacing: 1px; font-weight: 700; font-size: 1.1em;}
-        
-        .n-hero {
-            height: 380px; background-size: cover; background-position: center; position: relative; transition: background-image 0.6s ease-in-out;
-            flex-shrink: 0;
-        }
-        .n-hero::after {
-            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-            background: linear-gradient(to top, #0a0a0a 5%, transparent 50%);
+        /* AUSTERO E EDITORIAL: BOTÕES SUPER QUADRADOS */
+        .btn-editorial {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1.25rem 2.5rem; font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700;
+            border: 1px solid currentColor; 
+            border-radius: 0 !important; 
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;
+            background: transparent; overflow: hidden; position: relative;
         }
         
-        .n-content-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; z-index: 5;
+        .btn-editorial:hover { background: #050505; color: #FDFDFD; border-color: #050505; }
+        .dark .btn-editorial:hover { background: #FDFDFD; color: #050505; border-color: #FDFDFD; }
+        
+        .btn-editorial-solid { 
+            background: #050505 !important; color: #FDFDFD !important; border: 1px solid #050505 !important; 
         }
-        .n-title { font-family: 'Playfair Display'; font-size: 2.2em; line-height: 1; color: #fff; margin-bottom: 10px; }
-        .n-subtitle { font-size: 0.8em; color: #ccc; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 300;}
-        .n-options { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-        .n-option-btn {
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            padding: 8px 15px; border-radius: 20px; color: #fff; font-size: 0.7em;
-            white-space: nowrap; cursor: pointer; backdrop-filter: blur(5px); transition: 0.3s;
-        }
-        .n-option-btn.active { background: #fff; color: #000; border-color: #fff; font-weight: 700; }
-
-        .n-body { padding: 25px; background: #0a0a0a; position: relative; z-index: 2; }
-
-        /* Banner de Oferta */
-        .january-offer-card {
-            background: linear-gradient(135deg, #111 0%, #222 100%);
-            border: 1px solid var(--gold-solid); border-radius: 8px;
-            padding: 15px; margin-bottom: 20px; text-align: left; position: relative; overflow: hidden;
-        }
-        .january-offer-card::before {
-            content: 'OFERTA DE JANEIRO'; position: absolute; top: 0; right: 0; background: var(--gold-solid);
-            color: #000; font-size: 0.5em; font-weight: 800; padding: 3px 8px; border-bottom-left-radius: 8px;
+        .dark .btn-editorial-solid { 
+            background: #FDFDFD !important; color: #050505 !important; border-color: #FDFDFD !important; 
         }
         
-        /* Carousel Generico */
-        .n-carousel { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; scrollbar-width: none;}
-        .n-carousel::-webkit-scrollbar { display: none; }
-        .n-project-item { min-width: 140px; height: 180px; background: #222; border-radius: 12px; position: relative; overflow: hidden; scroll-snap-align: start; }
-        .n-project-img { width: 100%; height: 100%; object-fit: cover; }
+        .btn-editorial-solid:hover { background: transparent !important; color: #050505 !important; }
+        .dark .btn-editorial-solid:hover { background: transparent !important; color: #FDFDFD !important; }
+
+        .hero-slide { opacity: 0; visibility: hidden; transition: opacity 1.8s ease, visibility 1.8s; position: absolute; inset: 0; }
+        .hero-slide.active { opacity: 1; visibility: visible; z-index: 10; }
+
+        .sticky-editorial { position: sticky; top: 120px; }
         
-        /* Feedback Card */
-        .n-review-card { min-width: 240px; background: #1a1a1a; padding: 15px; border-radius: 12px; scroll-snap-align: start; text-align: left; border: 1px solid #333; }
-        .n-stars { color: #f1c40f; font-size: 0.8em; margin-bottom: 5px; }
-        .n-review-text { font-size: 0.75em; color: #ccc; line-height: 1.4; margin-bottom: 10px; font-style: italic; }
-        .n-review-author { font-size: 0.7em; color: #fff; font-weight: 700; }
+        .hairline-b { border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .dark .hairline-b { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .hairline-t { border-top: 1px solid rgba(0,0,0,0.08); }
+        .dark .hairline-t { border-top: 1px solid rgba(255,255,255,0.08); }
 
-        /* Sticky Button */
-        .app-sticky-btn {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 85%;
-            background: var(--gold-gradient); backdrop-filter: blur(20px);
-            padding: 16px; border-radius: 100px; border: none;
-            text-align: center; color: #000; font-size: 0.75em; font-weight: 800; letter-spacing: 1px;
-            box-shadow: 0 10px 40px rgba(212,175,55,0.4); cursor: pointer; z-index: 20;
-            display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;
-        }
-        .app-sticky-btn:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 15px 50px rgba(212,175,55,0.6); }
-        .whatsapp-icon { width: 18px; height: 18px; fill: #000; transition: 0.3s; }
-        
-        /* Protection Gradient behind sticky button */
-        .app-gradient-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 150px;
-            background: linear-gradient(to top, #000 20%, transparent 100%);
-            pointer-events: none; z-index: 15;
-        }
+        .img-wrap { overflow: hidden; border-radius: 1rem; }
+        .img-wrap img { transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+        .img-wrap:hover img { transform: scale(1.03); }
 
-        /* CHECKLIST */
-        .checklist-item {
-            display: flex; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border-light); text-align: left;
-        }
-        .check-num {
-            font-family: 'Cormorant Garamond'; font-size: 1.8em; color: var(--gold-solid); width: 50px; flex-shrink: 0; font-style: italic; line-height: 1;
-        }
-        .check-content h4 { margin: 0 0 5px 0; font-size: 1em; color: #fff; }
-        .check-content p { margin: 0; font-size: 0.85em; color: #888; }
-        .check-line-category {
-            margin-top: 35px; margin-bottom: 15px;
-            font-size: 0.75em; text-transform: uppercase; letter-spacing: 2px; color: #999; font-weight: 700;
-            border-left: 3px solid #d4af37; padding-left: 10px;
-        }
+        .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 500px; height: 100vh; background: #FDFDFD; z-index: 999; transition: right 0.8s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; border-left: 1px solid rgba(0,0,0,0.05); }
+        .dark .cart-drawer { background: #0A0A0A; border-left: 1px solid rgba(255,255,255,0.05); }
+        .cart-drawer.open { right: 0; box-shadow: -20px 0 60px rgba(0,0,0,0.05); }
+        .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); z-index: 998; opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
+        .cart-overlay.open { opacity: 1; pointer-events: auto; }
 
-        /* BUDGET ROWS */
-        .module-row {
-            display: flex; align-items: flex-start; background: #fff; border-radius: 8px;
-            padding: 25px; margin-bottom: 15px; color: #111; text-align: left; transition: 0.3s;
-        }
-        .module-row.selected { background: #fffcf5; border: 1px solid var(--gold-solid); }
-        .module-checkbox { width: 20px; height: 20px; margin-right: 20px; flex-shrink: 0; cursor: pointer; }
+        .ba-slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 1rem; }
+        .ba-after { absolute; inset: 0; clip-path: inset(0 0 0 50%); } 
+        .ba-handle-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: rgba(255,255,255,0.8); transform: translateX(-50%); pointer-events: none; z-index: 5; }
+        .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; margin: 0; }
 
-        .module-badge { font-size: 0.6em; text-transform: uppercase; font-weight: 700; padding: 4px 8px; border-radius: 2px; margin-left: 10px; letter-spacing: 0.5px; color: white; }
-        .price-value { font-family: 'Playfair Display', serif; font-size: 1.6em; font-style: italic; color: #111; font-weight: 600;}
-        .price-label { font-size: 0.6em; letter-spacing: 2px; text-transform: uppercase; color: #777; margin-bottom: 4px; display: block; font-weight: 700;}
-        .market-value { text-decoration: line-through; color: #aaa; font-size: 0.9em; margin-right: 10px; font-style: italic; }
-        .module-pricing { display: flex; gap: 30px; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd; flex-wrap: wrap; }
-        
-        .media-investment-box {
-            background: rgba(39, 174, 96, 0.05); border: 1px solid var(--success);
-            padding: 25px; border-radius: 8px; margin: 20px 0; text-align: left;
-        }
-        .media-slider {
-            -webkit-appearance: none; width: 100%; height: 6px; background: #333; border-radius: 5px; outline: none; margin: 20px 0;
-        }
-        .media-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%;
-            background: var(--success); cursor: pointer; border: 2px solid #fff;
-        }
-
-        /* FOOTER DE VALORES */
-        .budget-footer {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 900px;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 100px; padding: 15px 40px;
-            display: flex; justify-content: space-between; align-items: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 200; color: #111;
-        }
-        .budget-info { display: flex; gap: 40px; }
-        .budget-label { font-size: 0.65em; text-transform: uppercase; color: #666; display: block; font-weight: 700; margin-bottom: 2px;}
-        .budget-val { font-family: 'Playfair Display'; font-weight: 700; font-size: 1.4em; }
-
-        .fullscreen-btn {
-            position: absolute; top: 10px; right: 10px; z-index: 60;
-            background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 6px 12px;
-            font-size: 9px; border-radius: 20px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Timeline Dashboard Fixo */
-        .global-progress-container {
-            background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #ddd; margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;
-        }
-        .gp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .gp-title { font-family: 'Montserrat'; font-size: 1.1em; font-weight: 700; color: #111; text-transform: uppercase; letter-spacing: 1px; }
-        .gp-percent { font-size: 1.5em; font-weight: 800; color: var(--gold-text); }
-        .gp-bar-bg { width: 100%; height: 12px; background: #f0f0f0; border-radius: 6px; overflow: hidden; }
-        .gp-bar-fill { height: 100%; background: var(--gold-gradient); width: 10%; transition: width 1s ease; box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
-
-        .timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 40px 0; }
-        .timeline::after { content: ''; position: absolute; width: 3px; background: linear-gradient(to bottom, #d4af37, #ddd); top: 120px; bottom: 0; left: 50%; margin-left: -1px; }
-        .timeline-item { padding: 10px 50px; position: relative; width: 50%; box-sizing: border-box; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -11px; background-color: white; border: 5px solid var(--gold-solid); top: 25px; border-radius: 50%; z-index: 1; box-shadow: 0 0 0 4px rgba(255,255,255,0.5); }
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; text-align: left; }
-        .right::after { left: -9px; }
-        .content-box { padding: 25px; background: white; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 3px solid #111; transition: transform 0.3s; }
-        
-        .week-detail { margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
-        .week-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; font-size: 0.9em; border-bottom: 1px dashed #f5f5f5; padding-bottom: 8px; color: #444; font-weight: 600; }
-        .status-icon { margin-right: 10px; font-size: 1.1em; }
-        .status-icon.done { color: var(--success); }
-        .status-icon.pending { color: #bdc3c7; }
-
-        /* Gráfico de Barras CSS */
-        .revenue-chart { width: 100%; max-width: 900px; margin: 20px auto 0; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
-        .chart-row { display: flex; align-items: center; margin-bottom: 15px; opacity: 0; animation: fadeUp 1s forwards; }
-        .chart-row:nth-child(1) { animation-delay: 0.2s; }
-        .chart-row:nth-child(2) { animation-delay: 0.4s; }
-        .chart-label { width: 100px; font-size: 0.7em; color: #888; text-align: right; margin-right: 15px; text-transform: uppercase; }
-        .chart-bar-bg { flex: 1; height: 8px; background: #222; border-radius: 4px; overflow: hidden; }
-        .chart-bar-fill { height: 100%; background: var(--gold-gradient); border-radius: 4px; width: 0%; transition: width 1.5s ease-out; }
-        .chart-value { width: 100px; font-size: 0.8em; color: #fff; margin-left: 10px; font-weight: 700; text-align: left;}
-
-        /* RODAPÉ GLOBAL */
-        .global-footer {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background-color: #050505; color: #666;
-            text-align: center; padding: 10px 0;
-            font-size: 0.55rem; text-transform: uppercase; letter-spacing: 3px;
-            z-index: 1000; border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .global-footer strong { color: #999; font-weight: 600; }
-        .status-dot { width: 6px; height: 6px; background: #27ae60; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px #27ae60; }
-        
-        /* MODAL DE SENHA E APROVAÇÃO */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: #fff; padding: 40px; border-radius: 12px; text-align: center; 
-            max-width: 400px; width: 90%; color: #111; position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        .modal-input {
-            width: 100%; padding: 10px; margin: 20px 0; border: 1px solid #ccc;
-            border-radius: 4px; text-align: center; font-size: 1.2em;
-        }
-
-        @media (max-width: 768px) {
-            h1.hero-title { font-size: 2.5em; }
-            .nav-tabs { justify-content: flex-start; }
-            .budget-footer { flex-direction: column; padding: 20px; border-radius: 20px; gap: 15px; width: 92%; }
-            .budget-info { flex-direction: column; gap: 10px; text-align: center; }
-            .phone-frame { width: 90vw; height: 80vh; max-height: 600px; }
-            .card-grid { grid-template-columns: 1fr; }
-            .intro-card { padding: 30px 20px; }
-            .score-gauge-wrapper { flex-direction: column; gap: 15px; }
-            .score-bar-container { width: 100%; margin: 10px 0; }
-            .loss-calculator { flex-direction: column; }
-            .product-grid { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px; }
-            .product-input-card { min-width: 260px; }
-            .timeline::after { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
-            .timeline-item::after { left: 11px; }
-            .left, .right { text-align: left; }
-        }
-        
-        /* Animações Keyframes */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulseGold { 0% { text-shadow: 0 0 10px rgba(212,175,55,0.2); } 50% { text-shadow: 0 0 30px rgba(212,175,55,0.8); } 100% { text-shadow: 0 0 10px rgba(212,175,55,0.2); } }
+        .view-section { display: none; opacity: 0; animation: viewFadeIn 1s ease forwards; }
+        .view-section.active { display: block; }
+        @keyframes viewFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body>
+<body class="antialiased font-sans">
 
-    <div id="loader">
-        <div class="loader-logo">Demarchi</div>
-        <div class="loader-bar"><div class="loader-progress"></div></div>
-    </div>
-
-    <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="checkAccess('intro-section', this)">Início</button>
-        <button class="tab-btn" onclick="checkAccess('pain-section', this)">1. Diagnóstico</button>
-        <button class="tab-btn" onclick="checkAccess('strategy-section', this)">2. Estratégia <span class="lock-icon">🔒</span></button>
-        <button class="tab-btn" onclick="checkAccess('projection-section', this)">3. Projeção <span class="lock-icon">🔒</span></button>
-        <button class="tab-btn" onclick="checkAccess('roi-section', this)">4. ROI <span class="lock-icon">🔒</span></button>
-        <button class="tab-btn" onclick="checkAccess('roadmap-section', this)">5. Cronograma <span class="lock-icon">🔒</span></button>
-        <button class="tab-btn" onclick="checkAccess('neuro-section', this)">6. Neurovendas <span class="lock-icon">🔒</span></button>
-        <button class="tab-btn" onclick="checkAccess('checklist-section', this)">7. Escopo <span class="lock-icon">🔒</span></button>
-        <button class="tab-btn" onclick="checkAccess('budget-section', this)">8. Investimento <span class="lock-icon">🔒</span></button>
-    </nav>
-
-    <!-- INTRO -->
-    <div id="intro-section" class="tab-content active" style="background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2500&auto=format&fit=crop') center/cover no-repeat;">
-        <div class="intro-card" style="background: rgba(15,15,17,0.85);">
-            <div style="color:var(--gold-solid); font-size:0.8em; letter-spacing:3px; text-transform:uppercase; margin-bottom:20px; font-weight:700;">Plano de Aceleração Comercial</div>
-            <h1 class="hero-title">Demarchi <span class="gold-text">&bull;</span> Móveis</h1>
-            <div style="border-top:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); padding:15px 0; margin:30px 0;">
-                <p style="font-size:1.1em; color:#fff; font-weight:300;">Preparado exclusivamente para: <strong>Lucas Demarchi</strong></p>
-            </div>
-            <p style="color:var(--text-secondary); max-width:600px; margin:0 auto;">
-                Uma estratégia desenhada para posicionar a Demarchi como a autoridade máxima em móveis de alto padrão em Chapecó, blindando a marca contra concorrência desqualificada.
-            </p>
-            <button class="btn-primary" style="background: var(--gold-gradient); color:#000; border:none;" onclick="checkAccess('pain-section')">INICIAR APRESENTAÇÃO</button>
+    <!-- HEADER GLOBAL -->
+    <header id="main-header" class="fixed w-full top-0 z-[500] px-6 md:px-12 py-6 flex justify-between items-center transition-all duration-700 bg-transparent mix-blend-difference dark:mix-blend-normal">
+        <div class="cursor-pointer group" onclick="appState.navigate('home')">
+            <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=f6502114" alt="GL PRO" class="h-8 md:h-12 w-auto object-contain transition-transform duration-700 dark:invert invert">
         </div>
-    </div>
-
-    <!-- 1. DIAGNÓSTICO -->
-    <div id="pain-section" class="tab-content">
-        <div class="container">
-            <h1>Auditoria Digital</h1>
-            <p class="subtitle">Análise Forense: Hoje, sua marca está <span class="text-highlight-red">INVISÍVEL</span> em <span class="text-highlight-gold">CHAPECÓ</span>.</p>
-
-            <!-- SCORE BAR (SERASA STYLE) -->
-            <div class="score-gauge-wrapper">
-                <div class="score-text">
-                    <span style="font-size:0.7em; text-transform:uppercase; color:#888;">Score de Autoridade</span>
-                    <div style="font-family:'Cormorant Garamond'; font-size:3em; font-weight:700; color:var(--score-red); line-height:1;">15<span style="font-size:0.4em; color:#555;">/100</span></div>
-                    <span style="font-size:0.7em; color:var(--score-red); font-weight:700; text-transform:uppercase; letter-spacing:2px;">Risco Crítico</span>
-                </div>
-                <div class="score-bar-container">
-                    <div class="score-bar-fill"></div>
-                    <div class="score-pointer"></div>
-                </div>
-                <div style="text-align:right;">
-                    <span style="font-size:0.7em; color:#888;">Status Atual</span>
-                    <div style="color:#fff; font-weight:700;">Invisível</div>
-                </div>
-            </div>
-
-            <!-- CALCULADORA DE PREJUÍZO (DOR) -->
-            <div class="loss-calculator">
-                <div style="text-align:left;">
-                    <label style="display:block; font-size:0.7em; color:#aaa; margin-bottom:5px;">Buscas Perdidas/Mês</label>
-                    <input type="number" class="loss-input" id="loss-searches" value="500" onchange="calcLoss()">
-                </div>
-                <div style="text-align:left;">
-                    <label style="display:block; font-size:0.7em; color:#aaa; margin-bottom:5px;">Ticket Médio (Perdido)</label>
-                    <input type="number" class="loss-input" id="loss-ticket" value="20000" onchange="calcLoss()">
-                </div>
-                <div style="text-align:right;">
-                    <span style="font-size:0.7em; color:#e74c3c; text-transform:uppercase;">Dinheiro na Mesa (Mensal)</span>
-                    <div class="loss-total" id="loss-display">R$ 100.000</div>
-                    <span style="font-size:0.6em; color:#888;">(Est. 1% Conversão)</span>
-                </div>
-            </div>
-
-            <!-- MOCKUP GOOGLE -->
-            <div class="browser-mockup" style="margin-top:40px;">
-                <div class="browser-bar">
-                    <div class="traffic-lights"><div class="light red"></div><div class="light yellow"></div><div class="light green"></div></div>
-                    <div class="address-bar">google.com.br/search?q=demarchi+moveis</div>
-                </div>
-                <div class="search-results">
-                    <div class="result-item">
-                        <span class="result-title">De Marchi Marcenaria e Estofados</span>
-                        <span class="result-url">Frederico Westphalen - RS</span>
-                        <div class="star-rating">★☆☆☆☆ (1.2)</div>
-                        <span class="result-desc">⚠ Aparece no topo. O cliente liga enganado e vê avaliações ruins. <span class="warning-tag">Risco Reputação</span></span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-title">Demarchi Móveis Sob Medida</span>
-                        <span class="result-url">Pato Branco - PR</span>
-                        <div class="star-rating">★★★★☆ (4.0)</div>
-                        <span class="result-desc">⚠ Outra marca forte que rouba seu tráfego. <span class="warning-tag">Confusão de Marca</span></span>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn-primary" onclick="checkAccess('strategy-section')">VER A SOLUÇÃO</button>
+        <nav class="hidden md:flex gap-10 items-center">
+            <button onclick="appState.navigate('loja-b2c')" class="text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-white dark:text-gray-300 hover:text-gl_gold transition-colors">Boutique</button>
+            <button onclick="appState.navigate('experience')" class="text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-white dark:text-gray-300 hover:text-gl_gold transition-colors flex items-center gap-2"><i class="fa-solid fa-gift"></i> Experiência</button>
+            <button onclick="appState.navigate('dashboard-b2b')" class="text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-white dark:text-gray-300 hover:text-gl_gold transition-colors">Portal B2B</button>
+        </nav>
+        <div class="flex items-center gap-6">
+            <button onclick="appState.toggleTheme()" class="text-white dark:text-gray-300 hover:text-gl_gold transition-colors"><i id="theme-icon" class="fa-solid fa-moon text-sm"></i></button>
+            <button onclick="cartSystem.openCart()" class="relative text-white dark:text-gray-300 hover:text-gl_gold transition-colors flex items-center gap-2">
+                <span class="text-[0.6rem] uppercase tracking-widest font-bold hidden md:block">Bag</span>
+                <i class="fa-solid fa-bag-shopping text-lg"></i>
+                <span id="cart-count" class="absolute -top-1 -right-2 bg-gl_gold text-black text-[0.5rem] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+            </button>
         </div>
-    </div>
+    </header>
+    
+    <div id="header-bg" class="fixed top-0 w-full h-24 bg-gl_light/90 dark:bg-gl_dark/90 backdrop-blur-md z-[499] opacity-0 transition-opacity duration-500 pointer-events-none hairline-b"></div>
 
-    <!-- 2. ESTRATÉGIA -->
-    <div id="strategy-section" class="tab-content">
-        <div class="container">
-            <h1>Engenharia de Vendas</h1>
-            <p class="subtitle">Um ecossistema comercial blindado.</p>
-
-            <div class="card-grid">
-                <div class="feature-card">
-                    <h4 class="gold-text">1. Setup (Alicerce)</h4>
-                    <p style="font-size:0.8em; color:#666;">A base sólida que sua marca precisa.</p>
-                    <ul class="strat-list">
-                        <li>✓ Google Meu Negócio Pro</li>
-                        <li>✓ Identidade Visual Premium</li>
-                        <li>✓ Linktree Proprietário</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h4 class="gold-text">2. Tráfego (A Máquina)</h4>
-                    <p style="font-size:0.8em; color:#666;">Atração qualificada.</p>
-                    <ul class="strat-list">
-                        <li>✓ LP de Alta Conversão</li>
-                        <li>✓ Anúncios Geolocalizados</li>
-                        <li>✓ Pixel de Rastreamento</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h4 class="gold-text">3. Conversão (Fechamento)</h4>
-                    <p style="font-size:0.8em; color:#666;">Transformando leads em vendas.</p>
-                    <ul class="strat-list">
-                        <li>✓ Script de Triagem</li>
-                        <li>✓ Automação de Avaliação</li>
-                        <li>✓ Recuperação de Leads</li>
-                    </ul>
-                </div>
-            </div>
-            <button class="btn-primary" onclick="openTab('projection-section')">VER POTENCIAL</button>
+    <!-- MODAL DE VÍDEO CINEMÁTICO -->
+    <dialog id="video-modal" class="fixed inset-0 z-[4000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="appState.closeVideoModal()"></div>
+        <div class="relative w-[95%] max-w-5xl aspect-[9/16] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-700 ease-lux bg-black" id="video-content-box">
+            <button onclick="appState.closeVideoModal()" class="absolute top-4 right-4 text-white hover:text-gold-adaptive transition-colors z-50 bg-black/50 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <video id="modal-video-player" src="" class="w-full h-full object-cover" controls playsinline></video>
         </div>
-    </div>
+    </dialog>
 
-    <!-- 3. PROJEÇÃO -->
-    <div id="projection-section" class="tab-content">
-        <div class="container">
-            <h1>Simulador de Faturamento</h1>
-            <p class="subtitle">O "Sonho": Projeção baseada em metas reais.</p>
-            
-            <div class="calc-wrapper">
-                <div class="product-grid">
-                    <!-- Produto 1 -->
-                    <div class="product-input-card">
-                        <h4 style="color:var(--gold-solid); font-size:0.9em;">TOP 1: BANHEIRO</h4>
-                        <div class="form-group"><span class="form-label">Valor (R$)</span><input type="number" id="p1-val" class="form-input" value="2000" onchange="calcProjection()"></div>
-                        <div class="form-group"><span class="form-label">Qtd/Mês</span><input type="number" id="p1-qtd" class="form-input" value="4" onchange="calcProjection()"></div>
-                    </div>
-                    <!-- Produto 2 -->
-                    <div class="product-input-card">
-                        <h4 style="color:var(--gold-solid); font-size:0.9em;">TOP 2: ROUPEIRO</h4>
-                        <div class="form-group"><span class="form-label">Valor (R$)</span><input type="number" id="p2-val" class="form-input" value="8000" onchange="calcProjection()"></div>
-                        <div class="form-group"><span class="form-label">Qtd/Mês</span><input type="number" id="p2-qtd" class="form-input" value="2" onchange="calcProjection()"></div>
-                    </div>
-                    <!-- Produto 3 -->
-                    <div class="product-input-card">
-                        <h4 style="color:var(--gold-solid); font-size:0.9em;">TOP 3: COZINHA</h4>
-                        <div class="form-group"><span class="form-label">Valor (R$)</span><input type="number" id="p3-val" class="form-input" value="30000" onchange="calcProjection()"></div>
-                        <div class="form-group"><span class="form-label">Qtd/Mês</span><input type="number" id="p3-qtd" class="form-input" value="1" onchange="calcProjection()"></div>
-                    </div>
+    <!-- MODAL DE AUDITORIA -->
+    <dialog id="homologation-modal" class="fixed inset-0 z-[3000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="appState.closeHomologationModal()"></div>
+        <div class="relative bg-gl_light dark:bg-gl_surface_dark w-[90%] max-w-lg p-10 md:p-16 rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-700 ease-lux" id="homo-content-box">
+            <div class="text-center">
+                <i class="fa-solid fa-map-location-dot text-2xl text-gold-adaptive mb-6"></i>
+                <h3 class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white mb-2 editorial-title">Auditoria Regional</h3>
+                <div id="homo-form-area" class="space-y-6 mt-8">
+                    <input type="text" id="homo-cep" placeholder="C.E.P." maxlength="9" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 text-center tracking-[0.3em] outline-none py-3 text-sm">
+                    <input type="text" id="homo-city" placeholder="CIDADE" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 text-center tracking-[0.3em] outline-none py-3 text-sm uppercase mb-8">
+                    <button onclick="appState.verifyHomologation()" class="btn-editorial btn-editorial-solid w-full">Verificar Praça</button>
                 </div>
-
-                <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-                    <span class="form-label" style="font-size:0.9em; color:var(--success);">Faturamento Projetado (Mensal)</span>
-                    <div class="big-number" id="total-proj">R$ 54.000,00</div>
-                    <p style="font-size:0.8em; color:var(--text-secondary);">*Considerando o atingimento das metas acima.</p>
-                </div>
+                <div id="homo-result-area" class="hidden pt-4"></div>
             </div>
-            
-            <button class="btn-primary" style="background:#fff; color:#000;" onclick="openTab('roi-section')">VER RETORNO (ROI)</button>
         </div>
-    </div>
+    </dialog>
 
-    <!-- 4. ROI -->
-    <div id="roi-section" class="tab-content">
-        <div class="container">
-            <h1>O Projeto se Paga?</h1>
-            <p class="subtitle">Análise fria de viabilidade.</p>
-
-            <div class="calc-wrapper">
-                <div class="form-group" style="max-width:300px; margin:0 auto;">
-                    <span class="form-label">Valor Venda Média (Cozinha)</span>
-                    <input type="number" id="roi-ticket" class="form-input" value="30000" onchange="calcROI()" style="text-align:center; font-size:1.5em; color:var(--gold-solid); border-color:var(--gold-solid);">
-                </div>
-                
-                <div style="margin:40px 0;">
-                    <span class="form-label">Investimento Mensal (Agência)</span>
-                    <div style="font-size:1.5em; font-weight:700;">R$ 1.800,00</div>
-                </div>
-
-                <div style="background: rgba(39, 174, 96, 0.1); border:1px solid var(--success); padding:20px; border-radius:8px;">
-                    <h3 style="color:var(--success); font-size:1.2em; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px;">Ponto de Equilíbrio</h3>
-                    <div style="font-family:'Cormorant Garamond'; font-size:2.2em; line-height:1.2;" id="roi-result">
-                        Você precisa vender apenas <strong style="color:#fff;">0.06</strong> de uma cozinha para pagar o projeto.
-                    </div>
-                </div>
+    <!-- CARRINHO -->
+    <div id="cart-overlay" class="cart-overlay" onclick="cartSystem.closeCart()"></div>
+    <aside id="cart-drawer" class="cart-drawer">
+        <div class="p-8 md:p-12 flex flex-col h-full">
+            <div class="flex justify-between items-center hairline-b pb-6 shrink-0">
+                <h3 class="font-serif text-3xl text-gl_dark dark:text-white editorial-title">Sua Seleção</h3>
+                <button onclick="cartSystem.closeCart()" class="text-gray-400 hover:text-gl_dark transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
-            <button class="btn-primary" onclick="openTab('roadmap-section')">VER CRONOGRAMA</button>
+            <div class="flex-grow overflow-y-auto mt-6 pb-6 pr-2 custom-scroll">
+                <div id="cart-items-container" class="space-y-6"></div>
+            </div>
+            <div class="hairline-t pt-6 shrink-0">
+                <div class="flex justify-between items-end mb-8">
+                    <span class="font-sans text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">Subtotal Global</span>
+                    <span class="font-serif text-3xl text-gl_dark dark:text-white" id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <button onclick="cartSystem.checkout()" class="btn-editorial btn-editorial-solid w-full gap-3">Finalizar Aquisição <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
         </div>
-    </div>
+    </aside>
 
-    <!-- 5. CRONOGRAMA -->
-    <div id="roadmap-section" class="tab-content">
-        <div class="container">
-            <h1>Status do Projeto</h1>
-            
-            <div class="global-progress-container">
-                <div class="gp-header">
-                    <span class="gp-title">Fase Atual: Planejamento</span>
-                    <span class="gp-percent" id="global-percent">10%</span>
-                </div>
-                <div class="gp-bar-bg"><div class="gp-bar-fill" id="global-bar" style="width: 10%;"></div></div>
-                <p style="color:var(--success); font-size:0.75em; margin-top:10px;">✓ Você está aqui</p>
-            </div>
-
-            <div class="card-grid" style="text-align:left;">
-                <div class="feature-card" style="border-left:4px solid var(--success);">
-                    <h4 style="margin:0;">Mês 1: Setup (Você está aqui)</h4>
-                    <p style="margin-top:10px; font-size:0.85em; color:var(--success);">✔ Diagnóstico e Estratégia</p>
-                    <p style="margin-top:5px; font-size:0.85em;">🕒 Identidade Visual e LP</p>
-                </div>
-                <div class="feature-card" style="opacity:0.6;">
-                    <h4>Mês 2: Tráfego</h4>
-                    <p style="margin-top:10px; font-size:0.85em;">🕒 Campanhas de Anúncio</p>
-                    <p style="margin-top:5px; font-size:0.85em;">🕒 Otimização</p>
-                </div>
-                <div class="feature-card" style="opacity:0.6;">
-                    <h4>Mês 3: Escala</h4>
-                    <p style="margin-top:10px; font-size:0.85em;">🕒 Análise de Lucro</p>
-                    <p style="margin-top:5px; font-size:0.85em;">🕒 Aumento de Verba</p>
-                </div>
-            </div>
-            <button class="btn-primary" onclick="openTab('neuro-section')">VER NEUROVENDAS</button>
-        </div>
-    </div>
-
-    <!-- 6. NEUROVENDAS (MOCKUP) -->
-    <div id="neuro-section" class="tab-content">
-        <div class="container">
-            <h1>Neuro-Conversão</h1>
-            <p class="subtitle">A experiência mobile do seu cliente.</p>
-            
-            <button class="fullscreen-btn" onclick="toggleFullscreen()">⤢ Expandir</button>
-
-            <div class="phone-frame" id="phoneMockup">
-                <div class="phone-screen">
-                     <div class="phone-scroll-area">
-                        <!-- Hero Dinâmico -->
-                        <div class="n-hero" id="nHero" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600');">
-                            <div class="n-header-fixed">
-                                <span class="n-brand">DEMARCHI</span>
-                                <span>☰</span>
-                            </div>
-                            <div class="n-content-overlay">
-                                <h2 class="n-title">SUA CASA,<br>SUA ASSINATURA.</h2>
-                                <div class="n-subtitle">Marcenaria de Alto Padrão em Chapecó</div>
-                                <div class="n-options">
-                                    <button class="n-option-btn active" onclick="changeHero('living')">Cozinha Gourmet</button>
-                                    <button class="n-option-btn" onclick="changeHero('closet')">Closet Master</button>
-                                    <button class="n-option-btn" onclick="changeHero('bath')">Banheiro Spa</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Conteúdo -->
-                        <div class="n-body">
-                            <!-- Banner Oferta de Janeiro -->
-                            <div class="january-offer-card">
-                                <div style="font-weight:700; color:var(--gold-solid); font-size:0.9em; margin-bottom:5px;">OFERTA DE JANEIRO</div>
-                                <h4 style="margin:0; color:#fff; font-size:1.1em;">Balcão Suspenso c/ LED</h4>
-                                <p style="color:#ccc; font-size:0.8em; margin:5px 0;">Design moderno, cuba esculpida e perfil de LED.</p>
-                                <div style="margin-top:8px; font-size:1em; color:#fff;">
-                                    <span style="text-decoration:line-through; color:#666; font-size:0.8em; margin-right:5px;">R$ 2.500</span>
-                                    <strong style="color:var(--success);">R$ 1.499</strong>
-                                </div>
-                                <div style="color:var(--danger); font-size:0.6em; font-weight:700; margin-top:10px; border-top:1px solid #333; padding-top:5px;">🔥 RESTAM APENAS 3 VAGAS</div>
-                            </div>
-
-                            <h3 class="n-big-title" id="prod-title">Cozinha Gourmet</h3>
-                            <p class="n-desc" id="prod-desc">
-                                O coração da casa. Bancadas em pedra nobre, iluminação embutida e acabamento impecável para receber com elegância.
-                            </p>
-                            
-                            <!-- Adiciona prova social -->
-                            <div class="n-section-title">Últimos Projetos</div>
-                            <div class="n-carousel">
-                                <div class="n-project-item"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=300" class="n-project-img"></div>
-                                <div class="n-project-item"><img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?q=80&w=300" class="n-project-img"></div>
-                                <div class="n-project-item"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=300" class="n-project-img"></div>
-                            </div>
-                            
-                            <div class="n-section-title">O que dizem nossos clientes</div>
-                            <div class="n-carousel">
-                                <div class="n-review-card">
-                                    <div class="n-stars">★★★★★</div>
-                                    <p class="n-review-text">"A cozinha ficou espetacular. Acabamento perfeito e entrega antes do prazo."</p>
-                                    <span class="n-review-author">Ricardo M. - Chapecó</span>
-                                </div>
-                                <div class="n-review-card">
-                                    <div class="n-stars">★★★★★</div>
-                                    <p class="n-review-text">"Profissionalismo do início ao fim. Recomendo de olhos fechados."</p>
-                                    <span class="n-review-author">Ana P. - Centro</span>
-                                </div>
-                            </div>
-                            
-                             <div class="n-footer" style="margin-top:30px; border-top:1px solid #222; padding-top:20px; font-size:0.7em; color:#666; text-align:center;">
-                                <p style="margin-bottom:5px; color:#fff;">DEMARCHI MÓVEIS</p>
-                                <p>Rua Angelo Baldiceira, 86D - Vila Real, Chapecó - SC</p>
-                                <div style="display:flex; justify-content:center; gap:10px; margin-top:10px;">
-                                    <span style="display:flex; align-items:center; gap:4px;"><span style="color:var(--gold-solid);">★</span> Garantia 5 Anos</span>
-                                    <span style="display:flex; align-items:center; gap:4px;"><span style="color:var(--gold-solid);">★</span> Acabamento Premium</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Fundo Gradiente para proteger botão -->
-                    <div class="app-gradient-overlay"></div>
-
-                    <!-- Sticky Btn -->
-                    <div class="app-sticky-btn" onclick="window.open('https://wa.me/5549999084031?text=Olá Demarchi! Vi a coleção no App e gostaria de um orçamento.', '_blank')">
-                        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                        SOLICITAR ORÇAMENTO
-                    </div>
-                </div>
-            </div>
-            <button class="btn-primary" onclick="openTab('checklist-section')">VER ESCOPO</button>
-        </div>
-    </div>
-
-    <!-- 7. ESCOPO -->
-    <div id="checklist-section" class="tab-content">
-        <div class="container">
-            <h1>Escopo Técnico (15 Entregáveis)</h1>
-            <div class="calc-wrapper">
-                <div class="checklist-item"><span class="check-num">01</span><div class="check-content"><h4>Identidade & Blindagem</h4><p>GMN Pro, SEO Local, Padronização Visual.</p></div></div>
-                <div class="checklist-item"><span class="check-num">02</span><div class="check-content"><h4>Infraestrutura de Vendas</h4><p>Landing Page de Alta Conversão, Pixel e Domínio.</p></div></div>
-                <div class="checklist-item"><span class="check-num">03</span><div class="check-content"><h4>Performance</h4><p>Gestão de Anúncios e Relatórios Mensais.</p></div></div>
-                <div class="checklist-item"><span class="check-num">04</span><div class="check-content"><h4>Script de Vendas</h4><p>Treinamento para triagem.</p></div></div>
-                <div class="checklist-item"><span class="check-num">05</span><div class="check-content"><h4>Recuperação de Leads</h4><p>Remarketing estratégico.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">06</span><div class="check-content"><h4>Relatórios de ROI</h4><p>Acompanhamento mensal.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">07</span><div class="check-content"><h4>Criação de Ofertas</h4><p>Planejamento sazonal.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">08</span><div class="check-content"><h4>Automação de Avaliação</h4><p>Gestão de reputação.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">09</span><div class="check-content"><h4>Suporte Prioritário</h4><p>Acesso direto via WhatsApp.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">10</span><div class="check-content"><h4>Consultoria CRM</h4><p>Organização de funil.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">11</span><div class="check-content"><h4>Copywriting</h4><p>Textos persuasivos.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">12</span><div class="check-content"><h4>Análise Concorrência</h4><p>Monitoramento de mercado.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">13</span><div class="check-content"><h4>Integração WhatsApp</h4><p>Botão flutuante.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">14</span><div class="check-content"><h4>Públicos Personalizados</h4><p>Segmentação avançada.</p></div></div>
-                 <div class="checklist-item"><span class="check-num">15</span><div class="check-content"><h4>Otimização Bio</h4><p>Linktree profissional.</p></div></div>
-            </div>
-            <button class="btn-primary" onclick="openTab('budget-section')">VER VALORES</button>
-        </div>
-    </div>
-
-    <!-- 8. INVESTIMENTO -->
-    <div id="budget-section" class="tab-content">
-        <div class="container">
-            <h1>Investimento</h1>
-            <div class="calc-wrapper" style="padding:0; background:transparent; border:none;">
-                
-                <!-- Setup -->
-                <div class="module-row selected">
-                    <input type="checkbox" class="module-checkbox" checked disabled>
-                    <div style="flex:1;">
-                        <span class="module-badge" style="background:#d4af37; color:#000;">Fase 1: Implementação</span>
-                        <div class="module-title" style="margin-top:5px; font-size:1.1em; font-weight:700;">Ecossistema Comercial Full-Stack</div>
-                        <div class="module-desc" style="font-size:0.9em; color:#666; margin:5px 0;">Desenvolvimento do Web App, Identidade Visual Premium, Configuração de Pixel e Rastreamento Avançado.</div>
-                        <div class="price-value" style="font-size:1.4em; font-weight:700; margin-top:10px;">
-                            <span style="font-size:0.5em; color:#888; text-decoration:line-through; margin-right:8px; display:block;">De R$ 9.500,00</span>
-                            R$ 4.990,00 <span style="font-size:0.5em; color:#888; font-weight:400;">(Taxa Única)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mensal -->
-                <div class="module-row selected">
-                    <input type="checkbox" class="module-checkbox" checked disabled>
-                    <div style="flex:1;">
-                        <span class="module-badge" style="background:#333; color:#fff;">Fase 2: Recorrência</span>
-                        <div class="module-title" style="margin-top:5px; font-size:1.1em; font-weight:700;">Gestão de Performance & Growth</div>
-                        <div class="module-desc" style="font-size:0.9em; color:#666; margin:5px 0;">Otimização diária de campanhas, gestão de reputação e relatórios de ROI.</div>
-                        <div class="price-value" style="font-size:1.4em; font-weight:700; margin-top:10px;">R$ 1.800,00 <span style="font-size:0.5em; color:#888; font-weight:400;">/mês (início em 30 dias)</span></div>
-                    </div>
-                </div>
-                
-                <!-- Mídia Sugerida -->
-                <div class="media-investment-box">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                        <h4 style="margin:0; color:var(--success); font-weight:700;">Verba de Mídia (Google/Meta)</h4>
-                        <span style="font-size:0.65em; background:rgba(39, 174, 96, 0.2); color:#2ecc71; padding:3px 8px; border-radius:4px;">Pago direto às plataformas</span>
-                    </div>
-                    <p style="font-size:0.8em; color:#aaa; margin-bottom:20px;">
-                        Combustível para a máquina girar. Valor sugerido para alta competitividade em Chapecó.
+    <!-- ==========================================================================
+         VIEW 1: HOME
+         ========================================================================== -->
+    <main id="view-home" class="view-section active flex-grow">
+        <section class="w-full h-[100vh] relative overflow-hidden bg-gl_dark" id="hero-container">
+            <!-- Slide 1 -->
+            <div class="hero-slide active" id="hero-slide-1">
+                <img src="https://imagensagata.carrd.co/assets/images/image27.jpg?v=83589d3b" class="w-full h-full object-cover" alt="Sérum">
+                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 container mx-auto">
+                    <h2 class="font-serif text-6xl md:text-[8rem] lg:text-[10rem] text-white editorial-title mb-6 reveal text-balance">Sérum <br><i class="text-gray-300 font-light">Inteligente</i></h2>
+                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl drop-shadow-lg reveal">
+                        A Intervenção Estrutural Absoluta. Ativos de pureza farmacêutica para o brilho espelhado supremo. <span class="text-gl_gold">Lote Limitado de Lançamento. Garanta o seu.</span>
                     </p>
+                    <button onclick="cartSystem.addToCart('cortex_presale', 'Sérum Inteligente', 797.00, 'Pré-Venda VIP', 'https://imagensagata.carrd.co/assets/images/image27.jpg?v=83589d3b')" class="btn-editorial text-white border-white w-fit reveal">Reservar Lote</button>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide" id="hero-slide-2">
+                <img src="https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855" class="w-full h-full object-cover mix-blend-screen" alt="Gloss">
+                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 container mx-auto">
+                    <h2 class="font-serif text-6xl md:text-[8rem] lg:text-[10rem] text-white editorial-title mb-6 reveal text-balance">Gloss <br><i class="text-gray-300 font-light">Molecular</i></h2>
+                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl drop-shadow-lg reveal">
+                        A fusão definitiva entre o alisamento orgânico e a engenharia química 8K. Hialurônico Reticulado para ancoragem de massa intra-cortical. <span class="text-gl_gold">O fim do afinamento capilar. Liso 100% espelhado.</span>
+                    </p>
+                    <button onclick="appState.openHomologationModal()" class="btn-editorial text-white border-white w-fit reveal">Homologar B2B</button>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="hero-slide" id="hero-slide-3">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1920" class="w-full h-full object-cover mix-blend-luminosity" alt="Exp">
+                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 container mx-auto">
+                    <h2 class="font-serif text-6xl md:text-[8rem] lg:text-[10rem] text-white editorial-title mb-6 reveal text-balance">A <i class="text-gray-300 font-light">Experiência</i></h2>
+                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl drop-shadow-lg reveal">
+                        O ecossistema absoluto de manutenção no seu santuário privado. Participe na nossa seleção oficial e concorra ao Kit Trindade 8K. <span class="text-gl_gold">Valor Ancorado: R$ 597,00.</span>
+                    </p>
+                    <button onclick="appState.navigate('experience')" class="btn-editorial text-white border-white w-fit reveal">Autenticar Entrada</button>
+                </div>
+            </div>
+            <div class="absolute bottom-10 right-6 md:right-16 z-30 flex gap-2">
+                <button onclick="heroEngine.goTo(1)" class="w-12 h-1 bg-white/30 hero-dot active"></button>
+                <button onclick="heroEngine.goTo(2)" class="w-12 h-1 bg-white/30 hero-dot"></button>
+                <button onclick="heroEngine.goTo(3)" class="w-12 h-1 bg-white/30 hero-dot"></button>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 container mx-auto text-center reveal">
+            <span class="font-sans text-[0.55rem] text-gray-500 uppercase tracking-mega-wide block mb-8 font-bold">O Nosso Legado</span>
+            <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-gl_dark dark:text-white mb-12 editorial-title text-balance">Bio-Arquitetura Capilar:<br><span class="italic font-light text-gold-adaptive">A Ciência do Brilho Refratário 8K</span></h3>
+            
+            <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6 max-w-3xl mx-auto font-light text-balance">O que começou como um fenómeno de mercado estético através de <strong>A Gata Lambeu</strong>, amadureceu com o tempo e com a ciência. Nós compreendemos rapidamente que a mulher contemporânea e o mercado de luxo exigiam mais do que apenas um liso efêmero; eles exigiam <strong>integridade biológica absoluta</strong> no fio.</p>
+            <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto font-light text-balance">Assim nasceu a <strong>GL PRO</strong>. Nós deixámos de ser apenas uma marca de cosméticos para nos tornarmos num laboratório de Engenharia Híbrida. Elevámos o nosso padrão técnico para o nível de pureza farmacêutica, criando o Ecossistema 8K — o exato ponto onde a saúde do córtex e o brilho espelhado inigualável coexistem em perfeição.</p>
+        </section>
+
+        <section class="py-24 px-6 bg-gl_surface_light dark:bg-gl_surface_dark hairline-t">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-6xl reveal">
+                <div class="ba-slider-container aspect-[4/5] shadow-lg">
+                    <img src="https://testeessencia.carrd.co/assets/images/image48.jpg?v=7b294510" class="ba-img absolute inset-0">
+                    <img src="https://testeessencia.carrd.co/assets/images/image49.jpg?v=7b294510" class="ba-img ba-after absolute inset-0">
+                    <div class="ba-handle-line"></div>
+                    <input type="range" min="0" max="100" value="50" class="ba-range">
+                    <div class="ba-label-after">Supremacia 8K</div>
+                </div>
+                <div class="ba-slider-container aspect-[4/5] shadow-lg">
+                    <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=7b294510" class="ba-img absolute inset-0">
+                    <img src="https://testeessencia.carrd.co/assets/images/image47.jpg?v=7b294510" class="ba-img ba-after absolute inset-0">
+                    <div class="ba-handle-line !bg-purple-400"></div>
+                    <input type="range" min="0" max="100" value="50" class="ba-range">
+                    <div class="ba-label-after !bg-purple-900/50">Efeito Platinum</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         VIEW 2: BOUTIQUE B2C
+         ========================================================================== -->
+    <main id="view-loja-b2c" class="view-section flex-grow">
+        
+        <section class="w-full h-[70vh] md:h-[80vh] relative overflow-hidden bg-gl_dark">
+            <video src="https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" autoplay loop muted playsinline></video>
+            <div class="absolute inset-0 bg-gradient-to-t from-gl_dark via-transparent to-transparent"></div>
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+                <span class="font-sans text-[0.6rem] font-bold text-gl_gold uppercase tracking-widest mb-4 reveal">Engineering High-End</span>
+                <h2 class="font-serif text-5xl md:text-8xl text-white editorial-title reveal">Boutique <span class="italic font-light">8K</span></h2>
+                <p class="font-sans text-[0.65rem] text-gray-300 uppercase tracking-mega-wide mt-8 reveal">A Arte da Manutenção Molecular</p>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-6 md:px-12 py-24 space-y-40">
+
+            <!-- PASSO 01: SHAMPOO -->
+            <article class="flex flex-col lg:flex-row gap-12 lg:gap-24 reveal max-w-6xl mx-auto items-start">
+                <div class="w-full lg:w-5/12 sticky-editorial">
+                    <div class="aspect-[3/4] img-wrap rounded-3xl overflow-hidden relative shadow-2xl group bg-white dark:bg-gl_surface_dark">
+                        <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" class="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105 opacity-95">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700"></div>
+                        
+                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-500 z-10 cursor-pointer">
+                            <i class="fa-solid fa-play ml-1 text-2xl"></i>
+                        </button>
+                        <span class="absolute bottom-6 left-6 font-sans text-[0.55rem] font-bold text-white uppercase tracking-widest bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 z-10">Passo 01 / Purificação</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-7/12 py-10">
+                    <h4 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title mb-4">Bain Repar Master</h4>
+                    <p class="font-sans text-[0.65rem] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.3em] mb-8">Limpeza Inteligente e Preparação</p>
+                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12">Atua como um íman de impurezas. Limpeza molecular profunda que remove resíduos metálicos e prepara as cutículas para a infusão lipídica, sem agredir ou ressecar a haste.</p>
                     
-                    <div style="margin-bottom:20px;">
-                        <div style="display:flex; justify-content:space-between; font-size:0.8em; font-weight:600; color:#fff; margin-bottom:5px;">
-                            <span>Investimento Diário</span>
-                            <span id="media-daily-val" style="color:var(--gold-solid);">R$ 50,00</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Biomimetic Keratin</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Reconstrução estrutural inteligente que atua nas microfissuras da fibra durante a lavagem.</p>
                         </div>
-                        <input type="range" min="40" max="200" step="10" value="50" class="media-slider" id="media-slider" oninput="updateMediaValue(this.value)">
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Bio-Ceramide Complex</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Restauração do cimento intercelular para máxima selagem e preparação térmica.</p>
+                        </div>
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Pro-Vitamin B5</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Umectação profunda que previne o ressecamento do fio exposto à água e processos químicos.</p>
+                        </div>
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Mediterranean Scent</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Perfumaria fina com notas de Limão Siciliano, Bambu e um fundo sofisticado de Âmbar.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 hairline-t pt-8">
+                        <p class="font-serif text-4xl text-gl_dark dark:text-white">R$ 147,00</p>
+                        <button onclick="cartSystem.addToCart('shampoo', 'Bain Master', 147.00, 'Passo 01', 'https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-10 py-4">Adicionar à Bag</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASSO 02: AMPOLA -->
+            <article class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-24 reveal max-w-6xl mx-auto items-start">
+                <div class="w-full lg:w-5/12 sticky-editorial">
+                    <div class="aspect-[3/4] img-wrap rounded-3xl overflow-hidden relative shadow-2xl group bg-white dark:bg-gl_surface_dark">
+                        <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-screen opacity-95">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700"></div>
+
+                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-500 z-10 cursor-pointer"><i class="fa-solid fa-play ml-1 text-2xl"></i></button>
+                        <span class="absolute bottom-6 left-6 font-sans text-[0.55rem] font-bold text-white uppercase tracking-widest bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 z-10">Passo 02 / Infusão</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-7/12 py-10 lg:text-right">
+                    <h4 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title mb-4">Repair Gloss & Fusion</h4>
+                    <p class="font-sans text-[0.65rem] font-black text-gold-adaptive uppercase tracking-[0.3em] mb-8">Ampola Ultra Concentrada 20ml</p>
+                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12 max-w-xl lg:ml-auto">A verdadeira joia da coroa. Uma ampola de hiper-infusão proteica que estabiliza o pH capilar e encorpa a estrutura do fio danificado em apenas 3 minutos de contacto íntimo.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 lg:text-right">
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Nutriamido CAP</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Matriz de preenchimento inteligente: age exatamente no dano molecular da haste capilar.</p>
+                        </div>
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Noble Avocado Oil</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Carga lipídica nobre que aniquila a porosidade capilar, devolvendo balanço e maleabilidade.</p>
+                        </div>
+                        <div class="hairline-t pt-4 md:col-span-2">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Silk Protein Matrix</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Envelopamento total da fibra, criando um efeito liso fotográfico extremo e proteção blindada contra a quebra mecânica.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 hairline-t pt-8 justify-end">
+                        <p class="font-serif text-4xl text-gl_dark dark:text-white">R$ 289,00</p>
+                        <button onclick="cartSystem.addToCart('ampola', 'Ampola Gloss', 289.00, 'Passo 02', 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-10 py-4">Adicionar à Bag</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASSO 03: BABY QUEEN -->
+            <article class="flex flex-col lg:flex-row gap-12 lg:gap-24 reveal max-w-6xl mx-auto items-start">
+                <div class="w-full lg:w-5/12 sticky-editorial">
+                    <div class="aspect-[3/4] img-wrap rounded-3xl overflow-hidden relative shadow-2xl group bg-white dark:bg-gl_surface_dark">
+                        <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" class="w-full h-full object-cover grayscale opacity-95">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700"></div>
+
+                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-500 z-10 cursor-pointer"><i class="fa-solid fa-play ml-1 text-2xl"></i></button>
+                        <span class="absolute bottom-6 left-6 font-sans text-[0.55rem] font-bold text-white uppercase tracking-widest bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 z-10">Passo 03 / Blindagem</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-7/12 py-10">
+                    <h4 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title mb-4">Baby Queen <span class="text-gold-adaptive text-3xl not-italic">(10 em 1)</span></h4>
+                    <p class="font-sans text-[0.65rem] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.3em] mb-8">O Escudo Térmico</p>
+                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12">Tecnologia Smart Post-Chemical que devolve a elasticidade natural ao fio e atua como barreira impenetrável contra secador, prancha e agressões externas.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Nano Link Complex</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Sistema de nano-aminoácidos para reposição de massa intensa e reparação cirúrgica pós-química.</p>
+                        </div>
+                        <div class="hairline-t pt-4">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Bio-Collagen</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Colágeno hidrolisado que devolve tração e força elástica ao fio de forma imediata.</p>
+                        </div>
+                        <div class="hairline-t pt-4 md:col-span-2">
+                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Deca-Shield Matrix</span>
+                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Escudo inteligente termo-ativado. Sela a cutícula preservando 100% da umidade interna gerada pelos passos 1 e 2, criando uma barreira ativa duradoura.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 hairline-t pt-8">
+                        <p class="font-serif text-4xl text-gl_dark dark:text-white">R$ 247,00</p>
+                        <button onclick="cartSystem.addToCart('baby', 'Baby Queen', 247.00, 'Passo 03', 'https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-10 py-4">Adicionar à Bag</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIFTING EXPERIENCE -->
+            <section class="pt-24 border-t border-gray-200 dark:border-white/5 reveal">
+                <div class="text-center mb-16">
+                    <h3 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title">A Arte de Presentear</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1606836591695-4d584caf87a7?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Sacola Crystal</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 15,00</p>
+                        <select id="ribbon-sacola_transparente" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
+                            <option value="Sem Fita">Sem Fita</option>
+                            <option value="Com Amor">"Com Amor"</option>
+                            <option value="Especial p/ Você">"Especial p/ Você"</option>
+                        </select>
+                        <button onclick="cartSystem.addGift('sacola_transparente', 'Sacola Crystal', 15.00)" class="btn-editorial w-full !py-3">Incluir</button>
                     </div>
                     
-                    <div id="media-return-container">
-                        <!-- Dynamic content filled by JS -->
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Sacola Icon</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 25,00</p>
+                        <select id="ribbon-sacola_laranja" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
+                            <option value="Sem Fita">Sem Fita</option>
+                            <option value="Com Amor">"Com Amor"</option>
+                        </select>
+                        <button onclick="cartSystem.addGift('sacola_laranja', 'Sacola Icon', 25.00)" class="btn-editorial w-full !py-3">Incluir</button>
+                    </div>
+                    
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Maleta Signature</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 45,00</p>
+                        <select id="ribbon-maleta" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
+                            <option value="Sem Fita">Sem Fita</option>
+                            <option value="Com Amor">"Com Amor"</option>
+                        </select>
+                        <button onclick="cartSystem.addGift('maleta', 'Maleta Signature', 45.00)" class="btn-editorial w-full !py-3">Incluir</button>
+                    </div>
+                    
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Caixa Premium Ímã</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 65,00</p>
+                        <select id="ribbon-caixa_ima" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
+                            <option value="Sem Fita">Sem Fita</option>
+                            <option value="Com Amor">"Com Amor"</option>
+                        </select>
+                        <button onclick="cartSystem.addGift('caixa_ima', 'Caixa Premium Ímã', 65.00)" class="btn-editorial w-full !py-3">Incluir</button>
                     </div>
                 </div>
+            </section>
+        </div>
+    </main>
 
-                <!-- Filmmaker -->
-                <div class="module-row">
-                    <input type="checkbox" class="module-checkbox" id="mod-extra" onchange="calculateTotal()">
-                    <div style="flex:1;">
-                        <span class="module-badge" style="background:#2980b9; color:#fff;">Opcional Recomendado</span>
-                        <div class="module-title" style="margin-top:5px; font-size:1.1em; font-weight:700;">Sessão Filmmaker In-Loco</div>
-                        <div class="module-desc" style="font-size:0.9em; color:#666; margin:5px 0;">Captura de vídeos profissionais no showroom (4h de diária).</div>
-                        <div class="price-value" style="font-size:1.2em; font-weight:700; margin-top:10px;">R$ 800,00</div>
+    <!-- VIEW 3: PORTAL B2B -->
+    <main id="view-dashboard-b2b" class="view-section flex-grow">
+        <section class="pt-48 pb-24 px-6 bg-gl_surface_dark text-white">
+            <div class="container mx-auto max-w-7xl flex justify-between items-end">
+                <h2 class="font-serif text-7xl editorial-title">Portal <span class="font-light">B2B</span></h2>
+                <button onclick="appState.navigate('home')" class="text-gray-400 uppercase text-xs">Voltar ao Hub</button>
+            </div>
+        </section>
+        <div class="container mx-auto px-6 py-24 max-w-5xl space-y-24 reveal">
+            <article class="flex flex-col md:flex-row gap-12 items-center">
+                <img src="https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855" class="w-48 h-48 rounded-full border border-white/10 p-4 object-cover">
+                <div class="w-full md:w-3/5">
+                    <span class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block">Plástica Híbrida Soberana</span>
+                    <h4 class="font-serif text-4xl italic">Gloss Premium 1 Litro</h4>
+                    <p class="text-gray-500 my-4 leading-relaxed font-light">Carga Molecular 8K com Hialurônico Reticulado. O alisamento definitivo que previne o afinamento da haste capilar.</p>
+                    <div class="flex items-center gap-6 pt-6 hairline-t">
+                        <p class="font-serif text-3xl text-white">R$ 1.297,00</p>
+                        <button onclick="cartSystem.addToCart('gloss_1l', 'Gloss 1L', 1297.00, 'B2B', 'https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-8 py-3">Faturar Lote</button>
                     </div>
                 </div>
-            </div>
-            <div style="height:120px;"></div>
-        </div>
-
-        <div class="budget-footer">
-            <div class="budget-info">
-                <div>
-                    <span class="budget-label">Investimento Setup (À Vista)</span>
-                    <span class="budget-val" id="val-total" style="color:#d4af37;">R$ 4.990,00</span>
-                    <div style="font-size:0.6em; color:#888; margin-top:4px;">+ R$ 1.800/mês (Recorrência)</div>
+            </article>
+            <article class="flex flex-col md:flex-row gap-12 items-center">
+                <img src="https://testeessencia.carrd.co/assets/images/image52.jpg?v=f5d26855" class="w-48 h-48 rounded-full border border-white/10 p-4 object-cover">
+                <div class="w-full md:w-3/5">
+                    <span class="font-sans text-[0.55rem] font-bold text-purple-500 uppercase tracking-widest mb-3 block">Lançamento Set 2026</span>
+                    <h4 class="font-serif text-4xl italic">Platinum Infusion 1 Litro</h4>
+                    <p class="text-gray-500 my-4 leading-relaxed font-light">Matização inteligente com Pigmento 43 e Extrato de Caviar. Neutralização instantânea e rejuvenescimento para loiros de luxo.</p>
+                    <div class="flex items-center gap-6 pt-6 hairline-t">
+                        <p class="font-serif text-3xl text-white">R$ 1.597,00</p>
+                        <button onclick="cartSystem.addToCart('plat_1l', 'Platinum 1L', 1597.00, 'B2B', 'https://testeessencia.carrd.co/assets/images/image52.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-8 py-3 !border-purple-500 !text-purple-500 hover:!bg-purple-500 hover:!text-white">Garantir Reserva</button>
+                    </div>
                 </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- VIEW 4: EXPERIÊNCIA -->
+    <main id="view-experience" class="view-section flex-grow">
+        <section class="w-full h-[60vh] relative bg-gl_dark flex items-center justify-center overflow-hidden">
+            <video src="https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" autoplay loop muted playsinline></video>
+            <div class="absolute inset-0 bg-gradient-to-t from-gl_dark/80 via-gl_dark/20 to-transparent"></div>
+            <div class="relative z-10 text-center px-6">
+                <span class="font-sans text-[0.6rem] font-bold text-gold-adaptive uppercase tracking-mega-wide mb-4 block reveal">The Premium Experience</span>
+                <h2 class="font-serif text-5xl md:text-7xl text-white editorial-title reveal">Kit Trindade 8K</h2>
             </div>
-            <button class="btn-approve" onclick="openPasswordModal()">APROVAR PROJETO</button>
-        </div>
-    </div>
-
-    <!-- MODAL SENHA -->
-    <div id="password-modal" class="modal">
-        <div class="modal-content">
-            <h2 style="margin-bottom:10px; color:#111;">Área Restrita</h2>
-            <p style="color:#666; font-size:0.9em;">Insira a senha para desbloquear.</p>
-            <input type="password" id="unlock-pass" class="modal-input" placeholder="Senha">
-            <div style="display:flex; gap:10px; justify-content:center;">
-                <button onclick="checkPassword()" style="background:#000; color:#fff; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">Entrar</button>
-                <button onclick="closePasswordModal()" style="background:#ddd; color:#333; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">Cancelar</button>
+        </section>
+        <div class="container mx-auto py-24 px-6 max-w-4xl text-center">
+            <h3 class="font-serif text-5xl mb-12">Protocolo de Validação</h3>
+            <div class="grid gap-10 text-left">
+                <div class="hairline-b pb-6">
+                    <span class="text-gold-adaptive font-serif text-2xl">01.</span>
+                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Comente GLPRO no Post Oficial</h5>
+                </div>
+                <div class="hairline-b pb-6">
+                    <span class="text-gold-adaptive font-serif text-2xl">02.</span>
+                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Responda à nossa mensagem no Direct</h5>
+                </div>
+                <div class="hairline-b pb-6">
+                    <span class="text-gold-adaptive font-serif text-2xl">03.</span>
+                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Salve o Post Oficial no Instagram</h5>
+                </div>
+                <a href="https://instagram.com/SEU_PERFIL" target="_blank" class="btn-editorial btn-editorial-solid w-fit mx-auto mt-10">Ir para o Instagram</a>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- MODAL SUCESSO -->
-    <div id="success-modal" class="modal">
-        <div class="modal-content">
-            <h2 style="margin-bottom:10px; color:#111;">Projeto Aprovado!</h2>
-            <p style="color:#666;">Gerando contrato para Lucas Demarchi...</p>
-            <a href="https://wa.me/5549999084031?text=Olá Tiago! Aprovei o projeto de aceleração da Demarchi e quero dar o start." style="display:inline-block; margin-top:20px; text-decoration:none; background:#25d366; color:white; padding:12px 25px; border-radius:50px; font-weight:bold;">Confirmar no WhatsApp</a>
-            <p style="margin-top:20px; cursor:pointer; font-size:0.8em; color:#888;" onclick="document.getElementById('success-modal').style.display='none'">Fechar</p>
-        </div>
-    </div>
-
-    <!-- RODAPÉ GLOBAL -->
-    <div class="global-footer"><span class="status-dot"></span>Responsável Performance Business: <strong>Tiago Grabski</strong></div>
+    <footer class="py-16 border-t border-adaptive text-center">
+        <p class="font-sans text-[0.55rem] text-gray-500 uppercase tracking-widest font-black">&copy; 2026 GL PRO SUPREMACY</p>
+    </footer>
 
     <script>
-        let isUnlocked = false;
-        let pendingTabId = null;
-        let pendingBtn = null;
-
-        window.onload = function() {
-            setTimeout(() => { 
-                const loader = document.getElementById('loader');
-                if(loader) loader.style.display = 'none'; 
-            }, 2000);
-            
-            if(document.getElementById('loss-searches')) calcLoss();
-            if(document.getElementById('p1-val')) calcProjection();
-            if(document.getElementById('roi-ticket')) calcROI();
-            if(document.getElementById('val-total')) calculateTotal();
-            if(document.getElementById('media-slider')) updateMediaValue(50);
+        const heroEngine = {
+            current: 1, total: 3, interval: null,
+            init() { this.start(); },
+            start() { if(this.interval) clearInterval(this.interval); this.interval = setInterval(() => { let n = this.current+1; if(n>this.total) n=1; this.goTo(n); }, 7000); },
+            goTo(n) {
+                document.querySelectorAll('.hero-slide').forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.hero-dot').forEach(d => d.classList.remove('active', 'opacity-100'));
+                this.current = n;
+                document.getElementById(`hero-slide-${n}`).classList.add('active');
+                document.querySelectorAll('.hero-dot')[n-1].classList.add('active', 'opacity-100');
+            }
         };
 
-        function checkAccess(tabId, btn) {
-            // Abas liberadas
-            if (tabId === 'intro-section' || tabId === 'pain-section') {
-                openTab(tabId, btn);
-                return;
-            }
-
-            // Abas bloqueadas
-            if (isUnlocked) {
-                openTab(tabId, btn);
-            } else {
-                pendingTabId = tabId;
-                pendingBtn = btn;
-                document.getElementById('password-modal').style.display = 'flex';
-                document.getElementById('unlock-pass').focus();
-            }
-        }
-
-        function checkPassword() {
-            const pass = document.getElementById('unlock-pass').value;
-            if (pass === '24718') {
-                isUnlocked = true;
-                document.getElementById('password-modal').style.display = 'none';
+        const cartSystem = {
+            items: [],
+            openCart() { document.getElementById('cart-drawer').classList.add('open'); document.querySelector('.cart-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; },
+            closeCart() { document.getElementById('cart-drawer').classList.remove('open'); document.querySelector('.cart-overlay').classList.remove('open'); document.body.style.overflow = ''; },
+            addToCart(id, name, price, tag, image) {
+                const existing = this.items.find(i => i.id === id && i.tag === tag);
+                if (existing) existing.qtd++; else this.items.push({ id, name, price, tag, image, qtd: 1 });
+                this.render(); this.openCart();
+            },
+            addGift(id, name, price) {
+                const ribbon = document.getElementById('ribbon-' + id).value;
+                const tag = ribbon !== 'Sem Fita' ? 'Embalagem - ' + ribbon : 'Embalagem VIP';
+                let img = 'https://images.unsplash.com/photo-1606836591695-4d584caf87a7?auto=format&fit=crop&w=600';
+                if(id === 'sacola_laranja') img = 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600';
+                else if(id === 'maleta') img = 'https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600';
+                else if(id === 'caixa_ima') img = 'https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600';
                 
-                // Remove lock icons visually
-                document.querySelectorAll('.lock-icon').forEach(icon => icon.style.display = 'none');
-                
-                if (pendingTabId) {
-                    openTab(pendingTabId, pendingBtn);
+                this.addToCart(id, name, price, tag, img);
+            },
+            removeFromCart(id, tag) {
+                const idx = this.items.findIndex(i => i.id === id && i.tag === tag);
+                if (idx > -1) this.items.splice(idx, 1);
+                this.render();
+            },
+            formatMoney(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); },
+            render() {
+                const container = document.getElementById('cart-items-container');
+                let sub = 0, total = 0;
+                if (this.items.length === 0) {
+                    container.innerHTML = `<div class='text-center mt-20 text-gray-400 text-xs uppercase tracking-widest'>Sacola Vazia</div>`;
+                    document.getElementById('cart-count').style.opacity = '0';
+                    document.getElementById('cart-subtotal').innerText = 'R$ 0,00';
+                    return;
                 }
-            } else {
-                alert('Senha incorreta.');
-            }
-        }
-        
-        function closePasswordModal() {
-            document.getElementById('password-modal').style.display = 'none';
-            pendingTabId = null;
-            pendingBtn = null;
-        }
-
-        function openPasswordModal() {
-             if (isUnlocked) {
-                 document.getElementById('success-modal').style.display = 'flex';
-             } else {
-                 // Force unlock attempt if clicking approve directly
-                 pendingTabId = null; 
-                 document.getElementById('password-modal').style.display = 'flex';
-             }
-        }
-
-        function openTab(id, btn) {
-            document.querySelectorAll('.tab-content').forEach(t => {
-                t.style.display = 'none';
-                t.classList.remove('active');
-            });
-            
-            const active = document.getElementById(id);
-            if(active) {
-                active.style.display = 'flex';
-                setTimeout(() => active.classList.add('active'), 10);
-            }
-            
-            if(btn) {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            }
-            
-            window.scrollTo(0,0);
-        }
-
-        function calcLoss() {
-            const searchesEl = document.getElementById('loss-searches');
-            const ticketEl = document.getElementById('loss-ticket');
-            const displayEl = document.getElementById('loss-display');
-            
-            if(!searchesEl || !ticketEl || !displayEl) return;
-
-            const searches = searchesEl.value || 500;
-            const ticket = ticketEl.value || 20000;
-            const loss = searches * 0.01 * ticket;
-            displayEl.innerText = loss.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
-        function calcProjection() {
-            const p1val = document.getElementById('p1-val')?.value || 0;
-            const p1qtd = document.getElementById('p1-qtd')?.value || 0;
-            const p2val = document.getElementById('p2-val')?.value || 0;
-            const p2qtd = document.getElementById('p2-qtd')?.value || 0;
-            const p3val = document.getElementById('p3-val')?.value || 0;
-            const p3qtd = document.getElementById('p3-qtd')?.value || 0;
-
-            const total = (p1val * p1qtd) + (p2val * p2qtd) + (p3val * p3qtd);
-            const totalEl = document.getElementById('total-proj');
-            if(totalEl) totalEl.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
-        function calcROI() {
-            const ticketEl = document.getElementById('roi-ticket');
-            const resEl = document.getElementById('roi-result');
-            
-            if(!ticketEl || !resEl) return;
-
-            const ticket = ticketEl.value || 30000;
-            const invest = 1800; // Valor atualizado da mensalidade
-            const breakEven = invest / ticket;
-            let html = "";
-            if(breakEven < 1) {
-                html = `Você precisa vender apenas <span style="color:var(--success); font-weight:700;">${breakEven.toFixed(2)}</span> de uma cozinha (fração) para pagar o marketing.`;
-            } else {
-                html = `Você precisa de ${breakEven.toFixed(1)} vendas para pagar o investimento.`;
-            }
-            resEl.innerHTML = html;
-        }
-        
-        function calculateTotal() {
-            let base = 4990; // Setup Base
-            const extraEl = document.getElementById('mod-extra');
-            if(extraEl && extraEl.checked) base += 800;
-            
-            const totalEl = document.getElementById('val-total');
-            if(totalEl) totalEl.innerText = base.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-        
-        function updateMediaValue(val) {
-            const daily = parseInt(val);
-            const dailyEl = document.getElementById('media-daily-val');
-            if(dailyEl) dailyEl.innerText = 'R$ ' + daily.toLocaleString('pt-BR') + '/dia';
-            
-            const monthly = daily * 30;
-            
-            // Estimates
-            const estLeads = Math.floor(monthly / 18); // Custo por Lead um pouco mais conservador (R$ 18)
-            const estSalesLow = Math.floor(estLeads * 0.03); 
-            const estSalesHigh = Math.ceil(estLeads * 0.06); 
-            const ticket = 15000; // Ticket médio base para estimativa de retorno em ads
-            const revLow = estSalesLow * ticket;
-            const revHigh = estSalesHigh * ticket;
-            
-            const displayRevLow = revLow > 0 ? revLow : 0;
-            const displayRevHigh = revHigh > 0 ? revHigh : ticket; 
-
-            const returnHtml = `
-                <div style="margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
-                    <div style="text-align:left;">
-                        <span style="display:block; font-size:0.7em; color:#888;">INVESTIMENTO MENSAL</span>
-                        <span style="font-weight:700; color:#fff; font-size:1.1em;">R$ ${monthly.toLocaleString('pt-BR')}</span>
-                    </div>
-                    <div style="text-align:right;">
-                        <span style="display:block; font-size:0.7em; color:var(--success);">RETORNO ESTIMADO (ROAS)</span>
-                        <span style="font-weight:700; color:var(--success); font-size:1.1em;">R$ ${displayRevLow.toLocaleString('pt-BR')} - ${displayRevHigh.toLocaleString('pt-BR')}</span>
-                    </div>
-                </div>
-                <p style="font-size:0.7em; color:#666; margin-top:5px; text-align:right;">*Baseado em captar aprox. ${estLeads} potenciais clientes.</p>
-            `;
-            
-            const container = document.getElementById('media-return-container');
-            if(container) container.innerHTML = returnHtml;
-        }
-
-        function toggleFullscreen() {
-            const phone = document.getElementById('phoneMockup');
-            if(phone) phone.classList.toggle('fullscreen');
-        }
-
-        const heroData = {
-            'living': { img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600', title: 'Cozinha Gourmet', desc: 'O coração da casa. Bancadas em pedra nobre, iluminação embutida e acabamento impecável para receber com elegância.' },
-            'closet': { img: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?q=80&w=600', title: 'Closet Master', desc: 'Organização que traz paz mental. Portas em vidro reflecta e iluminação interna automática para valorizar suas peças.' },
-            'bath': { img: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=600', title: 'Balcão LED', desc: 'A oferta do mês. Balcão suspenso com design clean, fita de LED integrada e aproveitamento inteligente de espaço.' }
+                container.innerHTML = '';
+                this.items.forEach(i => {
+                    sub += i.price * i.qtd; total += i.qtd;
+                    const div = document.createElement('div');
+                    div.className = "flex gap-4 p-4 hairline-b relative group";
+                    div.innerHTML = `<button onclick="cartSystem.removeFromCart('${i.id}', '${i.tag}')" class="absolute top-4 right-2 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-xs"></i></button>
+                        <div class="w-16 h-20 bg-gray-100 dark:bg-white/5 rounded-none overflow-hidden shrink-0"><img src="${i.image}" class="w-full h-full object-cover"></div>
+                        <div class="flex flex-col justify-center flex-grow pr-4">
+                            <span class="font-sans text-[0.45rem] font-bold uppercase text-gold-adaptive mb-1">${i.tag}</span>
+                            <h5 class='font-serif text-xl text-gl_dark dark:text-white leading-none mb-2'>${i.name}</h5>
+                            <div class="flex justify-between items-center w-full"><span class='text-[0.6rem] font-bold text-gray-500'>QTD: ${i.qtd}</span><span class='font-serif text-xl text-gl_dark dark:text-white'>${this.formatMoney(i.price * i.qtd)}</span></div>
+                        </div>`;
+                    container.appendChild(div);
+                });
+                document.getElementById('cart-count').innerText = total;
+                document.getElementById('cart-count').style.opacity = '1';
+                document.getElementById('cart-subtotal').innerText = this.formatMoney(sub);
+            },
+            checkout() { if(this.items.length === 0) return; alert("Redirecionando para o Checkout Seguro..."); }
         };
 
-        function changeHero(key) {
-            const data = heroData[key];
-            const heroEl = document.getElementById('nHero');
-            const titleEl = document.getElementById('prod-title');
-            const descEl = document.getElementById('prod-desc');
-            
-            if(heroEl) heroEl.style.backgroundImage = `url('${data.img}')`;
-            if(titleEl) titleEl.innerText = data.title;
-            if(descEl) descEl.innerText = data.desc;
-            
-            document.querySelectorAll('.n-option-btn').forEach(btn => btn.classList.remove('active'));
-            if(event && event.target) event.target.classList.add('active');
-        }
-        
-        // Init
-        openTab('intro-section');
+        const appState = {
+            toggleTheme() { document.documentElement.classList.toggle('dark'); },
+            navigate(v) { 
+                document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active')); 
+                document.getElementById('view-' + v).classList.add('active'); 
+                window.scrollTo({top:0, behavior:'smooth'});
+            },
+            openVideoModal(src) {
+                const m = document.getElementById('video-modal');
+                const v = document.getElementById('modal-video-player');
+                v.src = src; m.style.display = 'flex';
+                setTimeout(() => { document.getElementById('video-content-box').classList.remove('scale-95', 'opacity-0'); document.getElementById('video-content-box').classList.add('scale-100', 'opacity-100'); v.play(); }, 10);
+            },
+            closeVideoModal() {
+                const m = document.getElementById('video-modal');
+                const v = document.getElementById('modal-video-player');
+                document.getElementById('video-content-box').classList.remove('scale-100', 'opacity-100');
+                setTimeout(() => { m.style.display = 'none'; v.pause(); }, 700);
+            },
+            openHomologationModal() { document.getElementById('homologation-modal').style.display = 'flex'; setTimeout(() => { document.getElementById('homo-content-box').classList.add('scale-100', 'opacity-100'); }, 10); },
+            closeHomologationModal() { document.getElementById('homo-content-box').classList.remove('scale-100', 'opacity-100'); setTimeout(() => { document.getElementById('homologation-modal').style.display = 'none'; }, 700); },
+            verifyHomologation() { alert("Área Disponível. Contacte-nos."); },
+            toggleAudio(vid, ico) { const v = document.getElementById(vid); v.muted = !v.muted; document.getElementById(ico).className = v.muted ? 'fa-solid fa-volume-xmark text-[0.7rem]' : 'fa-solid fa-volume-high text-[0.7rem]'; }
+        };
+
+        window.addEventListener('scroll', () => {
+            const bg = document.getElementById('header-bg');
+            if(window.scrollY > 50) bg.style.opacity = '1'; else bg.style.opacity = '0';
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            heroEngine.init();
+            const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); } }); }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+            document.querySelectorAll('.ba-range').forEach(r => { r.addEventListener('input', (e) => { e.target.parentElement.querySelector('.ba-after').style.clipPath = `inset(0 0 0 ${e.target.value}%)`; e.target.parentElement.querySelector('.ba-handle-line').style.left = `${e.target.value}%`; }); });
+        });
     </script>
 </body>
 </html>
