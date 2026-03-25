@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GL Pro | Supremacia Capilar 8K | Ultra Luxury Engineering</title>
     
-    <!-- Metadados de SEO Premium -->
     <meta name="keywords" content="Engenharia Capilar, Lógica Híbrida, GL PRO, Liso Soberano 8K, Sistema Trindade, Realinhamento Molecular, Luxo Brasil, Sérum Inteligente e Córtex, Molecular Platinum Infusion">
     <meta name="description" content="O ecossistema definitivo de Engenharia Molecular Capilar. A evolução para a Supremacia 8K com os lançamentos Inteligente & Córtex e Molecular Platinum Infusion.">
 
-    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -37,7 +35,6 @@
         }
     </script>
     
-    <!-- Fontes Editoriais e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -51,47 +48,42 @@
         }
         .dark body { background-color: #050505; color: #FDFDFD; }
         
-        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.5); }
+        ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.5); border-radius: 10px; }
 
         .editorial-title { letter-spacing: -0.03em; line-height: 0.9; }
-        
         .text-gold-adaptive { color: #A67C00; }
         .dark .text-gold-adaptive { color: #D4AF37; }
         .border-adaptive { border-color: rgba(0,0,0,0.1); }
         .dark .border-adaptive { border-color: rgba(255,255,255,0.1); }
-        .bg-surface-adaptive { background-color: #F4F4F4; }
-        .dark .bg-surface-adaptive { background-color: #111111; }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* AUSTERO E EDITORIAL: BOTÕES SUPER QUADRADOS */
+        /* FOCO ACESSÍVEL (Para navegação por teclado) */
+        .focus-ring:focus-visible { outline: 2px solid #D4AF37; outline-offset: 4px; }
+
+        /* BOTÕES QUADRADOS AUSTEROS */
         .btn-editorial {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 1.25rem 2.5rem; font-family: 'Montserrat', sans-serif;
             font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700;
-            border: 1px solid currentColor; 
-            border-radius: 0 !important; 
+            border: 1px solid currentColor; border-radius: 0 !important;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;
             background: transparent; overflow: hidden; position: relative;
+            text-align: center;
         }
-        
-        .btn-editorial:hover { background: #050505; color: #FDFDFD; border-color: #050505; }
-        .dark .btn-editorial:hover { background: #FDFDFD; color: #050505; border-color: #FDFDFD; }
-        
         .btn-editorial-solid { 
             background: #050505 !important; color: #FDFDFD !important; border: 1px solid #050505 !important; 
         }
         .dark .btn-editorial-solid { 
             background: #FDFDFD !important; color: #050505 !important; border-color: #FDFDFD !important; 
         }
-        
         .btn-editorial-solid:hover { background: transparent !important; color: #050505 !important; }
         .dark .btn-editorial-solid:hover { background: transparent !important; color: #FDFDFD !important; }
 
-        .hero-slide { opacity: 0; visibility: hidden; transition: opacity 1.8s ease, visibility 1.8s; position: absolute; inset: 0; }
+        .hero-slide { opacity: 0; visibility: hidden; transition: opacity 1.8s ease; position: absolute; inset: 0; }
         .hero-slide.active { opacity: 1; visibility: visible; z-index: 10; }
 
         .sticky-editorial { position: sticky; top: 120px; }
@@ -101,394 +93,580 @@
         .hairline-t { border-top: 1px solid rgba(0,0,0,0.08); }
         .dark .hairline-t { border-top: 1px solid rgba(255,255,255,0.08); }
 
-        .img-wrap { overflow: hidden; border-radius: 1rem; }
-        .img-wrap img { transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+        .img-wrap { overflow: hidden; border-radius: 0; }
+        .img-wrap img { transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); }
         .img-wrap:hover img { transform: scale(1.03); }
 
-        .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 500px; height: 100vh; background: #FDFDFD; z-index: 999; transition: right 0.8s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; border-left: 1px solid rgba(0,0,0,0.05); }
+        /* CARRINHO RESPONSIVO */
+        .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100vh; background: #FDFDFD; z-index: 999; transition: right 0.8s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; border-left: 1px solid rgba(0,0,0,0.05); }
         .dark .cart-drawer { background: #0A0A0A; border-left: 1px solid rgba(255,255,255,0.05); }
-        .cart-drawer.open { right: 0; box-shadow: -20px 0 60px rgba(0,0,0,0.05); }
+        .cart-drawer.open { right: 0; }
         .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); z-index: 998; opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
         .cart-overlay.open { opacity: 1; pointer-events: auto; }
 
-        .ba-slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 1rem; }
+        /* BEFORE/AFTER */
+        .ba-slider-container { position: relative; width: 100%; overflow: hidden; }
         .ba-after { absolute; inset: 0; clip-path: inset(0 0 0 50%); } 
-        .ba-handle-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: rgba(255,255,255,0.8); transform: translateX(-50%); pointer-events: none; z-index: 5; }
+        .ba-handle-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: #FFF; pointer-events: none; z-index: 5; }
         .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; margin: 0; }
 
-        .view-section { display: none; opacity: 0; animation: viewFadeIn 1s ease forwards; }
+        /* ESTILO DAS FITAS (33:5 Proportion com Acessibilidade) */
+        .ribbon-slot {
+            width: 50px; 
+            height: 330px; 
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid transparent;
+            overflow: hidden;
+        }
+        .ribbon-slot:hover, .ribbon-slot:focus-visible { transform: translateY(-10px); outline: none; }
+        .ribbon-slot.active { border-color: #D4AF37; box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2); }
+        
+        .ribbon-slot img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: filter 0.3s; }
+        .ribbon-slot:hover img, .ribbon-slot.active img { filter: brightness(1); }
+
+        .ribbon-label {
+            position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%) rotate(-90deg); transform-origin: left bottom;
+            white-space: nowrap; font-size: 0.55rem; text-transform: uppercase;
+            letter-spacing: 0.2em; color: #fff; mix-blend-difference: difference;
+            padding-left: 20px; font-weight: 800; pointer-events: none;
+        }
+
+        .active-check { opacity: 0; transition: opacity 0.3s ease; }
+        .ribbon-slot.active .active-check { opacity: 1; }
+
+        .view-section { display: none; opacity: 0; animation: viewFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .view-section.active { display: block; }
         @keyframes viewFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Esconder scrollbars em elementos customizados */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="antialiased font-sans">
 
-    <!-- HEADER GLOBAL -->
-    <header id="main-header" class="fixed w-full top-0 z-[500] px-6 md:px-12 py-6 flex justify-between items-center transition-all duration-700 bg-transparent mix-blend-difference dark:mix-blend-normal">
-        <div class="cursor-pointer group" onclick="appState.navigate('home')">
-            <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=f6502114" alt="GL PRO" class="h-8 md:h-12 w-auto object-contain transition-transform duration-700 dark:invert invert">
-        </div>
-        <nav class="hidden md:flex gap-10 items-center">
-            <button onclick="appState.navigate('loja-b2c')" class="text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-white dark:text-gray-300 hover:text-gl_gold transition-colors">Boutique</button>
-            <button onclick="appState.navigate('experience')" class="text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-white dark:text-gray-300 hover:text-gl_gold transition-colors flex items-center gap-2"><i class="fa-solid fa-gift"></i> Experiência</button>
-            <button onclick="appState.navigate('dashboard-b2b')" class="text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-white dark:text-gray-300 hover:text-gl_gold transition-colors">Portal B2B</button>
+    <!-- HEADER -->
+    <header id="main-header" class="fixed w-full top-0 z-[500] px-4 md:px-12 py-5 flex justify-between items-center transition-all duration-700 bg-transparent mix-blend-difference dark:mix-blend-normal">
+        <button class="cursor-pointer group p-2 focus-ring bg-transparent border-none outline-none" onclick="appState.navigate('home')" aria-label="Ir para a página inicial">
+            <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=f6502114" alt="Logótipo GL PRO" class="h-6 md:h-10 w-auto object-contain dark:invert invert">
+        </button>
+        <nav class="hidden md:flex gap-8 items-center text-white dark:text-gray-300" aria-label="Navegação Principal">
+            <button onclick="appState.navigate('loja-b2c')" class="p-2 text-[0.6rem] tracking-[0.2em] uppercase font-semibold hover:text-gl_gold transition-colors focus-ring">Boutique</button>
+            <button onclick="appState.navigate('experience')" class="p-2 text-[0.6rem] tracking-[0.2em] uppercase font-semibold hover:text-gl_gold transition-colors flex items-center gap-2 focus-ring"><i class="fa-solid fa-gift" aria-hidden="true"></i> Experiência</button>
+            <button onclick="appState.navigate('dashboard-b2b')" class="p-2 text-[0.6rem] tracking-[0.2em] uppercase font-semibold hover:text-gl_gold transition-colors focus-ring">Portal B2B</button>
         </nav>
-        <div class="flex items-center gap-6">
-            <button onclick="appState.toggleTheme()" class="text-white dark:text-gray-300 hover:text-gl_gold transition-colors"><i id="theme-icon" class="fa-solid fa-moon text-sm"></i></button>
-            <button onclick="cartSystem.openCart()" class="relative text-white dark:text-gray-300 hover:text-gl_gold transition-colors flex items-center gap-2">
-                <span class="text-[0.6rem] uppercase tracking-widest font-bold hidden md:block">Bag</span>
-                <i class="fa-solid fa-bag-shopping text-lg"></i>
-                <span id="cart-count" class="absolute -top-1 -right-2 bg-gl_gold text-black text-[0.5rem] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+        <div class="flex items-center gap-4 md:gap-6">
+            <button onclick="appState.toggleTheme()" class="text-white dark:text-gray-300 p-2 min-w-[44px] flex justify-center focus-ring" aria-label="Alternar tema claro e escuro"><i id="theme-icon" class="fa-solid fa-moon text-sm" aria-hidden="true"></i></button>
+            <button onclick="cartSystem.openCart()" class="relative text-white dark:text-gray-300 flex items-center gap-2 p-2 min-w-[44px] justify-center focus-ring" aria-label="Abrir sacola de compras">
+                <i class="fa-solid fa-bag-shopping text-lg" aria-hidden="true"></i>
+                <span id="cart-count" class="absolute top-0 right-0 bg-gl_gold text-black text-[0.5rem] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity" aria-hidden="true">0</span>
             </button>
         </div>
     </header>
     
-    <div id="header-bg" class="fixed top-0 w-full h-24 bg-gl_light/90 dark:bg-gl_dark/90 backdrop-blur-md z-[499] opacity-0 transition-opacity duration-500 pointer-events-none hairline-b"></div>
+    <div id="header-bg" class="fixed top-0 w-full h-20 md:h-24 bg-gl_light/95 dark:bg-gl_dark/95 backdrop-blur-md z-[499] opacity-0 transition-opacity duration-500 hairline-b" aria-hidden="true"></div>
 
-    <!-- MODAL DE VÍDEO CINEMÁTICO -->
-    <dialog id="video-modal" class="fixed inset-0 z-[4000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="appState.closeVideoModal()"></div>
-        <div class="relative w-[95%] max-w-5xl aspect-[9/16] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-700 ease-lux bg-black" id="video-content-box">
-            <button onclick="appState.closeVideoModal()" class="absolute top-4 right-4 text-white hover:text-gold-adaptive transition-colors z-50 bg-black/50 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <video id="modal-video-player" src="" class="w-full h-full object-cover" controls playsinline></video>
+    <!-- MODAL VÍDEO -->
+    <dialog id="video-modal" class="fixed inset-0 z-[4000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center" aria-modal="true" aria-labelledby="video-title">
+        <h2 id="video-title" class="sr-only">Reprodutor de Vídeo da Experiência</h2>
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="appState.closeVideoModal()" aria-hidden="true"></div>
+        <div class="relative w-[95%] max-w-5xl aspect-video rounded-none overflow-hidden shadow-2xl bg-black" id="video-content-box">
+            <button onclick="appState.closeVideoModal()" class="absolute top-4 right-4 text-white z-50 bg-black/50 w-12 h-12 flex items-center justify-center border border-white/20 focus-ring" aria-label="Fechar vídeo"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <video id="modal-video-player" src="" class="w-full h-full object-cover" controls playsinline aria-label="Vídeo de demonstração do produto"></video>
         </div>
     </dialog>
 
     <!-- MODAL DE AUDITORIA -->
-    <dialog id="homologation-modal" class="fixed inset-0 z-[3000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="appState.closeHomologationModal()"></div>
+    <dialog id="homologation-modal" class="fixed inset-0 z-[3000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center" aria-modal="true" aria-labelledby="homologation-title">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="appState.closeHomologationModal()" aria-hidden="true"></div>
         <div class="relative bg-gl_light dark:bg-gl_surface_dark w-[90%] max-w-lg p-10 md:p-16 rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-700 ease-lux" id="homo-content-box">
             <div class="text-center">
-                <i class="fa-solid fa-map-location-dot text-2xl text-gold-adaptive mb-6"></i>
-                <h3 class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white mb-2 editorial-title">Auditoria Regional</h3>
+                <i class="fa-solid fa-map-location-dot text-2xl text-gold-adaptive mb-6" aria-hidden="true"></i>
+                <h3 id="homologation-title" class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white mb-2 editorial-title">Auditoria Regional</h3>
                 <div id="homo-form-area" class="space-y-6 mt-8">
-                    <input type="text" id="homo-cep" placeholder="C.E.P." maxlength="9" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 text-center tracking-[0.3em] outline-none py-3 text-sm">
-                    <input type="text" id="homo-city" placeholder="CIDADE" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 text-center tracking-[0.3em] outline-none py-3 text-sm uppercase mb-8">
-                    <button onclick="appState.verifyHomologation()" class="btn-editorial btn-editorial-solid w-full">Verificar Praça</button>
+                    <label for="homo-cep" class="sr-only">Código Postal (C.E.P.)</label>
+                    <input type="text" id="homo-cep" placeholder="C.E.P." maxlength="9" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 text-center tracking-[0.3em] outline-none py-3 text-sm focus-ring">
+                    
+                    <label for="homo-city" class="sr-only">Nome da Cidade</label>
+                    <input type="text" id="homo-city" placeholder="CIDADE" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 text-center tracking-[0.3em] outline-none py-3 text-sm uppercase mb-8 focus-ring">
+                    
+                    <button onclick="appState.verifyHomologation()" class="btn-editorial btn-editorial-solid w-full focus-ring">Verificar Praça</button>
                 </div>
-                <div id="homo-result-area" class="hidden pt-4"></div>
+                <div id="homo-result-area" class="hidden pt-4" aria-live="polite"></div>
             </div>
+            <button onclick="appState.closeHomologationModal()" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gl_dark dark:hover:text-white focus-ring" aria-label="Fechar auditoria"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </dialog>
 
-    <!-- CARRINHO -->
-    <div id="cart-overlay" class="cart-overlay" onclick="cartSystem.closeCart()"></div>
-    <aside id="cart-drawer" class="cart-drawer">
-        <div class="p-8 md:p-12 flex flex-col h-full">
+    <!-- CARRINHO INTELIGENTE -->
+    <div id="cart-overlay" class="cart-overlay" onclick="cartSystem.closeCart()" aria-hidden="true"></div>
+    <aside id="cart-drawer" class="cart-drawer" aria-label="Sua sacola de compras" role="dialog" aria-modal="true">
+        <div class="p-8 md:p-10 flex flex-col h-full">
             <div class="flex justify-between items-center hairline-b pb-6 shrink-0">
-                <h3 class="font-serif text-3xl text-gl_dark dark:text-white editorial-title">Sua Seleção</h3>
-                <button onclick="cartSystem.closeCart()" class="text-gray-400 hover:text-gl_dark transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
+                <h3 class="font-serif text-3xl editorial-title text-gl_dark dark:text-white">Sua Bag</h3>
+                <button onclick="cartSystem.closeCart()" class="text-gray-400 p-2 min-w-[44px] flex justify-end focus-ring" aria-label="Fechar sacola"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
             </div>
-            <div class="flex-grow overflow-y-auto mt-6 pb-6 pr-2 custom-scroll">
-                <div id="cart-items-container" class="space-y-6"></div>
-            </div>
-            <div class="hairline-t pt-6 shrink-0">
-                <div class="flex justify-between items-end mb-8">
-                    <span class="font-sans text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">Subtotal Global</span>
-                    <span class="font-serif text-3xl text-gl_dark dark:text-white" id="cart-subtotal">R$ 0,00</span>
+            
+            <div class="flex-grow overflow-y-auto mt-6 pb-6 pr-2 custom-scroll flex flex-col gap-10">
+                
+                <div id="cart-items-container" class="space-y-6" aria-live="polite"></div>
+
+                <div id="cart-gifting-module" class="hidden">
+                    <div class="hairline-t pt-8">
+                        <span class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-4 block" aria-hidden="true">A Arte de Presentear</span>
+                        <h4 class="font-serif text-2xl text-gl_dark dark:text-white mb-6 italic">Complete sua experiência</h4>
+                        
+                        <div class="mb-6">
+                            <label for="cart-ribbon-selector" class="font-sans text-[0.55rem] text-gray-500 uppercase tracking-widest font-bold mb-2 block">1. Escolha a Fita (Cortesia)</label>
+                            <select id="cart-ribbon-selector" onchange="cartSystem.activeRibbon = this.value" class="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 text-[0.6rem] font-sans uppercase tracking-widest text-gl_dark dark:text-gray-300 py-2 outline-none focus-ring transition-colors cursor-pointer">
+                                <option value="Sem Fita" class="bg-white dark:bg-gl_dark">Nenhuma Fita</option>
+                                <option value="&quot;Com Amor&quot;" class="bg-white dark:bg-gl_dark">Fita: "Com Amor"</option>
+                                <option value="&quot;Especial p/ Você&quot;" class="bg-white dark:bg-gl_dark">Fita: "Especial p/ Você"</option>
+                                <option value="&quot;Mãe Soberana&quot;" class="bg-white dark:bg-gl_dark">Fita: "Mãe Soberana"</option>
+                                <option value="&quot;Gratidão&quot;" class="bg-white dark:bg-gl_dark">Fita: "Gratidão"</option>
+                                <option value="&quot;Exclusivo 8K&quot;" class="bg-white dark:bg-gl_dark">Fita: "Exclusivo 8K"</option>
+                            </select>
+                        </div>
+
+                        <span class="font-sans text-[0.55rem] text-gray-500 uppercase tracking-widest font-bold mb-3 block" aria-hidden="true">2. Adicione a Embalagem</span>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex gap-4 p-4 bg-gl_surface_light dark:bg-gl_surface_dark items-center border border-adaptive group hover:border-gold-adaptive transition-colors">
+                                <img src="https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=200&q=80" alt="Visualização da Sacola Crystal" class="w-16 h-16 object-cover bg-white dark:bg-black p-1 transition-transform group-hover:scale-105">
+                                <div class="flex-grow">
+                                    <h5 class="font-sans text-[0.6rem] font-bold uppercase tracking-widest text-gl_dark dark:text-white">Sacola Crystal</h5>
+                                    <p class="font-serif text-sm text-gold-adaptive">R$ 15,00</p>
+                                </div>
+                                <button onclick="cartSystem.addGiftFromCart('sacola_transparente', 'Sacola Crystal', 15.00, 'https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=600&q=80')" class="btn-editorial !px-4 !py-2 !text-[0.5rem] !border-gray-400 hover:!border-gold-adaptive focus-ring" aria-label="Adicionar Sacola Crystal à sacola">Adicionar</button>
+                            </div>
+
+                            <div class="flex gap-4 p-4 bg-gl_surface_light dark:bg-gl_surface_dark items-center border border-adaptive group hover:border-gold-adaptive transition-colors">
+                                <img src="https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=200&q=80" alt="Visualização da Sacola Icon Laranja" class="w-16 h-16 object-cover bg-white dark:bg-black p-1 transition-transform group-hover:scale-105">
+                                <div class="flex-grow">
+                                    <h5 class="font-sans text-[0.6rem] font-bold uppercase tracking-widest text-gl_dark dark:text-white">Sacola Icon</h5>
+                                    <p class="font-serif text-sm text-gold-adaptive">R$ 25,00</p>
+                                </div>
+                                <button onclick="cartSystem.addGiftFromCart('sacola_laranja', 'Sacola Icon', 25.00, 'https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=600&q=80')" class="btn-editorial !px-4 !py-2 !text-[0.5rem] !border-gray-400 hover:!border-gold-adaptive focus-ring" aria-label="Adicionar Sacola Icon à sacola">Adicionar</button>
+                            </div>
+                            
+                            <div class="flex gap-4 p-4 bg-gl_surface_light dark:bg-gl_surface_dark items-center border border-adaptive group hover:border-gold-adaptive transition-colors">
+                                <img src="https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=200&q=80" alt="Visualização da Maleta Signature" class="w-16 h-16 object-cover bg-white dark:bg-black p-1 transition-transform group-hover:scale-105">
+                                <div class="flex-grow">
+                                    <h5 class="font-sans text-[0.6rem] font-bold uppercase tracking-widest text-gl_dark dark:text-white">Maleta Signature</h5>
+                                    <p class="font-serif text-sm text-gold-adaptive">R$ 45,00</p>
+                                </div>
+                                <button onclick="cartSystem.addGiftFromCart('maleta', 'Maleta Signature', 45.00, 'https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600&q=80')" class="btn-editorial !px-4 !py-2 !text-[0.5rem] !border-gray-400 hover:!border-gold-adaptive focus-ring" aria-label="Adicionar Maleta Signature à sacola">Adicionar</button>
+                            </div>
+
+                            <div class="flex gap-4 p-4 bg-gl_surface_light dark:bg-gl_surface_dark items-center border border-adaptive group hover:border-gold-adaptive transition-colors">
+                                <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=200&q=80" alt="Visualização da Caixa Premium Ímã" class="w-16 h-16 object-cover bg-white dark:bg-black p-1 transition-transform group-hover:scale-105">
+                                <div class="flex-grow">
+                                    <h5 class="font-sans text-[0.6rem] font-bold uppercase tracking-widest text-gl_dark dark:text-white">Caixa Premium Ímã</h5>
+                                    <p class="font-serif text-sm text-gold-adaptive">R$ 65,00</p>
+                                </div>
+                                <button onclick="cartSystem.addGiftFromCart('caixa_ima', 'Caixa Premium Ímã', 65.00, 'https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600&q=80')" class="btn-editorial !px-4 !py-2 !text-[0.5rem] !border-gray-400 hover:!border-gold-adaptive focus-ring" aria-label="Adicionar Caixa Premium Ímã à sacola">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button onclick="cartSystem.checkout()" class="btn-editorial btn-editorial-solid w-full gap-3">Finalizar Aquisição <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="hairline-t pt-6 shrink-0 bg-gl_light dark:bg-gl_dark">
+                <div class="flex justify-between items-end mb-8">
+                    <span class="font-sans text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">Total Estimado</span>
+                    <span class="font-serif text-3xl text-gl_dark dark:text-white" id="cart-subtotal" aria-live="polite">R$ 0,00</span>
+                </div>
+                <button onclick="cartSystem.checkout()" class="btn-editorial btn-editorial-solid w-full tracking-widest focus-ring">Finalizar Aquisição</button>
             </div>
         </div>
     </aside>
 
-    <!-- ==========================================================================
-         VIEW 1: HOME
-         ========================================================================== -->
+    <!-- VIEW 1: HOME -->
     <main id="view-home" class="view-section active flex-grow">
-        <section class="w-full h-[100vh] relative overflow-hidden bg-gl_dark" id="hero-container">
-            <!-- Slide 1 -->
+        <section class="w-full h-[100dvh] relative overflow-hidden bg-gl_dark" id="hero-container">
             <div class="hero-slide active" id="hero-slide-1">
-                <img src="https://imagensagata.carrd.co/assets/images/image27.jpg?v=83589d3b" class="w-full h-full object-cover" alt="Sérum">
-                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 container mx-auto">
-                    <h2 class="font-serif text-6xl md:text-[8rem] lg:text-[10rem] text-white editorial-title mb-6 reveal text-balance">Sérum <br><i class="text-gray-300 font-light">Inteligente</i></h2>
-                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl drop-shadow-lg reveal">
-                        A Intervenção Estrutural Absoluta. Ativos de pureza farmacêutica para o brilho espelhado supremo. <span class="text-gl_gold">Lote Limitado de Lançamento. Garanta o seu.</span>
+                <img src="https://imagensagata.carrd.co/assets/images/image27.jpg?v=83589d3b" class="w-full h-full object-cover" alt="Frasco do Sérum Capilar Inteligente e Córtex">
+                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-32 px-6 md:px-12 container mx-auto">
+                    <h2 class="font-serif text-6xl md:text-[9rem] text-white editorial-title mb-6 reveal">Sérum <br><i class="text-gray-400 font-light">Inteligente</i></h2>
+                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl reveal">
+                        A Intervenção Estrutural Absoluta. Ativos de pureza farmacêutica para o brilho espelhado supremo. <span class="text-gl_gold">Lote Limitado de Lançamento.</span>
                     </p>
-                    <button onclick="cartSystem.addToCart('cortex_presale', 'Sérum Inteligente', 797.00, 'Pré-Venda VIP', 'https://imagensagata.carrd.co/assets/images/image27.jpg?v=83589d3b')" class="btn-editorial text-white border-white w-fit reveal">Reservar Lote</button>
+                    <button onclick="cartSystem.addToCart('cortex_presale', 'Sérum Inteligente', 797.00, 'Pré-Venda VIP', 'https://imagensagata.carrd.co/assets/images/image27.jpg?v=83589d3b')" class="btn-editorial text-white border-white w-fit reveal focus-ring">Reservar Lote</button>
                 </div>
             </div>
-            <!-- Slide 2 -->
             <div class="hero-slide" id="hero-slide-2">
-                <img src="https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855" class="w-full h-full object-cover mix-blend-screen" alt="Gloss">
-                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 container mx-auto">
-                    <h2 class="font-serif text-6xl md:text-[8rem] lg:text-[10rem] text-white editorial-title mb-6 reveal text-balance">Gloss <br><i class="text-gray-300 font-light">Molecular</i></h2>
-                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl drop-shadow-lg reveal">
-                        A fusão definitiva entre o alisamento orgânico e a engenharia química 8K. Hialurônico Reticulado para ancoragem de massa intra-cortical. <span class="text-gl_gold">O fim do afinamento capilar. Liso 100% espelhado.</span>
+                <img src="https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855" class="w-full h-full object-cover mix-blend-screen" alt="Frasco do Gloss Molecular 8K">
+                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-32 px-6 md:px-12 container mx-auto">
+                    <h2 class="font-serif text-6xl md:text-[9rem] text-white editorial-title mb-6 reveal">Gloss <br><i class="text-gray-400 font-light">Molecular</i></h2>
+                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl reveal">
+                        A fusão definitiva entre o alisamento orgânico e a engenharia química 8K. Hialurônico Reticulado para ancoragem de massa.
                     </p>
-                    <button onclick="appState.openHomologationModal()" class="btn-editorial text-white border-white w-fit reveal">Homologar B2B</button>
+                    <button onclick="appState.openHomologationModal()" class="btn-editorial text-white border-white w-fit reveal focus-ring">Homologar B2B</button>
                 </div>
             </div>
-            <!-- Slide 3 -->
             <div class="hero-slide" id="hero-slide-3">
-                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1920" class="w-full h-full object-cover mix-blend-luminosity" alt="Exp">
-                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 container mx-auto">
-                    <h2 class="font-serif text-6xl md:text-[8rem] lg:text-[10rem] text-white editorial-title mb-6 reveal text-balance">A <i class="text-gray-300 font-light">Experiência</i></h2>
-                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl drop-shadow-lg reveal">
-                        O ecossistema absoluto de manutenção no seu santuário privado. Participe na nossa seleção oficial e concorra ao Kit Trindade 8K. <span class="text-gl_gold">Valor Ancorado: R$ 597,00.</span>
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover mix-blend-luminosity" alt="Mulher com cabelo esvoaçante num ambiente sofisticado">
+                <div class="absolute inset-0 z-20 flex flex-col justify-end pb-32 px-6 md:px-12 container mx-auto">
+                    <h2 class="font-serif text-6xl md:text-[9rem] text-white editorial-title mb-6 reveal">A <i class="text-gray-400 font-light">Experiência</i></h2>
+                    <p class="font-sans text-gray-300 tracking-wider uppercase text-[0.6rem] md:text-[0.7rem] font-bold mb-8 md:mb-16 leading-relaxed max-w-2xl reveal">
+                        O ecossistema absoluto de manutenção. Participe na nossa seleção oficial e concorra ao Kit Trindade 8K.
                     </p>
-                    <button onclick="appState.navigate('experience')" class="btn-editorial text-white border-white w-fit reveal">Autenticar Entrada</button>
+                    <button onclick="appState.navigate('experience')" class="btn-editorial text-white border-white w-fit reveal focus-ring">Autenticar Entrada</button>
                 </div>
             </div>
-            <div class="absolute bottom-10 right-6 md:right-16 z-30 flex gap-2">
-                <button onclick="heroEngine.goTo(1)" class="w-12 h-1 bg-white/30 hero-dot active"></button>
-                <button onclick="heroEngine.goTo(2)" class="w-12 h-1 bg-white/30 hero-dot"></button>
-                <button onclick="heroEngine.goTo(3)" class="w-12 h-1 bg-white/30 hero-dot"></button>
+            <div class="absolute bottom-10 right-6 md:right-16 z-30 flex gap-2" aria-label="Controlos do carrossel">
+                <button onclick="heroEngine.goTo(1)" class="w-12 h-1 bg-white/30 hero-dot active focus-ring" aria-label="Ver slide 1"></button>
+                <button onclick="heroEngine.goTo(2)" class="w-12 h-1 bg-white/30 hero-dot focus-ring" aria-label="Ver slide 2"></button>
+                <button onclick="heroEngine.goTo(3)" class="w-12 h-1 bg-white/30 hero-dot focus-ring" aria-label="Ver slide 3"></button>
             </div>
         </section>
 
         <section class="py-32 px-6 container mx-auto text-center reveal">
-            <span class="font-sans text-[0.55rem] text-gray-500 uppercase tracking-mega-wide block mb-8 font-bold">O Nosso Legado</span>
-            <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-gl_dark dark:text-white mb-12 editorial-title text-balance">Bio-Arquitetura Capilar:<br><span class="italic font-light text-gold-adaptive">A Ciência do Brilho Refratário 8K</span></h3>
-            
-            <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6 max-w-3xl mx-auto font-light text-balance">O que começou como um fenómeno de mercado estético através de <strong>A Gata Lambeu</strong>, amadureceu com o tempo e com a ciência. Nós compreendemos rapidamente que a mulher contemporânea e o mercado de luxo exigiam mais do que apenas um liso efêmero; eles exigiam <strong>integridade biológica absoluta</strong> no fio.</p>
-            <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto font-light text-balance">Assim nasceu a <strong>GL PRO</strong>. Nós deixámos de ser apenas uma marca de cosméticos para nos tornarmos num laboratório de Engenharia Híbrida. Elevámos o nosso padrão técnico para o nível de pureza farmacêutica, criando o Ecossistema 8K — o exato ponto onde a saúde do córtex e o brilho espelhado inigualável coexistem em perfeição.</p>
+            <span class="font-sans text-[0.55rem] text-gray-500 uppercase tracking-mega-wide block mb-8 font-bold" aria-hidden="true">O Nosso Legado</span>
+            <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-gl_dark dark:text-white mb-12 editorial-title">Bio-Arquitetura Capilar:<br><span class="italic font-light text-gold-adaptive">A Ciência do Brilho Refratário 8K</span></h3>
+            <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto font-light mb-6">Assim nasceu a <strong>GL PRO</strong>. Elevámos o padrão à pureza farmacêutica, criando o Ecossistema 8K — onde a saúde do córtex e o brilho espelhado inigualável coexistem em perfeição.</p>
+            <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto font-light">O que começou como um fenómeno de mercado estético através de <strong>A Gata Lambeu</strong>, amadureceu com o tempo e com a ciência. Exigimos <strong>integridade biológica absoluta</strong> no fio.</p>
         </section>
 
         <section class="py-24 px-6 bg-gl_surface_light dark:bg-gl_surface_dark hairline-t">
             <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-6xl reveal">
                 <div class="ba-slider-container aspect-[4/5] shadow-lg">
-                    <img src="https://testeessencia.carrd.co/assets/images/image48.jpg?v=7b294510" class="ba-img absolute inset-0">
-                    <img src="https://testeessencia.carrd.co/assets/images/image49.jpg?v=7b294510" class="ba-img ba-after absolute inset-0">
+                    <img src="https://testeessencia.carrd.co/assets/images/image48.jpg?v=7b294510" class="ba-img absolute inset-0" alt="Cabelo antes do tratamento Liso Soberano 8K">
+                    <img src="https://testeessencia.carrd.co/assets/images/image49.jpg?v=7b294510" class="ba-img ba-after absolute inset-0" alt="Cabelo depois do tratamento Liso Soberano 8K">
                     <div class="ba-handle-line"></div>
-                    <input type="range" min="0" max="100" value="50" class="ba-range">
+                    <label class="sr-only">Comparação de resultados antes e depois</label>
+                    <input type="range" min="0" max="100" value="50" class="ba-range focus-ring" aria-label="Deslize para comparar antes e depois">
                     <div class="ba-label-after">Supremacia 8K</div>
                 </div>
                 <div class="ba-slider-container aspect-[4/5] shadow-lg">
-                    <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=7b294510" class="ba-img absolute inset-0">
-                    <img src="https://testeessencia.carrd.co/assets/images/image47.jpg?v=7b294510" class="ba-img ba-after absolute inset-0">
+                    <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=7b294510" class="ba-img absolute inset-0" alt="Cabelo loiro antes do tratamento Platinum">
+                    <img src="https://testeessencia.carrd.co/assets/images/image47.jpg?v=7b294510" class="ba-img ba-after absolute inset-0" alt="Cabelo loiro após tratamento de matização Platinum">
                     <div class="ba-handle-line !bg-purple-400"></div>
-                    <input type="range" min="0" max="100" value="50" class="ba-range">
+                    <label class="sr-only">Comparação de resultados antes e depois</label>
+                    <input type="range" min="0" max="100" value="50" class="ba-range focus-ring" aria-label="Deslize para comparar antes e depois matização">
                     <div class="ba-label-after !bg-purple-900/50">Efeito Platinum</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ==========================================================================
-         VIEW 2: BOUTIQUE B2C
-         ========================================================================== -->
+    <!-- VIEW 2: BOUTIQUE B2C -->
     <main id="view-loja-b2c" class="view-section flex-grow">
         
         <section class="w-full h-[70vh] md:h-[80vh] relative overflow-hidden bg-gl_dark">
-            <video src="https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" autoplay loop muted playsinline></video>
+            <video src="https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" autoplay loop muted playsinline aria-hidden="true"></video>
             <div class="absolute inset-0 bg-gradient-to-t from-gl_dark via-transparent to-transparent"></div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-                <span class="font-sans text-[0.6rem] font-bold text-gl_gold uppercase tracking-widest mb-4 reveal">Engineering High-End</span>
+                <span class="font-sans text-[0.6rem] font-bold text-gl_gold uppercase tracking-widest mb-4 reveal" aria-hidden="true">Engineering High-End</span>
                 <h2 class="font-serif text-5xl md:text-8xl text-white editorial-title reveal">Boutique <span class="italic font-light">8K</span></h2>
                 <p class="font-sans text-[0.65rem] text-gray-300 uppercase tracking-mega-wide mt-8 reveal">A Arte da Manutenção Molecular</p>
             </div>
         </section>
 
         <div class="container mx-auto px-6 md:px-12 py-24 space-y-40">
+            
+            <!-- 🟢 PRIVATE RESERVE - MOTHER's DAY CONFIGURATOR COM LIVE PREVIEW -->
+            <article class="reveal max-w-7xl mx-auto border border-white/10 relative overflow-hidden bg-gl_dark rounded-[2rem] shadow-2xl">
+                
+                <div class="p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-stretch gap-12 relative z-10">
+                    
+                    <!-- Lado Esquerdo: LIVE PREVIEW CANVAS -->
+                    <div class="w-full lg:w-5/12 flex flex-col">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gold-adaptive/30 bg-white/5 backdrop-blur-md mb-6">
+                                <i class="fa-solid fa-lock text-[0.6rem] text-gold-adaptive" aria-hidden="true"></i>
+                                <span class="font-sans text-[0.55rem] font-black text-gold-adaptive uppercase tracking-widest">Acesso Restrito • 50 Unidades</span>
+                            </div>
+                            <h3 class="font-serif text-5xl md:text-6xl text-white editorial-title mb-2">Mother's Day <br><span class="italic font-light text-gold-adaptive">Custom Unboxing</span></h3>
+                        </div>
 
-            <!-- PASSO 01: SHAMPOO -->
+                        <!-- O CANVAS VISUAL -->
+                        <div class="relative w-full aspect-[4/5] lg:aspect-auto lg:flex-grow rounded-3xl overflow-hidden border border-white/20 bg-gl_surface_dark group">
+                            <!-- Background da Embalagem -->
+                            <img id="md-preview-bg" src="https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity transition-all duration-1000 ease-in-out" alt="Fundo da Embalagem">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gl_dark via-transparent to-transparent opacity-80"></div>
+                            
+                            <!-- Selo da Fita Escolhida -->
+                            <div id="md-preview-ribbon" class="absolute top-6 right-6 z-30 transition-all duration-700">
+                                <!-- Injetado via JS -->
+                            </div>
+
+                            <!-- Produtos Escolhidos a Flutuar -->
+                            <div id="md-preview-products" class="absolute bottom-8 w-full flex justify-center items-end gap-3 px-4 z-20 h-1/2">
+                                <!-- Injetado via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: O CONFIGURADOR VISUAL -->
+                    <div class="w-full lg:w-7/12 bg-black/30 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/5 flex flex-col justify-center">
+                        <p class="font-sans text-sm text-gray-400 font-light leading-relaxed mb-10 border-b border-white/10 pb-6">A experiência suprema de presentear. Construa o seu protocolo 8K sob medida e veja o resultado no ateliê virtual.</p>
+
+                        <!-- Passo 1 -->
+                        <div class="border-b border-white/10 pb-6">
+                            <span class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-4 block">1. Selecione os Rituais</span>
+                            <div class="space-y-4">
+                                <label class="flex items-center gap-4 cursor-pointer group w-fit">
+                                    <input type="checkbox" id="md-p1" class="w-4 h-4 accent-[#D4AF37] cursor-pointer focus-ring" checked onchange="mdBuilder.calc()">
+                                    <span class="font-serif text-xl text-gray-300 group-hover:text-white transition-colors">Bain Repar Master <span class="font-sans text-[0.55rem] text-gray-500 ml-2 font-bold tracking-widest">R$ 147</span></span>
+                                </label>
+                                <label class="flex items-center gap-4 cursor-pointer group w-fit">
+                                    <input type="checkbox" id="md-p2" class="w-4 h-4 accent-[#D4AF37] cursor-pointer focus-ring" checked onchange="mdBuilder.calc()">
+                                    <span class="font-serif text-xl text-gray-300 group-hover:text-white transition-colors">Repair Gloss & Fusion <span class="font-sans text-[0.55rem] text-gray-500 ml-2 font-bold tracking-widest">R$ 289</span></span>
+                                </label>
+                                <label class="flex items-center gap-4 cursor-pointer group w-fit">
+                                    <input type="checkbox" id="md-p3" class="w-4 h-4 accent-[#D4AF37] cursor-pointer focus-ring" checked onchange="mdBuilder.calc()">
+                                    <span class="font-serif text-xl text-gray-300 group-hover:text-white transition-colors">Baby Queen (10 em 1) <span class="font-sans text-[0.55rem] text-gray-500 ml-2 font-bold tracking-widest">R$ 247</span></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Passo 2: VISUAL RADIO CAROUSEL PARA CAIXAS -->
+                        <div class="border-b border-white/10 pb-6 mt-6">
+                            <fieldset>
+                                <legend class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-4 block">2. Experiência de Unboxing</legend>
+                                <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+                                    <!-- Maleta -->
+                                    <label class="cursor-pointer group flex-shrink-0 w-20 md:w-24">
+                                        <input type="radio" name="md-pkg" value="45|Maleta Signature|maleta|https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=800&q=80" class="peer sr-only" checked onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-xl overflow-hidden aspect-square transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=200&q=80" alt="Maleta" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.45rem] text-center block mt-2 text-gray-400 peer-checked:text-gold-adaptive font-bold">Maleta<br>+R$45</span>
+                                    </label>
+                                    <!-- Caixa Imã -->
+                                    <label class="cursor-pointer group flex-shrink-0 w-20 md:w-24">
+                                        <input type="radio" name="md-pkg" value="65|Caixa Premium Ímã|caixa_ima|https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=800&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-xl overflow-hidden aspect-square transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=200&q=80" alt="Caixa Ímã" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.45rem] text-center block mt-2 text-gray-400 peer-checked:text-gold-adaptive font-bold">Caixa Ímã<br>+R$65</span>
+                                    </label>
+                                    <!-- Sacola Laranja -->
+                                    <label class="cursor-pointer group flex-shrink-0 w-20 md:w-24">
+                                        <input type="radio" name="md-pkg" value="25|Sacola Icon Laranja|sacola_laranja|https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=800&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-xl overflow-hidden aspect-square transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=200&q=80" alt="Sacola Laranja" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.45rem] text-center block mt-2 text-gray-400 peer-checked:text-gold-adaptive font-bold">Sacola Icon<br>+R$25</span>
+                                    </label>
+                                    <!-- Sacola Transparente -->
+                                    <label class="cursor-pointer group flex-shrink-0 w-20 md:w-24">
+                                        <input type="radio" name="md-pkg" value="15|Sacola Crystal|sacola_transparente|https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=800&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-xl overflow-hidden aspect-square transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=200&q=80" alt="Sacola Crystal" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.45rem] text-center block mt-2 text-gray-400 peer-checked:text-gold-adaptive font-bold">Sacola Crystal<br>+R$15</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Passo 3: VISUAL RADIO CAROUSEL PARA FITAS -->
+                        <div class="pb-2 mt-6">
+                            <fieldset>
+                                <legend class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-4 block">3. Fita de Assinatura (Cortesia)</legend>
+                                <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+                                    <label class="cursor-pointer group flex-shrink-0 w-16">
+                                        <input type="radio" name="md-ribbon" value='"Mãe Soberana"' data-img="https://images.unsplash.com/photo-1522108700431-7b08465dce62?auto=format&fit=crop&w=400&q=80" class="peer sr-only" checked onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-lg overflow-hidden h-12 transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1522108700431-7b08465dce62?auto=format&fit=crop&w=200&q=80" alt="Mãe Soberana" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.4rem] text-center block mt-1 text-gray-400 peer-checked:text-gold-adaptive uppercase font-bold">Mãe<br>Soberana</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16">
+                                        <input type="radio" name="md-ribbon" value='"Com Amor"' data-img="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-lg overflow-hidden h-12 transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=200&q=80" alt="Com Amor" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.4rem] text-center block mt-1 text-gray-400 peer-checked:text-gold-adaptive uppercase font-bold">Com<br>Amor</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16">
+                                        <input type="radio" name="md-ribbon" value='"Especial p/ Você"' data-img="https://images.unsplash.com/photo-1577998474537-eb56e872c31e?auto=format&fit=crop&w=400&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-lg overflow-hidden h-12 transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1577998474537-eb56e872c31e?auto=format&fit=crop&w=200&q=80" alt="Especial" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.4rem] text-center block mt-1 text-gray-400 peer-checked:text-gold-adaptive uppercase font-bold">Especial<br>Você</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16">
+                                        <input type="radio" name="md-ribbon" value='"Gratidão"' data-img="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=400&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-lg overflow-hidden h-12 transition-all bg-black">
+                                            <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=200&q=80" alt="Gratidão" class="w-full h-full object-cover opacity-50 peer-checked:opacity-100 group-hover:opacity-100 transition-opacity">
+                                        </div>
+                                        <span class="font-sans text-[0.4rem] text-center block mt-1 text-gray-400 peer-checked:text-gold-adaptive uppercase font-bold">Gra-<br>tidão</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16">
+                                        <input type="radio" name="md-ribbon" value="Sem Fita" data-img="" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="border border-white/20 peer-checked:border-gold-adaptive peer-focus-visible:ring-2 peer-focus-visible:ring-gold-adaptive peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] rounded-lg overflow-hidden h-12 transition-all bg-white/10 flex items-center justify-center">
+                                            <i class="fa-solid fa-ban text-gray-400 opacity-50 peer-checked:opacity-100 peer-checked:text-gold-adaptive group-hover:opacity-100 transition-opacity"></i>
+                                        </div>
+                                        <span class="font-sans text-[0.4rem] text-center block mt-1 text-gray-400 peer-checked:text-gold-adaptive uppercase font-bold">Sem<br>Fita</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Resumo e Compra -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-8 mt-6 border-t border-white/10">
+                            <div>
+                                <span class="font-sans text-[0.5rem] font-bold text-gray-400 uppercase tracking-widest block mb-1">Investimento Total</span>
+                                <p class="font-serif text-4xl text-white transition-all duration-300" id="md-total" aria-live="polite">R$ 728,00</p>
+                            </div>
+                            <button onclick="mdBuilder.addToCart()" class="btn-editorial text-white border-white hover:bg-white hover:text-black focus-ring w-full sm:w-auto bg-black">Confirmar Reserva</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Passo 01 -->
             <article class="flex flex-col lg:flex-row gap-12 lg:gap-24 reveal max-w-6xl mx-auto items-start">
                 <div class="w-full lg:w-5/12 sticky-editorial">
-                    <div class="aspect-[3/4] img-wrap rounded-3xl overflow-hidden relative shadow-2xl group bg-white dark:bg-gl_surface_dark">
-                        <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" class="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105 opacity-95">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700"></div>
-                        
-                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-500 z-10 cursor-pointer">
-                            <i class="fa-solid fa-play ml-1 text-2xl"></i>
-                        </button>
-                        <span class="absolute bottom-6 left-6 font-sans text-[0.55rem] font-bold text-white uppercase tracking-widest bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 z-10">Passo 01 / Purificação</span>
+                    <div class="aspect-[3/4] img-wrap bg-gl_surface_light dark:bg-gl_surface_dark relative shadow-2xl group">
+                        <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" class="w-full h-full object-cover opacity-95" alt="Produto Bain Repar Master">
+                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer focus-ring" aria-label="Assistir vídeo de demonstração Bain Master"><i class="fa-solid fa-play ml-1" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <div class="w-full lg:w-7/12 py-10">
                     <h4 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title mb-4">Bain Repar Master</h4>
-                    <p class="font-sans text-[0.65rem] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.3em] mb-8">Limpeza Inteligente e Preparação</p>
-                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12">Atua como um íman de impurezas. Limpeza molecular profunda que remove resíduos metálicos e prepara as cutículas para a infusão lipídica, sem agredir ou ressecar a haste.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Biomimetic Keratin</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Reconstrução estrutural inteligente que atua nas microfissuras da fibra durante a lavagem.</p>
-                        </div>
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Bio-Ceramide Complex</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Restauração do cimento intercelular para máxima selagem e preparação térmica.</p>
-                        </div>
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Pro-Vitamin B5</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Umectação profunda que previne o ressecamento do fio exposto à água e processos químicos.</p>
-                        </div>
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Mediterranean Scent</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Perfumaria fina com notas de Limão Siciliano, Bambu e um fundo sofisticado de Âmbar.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-6 hairline-t pt-8">
+                    <p class="font-sans text-[0.65rem] font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-8">Limpeza Inteligente</p>
+                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light mb-12 leading-relaxed">Limpeza molecular profunda que remove resíduos metálicos e prepara as cutículas para a infusão lipídica.</p>
+                    <div class="flex items-center gap-6 hairline-t pt-8">
                         <p class="font-serif text-4xl text-gl_dark dark:text-white">R$ 147,00</p>
-                        <button onclick="cartSystem.addToCart('shampoo', 'Bain Master', 147.00, 'Passo 01', 'https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-10 py-4">Adicionar à Bag</button>
+                        <button onclick="cartSystem.addToCart('shampoo', 'Bain Master', 147.00, 'Passo 01', 'https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid focus-ring">Adicionar à Bag</button>
                     </div>
                 </div>
             </article>
 
-            <!-- PASSO 02: AMPOLA -->
+            <!-- Passo 02 -->
             <article class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-24 reveal max-w-6xl mx-auto items-start">
                 <div class="w-full lg:w-5/12 sticky-editorial">
-                    <div class="aspect-[3/4] img-wrap rounded-3xl overflow-hidden relative shadow-2xl group bg-white dark:bg-gl_surface_dark">
-                        <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-screen opacity-95">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700"></div>
-
-                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-500 z-10 cursor-pointer"><i class="fa-solid fa-play ml-1 text-2xl"></i></button>
-                        <span class="absolute bottom-6 left-6 font-sans text-[0.55rem] font-bold text-white uppercase tracking-widest bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 z-10">Passo 02 / Infusão</span>
+                    <div class="aspect-[3/4] img-wrap bg-gl_surface_light dark:bg-gl_surface_dark relative shadow-2xl group">
+                        <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-screen opacity-95" alt="Ampola Repair Gloss & Fusion">
+                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer focus-ring" aria-label="Assistir vídeo de demonstração Ampola"><i class="fa-solid fa-play ml-1" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <div class="w-full lg:w-7/12 py-10 lg:text-right">
                     <h4 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title mb-4">Repair Gloss & Fusion</h4>
-                    <p class="font-sans text-[0.65rem] font-black text-gold-adaptive uppercase tracking-[0.3em] mb-8">Ampola Ultra Concentrada 20ml</p>
-                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12 max-w-xl lg:ml-auto">A verdadeira joia da coroa. Uma ampola de hiper-infusão proteica que estabiliza o pH capilar e encorpa a estrutura do fio danificado em apenas 3 minutos de contacto íntimo.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 lg:text-right">
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Nutriamido CAP</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Matriz de preenchimento inteligente: age exatamente no dano molecular da haste capilar.</p>
-                        </div>
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Noble Avocado Oil</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Carga lipídica nobre que aniquila a porosidade capilar, devolvendo balanço e maleabilidade.</p>
-                        </div>
-                        <div class="hairline-t pt-4 md:col-span-2">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Silk Protein Matrix</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Envelopamento total da fibra, criando um efeito liso fotográfico extremo e proteção blindada contra a quebra mecânica.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-6 hairline-t pt-8 justify-end">
+                    <p class="font-sans text-[0.65rem] font-black text-gold-adaptive uppercase tracking-widest mb-8">Ampola Ultra Concentrada 20ml</p>
+                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12 max-w-xl lg:ml-auto">Ampola de hiper-infusão proteica que estabiliza o pH capilar e encorpa a estrutura do fio danificado em apenas 3 minutos.</p>
+                    <div class="flex items-center gap-6 hairline-t pt-8 lg:justify-end">
                         <p class="font-serif text-4xl text-gl_dark dark:text-white">R$ 289,00</p>
-                        <button onclick="cartSystem.addToCart('ampola', 'Ampola Gloss', 289.00, 'Passo 02', 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-10 py-4">Adicionar à Bag</button>
+                        <button onclick="cartSystem.addToCart('ampola', 'Ampola Gloss', 289.00, 'Passo 02', 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid focus-ring">Adicionar à Bag</button>
                     </div>
                 </div>
             </article>
 
-            <!-- PASSO 03: BABY QUEEN -->
+            <!-- Passo 03 -->
             <article class="flex flex-col lg:flex-row gap-12 lg:gap-24 reveal max-w-6xl mx-auto items-start">
                 <div class="w-full lg:w-5/12 sticky-editorial">
-                    <div class="aspect-[3/4] img-wrap rounded-3xl overflow-hidden relative shadow-2xl group bg-white dark:bg-gl_surface_dark">
-                        <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" class="w-full h-full object-cover grayscale opacity-95">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700"></div>
-
-                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-500 z-10 cursor-pointer"><i class="fa-solid fa-play ml-1 text-2xl"></i></button>
-                        <span class="absolute bottom-6 left-6 font-sans text-[0.55rem] font-bold text-white uppercase tracking-widest bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 z-10">Passo 03 / Blindagem</span>
+                    <div class="aspect-[3/4] img-wrap bg-gl_surface_light dark:bg-gl_surface_dark relative shadow-2xl group">
+                        <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" class="w-full h-full object-cover grayscale opacity-95" alt="Baby Queen 10 em 1">
+                        <button onclick="appState.openVideoModal('https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717')" class="absolute inset-0 m-auto w-20 h-20 bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer focus-ring" aria-label="Assistir vídeo de demonstração Baby Queen"><i class="fa-solid fa-play ml-1" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <div class="w-full lg:w-7/12 py-10">
                     <h4 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title mb-4">Baby Queen <span class="text-gold-adaptive text-3xl not-italic">(10 em 1)</span></h4>
-                    <p class="font-sans text-[0.65rem] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.3em] mb-8">O Escudo Térmico</p>
-                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12">Tecnologia Smart Post-Chemical que devolve a elasticidade natural ao fio e atua como barreira impenetrável contra secador, prancha e agressões externas.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Nano Link Complex</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Sistema de nano-aminoácidos para reposição de massa intensa e reparação cirúrgica pós-química.</p>
-                        </div>
-                        <div class="hairline-t pt-4">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Bio-Collagen</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Colágeno hidrolisado que devolve tração e força elástica ao fio de forma imediata.</p>
-                        </div>
-                        <div class="hairline-t pt-4 md:col-span-2">
-                            <span class="font-sans text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase tracking-widest mb-2 block">Deca-Shield Matrix</span>
-                            <p class="font-serif text-lg text-gray-500 italic leading-relaxed">Escudo inteligente termo-ativado. Sela a cutícula preservando 100% da umidade interna gerada pelos passos 1 e 2, criando uma barreira ativa duradoura.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-6 hairline-t pt-8">
+                    <p class="font-sans text-[0.65rem] font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-8">O Escudo Térmico</p>
+                    <p class="font-sans text-sm text-gray-600 dark:text-gray-400 font-light mb-12 leading-relaxed">Tecnologia Smart Post-Chemical que atua como barreira impenetrável contra secador, prancha e agressões externas.</p>
+                    <div class="flex items-center gap-6 hairline-t pt-8">
                         <p class="font-serif text-4xl text-gl_dark dark:text-white">R$ 247,00</p>
-                        <button onclick="cartSystem.addToCart('baby', 'Baby Queen', 247.00, 'Passo 03', 'https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-10 py-4">Adicionar à Bag</button>
+                        <button onclick="cartSystem.addToCart('baby', 'Baby Queen', 247.00, 'Passo 03', 'https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid focus-ring">Adicionar à Bag</button>
                     </div>
                 </div>
             </article>
 
-            <!-- GIFTING EXPERIENCE -->
-            <section class="pt-24 border-t border-gray-200 dark:border-white/5 reveal">
+            <!-- ATELIÊ DE FITAS -->
+            <section class="pt-24 border-t border-adaptive reveal max-w-6xl mx-auto" aria-labelledby="fita-title">
                 <div class="text-center mb-16">
-                    <h3 class="font-serif text-4xl md:text-6xl text-gl_dark dark:text-white editorial-title">A Arte de Presentear</h3>
+                    <span class="font-sans text-[0.6rem] font-bold text-gold-adaptive uppercase tracking-widest mb-4 block" aria-hidden="true">Personalização VIP</span>
+                    <h3 id="fita-title" class="font-serif text-4xl md:text-5xl text-gl_dark dark:text-white editorial-title">Ateliê de Fitas</h3>
+                    <p class="font-sans text-xs text-gray-500 mt-4">Escolha a mensagem que selará a sua experiência.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
-                        <img src="https://images.unsplash.com/photo-1606836591695-4d584caf87a7?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
-                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Sacola Crystal</h5>
-                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 15,00</p>
-                        <select id="ribbon-sacola_transparente" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
-                            <option value="Sem Fita">Sem Fita</option>
-                            <option value="Com Amor">"Com Amor"</option>
-                            <option value="Especial p/ Você">"Especial p/ Você"</option>
-                        </select>
-                        <button onclick="cartSystem.addGift('sacola_transparente', 'Sacola Crystal', 15.00)" class="btn-editorial w-full !py-3">Incluir</button>
+                
+                <div class="flex flex-wrap justify-center gap-4 md:gap-10">
+                    <div onclick="cartSystem.selectRibbon('mae')" id="ribbon-slot-mae" class="ribbon-slot group focus-ring" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar Fita Mãe Soberana">
+                        <img src="https://images.unsplash.com/photo-1522108700431-7b08465dce62?auto=format&fit=crop&w=200&q=80" alt="Fita de cetim elegante para Mãe">
+                        <div class="ribbon-label !text-gold-adaptive">"Mãe Soberana"</div>
+                        <div class="absolute top-3 right-3 text-gold-adaptive text-lg active-check"><i class="fa-solid fa-circle-check"></i></div>
                     </div>
-                    
-                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
-                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
-                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Sacola Icon</h5>
-                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 25,00</p>
-                        <select id="ribbon-sacola_laranja" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
-                            <option value="Sem Fita">Sem Fita</option>
-                            <option value="Com Amor">"Com Amor"</option>
-                        </select>
-                        <button onclick="cartSystem.addGift('sacola_laranja', 'Sacola Icon', 25.00)" class="btn-editorial w-full !py-3">Incluir</button>
+                    <div onclick="cartSystem.selectRibbon('com_amor')" id="ribbon-slot-com_amor" class="ribbon-slot group focus-ring" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar Fita Com Amor">
+                        <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=200&q=80" alt="Fita de cetim vermelha">
+                        <div class="ribbon-label">"Com Amor"</div>
+                        <div class="absolute top-3 right-3 text-gold-adaptive text-lg active-check"><i class="fa-solid fa-circle-check"></i></div>
                     </div>
-                    
-                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
-                        <img src="https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
-                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Maleta Signature</h5>
-                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 45,00</p>
-                        <select id="ribbon-maleta" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
-                            <option value="Sem Fita">Sem Fita</option>
-                            <option value="Com Amor">"Com Amor"</option>
-                        </select>
-                        <button onclick="cartSystem.addGift('maleta', 'Maleta Signature', 45.00)" class="btn-editorial w-full !py-3">Incluir</button>
+                    <div onclick="cartSystem.selectRibbon('especial')" id="ribbon-slot-especial" class="ribbon-slot group focus-ring" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar Fita Especial para Você">
+                        <img src="https://images.unsplash.com/photo-1577998474537-eb56e872c31e?auto=format&fit=crop&w=200&q=80" alt="Fita de cetim dourada">
+                        <div class="ribbon-label">"Especial p/ Você"</div>
+                        <div class="absolute top-3 right-3 text-gold-adaptive text-lg active-check"><i class="fa-solid fa-circle-check"></i></div>
                     </div>
-                    
-                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col">
-                        <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600" class="aspect-square object-cover mb-6">
-                        <h5 class="font-sans text-[0.65rem] font-bold uppercase tracking-widest mb-1">Caixa Premium Ímã</h5>
-                        <p class="font-serif text-xl text-gold-adaptive mb-6">R$ 65,00</p>
-                        <select id="ribbon-caixa_ima" class="bg-transparent border-b border-adaptive py-2 text-[0.6rem] uppercase mb-4 outline-none">
-                            <option value="Sem Fita">Sem Fita</option>
-                            <option value="Com Amor">"Com Amor"</option>
-                        </select>
-                        <button onclick="cartSystem.addGift('caixa_ima', 'Caixa Premium Ímã', 65.00)" class="btn-editorial w-full !py-3">Incluir</button>
+                    <div onclick="cartSystem.selectRibbon('gratidao')" id="ribbon-slot-gratidao" class="ribbon-slot group focus-ring" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar Fita Gratidão">
+                        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=200&q=80" alt="Fita de tecido texturizada">
+                        <div class="ribbon-label">"Gratidão"</div>
+                        <div class="absolute top-3 right-3 text-gold-adaptive text-lg active-check"><i class="fa-solid fa-circle-check"></i></div>
+                    </div>
+                    <div onclick="cartSystem.selectRibbon('exclusive')" id="ribbon-slot-exclusive" class="ribbon-slot group focus-ring" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar Fita Exclusivo 8K">
+                        <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=200&q=80" alt="Fita de tecido luxuosa escura">
+                        <div class="ribbon-label">"Exclusivo 8K"</div>
+                        <div class="absolute top-3 right-3 text-gold-adaptive text-lg active-check"><i class="fa-solid fa-circle-check"></i></div>
                     </div>
                 </div>
             </section>
+
+            <!-- ARTE DE PRESENTEAR (GRID NA PÁGINA) -->
+            <section class="pt-24 pb-24 border-t border-adaptive reveal max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h3 class="font-serif text-4xl md:text-5xl text-gl_dark dark:text-white editorial-title">A Arte de Presentear</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col items-center text-center border border-transparent hover:border-gold-adaptive transition-colors">
+                        <img src="https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=600&q=80" alt="Exemplo de Sacola Crystal" class="aspect-square object-cover mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase mb-2">Sacola Crystal</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-8">R$ 15,00</p>
+                        <button onclick="cartSystem.addGiftWithActiveRibbon('sacola_transparente', 'Sacola Crystal', 15.00, 'https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=600&q=80')" class="btn-editorial w-full !text-[0.6rem] focus-ring">Incluir Embalagem</button>
+                    </div>
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col items-center text-center border border-transparent hover:border-gold-adaptive transition-colors">
+                        <img src="https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=600&q=80" alt="Exemplo de Sacola Icon Laranja" class="aspect-square object-cover mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase mb-2">Sacola Icon</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-8">R$ 25,00</p>
+                        <button onclick="cartSystem.addGiftWithActiveRibbon('sacola_laranja', 'Sacola Icon', 25.00, 'https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=600&q=80')" class="btn-editorial w-full !text-[0.6rem] focus-ring">Incluir Embalagem</button>
+                    </div>
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col items-center text-center border border-transparent hover:border-gold-adaptive transition-colors">
+                        <img src="https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600&q=80" alt="Exemplo de Maleta Signature" class="aspect-square object-cover mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase mb-2">Maleta Signature</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-8">R$ 45,00</p>
+                        <button onclick="cartSystem.addGiftWithActiveRibbon('maleta', 'Maleta Signature', 45.00, 'https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600&q=80')" class="btn-editorial w-full !text-[0.6rem] focus-ring">Incluir Embalagem</button>
+                    </div>
+                    <div class="p-6 bg-gl_surface_light dark:bg-gl_surface_dark flex flex-col items-center text-center border border-transparent hover:border-gold-adaptive transition-colors">
+                        <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600&q=80" alt="Exemplo de Caixa Premium Ímã" class="aspect-square object-cover mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+                        <h5 class="font-sans text-[0.65rem] font-bold uppercase mb-2">Caixa Premium Ímã</h5>
+                        <p class="font-serif text-xl text-gold-adaptive mb-8">R$ 65,00</p>
+                        <button onclick="cartSystem.addGiftWithActiveRibbon('caixa_ima', 'Caixa Premium Ímã', 65.00, 'https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600&q=80')" class="btn-editorial w-full !text-[0.6rem] focus-ring">Incluir Embalagem</button>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
-    <!-- VIEW 3: PORTAL B2B -->
+    <!-- VIEW 3: B2B -->
     <main id="view-dashboard-b2b" class="view-section flex-grow">
-        <section class="pt-48 pb-24 px-6 bg-gl_surface_dark text-white">
+        <section class="pt-48 pb-24 px-6 bg-gl_surface_dark text-white hairline-b border-white/10">
             <div class="container mx-auto max-w-7xl flex justify-between items-end">
-                <h2 class="font-serif text-7xl editorial-title">Portal <span class="font-light">B2B</span></h2>
-                <button onclick="appState.navigate('home')" class="text-gray-400 uppercase text-xs">Voltar ao Hub</button>
+                <h2 class="font-serif text-7xl editorial-title italic">Portal B2B</h2>
+                <button onclick="appState.navigate('home')" class="text-gray-400 uppercase text-xs focus-ring">Voltar</button>
             </div>
         </section>
-        <div class="container mx-auto px-6 py-24 max-w-5xl space-y-24 reveal">
+        <div class="container mx-auto px-6 py-24 max-w-5xl reveal">
             <article class="flex flex-col md:flex-row gap-12 items-center">
-                <img src="https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855" class="w-48 h-48 rounded-full border border-white/10 p-4 object-cover">
+                <img src="https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855" alt="Produto B2B Gloss Premium 1 Litro" class="w-48 h-48 rounded-full border border-white/10 p-4 object-cover">
                 <div class="w-full md:w-3/5">
-                    <span class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block">Plástica Híbrida Soberana</span>
-                    <h4 class="font-serif text-4xl italic">Gloss Premium 1 Litro</h4>
-                    <p class="text-gray-500 my-4 leading-relaxed font-light">Carga Molecular 8K com Hialurônico Reticulado. O alisamento definitivo que previne o afinamento da haste capilar.</p>
+                    <h4 class="font-serif text-4xl italic text-gl_dark dark:text-white">Gloss Premium 1 Litro</h4>
+                    <p class="text-gray-500 my-4">Plástica Híbrida Soberana. Carga Molecular 8K.</p>
                     <div class="flex items-center gap-6 pt-6 hairline-t">
-                        <p class="font-serif text-3xl text-white">R$ 1.297,00</p>
-                        <button onclick="cartSystem.addToCart('gloss_1l', 'Gloss 1L', 1297.00, 'B2B', 'https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-8 py-3">Faturar Lote</button>
-                    </div>
-                </div>
-            </article>
-            <article class="flex flex-col md:flex-row gap-12 items-center">
-                <img src="https://testeessencia.carrd.co/assets/images/image52.jpg?v=f5d26855" class="w-48 h-48 rounded-full border border-white/10 p-4 object-cover">
-                <div class="w-full md:w-3/5">
-                    <span class="font-sans text-[0.55rem] font-bold text-purple-500 uppercase tracking-widest mb-3 block">Lançamento Set 2026</span>
-                    <h4 class="font-serif text-4xl italic">Platinum Infusion 1 Litro</h4>
-                    <p class="text-gray-500 my-4 leading-relaxed font-light">Matização inteligente com Pigmento 43 e Extrato de Caviar. Neutralização instantânea e rejuvenescimento para loiros de luxo.</p>
-                    <div class="flex items-center gap-6 pt-6 hairline-t">
-                        <p class="font-serif text-3xl text-white">R$ 1.597,00</p>
-                        <button onclick="cartSystem.addToCart('plat_1l', 'Platinum 1L', 1597.00, 'B2B', 'https://testeessencia.carrd.co/assets/images/image52.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid px-8 py-3 !border-purple-500 !text-purple-500 hover:!bg-purple-500 hover:!text-white">Garantir Reserva</button>
+                        <p class="font-serif text-3xl text-gl_dark dark:text-white">R$ 1.297,00</p>
+                        <button onclick="cartSystem.addToCart('gloss_1l', 'Gloss 1L', 1297.00, 'B2B', 'https://testeessencia.carrd.co/assets/images/image50.jpg?v=f5d26855')" class="btn-editorial btn-editorial-solid focus-ring">Faturar Lote</button>
                     </div>
                 </div>
             </article>
@@ -498,10 +676,10 @@
     <!-- VIEW 4: EXPERIÊNCIA -->
     <main id="view-experience" class="view-section flex-grow">
         <section class="w-full h-[60vh] relative bg-gl_dark flex items-center justify-center overflow-hidden">
-            <video src="https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" autoplay loop muted playsinline></video>
-            <div class="absolute inset-0 bg-gradient-to-t from-gl_dark/80 via-gl_dark/20 to-transparent"></div>
+            <video src="https://imagensagata.carrd.co/assets/videos/video07.mp4?v=740b7717" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" autoplay loop muted playsinline aria-hidden="true"></video>
+            <div class="absolute inset-0 bg-gradient-to-t from-gl_dark/80 via-transparent to-transparent"></div>
             <div class="relative z-10 text-center px-6">
-                <span class="font-sans text-[0.6rem] font-bold text-gold-adaptive uppercase tracking-mega-wide mb-4 block reveal">The Premium Experience</span>
+                <span class="font-sans text-[0.6rem] font-bold text-gold-adaptive uppercase tracking-mega-wide mb-4 block reveal" aria-hidden="true">The Premium Experience</span>
                 <h2 class="font-serif text-5xl md:text-7xl text-white editorial-title reveal">Kit Trindade 8K</h2>
             </div>
         </section>
@@ -509,18 +687,21 @@
             <h3 class="font-serif text-5xl mb-12">Protocolo de Validação</h3>
             <div class="grid gap-10 text-left">
                 <div class="hairline-b pb-6">
-                    <span class="text-gold-adaptive font-serif text-2xl">01.</span>
+                    <span class="text-gold-adaptive font-serif text-2xl" aria-hidden="true">01.</span>
                     <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Comente GLPRO no Post Oficial</h5>
+                    <p class="font-sans text-sm text-gray-500 mt-2 font-light">A IA enviará o protocolo ao seu Direct.</p>
                 </div>
                 <div class="hairline-b pb-6">
-                    <span class="text-gold-adaptive font-serif text-2xl">02.</span>
-                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Responda à nossa mensagem no Direct</h5>
+                    <span class="text-gold-adaptive font-serif text-2xl" aria-hidden="true">02.</span>
+                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Responda ao Direct</h5>
+                    <p class="font-sans text-sm text-gray-500 mt-2 font-light">Confirme seu registro para validação definitiva.</p>
                 </div>
                 <div class="hairline-b pb-6">
-                    <span class="text-gold-adaptive font-serif text-2xl">03.</span>
-                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Salve o Post Oficial no Instagram</h5>
+                    <span class="text-gold-adaptive font-serif text-2xl" aria-hidden="true">03.</span>
+                    <h5 class="uppercase font-bold text-xs tracking-widest mt-2">Salve o Post</h5>
+                    <p class="font-sans text-sm text-gray-500 mt-2 font-light">Perfis que não salvarem a publicação oficial serão desclassificados.</p>
                 </div>
-                <a href="https://instagram.com/SEU_PERFIL" target="_blank" class="btn-editorial btn-editorial-solid w-fit mx-auto mt-10">Ir para o Instagram</a>
+                <a href="https://instagram.com/SEU_PERFIL" target="_blank" class="btn-editorial btn-editorial-solid w-fit mx-auto mt-10 focus-ring">Ir para o Instagram</a>
             </div>
         </div>
     </main>
@@ -533,57 +714,147 @@
         const heroEngine = {
             current: 1, total: 3, interval: null,
             init() { this.start(); },
-            start() { if(this.interval) clearInterval(this.interval); this.interval = setInterval(() => { let n = this.current+1; if(n>this.total) n=1; this.goTo(n); }, 7000); },
-            goTo(n) {
+            start() { 
+                if(this.interval) clearInterval(this.interval); 
+                this.interval = setInterval(() => { 
+                    let n = this.current + 1; 
+                    if(n > this.total) n = 1; 
+                    this.goTo(n, false); 
+                }, 7000); 
+            },
+            goTo(n, manual = true) {
+                if (manual) this.start();
+                
                 document.querySelectorAll('.hero-slide').forEach(s => s.classList.remove('active'));
-                document.querySelectorAll('.hero-dot').forEach(d => d.classList.remove('active', 'opacity-100'));
+                const dots = document.querySelectorAll('.hero-dot');
+                dots.forEach(d => {
+                    d.classList.remove('active', 'opacity-100');
+                    d.setAttribute('aria-pressed', 'false');
+                });
+                
                 this.current = n;
-                document.getElementById(`hero-slide-${n}`).classList.add('active');
-                document.querySelectorAll('.hero-dot')[n-1].classList.add('active', 'opacity-100');
+                const slide = document.getElementById(`hero-slide-${n}`);
+                if (slide) slide.classList.add('active');
+                if (dots[n-1]) {
+                    dots[n-1].classList.add('active', 'opacity-100');
+                    dots[n-1].setAttribute('aria-pressed', 'true');
+                }
             }
         };
 
         const cartSystem = {
             items: [],
-            openCart() { document.getElementById('cart-drawer').classList.add('open'); document.querySelector('.cart-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; },
-            closeCart() { document.getElementById('cart-drawer').classList.remove('open'); document.querySelector('.cart-overlay').classList.remove('open'); document.body.style.overflow = ''; },
+            activeRibbon: 'Sem Fita',
+            
+            selectRibbon(id) {
+                document.querySelectorAll('.ribbon-slot').forEach(s => {
+                    s.classList.remove('active');
+                    s.setAttribute('aria-pressed', 'false');
+                });
+                
+                const slot = document.getElementById('ribbon-slot-' + id);
+                if (slot) {
+                    slot.classList.add('active');
+                    slot.setAttribute('aria-pressed', 'true');
+                }
+                
+                const ribbonNames = {
+                    'mae': '"Mãe Soberana"',
+                    'com_amor': '"Com Amor"',
+                    'especial': '"Especial p/ Você"',
+                    'gratidao': '"Gratidão"',
+                    'exclusive': '"Exclusivo 8K"'
+                };
+                
+                this.activeRibbon = ribbonNames[id] || 'Sem Fita';
+
+                const cartSelect = document.getElementById('cart-ribbon-selector');
+                if (cartSelect) {
+                    cartSelect.value = this.activeRibbon;
+                }
+            },
+
+            openCart() { 
+                const cartSelect = document.getElementById('cart-ribbon-selector');
+                if (cartSelect) {
+                    cartSelect.value = this.activeRibbon;
+                }
+
+                document.getElementById('cart-drawer').classList.add('open'); 
+                document.querySelector('.cart-overlay').classList.add('open'); 
+                document.body.style.overflow = 'hidden'; 
+                
+                const closeBtn = document.querySelector('#cart-drawer button');
+                if(closeBtn) setTimeout(() => closeBtn.focus(), 100);
+
+                this.render(); 
+            },
+            closeCart() { 
+                document.getElementById('cart-drawer').classList.remove('open'); 
+                document.querySelector('.cart-overlay').classList.remove('open'); 
+                document.body.style.overflow = ''; 
+            },
+            
             addToCart(id, name, price, tag, image) {
                 const existing = this.items.find(i => i.id === id && i.tag === tag);
                 if (existing) existing.qtd++; else this.items.push({ id, name, price, tag, image, qtd: 1 });
                 this.render(); this.openCart();
             },
-            addGift(id, name, price) {
-                const ribbon = document.getElementById('ribbon-' + id).value;
-                const tag = ribbon !== 'Sem Fita' ? 'Embalagem - ' + ribbon : 'Embalagem VIP';
-                let img = 'https://images.unsplash.com/photo-1606836591695-4d584caf87a7?auto=format&fit=crop&w=600';
-                if(id === 'sacola_laranja') img = 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600';
-                else if(id === 'maleta') img = 'https://images.unsplash.com/photo-1555487605-85a6a40ce6f2?auto=format&fit=crop&w=600';
-                else if(id === 'caixa_ima') img = 'https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=600';
-                
-                this.addToCart(id, name, price, tag, img);
+
+            addGiftWithActiveRibbon(id, name, price, imgUrl) {
+                const cartSelect = document.getElementById('cart-ribbon-selector');
+                if (cartSelect && document.getElementById('cart-drawer').classList.contains('open')) {
+                    this.activeRibbon = cartSelect.value;
+                }
+
+                const tag = this.activeRibbon !== 'Sem Fita' ? 'Embalagem - ' + this.activeRibbon : 'Embalagem VIP';
+                this.addToCart(id, name, price, tag, imgUrl);
             },
+
+            addGiftFromCart(id, name, price, imgUrl) {
+                this.addGiftWithActiveRibbon(id, name, price, imgUrl);
+            },
+
             removeFromCart(id, tag) {
                 const idx = this.items.findIndex(i => i.id === id && i.tag === tag);
                 if (idx > -1) this.items.splice(idx, 1);
+                
+                const liveRegion = document.getElementById('cart-items-container');
+                if(liveRegion) {
+                    const tempMsg = document.createElement('div');
+                    tempMsg.className = 'sr-only';
+                    tempMsg.innerText = 'Item removido da sacola.';
+                    liveRegion.appendChild(tempMsg);
+                    setTimeout(() => tempMsg.remove(), 1000);
+                }
+
                 this.render();
             },
+
             formatMoney(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); },
+            
             render() {
                 const container = document.getElementById('cart-items-container');
-                let sub = 0, total = 0;
+                const giftingModule = document.getElementById('cart-gifting-module');
+                let sub = 0, totalQty = 0;
+                
                 if (this.items.length === 0) {
-                    container.innerHTML = `<div class='text-center mt-20 text-gray-400 text-xs uppercase tracking-widest'>Sacola Vazia</div>`;
+                    container.innerHTML = `<div class='text-center mt-20 text-gray-400 text-xs uppercase tracking-widest font-bold'>Sacola Vazia</div>`;
                     document.getElementById('cart-count').style.opacity = '0';
                     document.getElementById('cart-subtotal').innerText = 'R$ 0,00';
+                    if (giftingModule) giftingModule.classList.add('hidden');
                     return;
                 }
+
                 container.innerHTML = '';
+                if (giftingModule) giftingModule.classList.remove('hidden');
+
                 this.items.forEach(i => {
-                    sub += i.price * i.qtd; total += i.qtd;
+                    sub += i.price * i.qtd; totalQty += i.qtd;
                     const div = document.createElement('div');
                     div.className = "flex gap-4 p-4 hairline-b relative group";
-                    div.innerHTML = `<button onclick="cartSystem.removeFromCart('${i.id}', '${i.tag}')" class="absolute top-4 right-2 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-xs"></i></button>
-                        <div class="w-16 h-20 bg-gray-100 dark:bg-white/5 rounded-none overflow-hidden shrink-0"><img src="${i.image}" class="w-full h-full object-cover"></div>
+                    div.innerHTML = `<button onclick="cartSystem.removeFromCart('${i.id}', '${i.tag}')" class="absolute top-4 right-2 text-gray-400 hover:text-red-500 p-2 focus-ring" aria-label="Remover ${i.name} da sacola"><i class="fa-solid fa-xmark text-xs" aria-hidden="true"></i></button>
+                        <div class="w-16 h-20 bg-gray-100 dark:bg-white/5 rounded-none overflow-hidden shrink-0"><img src="${i.image}" alt="Produto na sacola" class="w-full h-full object-cover"></div>
                         <div class="flex flex-col justify-center flex-grow pr-4">
                             <span class="font-sans text-[0.45rem] font-bold uppercase text-gold-adaptive mb-1">${i.tag}</span>
                             <h5 class='font-serif text-xl text-gl_dark dark:text-white leading-none mb-2'>${i.name}</h5>
@@ -591,11 +862,123 @@
                         </div>`;
                     container.appendChild(div);
                 });
-                document.getElementById('cart-count').innerText = total;
+                document.getElementById('cart-count').innerText = totalQty;
                 document.getElementById('cart-count').style.opacity = '1';
                 document.getElementById('cart-subtotal').innerText = this.formatMoney(sub);
             },
-            checkout() { if(this.items.length === 0) return; alert("Redirecionando para o Checkout Seguro..."); }
+            checkout() { alert("Redirecionando para o Checkout..."); }
+        };
+
+        // 🟢 CONFIGURADOR DINÂMICO "MOTHER'S DAY" COM LIVE PREVIEW
+        const mdBuilder = {
+            calc() {
+                let total = 0;
+                
+                const p1 = document.getElementById('md-p1').checked;
+                const p2 = document.getElementById('md-p2').checked;
+                const p3 = document.getElementById('md-p3').checked;
+                
+                if(p1) total += 147;
+                if(p2) total += 289;
+                if(p3) total += 247;
+                
+                const pkgSelected = document.querySelector('input[name="md-pkg"]:checked');
+                let bgImgUrl = '';
+                if (pkgSelected) {
+                    const pkgData = pkgSelected.value.split('|');
+                    total += parseFloat(pkgData[0]);
+                    bgImgUrl = pkgData[3];
+                }
+                
+                const ribbonSelected = document.querySelector('input[name="md-ribbon"]:checked');
+                let ribbonImgUrl = '';
+                let ribbonNameText = '';
+                if (ribbonSelected && ribbonSelected.value !== 'Sem Fita') {
+                    ribbonImgUrl = ribbonSelected.getAttribute('data-img');
+                    ribbonNameText = ribbonSelected.value.replace(/"/g, '');
+                }
+
+                document.getElementById('md-total').innerText = cartSystem.formatMoney(total);
+                
+                // 🟢 Dispara a atualização visual da vitrine esquerda
+                this.updatePreview(p1, p2, p3, bgImgUrl, ribbonImgUrl, ribbonNameText);
+            },
+            
+            updatePreview(p1, p2, p3, bgImg, ribbonImg, ribbonName) {
+                // Atualiza o fundo (a embalagem)
+                const bgEl = document.getElementById('md-preview-bg');
+                if(bgEl && bgImg) bgEl.src = bgImg;
+
+                // Atualiza o selo da fita no canto superior
+                const ribbonBox = document.getElementById('md-preview-ribbon');
+                if (ribbonBox) {
+                    if (ribbonImg) {
+                        ribbonBox.innerHTML = `
+                            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-gold-adaptive shadow-[0_0_20px_rgba(212,175,55,0.4)] z-30 transform rotate-12 transition-transform hover:scale-110 ml-auto">
+                                <img src="${ribbonImg}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="mt-2 text-right">
+                                <span class="font-sans font-bold uppercase tracking-widest text-[0.45rem] text-gold-adaptive bg-black/80 px-3 py-1 backdrop-blur-sm border border-gold-adaptive/50 rounded-full whitespace-nowrap">Fita: ${ribbonName}</span>
+                            </div>
+                        `;
+                    } else {
+                        ribbonBox.innerHTML = '';
+                    }
+                }
+
+                // Atualiza os produtos em cima da embalagem
+                const prodContainer = document.getElementById('md-preview-products');
+                if (prodContainer) {
+                    let html = '';
+                    if(p1) html += `<div class="w-16 h-24 md:w-24 md:h-36 bg-white/10 p-1 backdrop-blur-md rounded-2xl border border-white/20 transform transition-all duration-700 hover:-translate-y-2 shadow-2xl flex-shrink-0"><img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" class="w-full h-full object-cover rounded-xl opacity-95"></div>`;
+                    if(p2) html += `<div class="w-16 h-24 md:w-24 md:h-36 bg-white/10 p-1 backdrop-blur-md rounded-2xl border border-white/20 transform transition-all duration-700 hover:-translate-y-2 shadow-2xl flex-shrink-0"><img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" class="w-full h-full object-cover rounded-xl opacity-95 mix-blend-screen"></div>`;
+                    if(p3) html += `<div class="w-16 h-24 md:w-24 md:h-36 bg-white/10 p-1 backdrop-blur-md rounded-2xl border border-white/20 transform transition-all duration-700 hover:-translate-y-2 shadow-2xl flex-shrink-0"><img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" class="w-full h-full object-cover rounded-xl opacity-95 grayscale"></div>`;
+                    
+                    prodContainer.innerHTML = html;
+                }
+            },
+
+            addToCart() {
+                let addedAnyProduct = false;
+                
+                if(document.getElementById('md-p1').checked) { 
+                    cartSystem.addToCart('shampoo', 'Bain Master', 147.00, 'Mother\'s Day', 'https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855'); 
+                    addedAnyProduct = true; 
+                }
+                if(document.getElementById('md-p2').checked) { 
+                    cartSystem.addToCart('ampola', 'Ampola Gloss', 289.00, 'Mother\'s Day', 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855'); 
+                    addedAnyProduct = true; 
+                }
+                if(document.getElementById('md-p3').checked) { 
+                    cartSystem.addToCart('baby', 'Baby Queen', 247.00, 'Mother\'s Day', 'https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855'); 
+                    addedAnyProduct = true; 
+                }
+                
+                if(!addedAnyProduct) { 
+                    alert("Por favor, selecione pelo menos um ritual de tratamento para o seu presente."); 
+                    return; 
+                }
+
+                const pkgSelected = document.querySelector('input[name="md-pkg"]:checked');
+                const ribbonSelected = document.querySelector('input[name="md-ribbon"]:checked');
+
+                if (pkgSelected) {
+                    const pkgData = pkgSelected.value.split('|');
+                    const pPrice = parseFloat(pkgData[0]);
+                    const pName = pkgData[1];
+                    const pId = pkgData[2];
+                    const pImg = pkgData[3];
+                    
+                    let tag = 'Embalagem VIP';
+                    if (ribbonSelected && ribbonSelected.value !== 'Sem Fita') {
+                        tag = 'Presente - ' + ribbonSelected.value.replace(/"/g, '');
+                    }
+                    
+                    cartSystem.addToCart(pId, pName, pPrice, tag, pImg);
+                } else {
+                    cartSystem.openCart();
+                }
+            }
         };
 
         const appState = {
@@ -609,18 +992,27 @@
                 const m = document.getElementById('video-modal');
                 const v = document.getElementById('modal-video-player');
                 v.src = src; m.style.display = 'flex';
-                setTimeout(() => { document.getElementById('video-content-box').classList.remove('scale-95', 'opacity-0'); document.getElementById('video-content-box').classList.add('scale-100', 'opacity-100'); v.play(); }, 10);
+                
+                setTimeout(() => { 
+                    document.getElementById('video-content-box').classList.add('scale-100', 'opacity-100'); 
+                    try { v.play(); v.focus(); } catch(e) { console.log('Autoplay blocked'); } 
+                }, 10);
             },
             closeVideoModal() {
                 const m = document.getElementById('video-modal');
                 const v = document.getElementById('modal-video-player');
                 document.getElementById('video-content-box').classList.remove('scale-100', 'opacity-100');
-                setTimeout(() => { m.style.display = 'none'; v.pause(); }, 700);
+                setTimeout(() => { 
+                    m.style.display = 'none'; 
+                    try { v.pause(); } catch(e){} 
+                }, 700);
             },
-            openHomologationModal() { document.getElementById('homologation-modal').style.display = 'flex'; setTimeout(() => { document.getElementById('homo-content-box').classList.add('scale-100', 'opacity-100'); }, 10); },
-            closeHomologationModal() { document.getElementById('homo-content-box').classList.remove('scale-100', 'opacity-100'); setTimeout(() => { document.getElementById('homologation-modal').style.display = 'none'; }, 700); },
-            verifyHomologation() { alert("Área Disponível. Contacte-nos."); },
-            toggleAudio(vid, ico) { const v = document.getElementById(vid); v.muted = !v.muted; document.getElementById(ico).className = v.muted ? 'fa-solid fa-volume-xmark text-[0.7rem]' : 'fa-solid fa-volume-high text-[0.7rem]'; }
+            openHomologationModal() { 
+                document.getElementById('homologation-modal').style.display = 'flex'; 
+                setTimeout(() => document.getElementById('homo-cep').focus(), 100);
+            },
+            closeHomologationModal() { document.getElementById('homologation-modal').style.display = 'none'; },
+            verifyHomologation() { alert("Praça disponível."); }
         };
 
         window.addEventListener('scroll', () => {
@@ -632,7 +1024,27 @@
             heroEngine.init();
             const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); } }); }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
-            document.querySelectorAll('.ba-range').forEach(r => { r.addEventListener('input', (e) => { e.target.parentElement.querySelector('.ba-after').style.clipPath = `inset(0 0 0 ${e.target.value}%)`; e.target.parentElement.querySelector('.ba-handle-line').style.left = `${e.target.value}%`; }); });
+
+            // Setup Inicial da Calculadora Mother's Day com Preview Dinâmico
+            mdBuilder.calc();
+
+            document.querySelectorAll('label.cursor-pointer').forEach(el => {
+                el.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const input = this.querySelector('input');
+                        if(input) { input.checked = true; input.dispatchEvent(new Event('change')); }
+                    }
+                });
+            });
+            document.querySelectorAll('.ribbon-slot').forEach(el => {
+                el.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
         });
     </script>
 </body>
