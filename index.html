@@ -1262,6 +1262,8 @@
                     <ul class="text-sm text-gray-500 space-y-3">
                         <li><a href="https://wa.me/5549991618389" target="_blank" class="hover:text-white transition-colors">Digital Care</a></li>
                         <li><a href="javascript:void(0)" onclick="appState.navigate('partner')" class="hover:text-white transition-colors">Homologação B2B</a></li>
+                        <!-- 🟢 RECUPERADO: LINK PARA O MODAL DE RASTREIO -->
+                        <li><a href="javascript:void(0)" onclick="appState.openTrackingModal()" class="hover:text-white transition-colors text-gold-adaptive font-bold flex items-center gap-2"><i class="fa-solid fa-location-crosshairs"></i> Rastreio VIP</a></li>
                     </ul>
                 </div>
                 <div class="space-y-4">
@@ -2092,8 +2094,7 @@
                     this.navigate('ritual');
                     cartSystem.showToast("Acesso Outorgado");
                 } else { 
-                    alert("CÓDIGO DE OUTORGA INVÁLIDO"); 
-                    this.hapticFeedback(); 
+                    this.showAlert("Acesso Negado", "O Código de Outorga inserido é inválido.", "error"); 
                 }
             },
             
@@ -2111,7 +2112,7 @@
                 const uf = document.getElementById('b2b-form-uf').value;
 
                 if(!name || !phone || !ig || !city) { 
-                    alert("Preencha as informações essenciais (Nome, Telefone, Instagram e Cidade) para a auditoria regional."); 
+                    this.showAlert("Auditoria Incompleta", "Preencha as informações essenciais (Nome, Telefone, Instagram e Cidade) para prosseguirmos com a auditoria regional.", "warning"); 
                     return; 
                 }
                 
@@ -2273,13 +2274,46 @@
                 document.getElementById('tracking-loading-state').classList.remove('hidden');
                 
                 setTimeout(() => {
-                    alert("Acesso Autorizado: A encomenda " + code.toUpperCase() + " encontra-se em trânsito com protocolo de segurança VIP. Estimativa de entrega: 2 a 3 dias úteis.");
                     this.closeTrackingModal();
+                    this.showAlert("Status: Em Trânsito", "A encomenda " + code.toUpperCase() + " encontra-se em trânsito com protocolo de segurança VIP. Estimativa de entrega: 2 a 3 dias úteis.", "success");
                 }, 2000);
             },
             
             acceptCookies() { 
                 document.getElementById('cookie-banner').style.display = 'none'; 
+            },
+
+            // 🟢 NOVO: MOTOR CENTRAL DE AVISOS (Substitui os alerts feios do navegador)
+            showAlert(title, msg, type = 'warning') {
+                this.hapticFeedback();
+                const m = document.getElementById('system-alert-modal');
+                const box = document.getElementById('system-alert-box');
+                const icon = document.getElementById('system-alert-icon');
+                
+                document.getElementById('system-alert-title').innerText = title;
+                document.getElementById('system-alert-msg').innerText = msg;
+                
+                if (type === 'success') {
+                    icon.className = "fa-solid fa-circle-check text-4xl text-green-500 mb-4";
+                } else if (type === 'error') {
+                    icon.className = "fa-solid fa-circle-xmark text-4xl text-red-500 mb-4";
+                } else {
+                    icon.className = "fa-solid fa-circle-exclamation text-4xl text-gold-adaptive mb-4";
+                }
+                
+                m.style.display = 'flex';
+                setTimeout(() => {
+                    box.classList.remove('scale-95', 'opacity-0');
+                    box.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            },
+
+            closeAlert() {
+                const m = document.getElementById('system-alert-modal');
+                const box = document.getElementById('system-alert-box');
+                box.classList.remove('scale-100', 'opacity-100');
+                box.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => { m.style.display = 'none'; }, 500);
             }
         };
 
