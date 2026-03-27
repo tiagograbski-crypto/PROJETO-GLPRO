@@ -476,12 +476,6 @@
                                 <img id="md-preview-ribbon-img" src="" class="w-full h-full object-cover opacity-90 mix-blend-screen">
                             </div>
 
-                            <!-- 🟢 O CARTÃO DE PRESENTE (LIVE RENDER) -->
-                            <div id="md-preview-card" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-28 bg-[#FAF9F6] border border-[#D4AF37] shadow-2xl z-40 flex flex-col items-center justify-center p-4 transition-all duration-500 rotate-[-5deg] scale-50 opacity-0 pointer-events-none">
-                                <i class="fa-solid fa-crown text-[#D4AF37] text-sm mb-2"></i>
-                                <p id="md-preview-card-text" class="text-[#161616] font-serif text-[10px] md:text-xs leading-snug text-center line-clamp-3 w-full">Sua dedicatória aparecerá aqui...</p>
-                            </div>
-
                             <!-- Frascos em cima -->
                             <div id="md-preview-products" class="absolute bottom-8 w-full flex justify-center items-end gap-3 px-6 z-20 h-[45%]"></div>
                         </div>
@@ -575,6 +569,25 @@
                                     <!-- Fita 1 -->
                                     <label class="cursor-pointer group flex items-center gap-3 sm:gap-4 p-2 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-xl hover:border-gl_gold active:scale-[0.98] transition-all shrink-0 relative">
                                         <input type="radio" name="md-ribbon" value='"Mãe Soberana"' data-img="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="w-[75px] h-[25px] sm:w-[90px] sm:h-[30px] rounded overflow-hidden shrink-0 border border-transparent peer-checked:border-gl_gold transition-colors">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="w-full h-full object-cover opacity-80 peer-checked:opacity-100">
+                                        </div>
+                                        <span class="text-[10px] md:text-xs uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white transition-colors">Mães</span>
+                                        <div class="absolute right-3 opacity-0 peer-checked:opacity-100 text-gl_gold transition-opacity">
+                                            <i class="fa-solid fa-circle-check text-sm"></i>
+                                        </div>
+                                    </label>
+
+                                    <!-- Fita 2 -->
+                                    <label class="cursor-pointer group flex items-center gap-3 sm:gap-4 p-2 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-xl hover:border-gl_gold active:scale-[0.98] transition-all shrink-0 relative">
+                                        <input type="radio" name="md-ribbon" value='"Para Presentear"' data-img="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="w-[75px] h-[25px] sm:w-[90px] sm:h-[30px] rounded overflow-hidden shrink-0 border border-transparent peer-checked:border-gl_gold transition-colors">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="w-full h-full object-cover opacity-80 peer-checked:opacity-100">
+                                        </div>
+                                        <span class="text-[10px] md:text-xs uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white transition-colors">Presente</span>
+                                        <div class="absolute right-3 opacity-0 peer-checked:opacity-100 text-gl_gold transition-opacity">
+                                            <i class="fa-solid fa-circle-check text-sm"></i>
+                                        </div>
                                     </label>
 
                                     <!-- Fita 3 -->
@@ -666,6 +679,16 @@
                                     </label>
                                 </div>
                                 <textarea id="md-message" rows="2" placeholder="Escreva a sua dedicatória para pré-visualizar no cartão..." class="w-full bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/10 rounded-xl p-4 text-xs md:text-sm font-serif text-gl_dark dark:text-white focus:border-gold-adaptive outline-none resize-none transition-colors" oninput="mdBuilder.updateCardText()"></textarea>
+                                
+                                <!-- 🟢 NOVO PREVIEW DO CARTÃO (ULTRA LUXO) -->
+                                <div id="md-preview-card-container" class="mt-6 overflow-hidden transition-all duration-700 max-h-[300px] opacity-100">
+                                    <div id="md-preview-card" class="w-full max-w-[320px] mx-auto bg-[#FAF9F6] border border-[#D4AF37] p-8 shadow-2xl flex flex-col items-center justify-center relative">
+                                        <div class="absolute inset-2 border border-[#D4AF37]/30 pointer-events-none"></div>
+                                        <i class="fa-solid fa-crown text-[#D4AF37] text-2xl mb-4"></i>
+                                        <p id="md-preview-card-text" class="text-[#161616] font-serif text-sm md:text-base leading-relaxed text-center w-full break-words italic z-10">Sua dedicatória aparecerá aqui...</p>
+                                        <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=f6502114" class="h-4 mt-6 opacity-30 mix-blend-multiply">
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Conversão Final -->
@@ -1276,188 +1299,236 @@
     <div id="cart-drawer" class="fixed top-0 right-0 h-[100dvh] w-full md:w-[420px] bg-gl_surface_light dark:bg-gl_dark z-[6001] transform translate-x-full transition-transform duration-500 flex flex-col border-l border-adaptive dark:border-white/10 shadow-2xl">
         
         <!-- Header Carrinho -->
-        <div class="flex justify-between items-center p-6 border-b border-adaptive dark:border-white/10 shrink-0 bg-white/50 dark:bg-black/20 backdrop-blur-xl">
+        <div class="flex justify-between items-center p-5 md:p-6 border-b border-adaptive dark:border-white/10 shrink-0 bg-white/50 dark:bg-black/20 backdrop-blur-xl z-10">
             <div class="flex items-center gap-4">
                 <i class="fa-solid fa-bag-shopping text-gold-adaptive text-2xl"></i>
                 <h3 class="font-serif text-3xl text-gl_dark dark:text-white italic">Sua Bag</h3>
             </div>
-            <button onclick="cartSystem.toggle()" class="text-gray-500 hover:text-gl_dark dark:hover:text-white transition-colors p-2 focus-ring"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <button onclick="cartSystem.toggle()" class="text-gray-500 hover:text-gl_dark dark:hover:text-white transition-colors p-3 -mr-3 focus-ring"><i class="fa-solid fa-xmark text-2xl"></i></button>
         </div>
         
-        <!-- Itens do Carrinho (Injetado via JS) -->
-        <div id="cart-items-container" class="flex-1 overflow-y-auto custom-scroll p-6 space-y-6">
-            <div class="h-full flex flex-col items-center justify-center opacity-50">
-                <i class="fa-solid fa-wind text-4xl mb-4 text-gl_gold"></i>
-                <p class="text-xs uppercase tracking-widest font-bold">A sua bag está vazia.</p>
-            </div>
-        </div>
-
-        <!-- 🟢 Área de Upsell Cirúrgico COMPACTA (Embalagens & Fitas Visuais) -->
-        <div class="bg-black/5 dark:bg-white/5 p-4 md:p-6 border-t border-adaptive dark:border-white/10 shrink-0">
+        <!-- 🟢 ÁREA DE SCROLL UNIFICADO (FIM DO SCROLL DUPLO NO MOBILE) -->
+        <div class="flex-1 overflow-y-auto custom-scroll flex flex-col">
             
-            <!-- PRATELEIRA 1: EMBALAGENS -->
-            <div class="mb-5">
-                <span class="text-[9px] md:text-[10px] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block"><i class="fa-solid fa-box-open mr-2"></i> Embalagens Avulsas</span>
-                <div class="flex gap-3 overflow-x-auto custom-scroll pb-2 snap-x">
-                    
-                    <!-- Upsell 1: Sacola Laranja -->
-                    <div class="w-[120px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2.5 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image36.jpg?v=338eb2e9" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
-                        <div>
-                            <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Sacola Laranja</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 25</span>
-                            <button onclick="cartSystem.add('Sacola Laranja', 25, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-lg"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Upsell 2: Caixa Ímã -->
-                    <div class="w-[120px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2.5 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image44.jpg?v=338eb2e9" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
-                        <div>
-                            <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Caixa com Ímã</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 65</span>
-                            <button onclick="cartSystem.add('Caixa com Ímã', 65, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-lg"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Upsell 3: Maleta Signature -->
-                    <div class="w-[120px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2.5 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
-                        <div>
-                            <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Maleta Signature</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 45</span>
-                            <button onclick="cartSystem.add('Maleta Signature', 45, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-lg"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Upsell 4: Sacola Transparente -->
-                    <div class="w-[120px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2.5 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image37.jpg?v=338eb2e9" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
-                        <div>
-                            <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Sacola Transp.</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 35</span>
-                            <button onclick="cartSystem.add('Sacola Transparente', 35, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-lg"></i></button>
-                        </div>
-                    </div>
+            <!-- Itens do Carrinho (Injetado via JS) -->
+            <div id="cart-items-container" class="p-5 md:p-6 space-y-5 shrink-0 min-h-[150px]">
+                <div class="h-full flex flex-col items-center justify-center opacity-50 pt-8">
+                    <i class="fa-solid fa-wind text-4xl mb-4 text-gl_gold"></i>
+                    <p class="text-xs uppercase tracking-widest font-bold">A sua bag está vazia.</p>
                 </div>
             </div>
 
-            <!-- PRATELEIRA 2: FITAS -->
-            <div>
-                <span class="text-[9px] md:text-[10px] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block"><i class="fa-solid fa-ribbon mr-2"></i> Coleção de Fitas</span>
-                <div class="flex gap-2 overflow-x-auto custom-scroll pb-2 snap-x">
-                    
-                    <!-- Fita 0: Amor (NOVA) -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image43.jpg?v=338eb2e9" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Amor</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Amor', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+            <!-- Área de Upsell Cirúrgico COMPACTA (Rituais, Embalagens & Fitas Visuais) -->
+            <div class="bg-black/5 dark:bg-white/5 p-4 md:p-6 border-t border-adaptive dark:border-white/10 shrink-0 mt-auto">
+                
+                <!-- PRATELEIRA 0: RITUAIS -->
+                <div class="mb-5">
+                    <span class="text-[9px] md:text-[10px] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block"><i class="fa-solid fa-flask mr-2"></i> Rituais 8K</span>
+                    <div class="flex gap-3 overflow-x-auto custom-scroll pb-3 snap-x">
+                        
+                        <!-- Produto 1: Bain Master -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Bain Master</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 147</span>
+                                <button onclick="cartSystem.add('Bain Repar Master', 147, 'Ritual 8K', true)" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Produto 2: Ampola Repair -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Ampola Gloss</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 289</span>
+                                <button onclick="cartSystem.add('Ampola Repair Gloss', 289, 'Ritual 8K', true)" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Produto 3: Baby Queen -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5 grayscale">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Baby Queen</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 247</span>
+                                <button onclick="cartSystem.add('Baby Queen BB Cream', 247, 'Ritual 8K', true)" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Fita 1: Mães -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Mães</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Mãe Soberana', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                <!-- PRATELEIRA 1: EMBALAGENS -->
+                <div class="mb-5">
+                    <span class="text-[9px] md:text-[10px] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block"><i class="fa-solid fa-box-open mr-2"></i> Embalagens Avulsas</span>
+                    <div class="flex gap-3 overflow-x-auto custom-scroll pb-3 snap-x">
+                        
+                        <!-- Upsell 1: Sacola Laranja -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image36.jpg?v=338eb2e9" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Sacola Laranja</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 25</span>
+                                <button onclick="cartSystem.add('Sacola Laranja', 25, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Upsell 2: Caixa Ímã -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image44.jpg?v=338eb2e9" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Caixa com Ímã</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 65</span>
+                                <button onclick="cartSystem.add('Caixa com Ímã', 65, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Upsell 3: Maleta Signature -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Maleta Signature</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 45</span>
+                                <button onclick="cartSystem.add('Maleta Signature', 45, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Upsell 4: Sacola Transparente -->
+                        <div class="w-[130px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-3 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image37.jpg?v=338eb2e9" class="w-full h-16 object-cover rounded-lg mb-2 border border-adaptive dark:border-white/5">
+                            <div>
+                                <span class="font-serif text-sm text-gl_dark dark:text-white leading-tight mb-0.5 block truncate">Sacola Transp.</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2 pt-2 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-xs text-gl_dark dark:text-white">R$ 35</span>
+                                <button onclick="cartSystem.add('Sacola Transparente', 35, 'Embalagem Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-2 -mr-2"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Fita 2: Presente -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Presente</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Para Presentear', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                <!-- PRATELEIRA 2: FITAS -->
+                <div>
+                    <span class="text-[9px] md:text-[10px] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block"><i class="fa-solid fa-ribbon mr-2"></i> Coleção de Fitas</span>
+                    <div class="flex gap-2 overflow-x-auto custom-scroll pb-2 snap-x">
+                        
+                        <!-- Fita 0: Amor -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image43.jpg?v=338eb2e9" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Amor</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Amor', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Fita 3: Black -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image39.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Black</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Black Minimalista', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                        <!-- Fita 1: Mães -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Mães</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Mãe Soberana', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Fita 4: Soberana -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://imagensagata.carrd.co/assets/images/image40.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Soberana</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Mulher Soberana', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                        <!-- Fita 2: Presente -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Presente</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Para Presentear', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Fita 5: Ouro 24K -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=200&q=80" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Ouro 24K</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Ouro 24K', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                        <!-- Fita 3: Black -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image39.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Black</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Black Minimalista', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Fita 6: Platinum -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1543258103-a62bdc069871?auto=format&fit=crop&w=200&q=80" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Platinum</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Prata Platinum', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                        <!-- Fita 4: Soberana -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://imagensagata.carrd.co/assets/images/image40.jpg?v=708713a7" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Soberana</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Mulher Soberana', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Fita 7: Rose Gold -->
-                    <div class="w-[100px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1520638102551-7b95bc803e52?auto=format&fit=crop&w=200&q=80" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
-                        <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Rose Gold</span>
-                        <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
-                            <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
-                            <button onclick="cartSystem.add('Fita Rose Gold', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold transition-transform hover:scale-110"><i class="fa-solid fa-circle-plus text-base"></i></button>
+                        <!-- Fita 5: Ouro 24K -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=200&q=80" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Ouro 24K</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Ouro 24K', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
                         </div>
-                    </div>
 
+                        <!-- Fita 6: Platinum -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1543258103-a62bdc069871?auto=format&fit=crop&w=200&q=80" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Platinum</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Prata Platinum', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Fita 7: Rose Gold -->
+                        <div class="w-[110px] shrink-0 snap-center bg-white dark:bg-black/40 border border-adaptive dark:border-white/10 rounded-xl p-2 flex flex-col justify-between shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1520638102551-7b95bc803e52?auto=format&fit=crop&w=200&q=80" class="w-full h-10 object-cover rounded mb-2 border border-white/5 opacity-90">
+                            <span class="font-serif text-xs text-gl_dark dark:text-white leading-tight block truncate">Rose Gold</span>
+                            <div class="flex justify-between items-center mt-1 pt-1.5 border-t border-adaptive dark:border-white/10">
+                                <span class="font-bold text-[10px] text-gl_dark dark:text-white">R$ 15</span>
+                                <button onclick="cartSystem.add('Fita Rose Gold', 15, 'Fita Avulsa')" class="text-gold-adaptive hover:text-gl_gold active:scale-90 transition-all p-1.5 -mr-1.5"><i class="fa-solid fa-circle-plus text-xl"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Footer Carrinho -->
-        <div class="p-6 border-t border-adaptive dark:border-white/10 bg-white/95 dark:bg-gl_dark/95 backdrop-blur-xl shrink-0" style="padding-bottom: max(1.5rem, env(safe-area-inset-bottom));">
+        <div class="p-5 md:p-6 border-t border-adaptive dark:border-white/10 bg-white/95 dark:bg-gl_dark/95 backdrop-blur-xl shrink-0 z-10" style="padding-bottom: max(1.5rem, env(safe-area-inset-bottom));">
             
             <!-- 🟢 CALCULADORA DE FRETE INTELIGENTE -->
-            <div class="mb-4 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/10 rounded-xl p-4">
+            <div class="mb-4 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/10 rounded-xl p-3 md:p-4">
                 <span class="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-2 block">Consulte seu Frete (Com Seguro)</span>
                 <div class="flex gap-2">
-                    <input type="text" id="cart-cep" maxlength="9" placeholder="Ex: 89800-000" class="w-full bg-transparent border-b border-adaptive dark:border-white/10 py-1 outline-none text-sm text-gl_dark dark:text-white focus:border-gold-adaptive transition-colors">
+                    <!-- 🟢 CORREÇÃO: Input type=tel traz o teclado de números e text-base previne o auto-zoom do iPhone -->
+                    <input type="tel" id="cart-cep" maxlength="9" placeholder="Ex: 89800000" class="w-full bg-transparent border-b border-adaptive dark:border-white/10 py-1 outline-none text-base md:text-sm text-gl_dark dark:text-white focus:border-gold-adaptive transition-colors">
                     <button onclick="cartSystem.calculateShipping()" class="text-[10px] bg-gl_dark text-white dark:bg-white dark:text-gl_dark px-3 py-1 font-bold uppercase tracking-widest hover:bg-gl_gold transition-colors rounded">Calcular</button>
                 </div>
                 <div id="cart-shipping-result" class="mt-2 text-[10px] text-gold-adaptive font-bold hidden"></div>
             </div>
 
-            <div class="flex justify-between items-end mb-6">
+            <div class="flex justify-between items-end mb-4 md:mb-6">
                 <span class="text-xs text-gray-500 uppercase tracking-widest font-bold">Total Avaliação</span>
-                <span id="cart-total-price" class="font-serif text-4xl text-gl_dark dark:text-white font-bold">R$ 0,00</span>
+                <span id="cart-total-price" class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white font-bold">R$ 0,00</span>
             </div>
-            <button onclick="cartSystem.checkout()" class="btn-editorial bg-gl_dark !text-white dark:bg-white dark:!text-gl_dark border-gl_dark dark:border-white hover:bg-gl_gold hover:border-gl_gold w-full !py-4 tracking-[0.2em] rounded-xl font-bold">
-                <i class="fa-brands fa-whatsapp text-xl mr-3"></i> Solicitar Orçamento
+            <button onclick="cartSystem.checkout()" class="btn-editorial bg-gl_dark !text-white dark:bg-white dark:!text-gl_dark border-gl_dark dark:border-white hover:bg-gl_gold hover:border-gl_gold w-full !py-3 md:!py-4 tracking-[0.15em] md:tracking-[0.2em] rounded-xl font-bold">
+                <i class="fa-brands fa-whatsapp text-lg md:text-xl mr-3"></i> Solicitar Orçamento
             </button>
         </div>
     </div>
@@ -1584,7 +1655,7 @@
             },
 
             // Adiciona Item e atualiza visual
-            add(name, price, desc = '') {
+            add(name, price, desc = '', silent = false) {
                 // Checa se já existe para apenas aumentar a quantidade
                 const existing = this.items.find(i => i.name === name && i.desc === desc);
                 if (existing) {
@@ -1593,11 +1664,13 @@
                     this.items.push({ name, price, desc, qty: 1 });
                 }
                 
-                this.showToast(`${name} adicionado`);
                 this.updateUI();
                 
-                // Abre a Sacola automaticamente para o cliente ver o que fez (e ver o Upsell)
-                if(!this.isOpen) this.toggle();
+                // Abre a Sacola automaticamente se não for no modo silencioso
+                if(!silent) {
+                    this.showToast(`${name} adicionado`);
+                    if(!this.isOpen) this.toggle();
+                }
             },
 
             remove(index) {
@@ -1716,6 +1789,16 @@
                     alert("A sua Bag está vazia.");
                     return;
                 }
+
+                // 🟢 VALIDAÇÃO OBRIGATÓRIA: Bloqueia venda apenas de sacolas/fitas
+                const mainProducts = ['Bain Repar Master', 'Ampola Repair Gloss', 'Baby Queen BB Cream'];
+                const hasMainProduct = this.items.some(item => mainProducts.includes(item.name));
+                
+                if (!hasMainProduct) {
+                    appState.hapticFeedback();
+                    alert("Atenção: Para manter o nosso padrão de luxo, é necessária a aquisição de pelo menos um Ritual Capilar 8K (Bain Master, Ampola ou Baby Queen) para finalizar o pedido de embalagens e fitas.");
+                    return;
+                }
                 
                 appState.hapticFeedback();
                 
@@ -1724,7 +1807,8 @@
                 
                 this.items.forEach(item => {
                     t += (item.price * item.qty);
-                    itemsText += ` - ${item.qty}x ${item.name} ${item.desc ? `(${item.desc})` : ''} (R$ ${item.price * item.qty})%0A`;
+                    // 🟢 CORREÇÃO: Sintaxe limpa e validada sem caracteres de escape
+                    itemsText += ` - ${item.qty}x ${item.name} ${item.desc ? "(" + item.desc + ")" : ""} (R$ ${item.price * item.qty})%0A`;
                 });
 
                 // Soma o Frete ao orçamento final
@@ -1734,7 +1818,7 @@
                     ? `*📦 LOGÍSTICA & SEGURO:*%0A - ${this.shippingText}: R$ ${this.shippingCost},00%0A%0A` 
                     : `*📦 LOGÍSTICA & SEGURO:*%0A - Frete não calculado (A definir com o Concierge)%0A%0A`;
                 
-                const finalMsg = `Olá, *Concierge GL PRO* 💎%0AGostaria de oficializar a minha outorga.%0A%0A*🛍️ MINHA BAG:*%0A${itemsText}%0A${freteInfo}*💎 INVESTIMENTO TOTAL:* ${this.formatMoney(t)}%0A%0AAguardar instruções para ativação.`;
+                const finalMsg = `Olá, *Concierge GL PRO* 💎%0AGostaria de oficializar a minha outorga.%0A%0A*🛍️ MINHA BAG:*%0A${itemsText}%0A${freteInfo}*💎 INVESTIMENTO TOTAL:* ${cartSystem.formatMoney(t)}%0A%0AAguardar instruções para ativação.`;
                 
                 window.open(`https://wa.me/5549991618389?text=${finalMsg}`, '_blank');
             }
@@ -1857,7 +1941,7 @@
                 }
             },
 
-            // 🟢 MODIFICADO: Agora adiciona o Pack Bespoke completo à Bag em vez do Checkout
+            // 🟢 MODIFICADO: Agora adiciona os itens individualmente à Bag
             addToCart() {
                 const p1 = document.getElementById('md-p1').checked;
                 const p2 = document.getElementById('md-p2').checked;
@@ -1867,36 +1951,36 @@
                     alert("Escolha ao menos um Ritual 8K para montar a sua Bespoke."); 
                     return; 
                 }
+
+                let added = false;
                 
-                let t = 0;
-                let descItems = [];
-                
-                if(p1) { t += 147; descItems.push("Bain Master"); }
-                if(p2) { t += 289; descItems.push("Ampola Gloss"); }
-                if(p3) { t += 247; descItems.push("Baby Queen"); }
+                // Adiciona no modo "silencioso" (true) para não aparecer 5 notificações seguidas
+                if(p1) { cartSystem.add('Bain Repar Master', 147, 'Ritual 8K', true); added = true; }
+                if(p2) { cartSystem.add('Ampola Repair Gloss', 289, 'Ritual 8K', true); added = true; }
+                if(p3) { cartSystem.add('Baby Queen BB Cream', 247, 'Ritual 8K', true); added = true; }
 
                 const pkg = document.querySelector('input[name="md-pkg"]:checked');
                 if (pkg) { 
                     const data = pkg.value.split('|'); 
-                    t += parseFloat(data[0]); 
-                    descItems.push(data[1]); 
+                    cartSystem.add(data[1], parseFloat(data[0]), 'Embalagem Bespoke', true);
                 }
                 
                 const rib = document.querySelector('input[name="md-ribbon"]:checked');
-                if(rib && rib.value !== 'Sem Fita') { 
-                    descItems.push("Fita " + rib.value.replace(/"/g, '')); 
+                if(rib && rib.value !== 'Sem Fita' && rib.value !== '"Sem Fita"') { 
+                    cartSystem.add("Fita " + rib.value.replace(/"/g, ''), 15, 'Acessório Bespoke', true);
                 }
                 
                 const hasCard = document.querySelector('input[name="md-has-card"]:checked').value === 'yes';
                 if(hasCard) {
-                    descItems.push("Cartão VIP");
+                    const msgBox = document.getElementById('md-message').value.trim();
+                    const descCard = msgBox !== "" ? `"${msgBox}"` : "Sem dedicatória";
+                    cartSystem.add('Cartão VIP Bespoke', 0, descCard, true);
                 }
 
-                // Junta todas as especificações num texto para o carrinho
-                const descFull = descItems.join(' + ');
-                
-                // Adiciona ao Motor do Carrinho
-                cartSystem.add('Kit Ateliê Bespoke', t, descFull);
+                if(added) {
+                    cartSystem.showToast("Bespoke transferido para a Bag");
+                    if(!cartSystem.isOpen) cartSystem.toggle();
+                }
             }
         };
 
@@ -1946,7 +2030,7 @@
                     title: 'FAQ & Rituais de Uso',
                     content: `
                         <p><strong>1. Como devo usar o Bain Repar Master?</strong><br>Aja como um íman de impurezas. Aplique sobre os cabelos perfeitamente úmidos, massageie suavemente o couro cabeludo até formar uma espuma de limpeza estrutural e enxágue totalmente. Repita se o cabelo estiver com excesso de resíduos.</p>
-                        <p><strong>2. A Ampola Repair Gloss substitui a minha máscara tradicional?</strong><br>Sim. A sua concentração de matriz e lipídios nobres (Nutriamido CAP) exige apenas uma aplicação de 3 minutos para encorpar a estrutura e estabilizar o pH. Substitui máscaras pesadas que dilatam a fibra.</p>
+                        <p><strong>2. A Ampola Repair Gloss substitui a minha máscara tradicional?</strong><br>Sim. A sua concentration de matriz e lipídios nobres (Nutriamido CAP) exige apenas uma aplicação de 3 minutos para encorpar a estrutura e estabilizar o pH. Substitui máscaras pesadas que dilatam a fibra.</p>
                         <p><strong>3. O Baby Queen (10 em 1) possui proteção térmica?</strong><br>Absolutamente. O Baby Queen possui a barreira inteligente Deca-Shield Matrix, oferecendo proteção estrutural extrema contra o calor de secadores, babyliss e pranchas, fixando o tratamento.</p>
                         <p><strong>4. Os produtos são cruelty-free?</strong><br>Garantidamente. A GL PRO orgulha-se da sua engenharia biológica sem testes em animais, mantendo os mais altos padrões éticos da alta cosmética.</p>
                     `
