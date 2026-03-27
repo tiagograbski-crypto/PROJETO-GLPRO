@@ -61,59 +61,29 @@
     
     <style>
         /* BASE & INVISIBLE UI */
-        html { 
-            scroll-behavior: smooth; 
-            font-size: 16px; 
-        }
-        
+        html { scroll-behavior: smooth; font-size: 16px; }
         body { 
-            background-color: #FAF9F6; 
-            color: #161616; 
+            background-color: #FAF9F6; color: #161616; 
             transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 1.2s ease; 
-            overflow-x: hidden; 
-            -webkit-font-smoothing: antialiased; 
-            text-rendering: optimizeLegibility;
+            overflow-x: hidden; text-rendering: optimizeLegibility;
         }
-        
-        .dark body { 
-            background-color: #161616; 
-            color: #FAF9F6; 
-        }
+        .dark body { background-color: #161616; color: #FAF9F6; }
 
         /* PRELOADER CINEMÁTICO */
         #luxury-preloader {
-            position: fixed; 
-            inset: 0; 
-            z-index: 99999;
-            background-color: #161616;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
+            position: fixed; inset: 0; z-index: 99999; background-color: #161616;
+            display: flex; align-items: center; justify-content: center;
             transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.5s;
         }
-        
-        #luxury-preloader.hide { 
-            opacity: 0; 
-            visibility: hidden; 
-            pointer-events: none; 
-        }
+        #luxury-preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
 
         /* TEXTURA LIQUID CHROME */
         body::before {
-            content: ""; 
-            position: fixed; 
-            inset: 0; 
-            z-index: 9999;
+            content: ""; position: fixed; inset: 0; z-index: 9999;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.02; 
-            pointer-events: none; 
-            mix-blend-mode: overlay;
+            opacity: 0.02; pointer-events: none; mix-blend-mode: overlay;
         }
-        
-        .dark body::before { 
-            opacity: 0.035; 
-            mix-blend-mode: screen; 
-        }
+        .dark body::before { opacity: 0.035; mix-blend-mode: screen; }
         
         ::-webkit-scrollbar { width: 3px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -127,35 +97,22 @@
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
         .focus-ring:focus-visible { outline: 1px solid #C5A059; outline-offset: 4px; }
 
         /* BOTÕES COM LIQUID SHEEN */
         .btn-editorial {
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center;
-            padding: 1rem 2.2rem; 
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.35em; 
-            font-weight: 600;
-            border: 1px solid currentColor; 
-            border-radius: 0;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
-            cursor: pointer;
-            background: transparent; 
-            overflow: hidden; 
-            position: relative;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1rem 2.2rem; font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.35em; font-weight: 600;
+            border: 1px solid currentColor; border-radius: 0;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;
+            background: transparent; overflow: hidden; position: relative;
         }
-        
         .btn-editorial::after {
             content: ''; position: absolute; top: -50%; left: -100%; width: 50%; height: 200%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
             transform: rotate(25deg); transition: 0.8s;
         }
-        
         .btn-editorial:hover::after { left: 150%; }
         .btn-editorial-solid { background: #161616 !important; color: #FAF9F6 !important; border: 1px solid #161616 !important; }
         .dark .btn-editorial-solid { background: #FAF9F6 !important; color: #161616 !important; border-color: #FAF9F6 !important; }
@@ -164,9 +121,10 @@
         .btn-editorial-solid:hover { background: transparent !important; color: #161616 !important; }
         .dark .btn-editorial-solid:hover { background: transparent !important; color: #FAF9F6 !important; }
 
+        /* SLIDER E ANIMAÇÕES */
         .hero-slide { opacity: 0; visibility: hidden; transition: opacity 2.5s ease, transform 2.5s ease; position: absolute; inset: 0; }
         .hero-slide.active { opacity: 1; visibility: visible; z-index: 10; }
-
+        
         .ba-slider-container { position: relative; width: 100%; overflow: hidden; cursor: ew-resize; }
         .ba-after { position: absolute; inset: 0; clip-path: inset(0 0 0 50%); } 
         .ba-handle-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: #FAF9F6; pointer-events: none; z-index: 5; }
@@ -181,6 +139,7 @@
         }
         .animate-scroll-line { animation: scrollLine 3s infinite; }
 
+        /* HEADER E SCROLL */
         #main-header { transition: background 0.5s, color 0.5s; }
         body.is-scrolled #main-header { background: rgba(22,22,22,0.8); backdrop-filter: blur(15px); }
         html:not(.dark) body.is-scrolled #main-header { background: rgba(250,249,246,0.8); color: #161616; }
@@ -205,12 +164,12 @@
 </head>
 <body class="antialiased font-sans">
 
-    <!-- 🟢 PRELOADER DE ALTA COSTURA -->
+    <!-- PRELOADER DE ALTA COSTURA -->
     <div id="luxury-preloader">
         <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=f6502114" alt="GL PRO" class="h-12 md:h-16 invert opacity-90 animate-pulse">
     </div>
 
-    <!-- 🟢 TOAST NOTIFICATION SENSORIAL -->
+    <!-- TOAST NOTIFICATION SENSORIAL -->
     <div id="toast-notification" class="fixed top-24 right-4 md:right-12 bg-black/80 backdrop-blur-2xl border border-white/10 text-white px-6 py-4 rounded-none shadow-2xl transform translate-x-[150%] transition-transform duration-700 z-[6000] flex items-center gap-4">
         <i class="fa-solid fa-check text-gold-adaptive"></i>
         <div class="flex flex-col">
@@ -219,7 +178,7 @@
         </div>
     </div>
 
-    <!-- 🟢 CABEÇALHO DINÂMICO -->
+    <!-- CABEÇALHO DINÂMICO -->
     <header id="main-header" class="fixed w-full top-0 z-[500] px-6 md:px-12 py-6 flex justify-between items-center text-white">
         <button class="cursor-pointer focus-ring bg-transparent border-none" onclick="appState.navigate('soberania')">
             <img id="main-logo" src="https://imagensagata.carrd.co/assets/images/image34.png?v=f6502114" alt="Logótipo GL PRO" class="h-8 md:h-12 w-auto object-contain transition-all duration-700 invert">
@@ -237,7 +196,7 @@
         </div>
     </header>
 
-    <!-- 🟢 MENU MOBILE DE VIDRO LÍQUIDO -->
+    <!-- MENU MOBILE DE VIDRO LÍQUIDO -->
     <div id="mobile-menu" class="fixed inset-0 bg-gl_dark/95 backdrop-blur-3xl z-[498] opacity-0 pointer-events-none transition-all duration-700 flex flex-col items-center justify-center gap-12">
         <button onclick="appState.navigate('soberania'); appState.toggleMobileMenu();" class="text-4xl font-serif text-white italic hover:text-gold-adaptive transition-colors">Soberania</button>
         <button onclick="appState.navigate('boutique'); appState.toggleMobileMenu();" class="text-4xl font-serif text-white italic hover:text-gold-adaptive transition-colors">Boutique</button>
@@ -246,7 +205,7 @@
         <button onclick="appState.toggleMobileMenu()" class="absolute top-8 right-8 p-4 text-white"><i class="fa-solid fa-xmark text-3xl"></i></button>
     </div>
 
-    <!-- 🟢 COFRE DIGITAL (MODAL DE SENHA RITUAL) -->
+    <!-- MODAIS DE INFRAESTRUTURA -->
     <dialog id="ritual-gate-modal" class="fixed inset-0 z-[6000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
         <div class="absolute inset-0 bg-gl_dark/98 backdrop-blur-3xl" onclick="appState.closeRitualGate()"></div>
         <div class="relative bg-gl_dark border border-white/10 w-[95%] max-w-md p-12 rounded-none shadow-2xl flex flex-col transform scale-95 opacity-0 transition-all duration-700">
@@ -261,7 +220,6 @@
         </div>
     </dialog>
 
-    <!-- 🟢 MODAL DE VÍDEO -->
     <dialog id="video-modal" class="fixed inset-0 z-[4000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
         <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="appState.closeVideoModal()"></div>
         <div class="relative w-[95%] max-w-5xl aspect-video rounded-none overflow-hidden shadow-2xl bg-black" id="video-content-box">
@@ -270,7 +228,6 @@
         </div>
     </dialog>
 
-    <!-- 🟢 GAVETAS DE PREÇO (B2C/B2B) -->
     <dialog id="pricing-modal" class="fixed inset-0 z-[5500] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center" aria-modal="true">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-xl" onclick="appState.closePricingModal()"></div>
         <div class="relative bg-gl_surface_light dark:bg-gl_surface_dark border border-adaptive dark:border-white/10 w-[90%] max-w-md p-6 md:p-10 rounded-3xl shadow-2xl flex flex-col transform scale-95 opacity-0 transition-all duration-500 max-h-[95vh]" id="pricing-content-box">
@@ -298,43 +255,6 @@
         </div>
     </dialog>
 
-    <dialog id="b2b-purchase-modal" class="fixed inset-0 z-[5000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="appState.closeB2BPurchaseModal()"></div>
-        <div class="relative bg-gl_surface_light dark:bg-gl_surface_dark border border-adaptive dark:border-white/10 w-[90%] max-w-lg p-10 md:p-14 rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-700" id="b2b-purchase-content">
-            <div class="text-center" id="b2b-purchase-initial">
-                <i class="fa-solid fa-crown text-3xl text-gold-adaptive mb-6 animate-pulse"></i>
-                <h3 id="b2b-purchase-title" class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white mb-2 editorial-title">Candidatura de Elite</h3>
-                <p class="font-sans text-[0.65rem] text-gray-500 mb-8 leading-relaxed">Aprovamos o fornecimento a apenas <strong>1 (um) salão homologado por região</strong>. Insira os dados para auditoria de perfil.</p>
-                <div class="space-y-4">
-                    <input type="text" id="b2b-cnpj-input" placeholder="C.N.P.J. DO SALÃO" class="w-full bg-white dark:bg-white/5 border border-adaptive dark:border-white/10 text-gl_dark dark:text-white text-center tracking-[0.1em] outline-none py-3 text-sm focus:border-gold-adaptive rounded-none">
-                    <input type="text" id="b2b-cep-input" placeholder="C.E.P. DA REGIÃO" maxlength="9" class="w-full bg-white dark:bg-white/5 border border-adaptive dark:border-white/10 text-gl_dark dark:text-white text-center tracking-[0.1em] outline-none py-3 text-sm focus:border-gold-adaptive rounded-none">
-                    <button onclick="appState.verifyB2BPurchaseModal()" class="btn-editorial bg-gold-adaptive text-gl_dark border-gold-adaptive hover:bg-transparent dark:hover:text-white w-full font-bold mt-4">Enviar para Auditoria</button>
-                </div>
-            </div>
-            <button onclick="appState.closeB2BPurchaseModal()" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gl_dark dark:hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-    </dialog>
-
-    <dialog id="tracking-modal" class="fixed inset-0 z-[4000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="appState.closeTrackingModal()"></div>
-        <div class="relative bg-gl_surface_light dark:bg-gl_surface_dark border border-adaptive dark:border-white/10 w-[90%] max-w-lg p-10 md:p-16 rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-500" id="tracking-content-box">
-            <div class="text-center" id="tracking-initial-state">
-                <i class="fa-solid fa-box-open text-2xl text-gold-adaptive mb-6"></i>
-                <h3 class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white mb-2 editorial-title">Status da Encomenda</h3>
-                <p class="font-sans text-xs text-gray-500 mb-8">Insira o código enviado para o seu e-mail para acompanhar o trajeto do seu pedido de luxo.</p>
-                <div class="space-y-6">
-                    <input type="text" id="tracking-code" placeholder="GL-8K-XXXX" class="w-full bg-transparent border-b border-adaptive dark:border-gray-700 text-gl_dark dark:text-white text-center tracking-[0.2em] outline-none py-3 text-sm uppercase mb-8 focus:border-gold-adaptive transition-colors">
-                    <button onclick="appState.verifyTracking()" class="btn-editorial btn-editorial-solid w-full">Localizar Embalagem</button>
-                </div>
-            </div>
-            <div class="text-center hidden py-10" id="tracking-loading-state">
-                <i class="fa-solid fa-circle-notch fa-spin text-3xl text-gold-adaptive mb-6"></i>
-                <p class="font-sans text-xs uppercase tracking-widest text-gray-500 font-bold">A conectar à rede logística...</p>
-            </div>
-            <button onclick="appState.closeTrackingModal()" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gl_dark dark:hover:text-white transition-colors"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-    </dialog>
-
     <dialog id="legal-modal" class="fixed inset-0 z-[6000] w-full h-full bg-transparent p-0 m-0 hidden items-center justify-center">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-xl" onclick="appState.closeLegalModal()"></div>
         <div class="relative bg-gl_surface_light dark:bg-gl_surface_dark border border-adaptive dark:border-white/10 w-[95%] max-w-3xl max-h-[85vh] p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col transform scale-95 opacity-0 transition-all duration-500" id="legal-content-box">
@@ -344,13 +264,13 @@
                 <h3 id="legal-title" class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white editorial-title">Título Institucional</h3>
             </div>
             <div id="legal-body" class="flex-grow overflow-y-auto pr-2 md:pr-6 font-sans text-xs md:text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed space-y-6 pb-6 custom-scroll">
-                <!-- O conteúdo é injetado aqui -->
+                <!-- O conteúdo legal é injetado aqui -->
             </div>
         </div>
     </dialog>
 
     <!-- ================================================================================= -->
-    <!-- VIEW 1: HOME (#soberania)                                                         -->
+    <!-- VIEW 1: HOME (#soberania) - APENAS UMA VEZ                                        -->
     <!-- ================================================================================= -->
     <main id="view-soberania" class="view-section active">
         <section class="w-full h-[100dvh] relative overflow-hidden bg-gl_dark" id="hero-container">
@@ -391,14 +311,14 @@
             </div>
         </section>
 
-        <!-- MANIFESTO & SELOS -->
+        <!-- MANIFESTO -->
         <section class="py-32 px-8 container mx-auto text-center reveal">
             <div class="w-[1px] h-20 bg-gl_gold mx-auto mb-10"></div>
             <h3 class="font-serif text-4xl md:text-6xl mb-12 editorial-title text-gl_dark dark:text-white">Bio-Arquitetura Capilar</h3>
             <p class="font-sans text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed italic">"Não criamos apenas cosmética. Desenhamos a estrutura molecular para refletir a luz na sua forma mais pura."</p>
         </section>
-
-        <!-- SERVIÇOS DE SALÃO COM GAVETAS DE PREÇO -->
+        
+        <!-- SERVIÇOS (LISO / GLOSS) -->
         <section class="py-24 px-8 bg-gl_surface_light dark:bg-gl_surface_dark border-t border-adaptive dark:border-white/5">
             <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <!-- Liso Soberano -->
@@ -420,18 +340,16 @@
                             <div class="pt-10 space-y-6">
                                 <div class="bg-gl_surface_light dark:bg-white/5 p-6 border border-adaptive dark:border-white/5 shadow-inner">
                                     <div class="flex justify-between items-center border-b border-adaptive dark:border-white/10 pb-3 mb-4">
-                                        <span class="font-serif text-2xl font-bold text-gl_dark dark:text-white">01. Perfil P</span>
-                                        <span class="text-[0.5rem] uppercase bg-gl_gold/20 text-gl_gold px-2 py-1 font-bold rounded-sm">Até o Maxilar</span>
+                                        <span class="font-serif text-2xl font-bold text-gl_dark dark:text-white">Valores de Referência</span>
+                                        <span class="text-[0.5rem] uppercase bg-gl_gold/20 text-gl_gold px-2 py-1 font-bold rounded-sm">Premium</span>
                                     </div>
                                     <div class="space-y-2 text-sm uppercase tracking-widest font-bold opacity-80 text-gray-500 dark:text-gray-300">
-                                        <div class="flex justify-between"><span>Fibra Fina</span><span>R$ 397</span></div>
-                                        <div class="flex justify-between"><span>Fibra Média</span><span>R$ 497</span></div>
-                                        <div class="flex justify-between"><span>Fibra Grossa</span><span class="text-gl_gold">R$ 597</span></div>
+                                        <div class="flex justify-between"><span>Curto / Médio</span><span>R$ 397 - R$ 597</span></div>
+                                        <div class="flex justify-between"><span>Longo / Extra</span><span class="text-gl_gold">R$ 797 - R$ 1.297</span></div>
                                     </div>
                                 </div>
-                                <p class="font-sans text-[0.55rem] text-gray-500 text-center italic mt-4">* Valores base ilustrativos. Avaliação exata após anamnese.</p>
                                 <div class="grid grid-cols-1 gap-4 pt-4">
-                                    <button onclick="window.open('https://wa.me/5549991618389?text=Olá,%20Concierge!%20Gostaria%20de%20agendar%20uma%20avaliação%20para%20o%20Liso%20Soberano%20na%20unidade%20Chapecó.')" class="btn-editorial bg-gl_dark text-white dark:bg-white dark:text-black w-full hover:bg-transparent hover:text-gl_dark dark:hover:bg-transparent dark:hover:text-white transition-all"><i class="fa-brands fa-whatsapp mr-3"></i> Agendar em Chapecó</button>
+                                    <button onclick="window.open('https://wa.me/5549991618389?text=Olá,%20Concierge!%20Gostaria%20de%20agendar%20o%20Liso%20Soberano.')" class="btn-editorial bg-gl_dark text-white dark:bg-white dark:text-black w-full hover:bg-transparent hover:text-gl_dark dark:hover:bg-transparent dark:hover:text-white transition-all"><i class="fa-brands fa-whatsapp mr-3"></i> Agendar Presencial</button>
                                 </div>
                             </div>
                         </div>
@@ -456,11 +374,11 @@
                         <div id="drawer-gloss" class="max-h-0 opacity-0 overflow-hidden transition-all duration-700 mt-0 text-left">
                             <div class="pt-10 space-y-4">
                                 <div class="bg-gl_surface_light dark:bg-black/40 p-6 border border-adaptive dark:border-white/5 flex justify-between items-center font-bold shadow-inner">
-                                    <span class="text-[0.6rem] uppercase tracking-widest text-purple-600 dark:text-purple-400">Protocolo Cabelo Curto</span>
-                                    <span class="font-serif text-2xl text-gl_dark dark:text-white">R$ 280</span>
+                                    <span class="text-[0.6rem] uppercase tracking-widest text-purple-600 dark:text-purple-400">Protocolos Diversos</span>
+                                    <span class="font-serif text-2xl text-gl_dark dark:text-white">R$ 280 a R$ 500+</span>
                                 </div>
                                 <div class="grid grid-cols-1 gap-4 pt-4">
-                                    <button onclick="window.open('https://wa.me/5549991618389?text=Olá,%20Concierge!%20Gostaria%20de%20agendar%20uma%20avaliação%20para%20o%20Gloss%20Molecular.')" class="btn-editorial bg-purple-600 dark:bg-purple-400 text-white dark:text-gl_dark border-purple-600 dark:border-purple-400 w-full font-bold tracking-widest hover:bg-transparent hover:text-purple-600 dark:hover:bg-transparent dark:hover:text-purple-400 transition-all"><i class="fa-brands fa-whatsapp mr-3"></i> Agendar Presencial</button>
+                                    <button onclick="window.open('https://wa.me/5549991618389?text=Olá,%20Concierge!%20Gostaria%20de%20agendar%20o%20Gloss%20Molecular.')" class="btn-editorial bg-purple-600 dark:bg-purple-400 text-white dark:text-gl_dark border-purple-600 dark:border-purple-400 w-full font-bold tracking-widest hover:bg-transparent hover:text-purple-600 dark:hover:bg-transparent dark:hover:text-purple-400 transition-all"><i class="fa-brands fa-whatsapp mr-3"></i> Agendar Presencial</button>
                                 </div>
                             </div>
                         </div>
@@ -471,7 +389,7 @@
     </main>
 
     <!-- ================================================================================= -->
-    <!-- VIEW 2: BOUTIQUE B2C (#boutique)                                                  -->
+    <!-- VIEW 2: BOUTIQUE B2C (#boutique) - APENAS UMA VEZ                                 -->
     <!-- ================================================================================= -->
     <main id="view-boutique" class="view-section">
         <section class="w-full h-[60vh] relative overflow-hidden bg-gl_dark flex items-center justify-center">
@@ -483,147 +401,154 @@
             </div>
         </section>
 
-        <!-- 🟢 NOVO LAYOUT: ATELIÊ BESPOKE (MOVIDO PARA CIMA E COM NOVO SELO DE FITA) -->
-        <section class="w-full bg-gl_surface_light dark:bg-white/5 py-32 border-b border-adaptive dark:border-white/10" id="bespoke-section">
-            <div class="container mx-auto flex flex-col lg:flex-row gap-12 max-w-7xl items-start px-8">
+        <!-- 🟢 NOVO LAYOUT: ATELIÊ BESPOKE NO TOPO (ECRÃ ÚNICO SIDE-BY-SIDE) -->
+        <section class="w-full bg-gl_surface_light dark:bg-white/5 py-24 border-b border-adaptive dark:border-white/10" id="bespoke-section">
+            <div class="container mx-auto px-8 max-w-7xl">
                 
-                <div class="w-full lg:w-5/12 flex flex-col lg:sticky lg:top-[140px]">
-                    <div class="mb-8">
-                        <h3 class="font-serif text-5xl italic text-gl_dark dark:text-white mb-4">Ateliê Bespoke</h3>
-                        <p class="font-sans text-[0.55rem] text-gray-500 dark:text-gray-400 uppercase tracking-widest">Monte o seu presente exclusivo. O estoque de embalagens é estritamente limitado.</p>
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+                    
+                    <!-- 🟢 LADO ESQUERDO: TÍTULO E IMAGEM (Sticky para acompanhar as opções) -->
+                    <div class="w-full lg:w-5/12 flex flex-col lg:sticky lg:top-[120px] self-start z-10 reveal">
+                        <div class="mb-8">
+                            <span class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-[0.4em] mb-2 block">Personalização de Luxo</span>
+                            <h3 class="font-serif text-5xl md:text-6xl italic text-gl_dark dark:text-white mb-3">Ateliê Bespoke</h3>
+                            <p class="font-sans text-[0.65rem] text-gray-500 dark:text-gray-400 uppercase tracking-widest leading-relaxed">Monte o seu presente exclusivo. O estoque de embalagens é estritamente limitado.</p>
+                        </div>
+
+                        <div class="relative w-full aspect-square bg-gl_dark rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-black/80 z-0"></div>
+                            
+                            <!-- Box da Embalagem -->
+                            <img id="md-preview-bg" src="https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700">
+                            
+                            <!-- 🟢 O NOVO EMBLEMA DA FITA (SELO DIAGONAL CANTO SUPERIOR ESQUERDO) -->
+                            <div id="md-preview-ribbon" class="absolute top-12 -left-16 w-80 h-14 -rotate-45 overflow-hidden border-y border-gl_gold/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] opacity-0 transition-opacity duration-700 z-40 bg-gl_dark pointer-events-none">
+                                <img id="md-preview-ribbon-img" src="" class="w-full h-full object-cover opacity-90 mix-blend-screen">
+                            </div>
+
+                            <!-- Frascos em cima -->
+                            <div id="md-preview-products" class="absolute bottom-8 w-full flex justify-center items-end gap-3 px-6 z-30 h-[45%]"></div>
+                        </div>
                     </div>
-                    <div class="relative w-full aspect-[4/5] md:aspect-square bg-gl_dark rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-black/80 z-0"></div>
-                        
-                        <!-- Box da Embalagem -->
-                        <img id="md-preview-bg" src="https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700">
-                        
-                        <!-- 🟢 O NOVO EMBLEMA DA FITA (SELO DIAGONAL CANTO SUPERIOR ESQUERDO) -->
-                        <div id="md-preview-ribbon" class="absolute top-12 -left-16 w-80 h-14 -rotate-45 overflow-hidden border-y border-gl_gold/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] opacity-0 transition-opacity duration-700 z-40 bg-gl_dark pointer-events-none">
-                            <img id="md-preview-ribbon-img" src="" class="w-full h-full object-cover opacity-90 mix-blend-screen">
-                        </div>
 
-                        <!-- Frascos em cima -->
-                        <div id="md-preview-products" class="absolute bottom-10 w-full flex justify-center items-end gap-3 px-6 z-30 h-1/2"></div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-7/12 space-y-8">
-                    <div class="bg-white dark:bg-black/40 p-8 md:p-12 border border-adaptive dark:border-white/5 shadow-2xl relative pb-32 lg:pb-12 rounded-[2rem]">
-                        
-                        <!-- 1. Rituais -->
-                        <div class="border-b border-adaptive dark:border-white/10 pb-8">
-                            <span class="text-[0.6rem] font-bold text-gold-adaptive uppercase mb-6 block">1. Selecionar Rituais</span>
-                            <div class="compact-grid">
-                                <label class="flex items-center gap-4 p-4 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-2xl cursor-pointer hover:border-gl_gold transition-all min-h-[80px]">
-                                    <input type="checkbox" id="md-p1" class="w-6 h-6 accent-gl_gold rounded-full" checked onchange="mdBuilder.calc()">
-                                    <div class="flex flex-col">
-                                        <span class="font-serif text-lg text-gl_dark dark:text-white">Bain Master</span>
-                                        <span class="text-[0.5rem] font-bold text-gray-500 uppercase">R$ 147</span>
-                                    </div>
-                                </label>
-                                <label class="flex items-center gap-4 p-4 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-2xl cursor-pointer hover:border-gl_gold transition-all min-h-[80px]">
-                                    <input type="checkbox" id="md-p2" class="w-6 h-6 accent-gl_gold rounded-full" checked onchange="mdBuilder.calc()">
-                                    <div class="flex flex-col">
-                                        <span class="font-serif text-lg text-gl_dark dark:text-white">Ampola Repair</span>
-                                        <span class="text-[0.5rem] font-bold text-gray-500 uppercase">R$ 289</span>
-                                    </div>
-                                </label>
-                                <label class="flex items-center gap-4 p-4 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-2xl cursor-pointer hover:border-gl_gold transition-all min-h-[80px]">
-                                    <input type="checkbox" id="md-p3" class="w-6 h-6 accent-gl_gold rounded-full" checked onchange="mdBuilder.calc()">
-                                    <div class="flex flex-col">
-                                        <span class="font-serif text-lg text-gl_dark dark:text-white">Baby Queen</span>
-                                        <span class="text-[0.5rem] font-bold text-gray-500 uppercase">R$ 247</span>
-                                    </div>
-                                </label>
+                    <!-- 🟢 LADO DIREITO: OPÇÕES COMPACTAS PARA MONTAR A MALETA -->
+                    <div class="w-full lg:w-7/12 reveal" style="transition-delay: 0.2s;">
+                        <div class="bg-white dark:bg-black/40 p-6 md:p-8 border border-adaptive dark:border-white/5 shadow-2xl relative rounded-[2rem]">
+                            
+                            <!-- 1. Rituais -->
+                            <div class="border-b border-adaptive dark:border-white/10 pb-5">
+                                <span class="text-[0.55rem] font-bold text-gold-adaptive uppercase mb-4 block">1. Selecionar Rituais</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <label class="flex items-center gap-3 p-3 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-xl cursor-pointer hover:border-gl_gold transition-all min-h-[65px]">
+                                        <input type="checkbox" id="md-p1" class="w-5 h-5 accent-gl_gold rounded-full shrink-0" checked onchange="mdBuilder.calc()">
+                                        <div class="flex flex-col">
+                                            <span class="font-serif text-base leading-tight text-gl_dark dark:text-white">Bain Master</span>
+                                            <span class="text-[0.45rem] font-bold text-gray-500 uppercase mt-1">R$ 147</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-xl cursor-pointer hover:border-gl_gold transition-all min-h-[65px]">
+                                        <input type="checkbox" id="md-p2" class="w-5 h-5 accent-gl_gold rounded-full" checked onchange="mdBuilder.calc()">
+                                        <div class="flex flex-col">
+                                            <span class="font-serif text-base leading-tight text-gl_dark dark:text-white">Ampola Repair</span>
+                                            <span class="text-[0.45rem] font-bold text-gray-500 uppercase mt-1">R$ 289</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/5 rounded-xl cursor-pointer hover:border-gl_gold transition-all min-h-[65px]">
+                                        <input type="checkbox" id="md-p3" class="w-5 h-5 accent-gl_gold rounded-full" checked onchange="mdBuilder.calc()">
+                                        <div class="flex flex-col">
+                                            <span class="font-serif text-base leading-tight text-gl_dark dark:text-white">Baby Queen</span>
+                                            <span class="text-[0.45rem] font-bold text-gray-500 uppercase mt-1">R$ 247</span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 2. Embalagem -->
-                        <div class="border-b border-adaptive dark:border-white/10 py-8">
-                            <span class="text-[0.6rem] font-bold text-gl_dark dark:text-white uppercase mb-6 block">2. Embalagem de Luxo</span>
-                            <div class="grid grid-cols-3 gap-3">
-                                <label class="cursor-pointer group text-center">
-                                    <input type="radio" name="md-pkg" value="45|Maleta Signature|ID_MALETA|https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="peer sr-only" checked onchange="mdBuilder.calc()">
-                                    <div class="aspect-square border-2 border-transparent peer-checked:border-gl_gold rounded-2xl overflow-hidden mb-2 bg-gl_surface_light dark:bg-white/5">
-                                        <img src="https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="w-full h-full object-cover">
-                                    </div>
-                                    <span class="text-[0.45rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white">Maleta (+R$45)</span>
-                                </label>
-                                <label class="cursor-pointer group text-center">
-                                    <input type="radio" name="md-pkg" value="65|Caixa Ímã|ID_CAIXA|https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=800&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
-                                    <div class="aspect-square border-2 border-transparent peer-checked:border-gl_gold rounded-2xl overflow-hidden mb-2 bg-gl_surface_light dark:bg-white/5">
-                                        <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-                                    </div>
-                                    <span class="text-[0.45rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white">Caixa (+R$65)</span>
-                                </label>
-                                <label class="cursor-pointer group text-center">
-                                    <input type="radio" name="md-pkg" value="25|Sacola Icon|ID_SACOLA|https://imagensagata.carrd.co/assets/images/image36.jpg?v=0ddb2420" class="peer sr-only" onchange="mdBuilder.calc()">
-                                    <div class="aspect-square border-2 border-transparent peer-checked:border-gl_gold rounded-2xl overflow-hidden mb-2 bg-gl_surface_light dark:bg-white/5">
-                                        <img src="https://imagensagata.carrd.co/assets/images/image36.jpg?v=0ddb2420" class="w-full h-full object-cover">
-                                    </div>
-                                    <span class="text-[0.45rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white">Icon (+R$25)</span>
-                                </label>
+                            <!-- 2. Embalagem -->
+                            <div class="border-b border-adaptive dark:border-white/10 py-5">
+                                <span class="text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase mb-4 block">2. Embalagem de Luxo</span>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="cursor-pointer group text-center">
+                                        <input type="radio" name="md-pkg" value="45|Maleta Signature|ID_MALETA|https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="peer sr-only" checked onchange="mdBuilder.calc()">
+                                        <div class="aspect-square border-2 border-transparent peer-checked:border-gl_gold rounded-xl overflow-hidden mb-2 bg-gl_surface_light dark:bg-white/5">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image35.jpg?v=0ddb2420" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="text-[0.45rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white">Maleta (+R$45)</span>
+                                    </label>
+                                    <label class="cursor-pointer group text-center">
+                                        <input type="radio" name="md-pkg" value="65|Caixa Ímã|ID_CAIXA|https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=800&q=80" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="aspect-square border-2 border-transparent peer-checked:border-gl_gold rounded-xl overflow-hidden mb-2 bg-gl_surface_light dark:bg-white/5">
+                                            <img src="https://images.unsplash.com/photo-1613235788366-270e704040d2?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="text-[0.45rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white">Caixa (+R$65)</span>
+                                    </label>
+                                    <label class="cursor-pointer group text-center">
+                                        <input type="radio" name="md-pkg" value="25|Sacola Icon|ID_SACOLA|https://imagensagata.carrd.co/assets/images/image36.jpg?v=0ddb2420" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="aspect-square border-2 border-transparent peer-checked:border-gl_gold rounded-xl overflow-hidden mb-2 bg-gl_surface_light dark:bg-white/5">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image36.jpg?v=0ddb2420" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="text-[0.45rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white">Icon (+R$25)</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 3. Fita de Cortesia -->
-                        <div class="border-b border-adaptive dark:border-white/10 py-8">
-                            <span class="text-[0.6rem] font-bold text-gl_dark dark:text-white uppercase mb-6 block">3. Fita de Cortesia</span>
-                            <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 snap-x">
-                                <label class="cursor-pointer group flex-shrink-0 w-20 snap-center text-center">
-                                    <input type="radio" name="md-ribbon" value='"Mãe Soberana"' data-img="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="peer sr-only" checked onchange="mdBuilder.calc()">
-                                    <div class="h-12 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
-                                        <img src="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
-                                    </div>
-                                    <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block">Mães</span>
-                                </label>
-                                <label class="cursor-pointer group flex-shrink-0 w-20 snap-center text-center">
-                                    <input type="radio" name="md-ribbon" value='"Para Presentear"' data-img="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
-                                    <div class="h-12 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
-                                        <img src="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
-                                    </div>
-                                    <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block">Presente</span>
-                                </label>
-                                <label class="cursor-pointer group flex-shrink-0 w-20 snap-center text-center">
-                                    <input type="radio" name="md-ribbon" value='"Black Minimalista"' data-img="https://imagensagata.carrd.co/assets/images/image39.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
-                                    <div class="h-12 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
-                                        <img src="https://imagensagata.carrd.co/assets/images/image39.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
-                                    </div>
-                                    <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block">Black</span>
-                                </label>
-                                <label class="cursor-pointer group flex-shrink-0 w-20 snap-center text-center">
-                                    <input type="radio" name="md-ribbon" value='"Mulher Soberana"' data-img="https://imagensagata.carrd.co/assets/images/image40.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
-                                    <div class="h-12 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
-                                        <img src="https://imagensagata.carrd.co/assets/images/image40.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
-                                    </div>
-                                    <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block">Soberana</span>
-                                </label>
-                                <label class="cursor-pointer group flex-shrink-0 w-20 snap-center text-center">
-                                    <input type="radio" name="md-ribbon" value="Sem Fita" data-img="" class="peer sr-only" onchange="mdBuilder.calc()">
-                                    <div class="h-12 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 transition-all">
-                                        <i class="fa-solid fa-ban text-xs opacity-40 text-gl_dark dark:text-white"></i>
-                                    </div>
-                                    <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block">Nenhuma</span>
-                                </label>
+                            <!-- 3. Fita de Cortesia -->
+                            <div class="border-b border-adaptive dark:border-white/10 py-5">
+                                <span class="text-[0.55rem] font-bold text-gl_dark dark:text-white uppercase mb-4 block">3. Fita de Cortesia</span>
+                                <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-1 snap-x">
+                                    <label class="cursor-pointer group flex-shrink-0 w-16 snap-center text-center">
+                                        <input type="radio" name="md-ribbon" value='"Mãe Soberana"' data-img="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="peer sr-only" checked onchange="mdBuilder.calc()">
+                                        <div class="h-10 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image42.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
+                                        </div>
+                                        <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block truncate">Mães</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16 snap-center text-center">
+                                        <input type="radio" name="md-ribbon" value='"Para Presentear"' data-img="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="h-10 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image38.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
+                                        </div>
+                                        <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block truncate">Presente</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16 snap-center text-center">
+                                        <input type="radio" name="md-ribbon" value='"Black Minimalista"' data-img="https://imagensagata.carrd.co/assets/images/image39.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="h-10 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image39.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
+                                        </div>
+                                        <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block truncate">Black</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16 snap-center text-center">
+                                        <input type="radio" name="md-ribbon" value='"Mulher Soberana"' data-img="https://imagensagata.carrd.co/assets/images/image40.jpg?v=708713a7" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="h-10 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 overflow-hidden transition-all">
+                                            <img src="https://imagensagata.carrd.co/assets/images/image40.jpg?v=708713a7" class="w-full h-full object-cover opacity-80">
+                                        </div>
+                                        <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block truncate">Soberana</span>
+                                    </label>
+                                    <label class="cursor-pointer group flex-shrink-0 w-16 snap-center text-center">
+                                        <input type="radio" name="md-ribbon" value="Sem Fita" data-img="" class="peer sr-only" onchange="mdBuilder.calc()">
+                                        <div class="h-10 border border-adaptive dark:border-white/10 peer-checked:border-gl_gold rounded-xl flex items-center justify-center bg-gl_surface_light dark:bg-white/5 transition-all">
+                                            <i class="fa-solid fa-ban text-xs opacity-40 text-gl_dark dark:text-white"></i>
+                                        </div>
+                                        <span class="text-[0.4rem] uppercase font-bold text-gray-500 peer-checked:text-gl_dark dark:peer-checked:text-white mt-1.5 block truncate">Nenhuma</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 4. Cartão -->
-                        <div class="py-8">
-                            <label for="md-message" class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-4 block">4. Cartão Exclusivo (Opcional)</label>
-                            <textarea id="md-message" rows="1" placeholder="Dedicatória..." class="w-full bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/10 rounded-2xl p-5 text-sm font-serif text-gl_dark dark:text-white focus:border-gold-adaptive outline-none resize-none transition-colors" oninput="mdBuilder.calc()"></textarea>
-                        </div>
-
-                        <!-- Conversão Final -->
-                        <div class="fixed lg:static bottom-0 left-0 w-full lg:w-auto z-50 flex items-center justify-between gap-6 pt-5 pb-8 px-8 lg:pt-12 lg:px-0 border-t border-adaptive dark:border-white/10 bg-white/95 dark:bg-gl_dark/95 lg:bg-transparent backdrop-blur-2xl">
-                            <div class="flex flex-col">
-                                <span class="text-[0.5rem] font-bold text-gray-500 uppercase tracking-widest block mb-1">Outorga Bespoke</span>
-                                <p class="font-serif text-3xl lg:text-5xl text-gl_dark dark:text-white font-bold" id="md-total">R$ 728,00</p>
+                            <!-- 4. Cartão -->
+                            <div class="py-5">
+                                <label for="md-message" class="font-sans text-[0.55rem] font-bold text-gold-adaptive uppercase tracking-widest mb-3 block">4. Cartão Exclusivo (Opcional)</label>
+                                <textarea id="md-message" rows="2" placeholder="Escreva a sua dedicatória..." class="w-full bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/10 rounded-xl p-4 text-xs font-serif text-gl_dark dark:text-white focus:border-gold-adaptive outline-none resize-none transition-colors" oninput="mdBuilder.calc()"></textarea>
                             </div>
-                            <button onclick="appState.hapticFeedback(); mdBuilder.checkoutDirect()" class="btn-editorial bg-gl_dark !text-white dark:bg-white dark:!text-gl_dark border-gl_dark dark:border-white hover:bg-gl_gold hover:border-gl_gold transition-all !py-4 !px-8 tracking-[0.2em]">
-                                <i class="fa-brands fa-whatsapp mr-3"></i> Outorgar
-                            </button>
+
+                            <!-- Conversão Final -->
+                            <div class="pt-6 mt-2 border-t border-adaptive dark:border-white/10 flex items-center justify-between gap-4">
+                                <div class="flex flex-col">
+                                    <span class="text-[0.45rem] font-bold text-gray-500 uppercase tracking-widest block mb-1">Outorga Bespoke</span>
+                                    <p class="font-serif text-3xl md:text-4xl text-gl_dark dark:text-white font-bold leading-none" id="md-total">R$ 728,00</p>
+                                </div>
+                                <button onclick="appState.hapticFeedback(); mdBuilder.checkoutDirect()" class="btn-editorial bg-gl_dark !text-white dark:bg-white dark:!text-gl_dark border-gl_dark dark:border-white hover:bg-gl_gold hover:border-gl_gold transition-all !py-3 !px-6 tracking-[0.2em]">
+                                    <i class="fa-brands fa-whatsapp mr-2"></i> Outorgar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -692,7 +617,7 @@
     </main>
 
     <!-- ================================================================================= -->
-    <!-- VIEW 3: PARTNER B2B (#partner)                                                    -->
+    <!-- VIEW 3: PARTNER B2B (#partner) - APENAS UMA VEZ                                   -->
     <!-- ================================================================================= -->
     <main id="view-partner" class="view-section">
         
@@ -718,6 +643,7 @@
                     </div>
                     <h3 class="font-serif text-5xl md:text-7xl italic editorial-title mb-4 text-white">Molecular Platinum <br><span class="text-4xl md:text-5xl text-gray-400">Infusion</span></h3>
                     <p class="font-sans text-[0.65rem] font-bold text-gray-300 uppercase tracking-widest mb-6">Matização Estrutural de Alto Padrão</p>
+                    
                     <p class="text-gray-300 text-sm leading-relaxed font-light mb-10 max-w-xl">A revolução platinada. Desenvolvido para loiros de altíssima exigência, o Molecular Platinum Infusion neutraliza oxidações indesejadas enquanto reconstrói as pontes dissulfeto do cabelo descolorido. O platinado perfeito com saúde inabalável.</p>
                     
                     <button onclick="appState.buyDirect('Molecular Platinum Infusion (Lista de Espera)', 'Sob Consulta')" class="btn-editorial bg-white !text-gl_dark border-white hover:bg-transparent hover:!text-white focus-ring w-full sm:w-auto group font-bold tracking-widest">
@@ -824,7 +750,6 @@
                     </div>
                 </div>
 
-                <!-- GAVETA B2B -->
                 <div id="drawer-b2b" class="overflow-hidden transition-all duration-700 max-h-0 opacity-0 mt-0 w-full col-span-full">
                     <div class="bg-gl_surface_light dark:bg-white/5 border border-adaptive dark:border-white/10 rounded-[2rem] p-6 md:p-10 mt-8 shadow-inner w-full">
                         <div class="text-center mb-8">
