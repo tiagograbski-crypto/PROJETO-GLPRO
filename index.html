@@ -623,7 +623,7 @@
             <!-- GARANTIA DE RISCO ZERO -->
             <section id="garantia" class="w-full max-w-4xl mx-auto mb-16 sm:mb-24 reveal md:px-4">
                 <div class="bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border-y md:border border-brand-900/5 dark:border-luxury-border p-8 sm:p-12 md:p-16 rounded-none md:rounded-[2.5rem] shadow-alvorada dark:shadow-crepusculo text-center flex flex-col items-center transition-all duration-700 relative overflow-hidden group w-[100vw] md:w-full -mx-4 md:mx-0">
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-50 dark:bg-luxury-bg flex items-center justify-center mb-6 sm:mb-8 border border-brand-200 dark:border-luxury-border group-hover:scale-110 transition-all duration-500 relative z-10">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-50 dark:bg-luxury-bg flex items-center justify-center mb-6 sm:mb-8 border border-brand-200 dark:border-luxury-border group-hover:scale-110 transition-transform duration-500 relative z-10">
                         <i data-lucide="shield-check" class="w-8 h-8 sm:w-10 sm:h-10 text-brand-700 dark:text-brand-300 stroke-[1.5]"></i>
                     </div>
                     <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-brand-950 dark:text-luxury-text mb-4 sm:mb-6 transition-colors relative z-10">Integridade Capilar Garantida</h3>
@@ -810,9 +810,23 @@
                     
                     <!-- Passo 1: Banho Repair Master -->
                     <article class="bg-brand-50/50 dark:bg-luxury-bg/50 border border-brand-900/5 dark:border-luxury-border rounded-[24px] p-5 sm:p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10 items-center shadow-sm transition-colors">
-                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors">
-                            <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Banho Repair Master" class="w-full h-full object-cover opacity-95 dark:opacity-85 transition-opacity">
-                            <span class="absolute top-4 left-4 bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors">Passo 1</span>
+                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors group/media">
+                            <!-- FOTO -->
+                            <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Banho Repair Master" class="media-photo absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-10">
+                            <!-- VÍDEO -->
+                            <video src="https://testeessencia.carrd.co/assets/videos/video12.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+                            
+                            <span class="absolute top-4 left-4 bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors z-20">Passo 1</span>
+                            
+                            <!-- DUAL MEDIA TOGGLE -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full p-1 flex gap-1 z-30 shadow-lg border border-white/10">
+                                <button class="toggle-media-btn active px-3 py-1.5 rounded-full text-brand-950 bg-white text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="photo">
+                                    <i data-lucide="image" class="w-3 h-3"></i> Foto
+                                </button>
+                                <button class="toggle-media-btn px-3 py-1.5 rounded-full text-white bg-transparent hover:bg-white/20 text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="video">
+                                    <i data-lucide="play" class="w-3 h-3"></i> Vídeo
+                                </button>
+                            </div>
                         </div>
                         <div class="w-full md:w-2/3">
                             <h4 class="font-serif text-2xl md:text-3xl font-medium text-brand-950 dark:text-luxury-text uppercase mb-1 transition-colors">Banho Repair Master <span class="text-base md:text-lg text-brand-700 dark:text-brand-400 font-medium lowercase tracking-normal transition-colors">300ml</span></h4>
@@ -858,9 +872,23 @@
 
                     <!-- Passo 2: Ampola Ouro Repair Gloss -->
                     <article class="bg-brand-50/50 dark:bg-luxury-bg/50 border border-brand-900/5 dark:border-luxury-border rounded-[24px] p-5 sm:p-6 md:p-8 flex flex-col md:flex-row-reverse gap-6 md:gap-10 items-center shadow-sm transition-colors">
-                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors">
-                            <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Ampola Ouro Repair Gloss" class="w-full h-full object-cover opacity-95 dark:opacity-85 transition-opacity">
-                            <span class="absolute top-4 right-4 md:left-4 md:right-auto bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors">Passo 2</span>
+                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors group/media">
+                            <!-- FOTO -->
+                            <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Ampola Ouro Repair Gloss" class="media-photo absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-10">
+                            <!-- VÍDEO -->
+                            <video src="https://testeessencia.carrd.co/assets/videos/video13.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+                            
+                            <span class="absolute top-4 right-4 md:left-4 md:right-auto bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors z-20">Passo 2</span>
+                            
+                            <!-- DUAL MEDIA TOGGLE -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full p-1 flex gap-1 z-30 shadow-lg border border-white/10">
+                                <button class="toggle-media-btn active px-3 py-1.5 rounded-full text-brand-950 bg-white text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="photo">
+                                    <i data-lucide="image" class="w-3 h-3"></i> Foto
+                                </button>
+                                <button class="toggle-media-btn px-3 py-1.5 rounded-full text-white bg-transparent hover:bg-white/20 text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="video">
+                                    <i data-lucide="play" class="w-3 h-3"></i> Vídeo
+                                </button>
+                            </div>
                         </div>
                         <div class="w-full md:w-2/3 md:text-right">
                             <h4 class="font-serif text-2xl md:text-3xl font-medium text-brand-950 dark:text-luxury-text uppercase mb-1 transition-colors">Ampola Ouro Repair Gloss <span class="text-base md:text-lg text-brand-700 dark:text-brand-400 font-medium lowercase tracking-normal transition-colors">20ml</span></h4>
@@ -901,9 +929,23 @@
 
                     <!-- Passo 3: Baby Queen -->
                     <article class="bg-brand-50/50 dark:bg-luxury-bg/50 border border-brand-900/5 dark:border-luxury-border rounded-[24px] p-5 sm:p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10 items-center shadow-sm transition-colors">
-                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors">
-                            <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Baby Queen" class="w-full h-full object-cover opacity-95 dark:opacity-85 transition-opacity">
-                            <span class="absolute top-4 left-4 bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors">Passo 3</span>
+                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors group/media">
+                            <!-- FOTO -->
+                            <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Baby Queen" class="media-photo absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-10">
+                            <!-- VÍDEO -->
+                            <video src="https://testeessencia.carrd.co/assets/videos/video02.mp4?v=7c53f00c#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+                            
+                            <span class="absolute top-4 left-4 bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors z-20">Passo 3</span>
+                            
+                            <!-- DUAL MEDIA TOGGLE -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full p-1 flex gap-1 z-30 shadow-lg border border-white/10">
+                                <button class="toggle-media-btn active px-3 py-1.5 rounded-full text-brand-950 bg-white text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="photo">
+                                    <i data-lucide="image" class="w-3 h-3"></i> Foto
+                                </button>
+                                <button class="toggle-media-btn px-3 py-1.5 rounded-full text-white bg-transparent hover:bg-white/20 text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="video">
+                                    <i data-lucide="play" class="w-3 h-3"></i> Vídeo
+                                </button>
+                            </div>
                         </div>
                         <div class="w-full md:w-2/3">
                             <h4 class="font-serif text-2xl md:text-3xl font-medium text-brand-950 dark:text-luxury-text uppercase mb-1 transition-colors">Baby Queen <span class="text-base md:text-lg text-brand-700 dark:text-brand-400 font-medium lowercase tracking-normal transition-colors">260ml</span></h4>
@@ -955,9 +997,23 @@
 
                     <!-- Passo 4: American Argan Oil -->
                     <article class="bg-brand-50/50 dark:bg-luxury-bg/50 border border-brand-900/5 dark:border-luxury-border rounded-[24px] p-5 sm:p-6 md:p-8 flex flex-col md:flex-row-reverse gap-6 md:gap-10 items-center shadow-sm transition-colors">
-                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors">
-                            <img src="https://testeessencia.carrd.co/assets/images/image79.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="American Argan Oil" class="w-full h-full object-cover opacity-95 dark:opacity-85 transition-opacity">
-                            <span class="absolute top-4 right-4 md:left-4 md:right-auto bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors">Passo 4</span>
+                        <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors group/media">
+                            <!-- FOTO -->
+                            <img src="https://testeessencia.carrd.co/assets/images/image79.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="American Argan Oil" class="media-photo absolute inset-0 w-full h-full object-cover opacity-95 dark:opacity-85 transition-opacity duration-700 z-10">
+                            <!-- VÍDEO -->
+                            <video src="https://testeessencia.carrd.co/assets/videos/video12.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+                            
+                            <span class="absolute top-4 right-4 md:left-4 md:right-auto bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors z-20">Passo 4</span>
+                            
+                            <!-- DUAL MEDIA TOGGLE -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full p-1 flex gap-1 z-30 shadow-lg border border-white/10">
+                                <button class="toggle-media-btn active px-3 py-1.5 rounded-full text-brand-950 bg-white text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="photo">
+                                    <i data-lucide="image" class="w-3 h-3"></i> Foto
+                                </button>
+                                <button class="toggle-media-btn px-3 py-1.5 rounded-full text-white bg-transparent hover:bg-white/20 text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="video">
+                                    <i data-lucide="play" class="w-3 h-3"></i> Vídeo
+                                </button>
+                            </div>
                         </div>
                         <div class="w-full md:w-2/3 md:text-right">
                             <h4 class="font-serif text-2xl md:text-3xl font-medium text-brand-950 dark:text-luxury-text uppercase mb-1 transition-colors">American Argan Oil <span class="text-base md:text-lg text-brand-700 dark:text-brand-400 font-medium lowercase tracking-normal transition-colors">100ml</span></h4>
@@ -1006,11 +1062,27 @@
 
                 <div class="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
                     <!-- Imagem do Kit -->
-                    <div class="w-full lg:w-1/2 aspect-[4/5] rounded-3xl overflow-hidden relative shadow-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 flex items-center justify-center transition-colors">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
-                        <img id="kit-main-image" src="https://testeessencia.carrd.co/assets/images/image68.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="Kit Completo Home Care com Sacola Orange" class="w-full h-full object-cover rounded-2xl mix-blend-overlay opacity-90 dark:opacity-80 transition-all duration-500 group-hover:scale-105">
-                        <div class="absolute bottom-6 left-6 z-20">
+                    <div class="w-full lg:w-1/2 aspect-[4/5] rounded-3xl overflow-hidden relative shadow-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 flex items-center justify-center transition-colors group/media">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none"></div>
+                        
+                        <!-- FOTO -->
+                        <img src="https://testeessencia.carrd.co/assets/images/image68.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="Kit Completo Home Care com Sacola Orange" class="media-photo absolute inset-0 w-full h-full object-cover rounded-2xl mix-blend-overlay opacity-90 dark:opacity-80 transition-opacity duration-700 z-10">
+                        
+                        <!-- VÍDEO -->
+                        <video src="https://testeessencia.carrd.co/assets/videos/video13.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover rounded-2xl mix-blend-overlay transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+
+                        <div class="absolute bottom-6 left-6 z-20 pointer-events-none">
                             <span class="bg-white text-brand-950 px-4 py-2 rounded-full text-[10px] font-black tracking-widest uppercase shadow-lg">A Experiência Completa</span>
+                        </div>
+
+                        <!-- DUAL MEDIA TOGGLE -->
+                        <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md rounded-full p-1 flex gap-1 z-30 shadow-lg border border-white/10">
+                            <button class="toggle-media-btn active px-3 py-1.5 rounded-full text-brand-950 bg-white text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="photo">
+                                <i data-lucide="image" class="w-3 h-3"></i> Foto
+                            </button>
+                            <button class="toggle-media-btn px-3 py-1.5 rounded-full text-white bg-transparent hover:bg-white/20 text-[9px] font-bold uppercase tracking-widest focus:outline-none transition-all flex items-center gap-1.5" data-type="video">
+                                <i data-lucide="play" class="w-3 h-3"></i> Vídeo
+                            </button>
                         </div>
                     </div>
 
@@ -1934,6 +2006,55 @@
                         sliderLine.style.left = `${val}%`;
                     });
                 }
+            });
+
+            // ==========================================
+            // LÓGICA DUAL MEDIA (FOTO/VÍDEO) BOUTIQUE
+            // ==========================================
+            const mediaToggles = document.querySelectorAll('.toggle-media-btn');
+            mediaToggles.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const container = this.closest('.group\\/media');
+                    if (!container) return;
+                    
+                    const type = this.getAttribute('data-type');
+                    const photo = container.querySelector('.media-photo');
+                    const video = container.querySelector('.media-video');
+                    const allBtns = container.querySelectorAll('.toggle-media-btn');
+                    
+                    // Reset dos botões
+                    allBtns.forEach(b => {
+                        b.classList.remove('bg-white', 'text-brand-950');
+                        b.classList.add('bg-transparent', 'text-white');
+                        b.classList.remove('active');
+                    });
+                    
+                    // Ativa o botão clicado
+                    this.classList.remove('bg-transparent', 'text-white');
+                    this.classList.add('bg-white', 'text-brand-950', 'active');
+                    
+                    // Alterna as mídias com fade
+                    if (type === 'video') {
+                        if (photo) photo.style.opacity = '0';
+                        if (video) {
+                            video.style.opacity = '1';
+                            video.style.zIndex = '15'; // Garante que o vídeo fica atrás dos botões, mas à frente da foto
+                            video.play().catch(() => console.log('Autoplay do vídeo prevenido pelo navegador.'));
+                        }
+                    } else {
+                        if (photo) photo.style.opacity = '1';
+                        if (video) {
+                            video.style.opacity = '0';
+                            video.style.zIndex = '0';
+                            video.pause();
+                        }
+                    }
+                    
+                    if(window.lucide) lucide.createIcons();
+                });
             });
         });
 
