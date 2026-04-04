@@ -227,15 +227,26 @@
             <span class="mx-4 sm:mx-6">✦ ESPECIAL DE OUTONO</span>
             <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">AGENDA DE ABRIL ABERTA</span>
             <span class="mx-4 sm:mx-6">✦ CONDIÇÕES DO CLUBE ATIVAS</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIÊNCIA EXCLUSIVA</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIência EXCLUSIVA</span>
         </div>
     </div>
 
-    <!-- IMAGEM DE FUNDO E LUZES -->
+    <!-- IMAGEM DE FUNDO E LUZES (CARROSSEL CINEMATOGRÁFICO) -->
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <img src="https://testeessencia.carrd.co/assets/images/image37.jpg?v=54da9d95" alt="Ambiente do Salão Essência de Romã" class="w-full h-full object-cover opacity-100 dark:opacity-60 transition-opacity duration-300" fetchpriority="high" decoding="async" loading="eager" />
+        
+        <!-- O container controla a opacidade para o Modo Noite de forma global -->
+        <div class="absolute inset-0 w-full h-full opacity-100 dark:opacity-60 transition-opacity duration-300 bg-brand-950">
+            <!-- Imagem 1 (Atualizada) -->
+            <img src="https://testeessencia.carrd.co/assets/images/image38.jpg?v=0bcae317" alt="Ambiente do Salão 1" class="slide-bg slide-bg-1" fetchpriority="high" decoding="async" loading="eager" />
+            <!-- Imagem 2 (Atualizada) -->
+            <img src="https://testeessencia.carrd.co/assets/images/image41.jpg?v=0bcae317" alt="Ambiente do Salão 2" class="slide-bg slide-bg-2" decoding="async" loading="lazy" />
+            <!-- Imagem 3 (Atualizada) -->
+            <img src="https://testeessencia.carrd.co/assets/images/image40.jpg?v=0bcae317" alt="Ambiente do Salão 3" class="slide-bg slide-bg-3" decoding="async" loading="lazy" />
+        </div>
+
         <!-- Degradê corrigido: Topo translúcido (20%) descendo para sólido -->
         <div class="absolute inset-0 bg-gradient-to-b from-brand-50/20 via-brand-50/70 to-brand-50/100 dark:from-luxury-bg/40 dark:via-luxury-bg/90 dark:to-luxury-bg/100 backdrop-blur-[2px] transition-colors duration-300"></div>
+        
         <!-- Luzes ajustadas para não ofuscar no modo noite -->
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-400/20 dark:bg-brand-600/10 rounded-full filter blur-[100px] animate-blob transition-colors duration-300"></div>
         <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-brand-500/20 dark:bg-brand-700/10 rounded-full filter blur-[100px] animate-blob animation-delay-2000 transition-colors duration-300"></div>
@@ -813,8 +824,8 @@
                         <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors group/media">
                             <!-- FOTO -->
                             <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Banho Repair Master" class="media-photo absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-10">
-                            <!-- VÍDEO -->
-                            <video src="https://testeessencia.carrd.co/assets/videos/video12.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+                            <!-- VÍDEO (Atualizado: Shampoo) -->
+                            <video src="https://testeessencia.carrd.co/assets/videos/video17.mp4?v=701b88d2#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
                             
                             <span class="absolute top-4 left-4 bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors z-20">Passo 1</span>
                             
@@ -875,8 +886,8 @@
                         <div class="w-full md:w-1/3 aspect-[4/5] rounded-xl overflow-hidden relative shadow-sm border border-brand-900/10 dark:border-luxury-border bg-white dark:bg-luxury-bg transition-colors group/media">
                             <!-- FOTO -->
                             <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Ampola Ouro Repair Gloss" class="media-photo absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-10">
-                            <!-- VÍDEO -->
-                            <video src="https://testeessencia.carrd.co/assets/videos/video13.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
+                            <!-- VÍDEO (Atualizado: Ampola) -->
+                            <video src="https://testeessencia.carrd.co/assets/videos/video18.mp4?v=701b88d2#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover transition-opacity duration-700 z-0 opacity-0 pointer-events-none"></video>
                             
                             <span class="absolute top-4 right-4 md:left-4 md:right-auto bg-brand-900 dark:bg-luxury-border text-white dark:text-luxury-text text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wider shadow-md transition-colors z-20">Passo 2</span>
                             
@@ -1522,7 +1533,8 @@
             if (isHomecare) {
                 cartSystem.toggle();
             } else {
-                window.open('https://wa.me/5549999954052?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20uma%20consultora.', '_blank');
+                // CORREÇÃO: URL codificada agora diz "Falar com uma Especialista"
+                window.open('https://wa.me/5549999954052?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20uma%20especialista.', '_blank');
             }
         }
 
@@ -1945,11 +1957,15 @@
                         if (entry.target.muted) entry.target.play().catch(e => console.warn('Autoplay evitado', e));
                     } else {
                         entry.target.pause();
-                        entry.target.muted = true;
-                        const btn = entry.target.closest('figure').querySelector('.mute-toggle');
-                        if (btn) {
-                            btn.innerHTML = '<i data-lucide="volume-x" class="w-5 h-5"></i>';
-                            if (window.lucide) lucide.createIcons();
+                        // CORREÇÃO: Verifica se o vídeo possui a tag <figure> (pertence à galeria) antes de buscar o botão Mute
+                        const figure = entry.target.closest('figure');
+                        if (figure) {
+                            entry.target.muted = true;
+                            const btn = figure.querySelector('.mute-toggle');
+                            if (btn) {
+                                btn.innerHTML = '<i data-lucide="volume-x" class="w-5 h-5"></i>';
+                                if (window.lucide) lucide.createIcons();
+                            }
                         }
                     }
                 });
@@ -2063,6 +2079,7 @@
             if (window.scrollY > 20) { if(nav) nav.classList.add('shadow-sm', 'dark:shadow-none'); } 
             else { if(nav) nav.classList.remove('shadow-sm', 'dark:shadow-none'); }
 
+            // CORREÇÃO: Restauração da matemática da barra de progresso e selamento do arquivo
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
