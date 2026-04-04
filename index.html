@@ -194,6 +194,29 @@
             width: max-content;
         }
 
+        /* EFEITO CINEMATOGRÁFICO DE FUNDO (KEN BURNS - OVERLAP PERFEITO) */
+        @keyframes kenBurnsFade {
+            0%   { opacity: 0; transform: scale(1.0); }
+            10%  { opacity: 1; }
+            43%  { opacity: 1; }
+            53%  { opacity: 0; }
+            100% { opacity: 0; transform: scale(1.15); }
+        }
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            animation: kenBurnsFade 24s infinite linear;
+            will-change: transform, opacity;
+        }
+        .slide-bg-1 { animation-delay: -2.4s; }
+        .slide-bg-2 { animation-delay: 5.6s; }
+        .slide-bg-3 { animation-delay: 13.6s; }
+
         details > summary { list-style: none; min-height: 48px; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] summary ~ * { animation: slideDown 0.3s ease-in-out; }
@@ -215,27 +238,14 @@
             <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">AGENDA DE ABRIL ABERTA</span>
             <span class="mx-4 sm:mx-6">✦ CONDIÇÕES DO CLUBE ATIVAS</span>
             <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIÊNCIA EXCLUSIVA</span>
-            <span class="mx-4 sm:mx-6">✦ ESPECIAL DE OUTONO</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">AGENDA DE ABRIL ABERTA</span>
-            <span class="mx-4 sm:mx-6">✦ CONDIÇÕES DO CLUBE ATIVAS</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIÊNCIA EXCLUSIVA</span>
-            <!-- Duplicado para garantir o scroll infinito e contínuo -->
-            <span class="mx-4 sm:mx-6">✦ ESPECIAL DE OUTONO</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">AGENDA DE ABRIL ABERTA</span>
-            <span class="mx-4 sm:mx-6">✦ CONDIÇÕES DO CLUBE ATIVAS</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIÊNCIA EXCLUSIVA</span>
-            <span class="mx-4 sm:mx-6">✦ ESPECIAL DE OUTONO</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">AGENDA DE ABRIL ABERTA</span>
-            <span class="mx-4 sm:mx-6">✦ CONDIÇÕES DO CLUBE ATIVAS</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIência EXCLUSIVA</span>
         </div>
     </div>
 
     <!-- IMAGEM DE FUNDO E LUZES (CARROSSEL CINEMATOGRÁFICO) -->
-    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-brand-50 dark:bg-luxury-bg transition-colors duration-300">
         
         <!-- O container controla a opacidade para o Modo Noite de forma global -->
-        <div class="absolute inset-0 w-full h-full opacity-100 dark:opacity-60 transition-opacity duration-300 bg-brand-950">
+        <div class="absolute inset-0 w-full h-full opacity-100 dark:opacity-80 transition-opacity duration-300">
             <!-- Imagem 1 (Atualizada) -->
             <img src="https://testeessencia.carrd.co/assets/images/image38.jpg?v=0bcae317" alt="Ambiente do Salão 1" class="slide-bg slide-bg-1" fetchpriority="high" decoding="async" loading="eager" />
             <!-- Imagem 2 (Atualizada) -->
@@ -246,10 +256,6 @@
 
         <!-- Degradê corrigido: Topo translúcido (20%) descendo para sólido -->
         <div class="absolute inset-0 bg-gradient-to-b from-brand-50/20 via-brand-50/70 to-brand-50/100 dark:from-luxury-bg/40 dark:via-luxury-bg/90 dark:to-luxury-bg/100 backdrop-blur-[2px] transition-colors duration-300"></div>
-        
-        <!-- Luzes ajustadas para não ofuscar no modo noite -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-400/20 dark:bg-brand-600/10 rounded-full filter blur-[100px] animate-blob transition-colors duration-300"></div>
-        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-brand-500/20 dark:bg-brand-700/10 rounded-full filter blur-[100px] animate-blob animation-delay-2000 transition-colors duration-300"></div>
     </div>
 
     <!-- NAVBAR INTELIGENTE E UNIFICADA (Verdadeiro Vidro Jateado) -->
@@ -356,8 +362,15 @@
                         </div>
                     </div>
                     <div class="order-1 lg:order-2 relative group">
+                        <!-- Fundo Decorativo -->
                         <div class="absolute inset-0 bg-brand-400/20 dark:bg-brand-600/10 rounded-[2.5rem] transform translate-x-4 translate-y-4 -z-10 transition-transform group-hover:translate-x-6 group-hover:translate-y-6 duration-500"></div>
-                        <img src="https://testeessencia.carrd.co/assets/images/image37.jpg?v=f6125cf8" alt="Interior do Salão de Excelência" class="w-full aspect-[4/5] object-cover rounded-[2.5rem] shadow-alvorada dark:shadow-crepusculo border border-brand-900/5 dark:border-luxury-border z-10 relative opacity-95 dark:opacity-80 transition-opacity" loading="lazy" decoding="async">
+                        
+                        <!-- NOVO: Carrossel Cinematográfico Integrado na Moldura -->
+                        <div class="relative w-full aspect-[4/5] rounded-[2.5rem] shadow-alvorada dark:shadow-crepusculo border border-brand-900/5 dark:border-luxury-border z-10 overflow-hidden opacity-95 dark:opacity-80 transition-opacity bg-brand-50 dark:bg-luxury-bg">
+                            <img src="https://testeessencia.carrd.co/assets/images/image38.jpg?v=0bcae317" alt="Ambiente do Salão 1" class="slide-bg slide-bg-1" loading="lazy" decoding="async">
+                            <img src="https://testeessencia.carrd.co/assets/images/image41.jpg?v=0bcae317" alt="Ambiente do Salão 2" class="slide-bg slide-bg-2" loading="lazy" decoding="async">
+                            <img src="https://testeessencia.carrd.co/assets/images/image40.jpg?v=0bcae317" alt="Ambiente do Salão 3" class="slide-bg slide-bg-3" loading="lazy" decoding="async">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -559,8 +572,10 @@
                     </header>
 
                     <div class="relative w-full max-w-lg mx-auto aspect-[4/5] lg:aspect-square rounded-3xl overflow-hidden shadow-md border border-brand-900/5 dark:border-luxury-border select-none touch-none before-after-container mb-10 transition-colors flex-grow-0 bg-brand-50 dark:bg-luxury-bg">
-                        <img src="https://testeessencia.carrd.co/assets/images/image48.jpg?v=54da9d95" alt="Cabelo Antes do Liso 8K" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none filter contrast-[0.95] opacity-95 dark:opacity-85 transition-opacity">
-                        <img src="https://testeessencia.carrd.co/assets/images/image49.jpg?v=54da9d95" alt="Cabelo Depois do Liso 8K" loading="lazy" decoding="async" class="after-img absolute inset-0 w-full h-full object-cover select-none pointer-events-none opacity-95 dark:opacity-85 transition-opacity" style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);">
+                        <!-- CORREÇÃO: Adicionado 'object-top' para preservar a cabeça da cliente -->
+                        <img src="https://testeessencia.carrd.co/assets/images/image48.jpg?v=54da9d95" alt="Cabelo Antes do Liso 8K" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top select-none pointer-events-none filter contrast-[0.95] opacity-95 dark:opacity-85 transition-opacity">
+                        <img src="https://testeessencia.carrd.co/assets/images/image49.jpg?v=54da9d95" alt="Cabelo Depois do Liso 8K" loading="lazy" decoding="async" class="after-img absolute inset-0 w-full h-full object-cover object-top select-none pointer-events-none opacity-95 dark:opacity-85 transition-opacity" style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);">
+                        
                         <input type="range" min="0" max="100" value="50" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" class="slider-input absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20 m-0" aria-label="Arraste para comparar">
                         <div class="slider-line absolute top-0 bottom-0 left-[50%] w-[1.5px] bg-brand-950 dark:bg-luxury-text z-10 pointer-events-none transform -translate-x-1/2 flex items-center justify-center shadow-[0_0_15px_rgba(0,0,0,0.3)] transition-colors">
                             <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-luxury-bg rounded-full shadow-lg flex items-center justify-center text-brand-950 dark:text-luxury-text ring-4 ring-brand-950/5 dark:ring-white/10 transition-all group-hover:scale-110 duration-300">
