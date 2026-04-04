@@ -217,6 +217,15 @@
         .slide-bg-2 { animation-delay: 5.6s; }
         .slide-bg-3 { animation-delay: 13.6s; }
 
+        /* NOVA ANIMAÇÃO: INDICADOR DE CARROSSEL MOBILE (Deslizamento Direcional) */
+        @keyframes bounce-horizontal {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(8px); } /* Movimento claro para a direita indicando scroll */
+        }
+        .animate-bounce-horizontal {
+            animation: bounce-horizontal 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         details > summary { list-style: none; min-height: 48px; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] summary ~ * { animation: slideDown 0.3s ease-in-out; }
@@ -231,13 +240,32 @@
     <!-- BARRA DE PROGRESSO DE LEITURA -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-600 to-brand-400 dark:from-brand-400 dark:to-brand-200 z-[80] transition-all duration-100 ease-out" style="width: 0%;"></div>
 
-    <!-- BARRA DE AVISO (Timeline Rotativa Slim em Vidro Escuro) -->
+    <!-- BARRA DE AVISO (Timeline Rotativa Estratégica B2C + B2B) -->
     <div id="top-alert-bar" class="fixed top-0 left-0 w-full bg-brand-950/90 dark:bg-luxury-card/80 backdrop-blur-md text-brand-100 dark:text-luxury-muted border-b border-white/10 dark:border-luxury-border/50 text-[9px] sm:text-[10px] font-medium tracking-[0.25em] uppercase h-9 z-[60] shadow-sm transition-colors overflow-hidden flex items-center">
         <div class="animate-marquee">
-            <span class="mx-4 sm:mx-6">✦ ESPECIAL DE OUTONO</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">AGENDA DE ABRIL ABERTA</span>
-            <span class="mx-4 sm:mx-6">✦ CONDIÇÕES DO CLUBE ATIVAS</span>
-            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">EXPERIÊNCIA EXCLUSIVA</span>
+            <!-- Sequência 1 -->
+            <span class="mx-4 sm:mx-6 text-emerald-400 dark:text-emerald-300 font-bold">✦ 50% OFF NA TABELA OFICIAL ATÉ 10/04</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">O ÚNICO LISO SOBERANO 8K DA REGIÃO</span>
+            <span class="mx-4 sm:mx-6 text-sky-400 dark:text-sky-300 font-bold">✦ CREDENCIAMENTO: LEVE O LISO 8K PARA O SEU SALÃO</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">+25 MIL TRANSFORMAÇÕES EM SC</span>
+            
+            <!-- Sequência 2 (Repetição para Scroll Infinito Perfeito) -->
+            <span class="mx-4 sm:mx-6 text-emerald-400 dark:text-emerald-300 font-bold">✦ 50% OFF NA TABELA OFICIAL ATÉ 10/04</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">O ÚNICO LISO SOBERANO 8K DA REGIÃO</span>
+            <span class="mx-4 sm:mx-6 text-sky-400 dark:text-sky-300 font-bold">✦ CREDENCIAMENTO: LEVE O LISO 8K PARA O SEU SALÃO</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">+25 MIL TRANSFORMAÇÕES EM SC</span>
+            
+            <!-- Sequência 3 (Repetição para Scroll Infinito Perfeito) -->
+            <span class="mx-4 sm:mx-6 text-emerald-400 dark:text-emerald-300 font-bold">✦ 50% OFF NA TABELA OFICIAL ATÉ 10/04</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">O ÚNICO LISO SOBERANO 8K DA REGIÃO</span>
+            <span class="mx-4 sm:mx-6 text-sky-400 dark:text-sky-300 font-bold">✦ CREDENCIAMENTO: LEVE O LISO 8K PARA O SEU SALÃO</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">+25 MIL TRANSFORMAÇÕES EM SC</span>
+            
+            <!-- Sequência 4 (Repetição para Scroll Infinito Perfeito) -->
+            <span class="mx-4 sm:mx-6 text-emerald-400 dark:text-emerald-300 font-bold">✦ 50% OFF NA TABELA OFICIAL ATÉ 10/04</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">O ÚNICO LISO SOBERANO 8K DA REGIÃO</span>
+            <span class="mx-4 sm:mx-6 text-sky-400 dark:text-sky-300 font-bold">✦ CREDENCIAMENTO: LEVE O LISO 8K PARA O SEU SALÃO</span>
+            <span class="mx-4 sm:mx-6 text-white dark:text-brand-300">+25 MIL TRANSFORMAÇÕES EM SC</span>
         </div>
     </div>
 
@@ -382,13 +410,15 @@
                     <h2 class="font-serif text-3xl md:text-5xl font-medium text-brand-950 dark:text-luxury-text transition-colors">Nossos Serviços</h2>
                 </div>
                 
-                <div class="absolute top-0 left-0 w-8 sm:w-12 h-full bg-gradient-to-r from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-1000"></div>
-                <div class="absolute top-0 right-0 w-8 sm:w-12 h-full bg-gradient-to-l from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-1000"></div>
+                <!-- Fades Laterais Otimizados -->
+                <div class="absolute top-0 left-0 w-12 sm:w-16 h-full bg-gradient-to-r from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-300"></div>
+                <div class="absolute top-0 right-0 w-12 sm:w-16 h-full bg-gradient-to-l from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-300"></div>
 
+                <!-- CARDS (Ajustados para Peek de 75vw) -->
                 <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 px-6 sm:px-8 md:px-4 custom-scrollbar items-stretch max-w-6xl mx-auto pb-6">
                     
                     <!-- Card 1: Tratamento -->
-                    <article class="snap-center shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <article class="snap-start shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
                         <div class="flex flex-col flex-grow">
                             <div class="w-12 h-12 rounded-full bg-brand-50 dark:bg-luxury-border flex items-center justify-center mb-5 border border-brand-200 dark:border-transparent group-hover:scale-110 transition-transform shadow-sm">
                                 <i data-lucide="sparkles" class="w-5 h-5 text-brand-600 dark:text-brand-300"></i>
@@ -407,7 +437,7 @@
                     </article>
 
                     <!-- Card 2: Corte -->
-                    <article class="snap-center shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <article class="snap-start shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
                         <div class="flex flex-col flex-grow">
                             <div class="w-12 h-12 rounded-full bg-brand-50 dark:bg-luxury-border flex items-center justify-center mb-5 border border-brand-200 dark:border-transparent group-hover:scale-110 transition-transform shadow-sm">
                                 <i data-lucide="scissors" class="w-5 h-5 text-brand-600 dark:text-brand-300"></i>
@@ -426,7 +456,7 @@
                     </article>
 
                     <!-- Card 3: Coloração -->
-                    <article class="snap-center shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <article class="snap-start shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
                         <div class="flex flex-col flex-grow">
                             <div class="w-12 h-12 rounded-full bg-brand-50 dark:bg-luxury-border flex items-center justify-center mb-5 border border-brand-200 dark:border-transparent group-hover:scale-110 transition-transform shadow-sm">
                                 <i data-lucide="palette" class="w-5 h-5 text-brand-600 dark:text-brand-300"></i>
@@ -445,7 +475,7 @@
                     </article>
 
                     <!-- Card 4: Mechas -->
-                    <article class="snap-center shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <article class="snap-start shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
                         <div class="flex flex-col flex-grow">
                             <div class="w-12 h-12 rounded-full bg-brand-50 dark:bg-luxury-border flex items-center justify-center mb-5 border border-brand-200 dark:border-transparent group-hover:scale-110 transition-transform shadow-sm">
                                 <i data-lucide="sun" class="w-5 h-5 text-brand-600 dark:text-brand-300"></i>
@@ -464,7 +494,7 @@
                     </article>
 
                     <!-- Card 5: Penteados -->
-                    <article class="snap-center shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <article class="snap-start shrink-0 w-[75vw] sm:w-[280px] flex flex-col justify-between bg-white/90 dark:bg-luxury-card/90 backdrop-blur-md border border-brand-900/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
                         <div class="flex flex-col flex-grow">
                             <div class="w-12 h-12 rounded-full bg-brand-50 dark:bg-luxury-border flex items-center justify-center mb-5 border border-brand-200 dark:border-transparent group-hover:scale-110 transition-transform shadow-sm">
                                 <i data-lucide="star" class="w-5 h-5 text-brand-600 dark:text-brand-300"></i>
@@ -484,11 +514,12 @@
 
                 </div>
                 
-                <!-- Indicador Elegante de Scroll Mobile -->
-                <div class="md:hidden flex items-center justify-center mt-4 relative z-10 pointer-events-none">
-                    <div class="flex items-center gap-2.5 bg-white/80 dark:bg-luxury-border/40 px-5 py-2.5 rounded-full border border-brand-200/50 dark:border-luxury-border/50 shadow-sm backdrop-blur-sm transition-colors">
-                        <i data-lucide="chevrons-left-right" class="w-4 h-4 text-brand-600 dark:text-brand-400 animate-pulse"></i>
-                        <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-900 dark:text-luxury-text transition-colors">Deslize para ver serviços</span>
+                <!-- NOVO INDICADOR CINÉTICO MOBILE -->
+                <div class="md:hidden flex items-center justify-center mt-6 mb-2 relative z-20 pointer-events-none">
+                    <div class="animate-bounce-horizontal flex items-center gap-3 bg-white/95 dark:bg-luxury-card/95 px-6 py-2.5 rounded-full border border-brand-200/80 dark:border-luxury-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] backdrop-blur-md">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-brand-400 dark:text-luxury-muted"></i>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-900 dark:text-luxury-text">Deslize a lista</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
                     </div>
                 </div>
             </section>
@@ -500,29 +531,40 @@
                     <h2 class="font-serif text-3xl md:text-5xl font-medium text-brand-950 dark:text-luxury-text italic transition-colors px-4">O Balanço Real dos Fios</h2>
                 </div>
                 
-                <div class="absolute top-0 left-0 w-8 sm:w-16 h-full bg-gradient-to-r from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors"></div>
-                <div class="absolute top-0 right-0 w-8 sm:w-16 h-full bg-gradient-to-l from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors"></div>
+                <!-- Fades Laterais Otimizados -->
+                <div class="absolute top-0 left-0 w-12 sm:w-16 h-full bg-gradient-to-r from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-300"></div>
+                <div class="absolute top-0 right-0 w-12 sm:w-16 h-full bg-gradient-to-l from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-300"></div>
 
-                <div class="flex overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-5 sm:gap-6 md:gap-10 px-6 sm:px-8 md:px-0 pb-6 custom-scrollbar items-center md:justify-center">
-                    <figure class="snap-center shrink-0 w-[82vw] sm:w-[75vw] md:w-1/3 max-w-[300px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo hover:-translate-y-2 transition-all duration-700 cursor-pointer">
-                        <video src="https://testeessencia.carrd.co/assets/videos/video12.mp4?v=36e3212d#t=0.1" preload="metadata" loop muted playsinline class="smart-video w-full h-full object-cover transform transition-transform duration-[3s] group-hover:scale-105 pointer-events-none opacity-90 dark:opacity-80 transition-opacity"></video>
+                <!-- CARDS (Ajustados para Peek de 75vw) -->
+                <div class="flex overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-5 sm:gap-6 md:gap-6 lg:gap-8 px-6 sm:px-8 md:px-0 pb-6 custom-scrollbar items-center md:justify-center">
+                    <!-- VÍDEO 1 -->
+                    <figure class="snap-center shrink-0 w-[75vw] sm:w-[75vw] md:w-1/4 max-w-[260px] lg:max-w-[280px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo hover:-translate-y-2 transition-all duration-700 cursor-pointer">
+                        <video src="https://testeessencia.carrd.co/assets/videos/video03.mp4?v=701b88d2#t=0.1" preload="metadata" loop muted playsinline class="smart-video w-full h-full object-cover transform transition-transform duration-[3s] group-hover:scale-105 pointer-events-none opacity-90 dark:opacity-80 transition-opacity"></video>
                         <button class="mute-toggle absolute bottom-5 right-5 z-20 bg-black/60 backdrop-blur-md text-white p-3 sm:p-2.5 rounded-full shadow-lg border border-white/20 transition-all hover:bg-black/90 active:scale-95 focus:outline-none flex items-center justify-center"><i data-lucide="volume-x" class="w-5 h-5"></i></button>
                     </figure>
-                    <figure class="snap-center shrink-0 w-[82vw] sm:w-[75vw] md:w-1/3 max-w-[300px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo md:-translate-y-8 hover:-translate-y-10 transition-all duration-700 cursor-pointer">
+                    <!-- VÍDEO 2 -->
+                    <figure class="snap-center shrink-0 w-[75vw] sm:w-[75vw] md:w-1/4 max-w-[260px] lg:max-w-[280px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo md:-translate-y-8 hover:-translate-y-10 transition-all duration-700 cursor-pointer">
                         <video src="https://testeessencia.carrd.co/assets/videos/video13.mp4?v=36e3212d#t=0.1" preload="metadata" loop muted playsinline class="smart-video w-full h-full object-cover transform transition-transform duration-[3s] group-hover:scale-105 pointer-events-none opacity-90 dark:opacity-80 transition-opacity"></video>
                         <button class="mute-toggle absolute bottom-5 right-5 z-20 bg-black/60 backdrop-blur-md text-white p-3 sm:p-2.5 rounded-full shadow-lg border border-white/20 transition-all hover:bg-black/90 active:scale-95 focus:outline-none flex items-center justify-center"><i data-lucide="volume-x" class="w-5 h-5"></i></button>
                     </figure>
-                    <figure class="snap-center shrink-0 w-[82vw] sm:w-[75vw] md:w-1/3 max-w-[300px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo hover:-translate-y-2 transition-all duration-700 cursor-pointer">
+                    <!-- VÍDEO 3 -->
+                    <figure class="snap-center shrink-0 w-[75vw] sm:w-[75vw] md:w-1/4 max-w-[260px] lg:max-w-[280px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo hover:-translate-y-2 transition-all duration-700 cursor-pointer">
                         <video src="https://testeessencia.carrd.co/assets/videos/video02.mp4?v=7c53f00c#t=0.1" preload="metadata" loop muted playsinline class="smart-video w-full h-full object-cover transform transition-transform duration-[3s] group-hover:scale-105 pointer-events-none opacity-90 dark:opacity-80 transition-opacity"></video>
+                        <button class="mute-toggle absolute bottom-5 right-5 z-20 bg-black/60 backdrop-blur-md text-white p-3 sm:p-2.5 rounded-full shadow-lg border border-white/20 transition-all hover:bg-black/90 active:scale-95 focus:outline-none flex items-center justify-center"><i data-lucide="volume-x" class="w-5 h-5"></i></button>
+                    </figure>
+                    <!-- VÍDEO 4 -->
+                    <figure class="snap-center shrink-0 w-[75vw] sm:w-[75vw] md:w-1/4 max-w-[260px] lg:max-w-[280px] group relative overflow-hidden rounded-3xl aspect-[9/16] bg-brand-100 dark:bg-luxury-card border border-brand-900/10 dark:border-luxury-border shadow-alvorada dark:shadow-crepusculo md:-translate-y-8 hover:-translate-y-10 transition-all duration-700 cursor-pointer">
+                        <video src="https://testeessencia.carrd.co/assets/videos/video10.mp4?v=701b88d2#t=0.1" preload="metadata" loop muted playsinline class="smart-video w-full h-full object-cover transform transition-transform duration-[3s] group-hover:scale-105 pointer-events-none opacity-90 dark:opacity-80 transition-opacity"></video>
                         <button class="mute-toggle absolute bottom-5 right-5 z-20 bg-black/60 backdrop-blur-md text-white p-3 sm:p-2.5 rounded-full shadow-lg border border-white/20 transition-all hover:bg-black/90 active:scale-95 focus:outline-none flex items-center justify-center"><i data-lucide="volume-x" class="w-5 h-5"></i></button>
                     </figure>
                 </div>
                 
-                <!-- Indicador Elegante de Scroll Mobile -->
-                <div class="md:hidden flex items-center justify-center mt-4 relative z-10 pointer-events-none">
-                    <div class="flex items-center gap-2.5 bg-white/80 dark:bg-luxury-border/40 px-5 py-2.5 rounded-full border border-brand-200/50 dark:border-luxury-border/50 shadow-sm backdrop-blur-sm transition-colors">
-                        <i data-lucide="chevrons-left-right" class="w-4 h-4 text-brand-600 dark:text-brand-400 animate-pulse"></i>
-                        <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-900 dark:text-luxury-text transition-colors">Deslize para ver mais</span>
+                <!-- NOVO INDICADOR CINÉTICO MOBILE -->
+                <div class="md:hidden flex items-center justify-center mt-6 mb-2 relative z-20 pointer-events-none">
+                    <div class="animate-bounce-horizontal flex items-center gap-3 bg-white/95 dark:bg-luxury-card/95 px-6 py-2.5 rounded-full border border-brand-200/80 dark:border-luxury-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] backdrop-blur-md">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-brand-400 dark:text-luxury-muted"></i>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-900 dark:text-luxury-text">Explore os vídeos</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
                     </div>
                 </div>
             </section>
@@ -678,12 +720,13 @@
                 </div>
 
                 <div class="relative w-full z-10">
-                    <!-- Fades Laterais (Aviso visual de scroll) -->
-                    <div class="md:hidden absolute top-0 left-[-1rem] w-8 h-full bg-gradient-to-r from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none transition-colors"></div>
-                    <div class="md:hidden absolute top-0 right-[-1rem] w-12 h-full bg-gradient-to-l from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none transition-colors"></div>
+                    <!-- Fades Laterais Otimizados -->
+                    <div class="absolute top-0 left-0 w-12 sm:w-16 h-full bg-gradient-to-r from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-300"></div>
+                    <div class="absolute top-0 right-0 w-12 sm:w-16 h-full bg-gradient-to-l from-brand-50 dark:from-luxury-bg to-transparent z-10 pointer-events-none md:hidden transition-colors duration-300"></div>
                     
+                    <!-- CARDS (Ajustados para Peek de 80vw) -->
                     <div class="flex overflow-x-auto md:grid md:grid-cols-3 snap-x snap-mandatory gap-4 sm:gap-6 custom-scrollbar pb-6 md:pb-0 px-2 sm:px-0 relative z-0">
-                        <div class="snap-center shrink-0 w-[85vw] sm:w-[320px] md:w-auto bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border border-brand-900/5 dark:border-luxury-border p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="snap-center shrink-0 w-[80vw] sm:w-[320px] md:w-auto bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border border-brand-900/5 dark:border-luxury-border p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-luxury-bg flex items-center justify-center text-brand-700 dark:text-luxury-text font-serif font-medium text-lg border border-brand-200 dark:border-luxury-border transition-colors">M</div>
                                 <div>
@@ -697,7 +740,7 @@
                             <p class="text-xs sm:text-sm text-brand-800 dark:text-luxury-muted font-light leading-relaxed transition-colors">"O Liso Soberano salvou o meu cabelo. Já tinha tentado de tudo na cidade e só aqui consegui o liso perfeito sem arder os olhos. Zero formol de verdade, ambiente de puro cuidado e conforto!"</p>
                         </div>
                         
-                        <div class="snap-center shrink-0 w-[85vw] sm:w-[320px] md:w-auto bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border border-brand-900/5 dark:border-luxury-border p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="snap-center shrink-0 w-[80vw] sm:w-[320px] md:w-auto bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border border-brand-900/5 dark:border-luxury-border p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-luxury-bg flex items-center justify-center text-brand-700 dark:text-luxury-text font-serif font-medium text-lg border border-brand-200 dark:border-luxury-border transition-colors">J</div>
                                 <div>
@@ -711,7 +754,7 @@
                             <p class="text-xs sm:text-sm text-brand-800 dark:text-luxury-muted font-light leading-relaxed transition-colors">"O Glass Molecular é surreal! Eu não queria perder as minhas ondas, só queria tirar aquele aspeto espigado. O cabelo ficou um espelho e super sedoso. Recomendo de olhos fechados."</p>
                         </div>
 
-                        <div class="snap-center shrink-0 w-[85vw] sm:w-[320px] md:w-auto bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border border-brand-900/5 dark:border-luxury-border p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="snap-center shrink-0 w-[80vw] sm:w-[320px] md:w-auto bg-white/95 dark:bg-luxury-card/95 backdrop-blur-xl border border-brand-900/5 dark:border-luxury-border p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-luxury-bg flex items-center justify-center text-brand-700 dark:text-luxury-text font-serif font-medium text-lg border border-brand-200 dark:border-luxury-border transition-colors">P</div>
                                 <div>
@@ -727,11 +770,12 @@
                     </div>
                 </div>
                 
-                <!-- Indicador Elegante de Scroll Mobile -->
-                <div class="md:hidden flex items-center justify-center mt-4 relative z-10 pointer-events-none">
-                    <div class="flex items-center gap-2.5 bg-white/80 dark:bg-luxury-border/40 px-5 py-2.5 rounded-full border border-brand-200/50 dark:border-luxury-border/50 shadow-sm backdrop-blur-sm transition-colors">
-                        <i data-lucide="chevrons-left-right" class="w-4 h-4 text-brand-600 dark:text-brand-400 animate-pulse"></i>
-                        <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-900 dark:text-luxury-text transition-colors">Deslize para ler mais</span>
+                <!-- NOVO INDICADOR CINÉTICO MOBILE -->
+                <div class="md:hidden flex items-center justify-center mt-6 mb-2 relative z-20 pointer-events-none">
+                    <div class="animate-bounce-horizontal flex items-center gap-3 bg-white/95 dark:bg-luxury-card/95 px-6 py-2.5 rounded-full border border-brand-200/80 dark:border-luxury-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] backdrop-blur-md">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-brand-400 dark:text-luxury-muted"></i>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-900 dark:text-luxury-text">Deslize para ler mais</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
                     </div>
                 </div>
             </section>
@@ -1229,18 +1273,19 @@
                 </header>
                 
                 <div class="relative w-full z-10">
-                    <!-- Fades Laterais (Aviso visual de scroll) -->
-                    <div class="lg:hidden absolute top-0 left-[-1.25rem] w-8 h-full bg-gradient-to-r from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors"></div>
-                    <div class="lg:hidden absolute top-0 right-[-1.25rem] w-12 h-full bg-gradient-to-l from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors"></div>
+                    <!-- Fades Laterais Otimizados -->
+                    <div class="lg:hidden absolute top-0 left-[-1.25rem] w-8 h-full bg-gradient-to-r from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
+                    <div class="lg:hidden absolute top-0 right-[-1.25rem] w-12 h-full bg-gradient-to-l from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
                     
                     <div id="clube-pricing-grid-liso" class="flex overflow-x-auto lg:grid lg:grid-cols-4 snap-x snap-mandatory gap-4 custom-scrollbar w-[calc(100%+2rem)] -mx-4 lg:mx-0 lg:w-full px-4 lg:px-0 pb-4 lg:pb-0 relative z-0"></div>
                 </div>
                 
-                <!-- Indicador Elegante de Scroll Mobile -->
-                <div class="lg:hidden flex items-center justify-center mt-2 mb-6 relative z-10 pointer-events-none">
-                    <div class="flex items-center gap-2.5 bg-brand-50/80 dark:bg-luxury-border/40 px-5 py-2.5 rounded-full border border-brand-200/50 dark:border-luxury-border/50 shadow-sm backdrop-blur-sm transition-colors">
-                        <i data-lucide="chevrons-left-right" class="w-4 h-4 text-brand-600 dark:text-brand-400 animate-pulse"></i>
-                        <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-900 dark:text-luxury-text transition-colors">Deslize a tabela</span>
+                <!-- NOVO INDICADOR CINÉTICO MOBILE -->
+                <div class="lg:hidden flex items-center justify-center mt-4 mb-6 relative z-20 pointer-events-none">
+                    <div class="animate-bounce-horizontal flex items-center gap-3 bg-brand-50/95 dark:bg-luxury-border/95 px-6 py-2.5 rounded-full border border-brand-200/80 dark:border-luxury-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] backdrop-blur-md">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-brand-400 dark:text-luxury-muted"></i>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-900 dark:text-luxury-text">Deslize a tabela</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
                     </div>
                 </div>
                 
@@ -1264,18 +1309,19 @@
                 </header>
                 
                 <div class="relative w-full z-10">
-                    <!-- Fades Laterais (Aviso visual de scroll) -->
-                    <div class="lg:hidden absolute top-0 left-[-1.25rem] w-8 h-full bg-gradient-to-r from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors"></div>
-                    <div class="lg:hidden absolute top-0 right-[-1.25rem] w-12 h-full bg-gradient-to-l from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors"></div>
+                    <!-- Fades Laterais Otimizados -->
+                    <div class="lg:hidden absolute top-0 left-[-1.25rem] w-8 h-full bg-gradient-to-r from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
+                    <div class="lg:hidden absolute top-0 right-[-1.25rem] w-12 h-full bg-gradient-to-l from-white dark:from-luxury-card to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
                     
                     <div id="clube-pricing-grid-glass" class="flex overflow-x-auto lg:grid lg:grid-cols-4 snap-x snap-mandatory gap-4 custom-scrollbar w-[calc(100%+2rem)] -mx-4 lg:mx-0 lg:w-full px-4 lg:px-0 pb-4 lg:pb-0 relative z-0"></div>
                 </div>
                 
-                <!-- Indicador Elegante de Scroll Mobile -->
-                <div class="lg:hidden flex items-center justify-center mt-2 mb-6 relative z-10 pointer-events-none">
-                    <div class="flex items-center gap-2.5 bg-brand-50/80 dark:bg-luxury-border/40 px-5 py-2.5 rounded-full border border-brand-200/50 dark:border-luxury-border/50 shadow-sm backdrop-blur-sm transition-colors">
-                        <i data-lucide="chevrons-left-right" class="w-4 h-4 text-brand-600 dark:text-brand-400 animate-pulse"></i>
-                        <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-900 dark:text-luxury-text transition-colors">Deslize a tabela</span>
+                <!-- NOVO INDICADOR CINÉTICO MOBILE -->
+                <div class="lg:hidden flex items-center justify-center mt-4 mb-6 relative z-20 pointer-events-none">
+                    <div class="animate-bounce-horizontal flex items-center gap-3 bg-brand-50/95 dark:bg-luxury-border/95 px-6 py-2.5 rounded-full border border-brand-200/80 dark:border-luxury-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] backdrop-blur-md">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-brand-400 dark:text-luxury-muted"></i>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-900 dark:text-luxury-text">Deslize a tabela</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
                     </div>
                 </div>
                 
@@ -1362,8 +1408,8 @@
                 </div>
 
                 <!-- TABELAS DO CLUBE POR PERFIL -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 relative z-10 mt-20 border-t border-white/10 dark:border-luxury-border pt-16 transition-colors">
-                    <div class="text-center lg:col-span-3 mb-6">
+                <div class="relative z-10 mt-20 border-t border-white/10 dark:border-luxury-border pt-16 transition-colors">
+                    <div class="text-center mb-10">
                         <h3 class="text-2xl md:text-3xl font-serif font-medium text-white dark:text-luxury-text uppercase tracking-wide transition-colors">Tabelas de Assinatura</h3>
                         <p class="text-brand-100/70 dark:text-luxury-muted text-[13px] md:text-sm mt-3 font-light max-w-2xl mx-auto mb-8 transition-colors">Valores exclusivos para clientes ativas que respeitam a janela de manutenção.</p>
                         
@@ -1388,13 +1434,27 @@
                         </div>
                     </div>
 
+                    <!-- Fades Laterais Otimizados -->
+                    <div class="absolute top-0 left-0 w-12 sm:w-16 h-full bg-gradient-to-r from-brand-950 dark:from-[#110d0c] to-transparent z-10 pointer-events-none lg:hidden transition-colors duration-300"></div>
+                    <div class="absolute top-0 right-0 w-12 sm:w-16 h-full bg-gradient-to-l from-brand-950 dark:from-[#110d0c] to-transparent z-10 pointer-events-none lg:hidden transition-colors duration-300"></div>
+
                     <!-- CONTAINER GERADO POR JS PARA OS CARDS DO CLUBE -->
-                    <div id="clube-cards-container" class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8"></div>
+                    <!-- Convertido em Carrossel Horizontal para Mobile! -->
+                    <div id="clube-cards-container" class="flex overflow-x-auto lg:grid lg:grid-cols-3 snap-x snap-mandatory gap-6 lg:gap-8 items-center mt-6 pb-6 lg:pb-0 custom-scrollbar px-6 sm:px-8 lg:px-0 -mx-6 sm:-mx-8 lg:mx-0"></div>
+
+                    <!-- NOVO INDICADOR CINÉTICO MOBILE PARA O CLUBE -->
+                    <div class="lg:hidden flex items-center justify-center mt-4 relative z-20 pointer-events-none">
+                        <div class="animate-bounce-horizontal flex items-center gap-3 bg-white/10 dark:bg-luxury-border/30 px-6 py-2.5 rounded-full border border-white/20 dark:border-luxury-border/50 shadow-lg backdrop-blur-md">
+                            <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-brand-300 dark:text-luxury-muted"></i>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-white dark:text-luxury-text">Deslize os planos</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-300 dark:text-luxury-muted"></i>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="mt-16 text-center relative z-10 transition-colors">
-                    <button onclick="navigateTo('view-home')" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-luxury-border text-brand-950 dark:text-luxury-text rounded-full font-bold text-[11px] md:text-xs uppercase tracking-widest hover:bg-brand-200 dark:hover:bg-luxury-border/80 transition-colors shadow-md focus:outline-none">
-                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar ao Menu
+                    <button onclick="navigateTo('view-home')" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 dark:bg-luxury-border hover:bg-white/20 dark:hover:bg-luxury-border/80 border border-white/10 dark:border-transparent rounded-xl text-[11px] font-bold uppercase tracking-widest text-white dark:text-luxury-text transition-all shadow-md focus:outline-none flex items-center justify-center gap-2 group/btn">
+                        <i data-lucide="arrow-left" class="w-4 h-4 text-brand-300 dark:text-luxury-text group-hover/btn:text-white transition-colors"></i> Voltar ao Menu
                     </button>
                 </div>
             </section>
@@ -1416,10 +1476,10 @@
             <p class="text-[12px] sm:text-[13px] text-brand-800 dark:text-luxury-muted font-light mb-6 transition-colors">Selecione onde prefere realizar a sua avaliação para <strong id="modal-service-name" class="font-semibold text-brand-950 dark:text-luxury-text transition-colors">...</strong>.</p>
             <div class="flex flex-col gap-3 w-full">
                 <a id="btn-chapeco" href="#" target="_blank" class="w-full py-3.5 px-4 bg-[#128C7E] dark:bg-[#1EBE5D] hover:bg-[#075E54] dark:hover:bg-[#25D366] text-white dark:text-luxury-bg rounded-xl font-bold text-[13px] transition-colors shadow-md focus:outline-none flex items-center justify-center gap-2">
-                    Chapecó
+                    Centro de Chapecó
                 </a>
                 <a id="btn-seara" href="#" target="_blank" class="w-full py-3.5 px-4 bg-transparent border border-brand-200 dark:border-luxury-border hover:border-brand-500 dark:hover:border-brand-400 text-brand-950 dark:text-luxury-text rounded-xl font-bold text-[13px] transition-colors focus:outline-none flex items-center justify-center gap-2">
-                    Seara
+                    Centro de Seara
                 </a>
             </div>
         </div>
@@ -1548,7 +1608,6 @@
             if (isHomecare) {
                 cartSystem.toggle();
             } else {
-                // CORREÇÃO: URL codificada agora diz "Falar com uma Especialista"
                 window.open('https://wa.me/5549999954052?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20uma%20especialista.', '_blank');
             }
         }
@@ -1570,12 +1629,13 @@
                 { title: 'Perfil GG', subtitle: 'Cintura em diante', items: [{ label: 'Fibra Fina', price: '647' }, { label: 'Fibra Média', price: '697' }, { label: 'Fibra Grossa', price: '797' }] }
             ];
 
-            // Tabelas do Clube Essência (Sublime, Imperial, Absoluto)
+            // Tabelas do Clube Essência (Sublime destacado estrategicamente)
             const pricingDataClube = [
                 {
                     title: 'Perfil Sublime',
                     subtitle: 'Lisos & Ondulados',
                     icon: '✨',
+                    popular: true, // FLAG ESTRATÉGICA PARA DESTAQUE
                     windows: [
                         { time: '0 a 30 dias', colorClass: 'bg-[#25D366]', shadowClass: 'shadow-[0_0_8px_rgba(37,211,102,0.6)]', items: [{ label: 'Fibra Fina', price: '119,90' }, { label: 'Fibra Média', price: '149,90' }, { label: 'Fibra Grossa', price: '179,90' }] },
                         { time: '31 a 60 dias', colorClass: 'bg-yellow-500', shadowClass: 'shadow-[0_0_8px_rgba(234,179,8,0.6)]', items: [{ label: 'Fibra Fina', price: '169,90' }, { label: 'Fibra Média', price: '199,90' }, { label: 'Fibra Grossa', price: '229,90' }] },
@@ -1586,6 +1646,7 @@
                     title: 'Perfil Imperial',
                     subtitle: 'Cacheados',
                     icon: '👑',
+                    popular: false,
                     windows: [
                         { time: '0 a 30 dias', colorClass: 'bg-[#25D366]', shadowClass: 'shadow-[0_0_8px_rgba(37,211,102,0.6)]', items: [{ label: 'Fibra Fina', price: '139,90' }, { label: 'Fibra Média', price: '169,90' }, { label: 'Fibra Grossa', price: '199,90' }] },
                         { time: '31 a 60 dias', colorClass: 'bg-yellow-500', shadowClass: 'shadow-[0_0_8px_rgba(234,179,8,0.6)]', items: [{ label: 'Fibra Fina', price: '189,00' }, { label: 'Fibra Média', price: '219,00' }, { label: 'Fibra Grossa', price: '249,00' }] },
@@ -1596,6 +1657,7 @@
                     title: 'Perfil Absoluto',
                     subtitle: 'Crespos',
                     icon: '💎',
+                    popular: false,
                     windows: [
                         { time: '0 a 30 dias', colorClass: 'bg-[#25D366]', shadowClass: 'shadow-[0_0_8px_rgba(37,211,102,0.6)]', items: [{ label: 'Fibra Fina', price: '159,90' }, { label: 'Fibra Média', price: '189,90' }, { label: 'Fibra Grossa', price: '239,90' }] },
                         { time: '31 a 60 dias', colorClass: 'bg-yellow-500', shadowClass: 'shadow-[0_0_8px_rgba(234,179,8,0.6)]', items: [{ label: 'Fibra Fina', price: '220,00' }, { label: 'Fibra Média', price: '250,00' }, { label: 'Fibra Grossa', price: '300,00' }] },
@@ -1640,7 +1702,7 @@
                         </div>
                         <div class="flex flex-col gap-2 sm:gap-4">${itemsHtml}</div>`;
                     
-                    htmlCarousel += `<article class="snap-center shrink-0 w-[85vw] sm:w-[320px] lg:w-auto flex flex-col py-6 px-6 sm:px-8 border border-brand-200 dark:border-luxury-border bg-brand-50/50 dark:bg-luxury-card rounded-3xl transition-all duration-300 shadow-sm relative overflow-hidden">${innerHtml}</article>`;
+                    htmlCarousel += `<article class="snap-start shrink-0 w-[80vw] sm:w-[320px] lg:w-auto flex flex-col py-6 px-6 sm:px-8 border border-brand-200 dark:border-luxury-border bg-brand-50/50 dark:bg-luxury-card rounded-3xl transition-all duration-300 shadow-sm relative overflow-hidden">${innerHtml}</article>`;
                 });
                 return htmlCarousel;
             }
@@ -1660,11 +1722,22 @@
                             `;
                         });
 
+                        // Reforço Comportamental Dinâmico
+                        let tagHtml = '';
+                        if (w.time === '0 a 30 dias') {
+                            tagHtml = `<span class="ml-auto text-[8px] sm:text-[9px] bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 px-2 py-0.5 rounded-md uppercase tracking-widest font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse"></span> Maior Vantagem</span>`;
+                        } else if (w.time === '61 a 90 dias') {
+                            tagHtml = `<span class="ml-auto text-[8px] sm:text-[9px] bg-orange-500/10 text-orange-400 border border-orange-500/30 px-2 py-0.5 rounded-md uppercase tracking-widest font-bold">Risco de Perda</span>`;
+                        }
+
                         windowsHtml += `
                             <div class="mb-4 bg-black/20 dark:bg-luxury-bg/40 p-4 rounded-xl border border-white/10 dark:border-luxury-border/50 transition-colors">
-                                <span class="text-[11px] sm:text-[12px] text-white dark:text-[#E6DFD9] font-bold flex items-center gap-2 mb-3 transition-colors uppercase tracking-widest">
-                                    <div class="w-2 h-2 rounded-full ${w.colorClass} ${w.shadowClass}"></div> ${w.time}
-                                </span>
+                                <div class="flex items-center mb-3 transition-colors">
+                                    <span class="text-[11px] sm:text-[12px] text-white dark:text-[#E6DFD9] font-bold flex items-center gap-2 uppercase tracking-widest">
+                                        <div class="w-2 h-2 rounded-full ${w.colorClass} ${w.shadowClass}"></div> ${w.time}
+                                    </span>
+                                    ${tagHtml}
+                                </div>
                                 <div class="flex flex-col">
                                     ${itemsHtml}
                                 </div>
@@ -1672,32 +1745,37 @@
                         `;
                     });
 
+                    const popularBadge = p.popular ? `<div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#128C7E] to-[#25D366] dark:from-[#1EBE5D] dark:to-[#25D366] text-white px-5 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-[0_4px_15px_rgba(37,211,102,0.4)] z-20 whitespace-nowrap flex items-center gap-1.5"><i data-lucide="award" class="w-3 h-3"></i> O Mais Escolhido</div>` : '';
+                    const cardClasses = p.popular ? 'border-[#25D366]/40 shadow-[0_10px_40px_-10px_rgba(37,211,102,0.15)] dark:shadow-[0_10px_40px_-10px_rgba(37,211,102,0.1)] scale-100 lg:scale-[1.02] z-10 opacity-100 ring-1 ring-[#25D366]/20' : 'border-white/10 dark:border-luxury-border opacity-90 hover:opacity-100 scale-100 z-0 hover:-translate-y-1 hover:border-white/20 transition-all';
+                    const savingsTag = `<div class="mt-3 inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] font-bold uppercase tracking-widest rounded-full w-max mx-auto"><i data-lucide="trending-down" class="w-3 h-3"></i> Economia Premium</div>`;
+                    
+                    const btnHtml = p.popular 
+                        ? `<button onclick="openCityModal('Clube Essência - ${p.title}')" class="w-full py-3.5 px-4 bg-[#128C7E] dark:bg-[#1EBE5D] hover:bg-[#075E54] dark:hover:bg-[#25D366] rounded-xl text-[11px] font-bold uppercase tracking-widest text-white dark:text-luxury-bg transition-all shadow-[0_0_15px_rgba(37,211,102,0.3)] focus:outline-none flex items-center justify-center gap-2 group/btn"><i data-lucide="calendar-check" class="w-4 h-4"></i> Garantir Minha Janela</button>`
+                        : `<button onclick="openCityModal('Clube Essência - ${p.title}')" class="w-full py-3.5 px-4 bg-white/5 dark:bg-luxury-border hover:bg-white/10 dark:hover:bg-luxury-border/80 border border-white/10 dark:border-transparent rounded-xl text-[11px] font-bold uppercase tracking-widest text-white dark:text-luxury-text transition-all shadow-md focus:outline-none flex items-center justify-center gap-2 group/btn"><i data-lucide="calendar-check" class="w-4 h-4 text-brand-400 dark:text-luxury-muted group-hover/btn:text-white transition-colors"></i> Reservar Janela</button>`;
+
                     html += `
-                        <article class="bg-white/5 dark:bg-luxury-card/60 backdrop-blur-md border border-white/10 dark:border-luxury-border rounded-[2rem] p-6 sm:p-8 flex flex-col hover:-translate-y-1 transition-all duration-300 shadow-xl relative overflow-hidden">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-400 to-brand-600"></div>
-                            <div class="text-center mb-6 border-b border-white/10 dark:border-luxury-border pb-6 transition-colors">
+                        <article class="snap-start shrink-0 w-[85vw] lg:w-auto bg-white/5 dark:bg-luxury-card/60 backdrop-blur-md border rounded-[2rem] p-6 sm:p-8 flex flex-col transition-all duration-500 relative overflow-visible ${cardClasses}">
+                            ${popularBadge}
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-400 to-brand-600 rounded-t-[2rem]"></div>
+                            <div class="text-center mb-6 border-b border-white/10 dark:border-luxury-border pb-6 transition-colors mt-2 flex flex-col items-center">
                                 <span class="text-3xl mb-3 block drop-shadow-md">${p.icon}</span>
                                 <h4 class="font-serif text-xl sm:text-2xl font-bold text-white dark:text-luxury-text transition-colors">${p.title}</h4>
-                                <p class="text-[10px] sm:text-[11px] text-brand-200 dark:text-brand-400 mt-1.5 font-bold uppercase tracking-widest transition-colors">${p.subtitle}</p>
+                                <p class="text-[10px] sm:text-[11px] text-brand-300 dark:text-brand-400 mt-1.5 font-bold uppercase tracking-widest transition-colors">${p.subtitle}</p>
+                                ${savingsTag}
                             </div>
-                            
                             <div class="flex flex-col flex-grow">
                                 ${windowsHtml}
-                                
                                 <div class="flex justify-between items-center py-4 px-4 mt-2 bg-red-500/10 dark:bg-red-500/5 border border-red-500/20 dark:border-red-500/20 rounded-xl transition-colors">
                                     <span class="text-[11px] sm:text-[12px] text-red-400 dark:text-red-300 font-bold flex items-center gap-2 transition-colors uppercase tracking-widest">
                                         <div class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div> > 90 dias
                                     </span>
-                                    <span class="text-[10px] sm:text-[11px] font-bold text-brand-200 dark:text-luxury-text uppercase tracking-widest cursor-pointer hover:text-white dark:hover:text-[#E6DFD9] transition-colors flex items-center gap-1" onclick="document.getElementById('tabela-liso').scrollIntoView({behavior: 'smooth'})">
+                                    <span class="text-[10px] sm:text-[11px] font-bold text-brand-300 dark:text-luxury-text uppercase tracking-widest cursor-pointer hover:text-white dark:hover:text-[#E6DFD9] transition-colors flex items-center gap-1" onclick="document.getElementById('tabela-liso').scrollIntoView({behavior: 'smooth'})">
                                         Tabela Oficial <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
                                     </span>
                                 </div>
                             </div>
-                            
                             <div class="mt-6 pt-6 border-t border-white/10 dark:border-luxury-border transition-colors">
-                                <button onclick="openCityModal('Clube Essência - ${p.title}')" class="w-full py-3.5 px-4 bg-white/10 dark:bg-luxury-border hover:bg-white/20 dark:hover:bg-luxury-border/80 border border-white/10 dark:border-transparent rounded-xl text-[11px] font-bold uppercase tracking-widest text-white dark:text-luxury-text transition-all shadow-md focus:outline-none flex items-center justify-center gap-2 group/btn">
-                                    <i data-lucide="calendar-check" class="w-4 h-4 text-brand-300 dark:text-luxury-text group-hover/btn:text-white transition-colors"></i> Reservar Janela
-                                </button>
+                                ${btnHtml}
                             </div>
                         </article>
                     `;
@@ -1732,6 +1810,7 @@
                 if(btnElement && btnElement.disabled) return;
 
                 if(btnElement) {
+                    btnElement.disabled = true;
                     const originalHTML = btnElement.innerHTML;
                     btnElement.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Adicionado';
                     btnElement.classList.add('bg-[#25D366]', 'text-white', 'border-transparent');
@@ -1741,6 +1820,7 @@
                         btnElement.innerHTML = originalHTML;
                         btnElement.classList.remove('bg-[#25D366]', 'text-white', 'border-transparent');
                         btnElement.classList.add('bg-brand-900', 'hover:bg-brand-800', 'dark:bg-white', 'dark:hover:bg-luxury-text', 'dark:text-brand-950');
+                        btnElement.disabled = false;
                         if(window.lucide) lucide.createIcons();
                     }, 1500);
                 }
@@ -1972,7 +2052,6 @@
                         if (entry.target.muted) entry.target.play().catch(e => console.warn('Autoplay evitado', e));
                     } else {
                         entry.target.pause();
-                        // CORREÇÃO: Verifica se o vídeo possui a tag <figure> (pertence à galeria) antes de buscar o botão Mute
                         const figure = entry.target.closest('figure');
                         if (figure) {
                             entry.target.muted = true;
@@ -2039,9 +2118,7 @@
                 }
             });
 
-            // ==========================================
             // LÓGICA DUAL MEDIA (FOTO/VÍDEO) BOUTIQUE
-            // ==========================================
             const mediaToggles = document.querySelectorAll('.toggle-media-btn');
             mediaToggles.forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -2056,24 +2133,21 @@
                     const video = container.querySelector('.media-video');
                     const allBtns = container.querySelectorAll('.toggle-media-btn');
                     
-                    // Reset dos botões
                     allBtns.forEach(b => {
                         b.classList.remove('bg-white', 'text-brand-950');
                         b.classList.add('bg-transparent', 'text-white');
                         b.classList.remove('active');
                     });
                     
-                    // Ativa o botão clicado
                     this.classList.remove('bg-transparent', 'text-white');
                     this.classList.add('bg-white', 'text-brand-950', 'active');
                     
-                    // Alterna as mídias com fade
                     if (type === 'video') {
                         if (photo) photo.style.opacity = '0';
                         if (video) {
                             video.style.opacity = '1';
-                            video.style.zIndex = '15'; // Garante que o vídeo fica atrás dos botões, mas à frente da foto
-                            video.play().catch(() => console.log('Autoplay do vídeo prevenido pelo navegador.'));
+                            video.style.zIndex = '15';
+                            video.play().catch(() => console.log('Autoplay prevenido.'));
                         }
                     } else {
                         if (photo) photo.style.opacity = '1';
@@ -2083,7 +2157,6 @@
                             video.pause();
                         }
                     }
-                    
                     if(window.lucide) lucide.createIcons();
                 });
             });
@@ -2094,7 +2167,6 @@
             if (window.scrollY > 20) { if(nav) nav.classList.add('shadow-sm', 'dark:shadow-none'); } 
             else { if(nav) nav.classList.remove('shadow-sm', 'dark:shadow-none'); }
 
-            // CORREÇÃO: Restauração da matemática da barra de progresso e selamento do arquivo
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
@@ -2120,10 +2192,12 @@
         }
 
         function acceptCookies() { localStorage.setItem('roma_cookies_accepted', 'true'); const b = document.getElementById('cookie-banner'); if(b) b.classList.add('translate-y-full'); }
+        
         const legalTexts = {
             termos: { title: "Termos de Uso", content: `<h4 class="font-semibold text-brand-950 dark:text-luxury-text mb-1.5 text-[14px]">1. Condições de Serviço</h4><p class="mb-4">Bem-vindo à Essência de Romã Hair. Ao utilizar o nosso site e solicitar agendamentos, concorda com os presentes termos. A nossa especialidade é o alisamento capilar seguro (Liso Soberano 8K) e tratamentos reconstrutores (Glass Molecular).</p><h4 class="font-semibold text-brand-950 dark:text-luxury-text mb-1.5 text-[14px]">2. Avaliações e Restrições Clínicas</h4><p class="mb-4">O agendamento garante a sua vaga, mas a execução do procedimento químico está estritamente sujeita à aprovação no nosso Diagnóstico Capilar (Teste de Mecha). Caso o fio não apresente saúde estrutural, o salão reserva-se o direito de não realizar a química visando a integridade da cliente.</p><h4 class="font-semibold text-brand-950 dark:text-luxury-text mb-1.5 text-[14px]">3. Valores e Campanhas</h4><p>As promoções anunciadas estão sujeitas à disponibilidade de vagas diárias nas unidades de Chapecó e Seara. Os valores finais podem sofrer ajustes após a avaliação presencial.</p>` },
             privacidade: { title: "Política de Privacidade", content: `<h4 class="font-semibold text-brand-950 dark:text-luxury-text mb-1.5 text-[14px]">1. Tratamento de Dados Pessoais (LGPD)</h4><p class="mb-4">A sua privacidade é um pilar da Essência de Romã. Atuamos em conformidade com a LGPD, recolhendo unicamente os dados necessários fornecidos de forma voluntária para fins exclusivos de agendamento e contacto.</p><h4 class="font-semibold text-brand-950 dark:text-luxury-text mb-1.5 text-[14px]">2. Uso de Cookies e Tráfego</h4><p class="mb-4">Utilizamos cookies e marcadores de rastreio (Google Analytics, Meta Pixel) para entender padrões de navegação de forma anónima. Isto permite-nos otimizar o site e exibir campanhas de remarketing relevantes.</p><h4 class="font-semibold text-brand-950 dark:text-luxury-text mb-1.5 text-[14px]">3. Segurança e Partilha</h4><p>Os dados recolhidos não são vendidos nem partilhados com redes externas, transitando apenas pelas plataformas de infraestrutura encriptadas necessárias ao funcionamento das nossas operações diárias.</p>` }
         };
+        
         function openLegalModal(type) { const m = document.getElementById('legal-modal'); if(!m) return; document.getElementById('modal-title').innerText = legalTexts[type].title; document.getElementById('modal-content').innerHTML = legalTexts[type].content; m.classList.remove('hidden'); setTimeout(() => m.classList.remove('opacity-0'), 10); document.body.style.overflow = 'hidden'; }
         function closeLegalModal() { const m = document.getElementById('legal-modal'); if(!m) return; m.classList.add('opacity-0'); setTimeout(() => { m.classList.add('hidden'); document.body.style.overflow = 'auto'; }, 300); }
     </script>
