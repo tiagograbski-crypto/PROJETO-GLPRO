@@ -175,11 +175,12 @@
                     <span class="font-tech text-[10px] font-bold uppercase tracking-[0.6em] text-high-contrast">Purity Control</span>
                 </div>
                 
-                <div class="reveal mb-12 py-2">
-                    <h1 class="font-editorial text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] italic title-gradient">
+                <!-- CORREÇÃO DE RESPONSIVIDADE: CLAMP PARA FLUIDEZ PERFEITA -->
+                <div class="reveal mb-12 py-4">
+                    <h1 class="font-editorial text-[clamp(3.5rem,8vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.9] italic title-gradient pb-2">
                         Molecular
                     </h1>
-                    <h2 class="font-editorial text-xl sm:text-2xl md:text-4xl italic font-light opacity-50 mt-4 tracking-widest">
+                    <h2 class="font-editorial text-[clamp(1.2rem,3vw,2.25rem)] italic font-light opacity-50 mt-2 tracking-widest">
                         Platinum Infusion
                     </h2>
                 </div>
@@ -301,36 +302,47 @@
         </section>
 
         <!-- ==========================================
-             SEÇÃO 3: A CIÊNCIA (EDUCAÇÃO B2B/B2C) - NOVA
+             SEÇÃO 3: OS ATIVOS RAROS (CAVIAR, AÇAÍ, CUPUAÇU) - CORRIGIDA E GOURMETIZADA
              ========================================== -->
         <section class="py-20 px-6 max-w-6xl mx-auto reveal mb-20">
             <div class="flex flex-col items-center gap-4 text-center mb-16">
-                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast">Biotecnologia Aplicada</h3>
+                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast">Infusão de Ativos Raros</h3>
                 <div class="h-px w-16 bg-current opacity-30"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md">
-                    <span class="font-editorial text-4xl italic text-accent opacity-50 block mb-4">01</span>
-                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-3">Mapeamento Iónico</h4>
-                    <p class="font-tech text-sm opacity-60 font-light leading-relaxed">
-                        A fórmula identifica microfissuras na estrutura capilar, preparando o terreno para uma intervenção cirúrgica na fibra.
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- ATIVO EM DESTAQUE: CAVIAR -->
+                <div class="p-8 border border-accent rounded-[2rem] bg-accent/5 backdrop-blur-md shadow-[0_20px_40px_rgba(0,0,0,0.3)] relative overflow-hidden transform transition-transform duration-500 hover:-translate-y-2">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+                    <span class="font-editorial text-4xl italic text-accent opacity-90 block mb-4">01</span>
+                    <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-1">Extrato de Caviar</h4>
+                    <span class="font-editorial text-[11px] italic text-accent opacity-80 mb-3 block">Reconstrução Absoluta</span>
+                    <p class="font-tech text-sm opacity-80 font-light leading-relaxed">
+                        A joia da reconstrução capilar. Uma matriz raríssima, rica em proteínas, lípidos e aminoácidos essenciais. Injeta densidade diretamente no córtex, devolvendo a integridade estrutural, a força e a juventude aos fios danificados de forma imediata.
                     </p>
                 </div>
-                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md">
-                    <span class="font-editorial text-4xl italic text-accent opacity-50 block mb-4">02</span>
-                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-3">Infusão Molecular</h4>
+
+                <!-- ATIVO 2: AÇAÍ -->
+                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md transform transition-transform duration-500 hover:-translate-y-2">
+                    <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-4">02</span>
+                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-1">Óleo do Açaí</h4>
+                    <span class="font-editorial text-[11px] italic text-accent opacity-80 mb-3 block">Néctar Antioxidante</span>
                     <p class="font-tech text-sm opacity-60 font-light leading-relaxed">
-                        Reposição lipídica absoluta. Os ativos penetram no córtex, devolvendo a densidade e a elasticidade perdidas pelo tempo.
+                        Um escudo antioxidante da Amazónia. Esta infusão lipídica previne o envelhecimento da fibra, blinda contra radicais livres e preserva a cor, garantindo uma reflexão de luz extraordinária e um brilho vívido prolongado.
                     </p>
                 </div>
-                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md">
-                    <span class="font-editorial text-4xl italic text-accent opacity-50 block mb-4">03</span>
-                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-3">Selagem 8K</h4>
+
+                <!-- ATIVO 3: CUPUAÇU -->
+                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md transform transition-transform duration-500 hover:-translate-y-2">
+                    <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-4">03</span>
+                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-1">Manteiga de Cupuaçu</h4>
+                    <span class="font-editorial text-[11px] italic text-accent opacity-80 mb-3 block">Bálsamo Preenchedor</span>
                     <p class="font-tech text-sm opacity-60 font-light leading-relaxed">
-                        O alinhamento térmico finaliza o protocolo, criando um escudo refletor que entrega o brilho espelhado inigualável.
+                        Manteiga botânica de alta absorção que sela as cutículas. Retém a umidade vital no núcleo do fio, entregando uma flexibilidade superior, peso luxuoso e um toque de seda inesquecível após o protocolo.
                     </p>
                 </div>
+
             </div>
         </section>
 
