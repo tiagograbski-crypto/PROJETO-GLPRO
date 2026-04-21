@@ -9,229 +9,225 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* PALETA DE ULTRA LUXO - FULL IMMERSIVE */
+        /* AUDITORIA DE CORES - ULTRA LUXO */
         :root {
-            --bg-alvorada: #faf9f6;
-            --text-alvorada: #1a1a1a;
-            --accent-alvorada: #c5a67c;
-            --spotlight-alvorada: rgba(197, 166, 124, 0.12);
+            /* Alvorada (Light) - Contraste Suave */
+            --bg-alvorada: #fcfbf9;
+            --text-alvorada: #18181b;
+            --accent-alvorada: #b59461;
+            --glow-alvorada: rgba(181, 148, 97, 0.18);
 
+            /* Crepúsculo (Dark) - Contraste Profundo */
             --bg-crepusculo: #060404;
-            --text-crepusculo: #f4f4f5;
+            --text-crepusculo: #fafafa;
             --accent-crepusculo: #e4e4e7;
-            --spotlight-crepusculo: rgba(255, 255, 255, 0.07);
+            --glow-crepusculo: rgba(255, 255, 255, 0.12);
         }
 
         html, body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            scroll-behavior: smooth;
+            transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body.light { background-color: var(--bg-alvorada); color: var(--text-alvorada); }
         body.dark { background-color: var(--bg-crepusculo); color: var(--text-crepusculo); }
 
-        /* MÁSCARA GLOBAL DE FUNDO */
+        /* LANTERNA SENSORIAL MELHORADA */
         #global-spotlight {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            /* Máscara radial que segue o rato */
             -webkit-mask-image: radial-gradient(circle var(--spotlight-size, 0px) at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
             mask-image: radial-gradient(circle var(--spotlight-size, 0px) at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
-            transition: -webkit-mask-image 0.2s ease;
         }
 
+        /* Camada de Textura com Contraste Ajustado */
         .pattern-layer {
             position: absolute;
             inset: -50%;
             width: 200%;
             height: 200%;
-            opacity: 0.15;
             background-image: url('https://imagensagata.carrd.co/assets/images/image03.jpg?v=6b4b2f98');
-            background-size: 100px;
+            background-size: 80px;
             background-repeat: repeat;
             transform: rotate(-15deg);
-            filter: grayscale(1) contrast(1.5);
+            filter: grayscale(1) contrast(1.8);
+            opacity: 0;
+            transition: opacity 1.5s ease;
         }
 
-        .dark .pattern-layer { opacity: 0.3; mix-blend-mode: screen; }
-        .light .pattern-layer { opacity: 0.1; mix-blend-mode: multiply; }
+        .dark .pattern-layer { opacity: 0.25; mix-blend-mode: screen; }
+        .light .pattern-layer { opacity: 0.08; mix-blend-mode: multiply; }
 
-        /* Animações de Entrada */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Tipografia de Prestígio */
-        .text-ultra-lux {
-            background: linear-gradient(to bottom, currentColor 20%, transparent 150%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        /* Glassmorphism Refinado */
         .glass-ui {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.5s ease;
         }
         .light .glass-ui {
             background: rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        /* Gradiente de Título para Máximo Contraste */
+        .title-gradient {
+            background: linear-gradient(to bottom, currentColor 30%, rgba(120,120,120,0.5) 150%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 <body class="dark flex flex-col overflow-x-hidden">
 
-    <!-- CAMADA GLOBAL DE LANTERNA E TEXTURA -->
+    <!-- FUNDO SENSORIAL -->
     <div id="global-spotlight">
         <div class="pattern-layer"></div>
     </div>
 
-    <!-- NAVEGAÇÃO / ALTERNADOR -->
-    <nav class="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-[100] pointer-events-none">
+    <!-- HEADER / NAV -->
+    <nav class="fixed top-0 left-0 w-full p-6 lg:p-10 flex justify-between items-center z-[100] pointer-events-none">
         <div class="pointer-events-auto">
-            <h1 class="text-xs font-black uppercase tracking-[0.8em] opacity-80">Hold DG</h1>
+            <h1 class="text-[9px] font-black uppercase tracking-[0.8em] opacity-70">Hold DG</h1>
         </div>
-        <div class="flex items-center gap-6 pointer-events-auto">
-            <button onclick="toggleTheme()" class="p-4 rounded-full glass-ui hover:scale-110 transition-all active:scale-95">
-                <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+        <div class="flex items-center gap-4 pointer-events-auto">
+            <button onclick="toggleTheme()" class="p-3.5 rounded-2xl glass-ui hover:scale-110 transition-all active:scale-95 group shadow-xl">
+                <i id="theme-icon" data-lucide="moon" class="w-4 h-4 transition-transform group-hover:rotate-12"></i>
             </button>
         </div>
     </nav>
 
     <main class="relative z-10">
         
-        <!-- SEÇÃO HERO: TELA CHEIA (O ANTIGO CARD AGORA É O SITE) -->
-        <section class="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 px-8 lg:px-24 py-32">
+        <!-- SEÇÃO HERO RESPONSIVA -->
+        <section class="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 px-6 lg:px-20 py-24">
             
-            <!-- CONTEÚDO TEXTUAL -->
+            <!-- TEXTO EDITORIAL -->
             <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
                 
-                <div class="reveal inline-flex items-center gap-4 mb-8">
-                    <div class="w-10 h-px bg-current opacity-30"></div>
-                    <span class="text-[10px] font-black uppercase tracking-[0.6em] opacity-60">V.43 Purity Control</span>
+                <div class="reveal inline-flex items-center gap-3 mb-6">
+                    <div class="w-8 h-px bg-current opacity-40"></div>
+                    <span class="text-[9px] font-bold uppercase tracking-[0.4em] opacity-50">V.43 Purity Control</span>
                 </div>
 
-                <div class="reveal mb-12">
-                    <h2 class="text-6xl sm:text-8xl md:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] text-ultra-lux">
+                <div class="reveal mb-10">
+                    <h2 class="title-gradient font-sans text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.85]">
                         Molecular
                     </h2>
-                    <h3 class="text-2xl sm:text-4xl font-light uppercase tracking-[0.4em] opacity-40 mt-4">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-light uppercase tracking-[0.4em] opacity-30 mt-4 ml-1">
                         Platinum Infusion
                     </h3>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl mb-12 reveal">
-                    <div class="p-6 rounded-[2.5rem] glass-ui group hover:bg-white/5 dark:hover:bg-white/5 transition-all">
-                        <div class="flex items-center gap-4 mb-3">
-                            <i data-lucide="zap" class="w-5 h-5 text-accent-crepusculo"></i>
-                            <h4 class="text-[11px] font-black uppercase tracking-widest">Liso Soberano 8K</h4>
+                <!-- CARDS DE ENGENHARIA -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl mb-10 reveal">
+                    <div class="p-6 rounded-[2rem] glass-ui hover:border-zinc-500/30 transition-colors">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="zap" class="w-4 h-4 opacity-70"></i>
+                            <h4 class="text-[10px] font-black uppercase tracking-widest">Liso Soberano 8K</h4>
                         </div>
-                        <p class="text-xs opacity-50 leading-relaxed">Engenharia híbrida de alisamento absoluto e reconstrução.</p>
+                        <p class="text-[11px] opacity-40 leading-relaxed">Alisamento absoluto e reconstrução híbrida de alta definição.</p>
                     </div>
-
-                    <div class="p-6 rounded-[2.5rem] glass-ui group hover:bg-white/5 dark:hover:bg-white/5 transition-all">
-                        <div class="flex items-center gap-4 mb-3">
-                            <i data-lucide="timer" class="w-5 h-5"></i>
-                            <h4 class="text-[11px] font-black uppercase tracking-widest">Clássico Molecular</h4>
+                    <div class="p-6 rounded-[2rem] glass-ui hover:border-zinc-500/30 transition-colors">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="timer" class="w-4 h-4 opacity-70"></i>
+                            <h4 class="text-[10px] font-black uppercase tracking-widest">Clássico Molecular</h4>
                         </div>
-                        <p class="text-xs opacity-50 leading-relaxed">Selagem premium e finalização luxuosa em 15 minutos.</p>
+                        <p class="text-[11px] opacity-40 leading-relaxed">Selagem premium em 15 minutos com brilho espelhado.</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-6 w-full max-w-md reveal">
-                    <button class="w-full sm:w-1/2 py-6 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-2xl font-black text-[11px] uppercase tracking-[0.4em] transition-all hover:tracking-[0.5em] shadow-2xl">
+                <!-- AÇÕES -->
+                <div class="flex flex-col sm:flex-row gap-4 w-full max-w-sm reveal">
+                    <button class="w-full sm:w-1/2 py-5 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-xl font-black text-[10px] uppercase tracking-[0.4em] shadow-2xl hover:-translate-y-1 transition-all">
                         Reservar
                     </button>
-                    <button class="w-full sm:w-1/2 py-6 border border-current opacity-60 hover:opacity-100 rounded-2xl font-bold text-[11px] uppercase tracking-[0.4em] transition-all">
+                    <button class="w-full sm:w-1/2 py-5 border border-current opacity-40 hover:opacity-100 rounded-xl font-bold text-[10px] uppercase tracking-[0.4em] transition-all hover:bg-white/5">
                         Consultoria
                     </button>
                 </div>
             </div>
 
-            <!-- IMAGEM DE PRODUTO (EDITORIAL) -->
+            <!-- CONTAINER DE IMAGEM RESPONSIVA (AUDITADO) -->
             <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal">
-                <div class="relative w-full max-w-md aspect-[3/4] rounded-[4rem] overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.5)] border border-white/5">
+                <div class="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] aspect-[4/5] rounded-[3.5rem] lg:rounded-[5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/5 group">
                     <img src="https://imagensagata.carrd.co/assets/images/image30.jpg?v=6b4b2f98" 
-                         alt="Molecular Platinum" 
-                         class="absolute inset-0 w-full h-full object-cover mix-blend-multiply dark:mix-blend-luminosity scale-105 hover:scale-100 transition-transform duration-[4s]">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-12 left-12 text-white">
-                        <div class="flex items-center gap-3 mb-2 opacity-60">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest">High Engineering</span>
-                        </div>
-                        <p class="text-3xl font-black tracking-widest uppercase">1000ML</p>
+                         alt="Molecular Platinum Product" 
+                         class="absolute inset-0 w-full h-full object-cover mix-blend-multiply dark:mix-blend-luminosity scale-110 group-hover:scale-100 transition-transform duration-[4s]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-10 left-10 lg:bottom-16 lg:left-16 text-white pointer-events-none">
+                        <p class="text-3xl lg:text-5xl font-black tracking-widest uppercase">1000ML</p>
+                        <p class="text-[8px] lg:text-[10px] font-bold uppercase tracking-[0.4em] opacity-60 mt-2">Professional Engineering</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MANIFESTO HOLD DG -->
-        <section class="py-40 px-8 max-w-5xl mx-auto text-center reveal">
-            <h2 class="text-4xl md:text-7xl font-light uppercase tracking-tighter leading-none mb-12">
-                O Propósito da <br><span class="font-black italic">Ciência Capilar.</span>
+        <!-- SEÇÃO MANIFESTO -->
+        <section class="py-32 px-6 max-w-5xl mx-auto text-center reveal">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-light uppercase tracking-tighter leading-none mb-10 text-ultra-lux">
+                O Propósito da <br><span class="font-black italic">Engenharia Híbrida.</span>
             </h2>
-            <p class="text-xl md:text-3xl font-light opacity-50 leading-relaxed italic">
-                "Corrigimos a química com engenharia. Transformamos horas em minutos, e fios em seda soberana."
+            <p class="text-lg md:text-2xl font-light opacity-50 italic max-w-3xl mx-auto">
+                "Auditamos a fibra capilar para entregar a perfeição. Do liso extremo ao brilho molecular em tempo recorde."
             </p>
-            <div class="mt-20 flex justify-center items-center gap-8 opacity-30">
-                <span class="text-xs font-black uppercase tracking-[0.5em]">8K Definition</span>
-                <div class="w-1.5 h-1.5 rounded-full bg-current"></div>
-                <span class="text-xs font-black uppercase tracking-[0.5em]">Hybrid Tech</span>
-                <div class="w-1.5 h-1.5 rounded-full bg-current"></div>
-                <span class="text-xs font-black uppercase tracking-[0.5em]">15m Precision</span>
-            </div>
         </section>
 
     </main>
 
-    <!-- RODAPÉ MINIMALISTA -->
-    <footer class="p-20 flex flex-col items-center gap-12 border-t border-white/5 reveal">
+    <!-- FOOTER -->
+    <footer class="p-16 lg:p-24 flex flex-col items-center gap-10 border-t border-white/5 bg-white/2 dark:bg-black/10 reveal">
         <div class="text-center">
-            <h2 class="text-2xl font-black uppercase tracking-[1em] mb-4 ml-[1em]">Hold DG</h2>
-            <p class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40">Santa Catarina | Brasil</p>
+            <h2 class="text-xl lg:text-3xl font-black uppercase tracking-[1em] mb-4 ml-[1em]">Hold DG</h2>
+            <div class="flex items-center justify-center gap-3 text-zinc-500">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <p class="text-[10px] font-bold uppercase tracking-[0.4em]">Santa Catarina | Brasil</p>
+            </div>
         </div>
-        <div class="flex gap-12 opacity-30">
-            <i data-lucide="instagram" class="w-5 h-5 cursor-pointer hover:opacity-100 transition-opacity"></i>
-            <i data-lucide="award" class="w-5 h-5 cursor-pointer hover:opacity-100 transition-opacity"></i>
-            <i data-lucide="beaker" class="w-5 h-5 cursor-pointer hover:opacity-100 transition-opacity"></i>
-        </div>
-        <p class="text-[8px] font-bold uppercase tracking-[0.3em] opacity-20 italic">© 2024 Engenharia Molecular de Transformação</p>
+        <p class="text-[8px] font-medium uppercase tracking-[0.3em] opacity-30 italic">© 2024 Molecular Transformation Engineering</p>
     </footer>
 
+    <!-- SCRIPT DE INTELIGÊNCIA VISUAL -->
     <script>
         lucide.createIcons();
 
-        // 1. TEMA: ALVORADA / CREPÚSCULO
+        // 1. GESTÃO DE TEMA (ALVORADA / CREPÚSCULO)
         function toggleTheme() {
             const body = document.body;
             const icon = document.getElementById('theme-icon');
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                body.classList.add('light');
+            const isDark = body.classList.contains('dark');
+            
+            if (isDark) {
+                body.classList.replace('dark', 'light');
+                localStorage.setItem('theme', 'light');
                 icon.setAttribute('data-lucide', 'sun');
             } else {
-                body.classList.remove('light');
-                body.classList.add('dark');
+                body.classList.replace('light', 'dark');
+                localStorage.setItem('theme', 'dark');
                 icon.setAttribute('data-lucide', 'moon');
             }
             lucide.createIcons();
         }
 
-        // 2. LANTERNA SENSORIAL GLOBAL
+        // 2. LANTERNA SENSORIAL MELHORADA
         (function() {
-            const spotlight = document.getElementById('global-spotlight');
             let isTouching = false;
 
             function updatePos(e) {
@@ -241,35 +237,42 @@
                 
                 document.body.style.setProperty('--mouse-x', x + 'px');
                 document.body.style.setProperty('--mouse-y', y + 'px');
-                document.body.style.setProperty('--spotlight-size', '500px');
+                document.body.style.setProperty('--spotlight-size', '450px');
             }
 
             function autoSweep() {
                 if (isTouching) return;
-                const scrollY = window.scrollY;
-                const winH = window.innerHeight;
-                const winW = window.innerWidth;
+                const scroll = window.scrollY;
+                const h = window.innerHeight;
+                const w = window.innerWidth;
+                const progress = scroll / (document.body.scrollHeight - h);
                 
-                // Sweep diagonal suave baseado no scroll
-                const progress = (scrollY / (document.body.scrollHeight - winH)) || 0;
-                document.body.style.setProperty('--mouse-x', (progress * winW) + 'px');
-                document.body.style.setProperty('--mouse-y', (progress * winH) + 'px');
-                document.body.style.setProperty('--spotlight-size', '800px');
+                document.body.style.setProperty('--mouse-x', (progress * w) + 'px');
+                document.body.style.setProperty('--mouse-y', (progress * h) + 'px');
+                document.body.style.setProperty('--spotlight-size', '700px');
             }
 
             window.addEventListener('mousemove', updatePos);
             window.addEventListener('touchmove', updatePos);
             window.addEventListener('scroll', autoSweep, { passive: true });
             
-            // Iniciar com luz suave
-            document.body.style.setProperty('--spotlight-size', '600px');
+            // Início suave
+            document.body.style.setProperty('--spotlight-size', '500px');
         })();
 
-        // 3. REVEAL AO SCROLL
+        // 3. SCROLL REVEAL OBSERVER
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 4. INIT
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.className = savedTheme;
+            document.getElementById('theme-icon').setAttribute('data-lucide', savedTheme === 'dark' ? 'moon' : 'sun');
+            lucide.createIcons();
+        };
     </script>
 </body>
 </html>
