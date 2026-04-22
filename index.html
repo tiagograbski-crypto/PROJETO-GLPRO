@@ -5,24 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>[GL.] PRO | Engenharia Capilar de Transformação</title>
     
-    <!-- 10 PERF: Preconnect para reduzir latência de DNS -->
+    <!-- OTIMIZAÇÃO: DNS & Bibliotecas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://unpkg.com">
     
-    <!-- Google Fonts: Editorial & Tech Stack -->
+    <!-- Tipografia de Ultra Luxo -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Defer no script de ícones -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
     
     <style>
-        /* === ARQUITETURA DE CORES SEMÂNTICAS === */
+        /* === CORES SEMÂNTICAS: ALVORADA E CREPÚSCULO === */
         :root {
-            --bg-primary: #060404;
+            --bg-primary: #040303;
             --bg-surface: rgba(18, 18, 18, 0.45);
             --border-glass: rgba(255, 255, 255, 0.05);
             --text-main: #FFFFFF;
@@ -34,18 +31,18 @@
         }
 
         .light {
-            --bg-primary: #F5F2EB; 
-            --bg-surface: rgba(255, 255, 255, 0.7); 
+            --bg-primary: #F7F5F0; 
+            --bg-surface: rgba(255, 255, 255, 0.65); 
             --border-glass: rgba(197, 166, 124, 0.15); 
-            --text-main: #1C1C1C; 
+            --text-main: #1A1A1A; 
             --text-muted: #636366; 
-            --accent-color: #C5A67C; 
-            --glow-color: rgba(197, 166, 124, 0.25); 
-            --accent-glass: rgba(197, 166, 124, 0.1);
-            --accent-border: rgba(197, 166, 124, 0.3);
+            --accent-color: #B58A61; /* Tom Rose/Champagne refinado */
+            --glow-color: rgba(181, 138, 97, 0.20); 
+            --accent-glass: rgba(181, 138, 97, 0.08);
+            --accent-border: rgba(181, 138, 97, 0.25);
         }
 
-        /* === TIPOGRAFIA FLUIDA E EDITORIAL === */
+        /* === TIPOGRAFIA FLUIDA === */
         h1, h2, h3, .font-editorial, .font-serif { font-family: 'Playfair Display', serif; }
         body, p, .font-tech, ul, li { font-family: 'Inter', sans-serif; }
         button, .font-cta, .logo-gl { font-family: 'Montserrat', sans-serif; }
@@ -61,16 +58,35 @@
 
         .text-high-contrast { color: var(--text-main); transition: color 0.8s ease; }
         .text-accent { color: var(--accent-color); transition: color 0.8s ease; }
-        .bg-accent-solid { background-color: var(--accent-color); color: var(--bg-primary); }
 
-        /* === VFX: LANTERNA SENSORIAL === */
+        /* === PRÉ-LOADER SENSORIAL === */
+        #luxury-preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-1000 { animation-delay: 1s; }
+
+        /* === LANTERNA SENSORIAL === */
         #spotlight-wrapper {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            -webkit-mask-image: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
-            mask-image: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 700px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+            mask-image: radial-gradient(circle 700px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
             will-change: mask-image, -webkit-mask-image;
         }
 
@@ -82,16 +98,14 @@
             background-size: 110px;
             background-repeat: repeat;
             transform: rotate(-12deg);
-            opacity: 0.12; 
+            opacity: 0.10; 
             filter: grayscale(1);
             mix-blend-mode: screen;
             transition: opacity 1s ease;
-            transform: rotate(-12deg) translateZ(0);
         }
+        .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.08; }
 
-        .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.1; }
-
-        /* === UI COMPONENTS LUXURY === */
+        /* === UI LUXURY COMPONENTS === */
         .glass-panel {
             background: var(--bg-surface);
             backdrop-filter: blur(30px);
@@ -99,7 +113,7 @@
             border: 1px solid var(--border-glass);
             border-radius: 2.5rem;
             transform: translateZ(0); 
-            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .glass-accent-card {
@@ -108,18 +122,11 @@
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--accent-border);
             border-radius: 2rem;
-            transform: translateZ(0);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease;
         }
         
         .glass-accent-card:hover, .glass-panel.group:hover {
             border-color: var(--accent-color);
-        }
-
-        .title-gradient {
-            background: linear-gradient(to bottom, var(--text-main) 40%, transparent 160%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .btn-primary {
@@ -132,39 +139,27 @@
             transform: translateY(-2px);
         }
 
-        /* Animações de entrada e Roteamento SPA */
+        /* Animações e SPA */
         .reveal { 
             opacity: 0; 
             transform: translateY(40px); 
             transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); 
             will-change: opacity, transform;
         }
-        .reveal.visible { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Classes do Sistema de Roteamento SPA (CORRIGIDO PARA FLEXBOX COMPATIBILITY) */
         .page-view {
             display: none;
             opacity: 0;
             animation: fadeInPage 0.8s forwards;
             width: 100%;
         }
-        .page-view.active-view {
-            display: block; /* O Wrapper principal é block, os elementos internos gerem o Flex */
-        }
-        @keyframes fadeInPage {
-            to { opacity: 1; }
-        }
+        .page-view.active-view { display: block; }
+        @keyframes fadeInPage { to { opacity: 1; } }
 
-        /* Estado ativo no menu */
-        .nav-link.active-link {
-            color: var(--accent-color);
-            opacity: 1;
-        }
+        .nav-link.active-link { color: var(--accent-color); opacity: 1; }
 
-        /* === SLIDER INTERATIVO === */
+        /* Slider e Animações */
         .slider-container {
             position: relative;
             width: 100%;
@@ -178,27 +173,31 @@
             width: 50px; height: 50px; cursor: ew-resize;
         }
 
-        /* === ANIMAÇÕES EDITORIAL === */
         @keyframes slideHorizontal {
             0%, 25% { transform: translateX(0); }
             33%, 58% { transform: translateX(-33.333%); }
             66%, 91% { transform: translateX(-66.666%); }
             100% { transform: translateX(0); }
         }
-        .animate-slide-horizontal {
-            animation: slideHorizontal 12s infinite ease-in-out;
-        }
-
-        /* NOVO: Animação de Flutuação Orgânica para as Cápsulas */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float 6s ease-in-out 3s infinite; }
+        .animate-slide-horizontal { animation: slideHorizontal 12s infinite ease-in-out; }
     </style>
 </head>
-<body class="dark overflow-x-hidden">
+<body class="dark overflow-x-hidden" style="overflow: hidden;"> <!-- Overflow hidden até sair o preloader -->
+
+    <!-- ==========================================
+         PRÉ-LOADER SENSORIAL
+         ========================================== -->
+    <div id="luxury-preloader">
+        <div class="logo-gl text-3xl md:text-5xl mb-12 text-high-contrast opacity-0 animate-fade-up delay-500 tracking-[0.3em]">
+            <span class="text-accent font-light">[</span>GL.<span class="text-accent font-light">]</span> PRO
+        </div>
+        <button id="btn-init-experience" class="group relative px-10 py-5 overflow-hidden rounded-full border border-accent/40 opacity-0 animate-fade-up delay-1000 transition-all hover:border-accent">
+            <div class="absolute inset-0 bg-accent transition-transform duration-700 origin-left scale-x-0 group-hover:scale-x-100"></div>
+            <span class="relative z-10 font-cta text-[10px] sm:text-xs font-bold uppercase tracking-[0.4em] text-high-contrast group-hover:text-bg-primary transition-colors duration-500">
+                Iniciar Experiência
+            </span>
+        </button>
+    </div>
 
     <!-- CAMADA VFX FUNDO -->
     <div id="spotlight-wrapper">
@@ -245,11 +244,12 @@
     <main class="relative z-10 pt-20 lg:pt-0">
         
         <!-- ==========================================
-             PÁGINA 1: HOME 
+             PÁGINA 1: HOME (VISÃO PRINCIPAL)
              ========================================== -->
         <div id="view-home" class="page-view active-view">
-            <!-- HERO -->
-            <section class="min-h-[90vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 lg:px-20 py-16 lg:py-32">
+            
+            <!-- HERO: LIMPO E FOCADO NO PRODUTO -->
+            <section class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 px-6 lg:px-20 py-24 lg:py-32">
                 <div class="w-full lg:w-1/2 flex flex-col items-center lg:text-left text-center">
                     <div class="reveal mb-8 opacity-60 inline-flex items-center gap-4">
                         <div class="w-8 h-px bg-current"></div>
@@ -257,11 +257,10 @@
                     </div>
                     
                     <div class="reveal mb-8 py-4">
-                        <!-- Ajuste de clamp e padding para não cortar letras em ecrãs ultra pequenos -->
                         <h1 class="font-editorial text-[clamp(2.8rem,8vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic title-gradient pb-3">
                             Molecular
                         </h1>
-                        <h2 class="font-editorial text-[clamp(1rem,3vw,2.25rem)] italic font-light opacity-50 mt-2 tracking-widest">
+                        <h2 class="font-editorial text-[clamp(1.1rem,3vw,2.25rem)] italic font-light opacity-50 mt-2 tracking-widest">
                             Platinum Infusion
                         </h2>
                         
@@ -270,30 +269,9 @@
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-3 sm:gap-6 w-full max-w-2xl mb-12 reveal">
-                        <div class="p-5 sm:p-7 glass-accent-card flex flex-col">
-                            <div class="flex items-center gap-3 mb-4">
-                                <i data-lucide="zap" class="w-4 h-4 text-accent"></i>
-                                <h3 class="font-tech text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-high-contrast leading-tight">Soberano 8K</h3>
-                            </div>
-                            <p class="font-tech text-[9px] sm:text-[11px] opacity-70 leading-relaxed">
-                                Alisamento estrutural absoluto. Redução total de volume com selamento térmico de alta definição.
-                            </p>
-                        </div>
-                        <div class="p-5 sm:p-7 glass-accent-card flex flex-col">
-                            <div class="flex items-center gap-3 mb-4">
-                                <i data-lucide="timer" class="w-4 h-4 text-accent"></i>
-                                <h3 class="font-tech text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-high-contrast leading-tight">Glass Molecular</h3>
-                            </div>
-                            <p class="font-tech text-[9px] sm:text-[11px] opacity-70 leading-relaxed">
-                                Técnica de redução de frizz e brilho tridimensional. Finalização de alto padrão apenas com escova.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal">
-                        <button onclick="document.getElementById('ciencia').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-xl">
-                            O Protocolo
+                    <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal mt-4">
+                        <button onclick="document.getElementById('protocolos').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-xl">
+                            As Técnicas
                         </button>
                         <a href="#/partnership" class="w-full sm:w-1/2 py-6 border border-current opacity-60 text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center hover:bg-white/5 transition-all">
                             Credenciamento
@@ -302,56 +280,89 @@
                 </div>
 
                 <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal mt-12 lg:mt-0">
-                    <!-- Reduzido max-w-sm para max-w-[280px] em mobile para não colar nas bordas -->
                     <div class="relative w-full max-w-[280px] sm:max-w-sm aspect-[3/4] z-10 group">
                         <div class="absolute inset-0 rounded-[4.5rem] shadow-2xl glass-panel"></div>
                         <div class="absolute inset-3 rounded-[3.8rem] overflow-hidden">
                             <img src="https://testeessencia.carrd.co/assets/images/image71.jpg?v=0910aa8a" alt="Molecular Platinum" fetchpriority="high" decoding="sync" class="w-full h-full object-cover mix-blend-luminosity opacity-90 group-hover:scale-105 transition-transform duration-[5s]">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         </div>
-                        
-                        <!-- NOVA CÁPSULA: Glass Molecular (Direita) -->
-                        <div class="absolute -right-4 sm:-right-8 top-10 sm:top-16 z-20 glass-panel p-2 flex items-center gap-2 sm:gap-3 shadow-2xl animate-float group/badge hover:border-accent transition-colors">
-                            <div class="flex -space-x-3">
-                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-md">
-                                    <img src="https://testeessencia.carrd.co/assets/images/image24.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Antes Glass">
-                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px] opacity-0 group-hover/badge:opacity-100 transition-opacity">
-                                        <span class="text-[6px] font-black text-white uppercase tracking-widest">Antes</span>
-                                    </div>
-                                </div>
-                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-accent shadow-md z-10">
-                                    <img src="https://testeessencia.carrd.co/assets/images/image28.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Depois Glass">
-                                </div>
-                            </div>
-                            <div class="pr-2 sm:pr-3 text-left">
-                                <p class="font-cta text-[7px] sm:text-[8px] uppercase tracking-[0.2em] text-accent font-bold leading-tight">Glass<br>Molecular</p>
-                            </div>
+                        <div class="absolute bottom-10 left-10 pointer-events-none z-10">
+                            <p class="font-editorial text-3xl sm:text-4xl italic text-white tracking-widest uppercase drop-shadow-md">1000ML</p>
+                            <p class="font-tech text-[8px] sm:text-[9px] uppercase tracking-[0.4em] text-white/70 mt-2 font-bold drop-shadow-md">Uso Exclusivo em Salões</p>
                         </div>
-                        
-                        <!-- NOVA CÁPSULA: Soberano 8K (Esquerda) -->
-                        <div class="absolute -left-4 sm:-left-8 bottom-16 sm:bottom-20 z-20 glass-panel p-2 flex items-center gap-2 sm:gap-3 shadow-2xl animate-float-delayed group/badge hover:border-accent transition-colors flex-row-reverse">
-                            <div class="flex -space-x-3 space-x-reverse">
-                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-accent shadow-md z-10">
-                                    <img src="https://testeessencia.carrd.co/assets/images/image22.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Depois 8K">
-                                </div>
-                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-md">
-                                    <img src="https://testeessencia.carrd.co/assets/images/image21.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Antes 8K">
-                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px] opacity-0 group-hover/badge:opacity-100 transition-opacity">
-                                        <span class="text-[6px] font-black text-white uppercase tracking-widest">Antes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pl-2 sm:pl-3 text-right">
-                                <p class="font-cta text-[7px] sm:text-[8px] uppercase tracking-[0.2em] text-accent font-bold leading-tight">Soberano<br>8K</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </section>
 
+            <!-- ==========================================
+                 NOVA SECÇÃO: PROTOCOLOS DE ASSINATURA (CARTÕES IDEAIS)
+                 ========================================== -->
+            <section id="protocolos" class="py-24 px-6 max-w-6xl mx-auto reveal border-t border-glass">
+                <div class="text-center mb-20">
+                    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-4">A Versatilidade do V.43</h3>
+                    <h2 class="font-editorial text-4xl md:text-6xl italic text-high-contrast mb-4">Protocolos de <span class="font-tech font-black not-italic text-accent uppercase tracking-tighter">Assinatura</span></h2>
+                    <p class="font-tech text-sm opacity-50 max-w-2xl mx-auto leading-relaxed">O mesmo produto de alta tecnologia. Duas técnicas distintas dependendo do grau de transformação exigido pela fibra.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    
+                    <!-- CARTÃO 1: SOBERANO 8K -->
+                    <div class="glass-panel p-8 md:p-12 flex flex-col group hover:border-accent transition-colors">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i data-lucide="zap" class="w-5 h-5 text-accent"></i>
+                            <h3 class="font-cta text-sm md:text-base font-black uppercase tracking-widest text-high-contrast">Soberano 8K</h3>
+                        </div>
+                        <p class="font-tech text-xs opacity-70 leading-relaxed text-high-contrast mb-10">
+                            A técnica master de alisamento estrutural. Redução total de volume. Exige selamento térmico de alta definição com prancha.
+                        </p>
+                        
+                        <!-- Mini Galeria Antes e Depois (Esquerda -> Direita) -->
+                        <div class="flex items-center justify-between gap-2 mt-auto">
+                            <div class="w-1/2 aspect-[4/5] relative rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+                                <img src="https://testeessencia.carrd.co/assets/images/image21.jpg?v=0910aa8a" loading="lazy" class="object-cover h-full w-full grayscale-[30%]" alt="Antes">
+                                <span class="absolute bottom-3 left-3 text-[8px] uppercase font-black text-white tracking-widest bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md">Antes</span>
+                            </div>
+                            <div class="w-6 flex justify-center flex-shrink-0">
+                                <i data-lucide="arrow-right" class="text-accent w-5 h-5 opacity-50"></i>
+                            </div>
+                            <div class="w-1/2 aspect-[4/5] relative rounded-2xl overflow-hidden border border-accent shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <img src="https://testeessencia.carrd.co/assets/images/image22.jpg?v=0910aa8a" loading="lazy" class="object-cover h-full w-full" alt="Depois">
+                                <span class="absolute bottom-3 right-3 text-[8px] uppercase font-black text-black tracking-widest bg-white px-3 py-1.5 rounded-full backdrop-blur-md shadow-xl">Depois</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARTÃO 2: GLASS MOLECULAR -->
+                    <div class="glass-panel p-8 md:p-12 flex flex-col group hover:border-accent transition-colors">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i data-lucide="timer" class="w-5 h-5 text-accent"></i>
+                            <h3 class="font-cta text-sm md:text-base font-black uppercase tracking-widest text-high-contrast">Glass Molecular</h3>
+                        </div>
+                        <p class="font-tech text-xs opacity-70 leading-relaxed text-high-contrast mb-10">
+                            Técnica focada em redução de frizz e brilho tridimensional intenso. Finalização de alto padrão utilizando apenas escova.
+                        </p>
+                        
+                        <!-- Mini Galeria Antes e Depois (Esquerda -> Direita) -->
+                        <div class="flex items-center justify-between gap-2 mt-auto">
+                            <div class="w-1/2 aspect-[4/5] relative rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+                                <img src="https://testeessencia.carrd.co/assets/images/image24.jpg?v=0910aa8a" loading="lazy" class="object-cover h-full w-full grayscale-[30%]" alt="Antes">
+                                <span class="absolute bottom-3 left-3 text-[8px] uppercase font-black text-white tracking-widest bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md">Antes</span>
+                            </div>
+                            <div class="w-6 flex justify-center flex-shrink-0">
+                                <i data-lucide="arrow-right" class="text-accent w-5 h-5 opacity-50"></i>
+                            </div>
+                            <div class="w-1/2 aspect-[4/5] relative rounded-2xl overflow-hidden border border-accent shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <img src="https://testeessencia.carrd.co/assets/images/image28.jpg?v=0910aa8a" loading="lazy" class="object-cover h-full w-full" alt="Depois">
+                                <span class="absolute bottom-3 right-3 text-[8px] uppercase font-black text-black tracking-widest bg-white px-3 py-1.5 rounded-full backdrop-blur-md shadow-xl">Depois</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
             <!-- INFUSÃO BIOTECNOLÓGICA -->
-            <section id="ciencia" class="py-24 lg:py-32 px-6 max-w-6xl mx-auto reveal">
+            <section class="py-24 px-6 max-w-6xl mx-auto reveal border-t border-glass">
                 <div class="flex flex-col items-center gap-5 text-center mb-20">
                     <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast">Infusão de Ativos Raros</h3>
                     <div class="h-px w-20 bg-current opacity-30"></div>
@@ -363,39 +374,43 @@
                         <span class="font-editorial text-4xl italic text-accent opacity-80 block mb-6">01</span>
                         <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-3">Extrato de Caviar</h4>
                         <span class="font-editorial text-[11px] italic text-accent opacity-70 mb-4 block">Reconstrução Absoluta</span>
-                        <p class="font-tech text-xs sm:text-sm opacity-70 font-light leading-relaxed">
-                            A joia da reconstrução capilar. Uma matriz proteica raríssima que injeta densidade molecular diretamente no córtex, devolvendo a integridade estrutural perdida.
+                        <p class="font-tech text-xs sm:text-sm opacity-70 font-light leading-relaxed text-high-contrast">
+                            A joia da reconstrução capilar. Uma matriz proteica raríssima que injeta densidade molecular diretamente no córtex, devolvendo a integridade estrutural.
                         </p>
                     </div>
                     <div class="p-10 glass-panel border-transparent rounded-[2.5rem] group transition-colors">
                         <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-6">02</span>
                         <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-3">Néctar Antioxidante</h4>
                         <span class="font-editorial text-[11px] italic text-accent opacity-70 mb-4 block">Escudo Protetor de Cor</span>
-                        <p class="font-tech text-xs sm:text-sm opacity-60 font-light leading-relaxed">
-                            Um complexo lipídico derivado da selva amazônica. Atua como um escudo contra o envelhecimento da fibra, garantindo uma reflexão de luz espelhada e duradoura.
+                        <p class="font-tech text-xs sm:text-sm opacity-60 font-light leading-relaxed text-high-contrast">
+                            Um complexo lipídico da selva amazônica. Atua como um escudo contra o envelhecimento da fibra, garantindo reflexão espelhada e duradoura.
                         </p>
                     </div>
                     <div class="p-10 glass-panel border-transparent rounded-[2.5rem] group transition-colors">
                         <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-6">03</span>
                         <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-3">Bálsamo Hidrolipídico</h4>
                         <span class="font-editorial text-[11px] italic text-accent opacity-70 mb-4 block">Matriz de Preenchimento</span>
-                        <p class="font-tech text-xs sm:text-sm opacity-60 font-light leading-relaxed">
-                            Manteiga botânica de altíssima absorção. Retém a humidade vital no núcleo do fio, entregando flexibilidade superior e um toque de seda inesquecível.
+                        <p class="font-tech text-xs sm:text-sm opacity-60 font-light leading-relaxed text-high-contrast">
+                            Manteiga botânica de altíssima absorção. Retém a humidade vital no núcleo do fio, entregando flexibilidade superior e um toque de seda.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- AUDITORIA VISUAL -->
-            <section class="py-24 px-6 max-w-5xl mx-auto reveal mb-10 text-center">
+            <!-- AUDITORIA VISUAL (SLIDER CORRIGIDO) -->
+            <section class="py-24 px-6 max-w-5xl mx-auto reveal mb-10 text-center border-t border-glass">
                 <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">O Protocolo em Ação</h3>
                 
                 <div class="slider-container aspect-[4/5] sm:aspect-[4/3] glass-panel shadow-2xl border-2 border-accent">
-                    <img src="https://testeessencia.carrd.co/assets/images/image46.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
+                    
+                    <!-- AJUSTE CIRÚRGICO DE ALINHAMENTO DO OLHO (Neurodesign) -->
+                    <!-- A imagem 47 (Depois) está com transform scale(1.06) e translateY(-1.5%) para igualar os 2cm de diferença na lente da câmara da foto original 45 (Antes) -->
+                    <img src="https://testeessencia.carrd.co/assets/images/image47.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Depois" class="absolute inset-0 w-full h-full object-cover" style="transform: scale(1.06) translateY(-1.5%); transform-origin: center;">
+                    
                     <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Antes" id="before-img" class="absolute inset-0 w-full h-full object-cover" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path;">
                     
                     <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white flex items-center justify-center text-white">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white flex items-center justify-center text-white shadow-xl">
                             <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
                         </div>
                     </div>
@@ -403,37 +418,64 @@
                     <input type="range" aria-label="Comparar Antes e Depois" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
                            oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; document.getElementById('slider-line').style.left = `${this.value}%`;">
                 </div>
+                <p class="font-tech text-xs opacity-40 mt-6 italic text-high-contrast">Deslize para auditar a correção arquitetónica e o alinhamento da fibra capilar.</p>
             </section>
 
-            <!-- FAQ -->
+            <!-- FAQ: QUEBRA DE PARADIGMAS EXPANDIDA (Objeções B2B/B2C) -->
             <section class="py-24 px-6 max-w-4xl mx-auto reveal mb-20 border-t border-glass">
                 <div class="text-center mb-16">
-                    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast mb-4">Inteligência Técnica</h3>
+                    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast mb-4">Inteligência Clínica</h3>
                     <h2 class="font-editorial text-4xl md:text-6xl italic text-high-contrast mb-4">
                         Quebra de <span class="font-tech font-black not-italic text-accent uppercase tracking-tighter">Paradigmas</span>
                     </h2>
+                    <p class="font-tech text-sm opacity-50 max-w-xl mx-auto text-high-contrast">Respostas técnicas e transparentes sobre a performance química do protocolo.</p>
                 </div>
 
                 <div class="flex flex-col gap-4">
                     <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">O protocolo é compatível com descoloração e madeixas?</h4>
+                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">A tecnologia amarela cabelos loiros ou platinados?</h4>
                             <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0"></i>
                         </div>
                         <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500">
                             <p class="font-tech text-xs sm:text-sm opacity-60 font-light mt-4 leading-relaxed text-high-contrast border-t border-glass pt-4">
-                                Absolutamente. A patenteada <strong class="text-accent">Tecnologia V.43</strong> foi desenvolvida para estabilizar fundos de clareamento. Ela neutraliza a oxidação termicamente provocada, preservando a integridade da fibra descolorida, sem chumbar ou quebrar.
+                                Não. A patenteada <strong class="text-accent">Tecnologia V.43</strong> é um sistema de pureza ótica que atua bloqueando a oxidação térmica. O produto revela um fundo platinado, frio e cristalino de imediato, garantindo total segurança para cabelos descoloridos.
                             </p>
                         </div>
                     </div>
+
                     <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">Qual a durabilidade do Liso Soberano 8K?</h4>
+                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">É seguro para quem possui químicas anteriores (Guanidina, Hidróxidos)?</h4>
                             <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0"></i>
                         </div>
                         <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500">
                             <p class="font-tech text-xs sm:text-sm opacity-60 font-light mt-4 leading-relaxed text-high-contrast border-t border-glass pt-4">
-                                O alinhamento é definitivo na área aplicada, exigindo apenas o retoque de raiz (geralmente entre 3 a 6 meses).
+                                O [GL.] PRO é pautado pela tecnologia ácida orgânica e reconstrução capilar inteligente. Contudo, devido à fragilidade causada por outras químicas, exigimos sempre o <strong>teste de mecha</strong> prévio pelo profissional credenciado, garantindo a integridade total do fio antes da transição de química.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">Otimização de tempo: O salão ganha rapidez no atendimento?</h4>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+                            <p class="font-tech text-xs sm:text-sm opacity-60 font-light mt-4 leading-relaxed text-high-contrast border-t border-glass pt-4">
+                                Sim. A nossa engenharia molecular foi desenvolvida não apenas para o resultado visual, mas para o rendimento operacional do salão. A formulação de alta absorção e o sistema de enxágue inteligente reduzem drasticamente o tempo na cadeira, aumentando a faturação do especialista.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">Possui formol ou gera fumo nocivo durante a prancha?</h4>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+                            <p class="font-tech text-xs sm:text-sm opacity-60 font-light mt-4 leading-relaxed text-high-contrast border-t border-glass pt-4">
+                                É 100% livre de formol, glutaraldeído e derivados. O [GL.] PRO atua no córtex através de uma matriz orgânica, proporcionando conforto absoluto para a cliente e para o profissional, sem ardor nos olhos ou cheiro forte.
                             </p>
                         </div>
                     </div>
@@ -752,14 +794,34 @@
     </a>
 
     <script>
-        // MOCK CARTSYSTEM (Para não dar erro ao clicar em botões)
+        // MOCK CARTSYSTEM 
         const CartSystem = {
             add: function(name, price, image, btnElement) {
                 const originalText = btnElement.innerHTML;
-                btnElement.innerHTML = 'Adicionado à Coleção';
+                btnElement.innerHTML = 'Adicionado à Obra';
                 setTimeout(() => { btnElement.innerHTML = originalText; }, 2000);
             }
         };
+
+        // LÓGICA DO PRÉ-LOADER E HAPTICS
+        function initExperience() {
+            // Haptic Feedback (Neurovendas Somatossensorial - Dispara se o dispositivo suportar)
+            if (window.navigator && window.navigator.vibrate) {
+                window.navigator.vibrate([40, 50, 40]); // Efeito "Batimento Cardíaco" Suave
+            }
+            
+            const preloader = document.getElementById('luxury-preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.visibility = 'hidden';
+                document.body.style.overflow = 'auto'; // Liberta o scroll
+                // Dispara animações iniciais
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }, 1000);
+        }
+
+        // Event listener para o botão de pré-loader
+        document.getElementById('btn-init-experience').addEventListener('click', initExperience);
 
         // MOTOR DE LANTERNA
         const spotlight = document.getElementById('spotlight-wrapper');
@@ -785,7 +847,7 @@
         window.addEventListener('mousemove', requestSpotlightUpdate, {passive: true});
         window.addEventListener('touchmove', requestSpotlightUpdate, {passive: true});
 
-        // REVEAL OBSERVER REUTILIZÁVEL
+        // REVEAL OBSERVER 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { 
                 if(e.isIntersecting) { 
@@ -802,7 +864,6 @@
             const handleRouting = () => {
                 let hash = window.location.hash || '#/home';
                 
-                // Tratar rotas antigas (#/boutique -> #/homecare)
                 if (hash === '#/boutique') hash = '#/homecare';
                 
                 if (!['#/home', '#/homecare', '#/partnership'].includes(hash)) {
@@ -822,10 +883,10 @@
                     activeView.classList.add('active-view');
                 }
 
-                // 3. Atualizar estado dos Menus (Underlines/Cores)
+                // 3. Atualizar estado dos Menus
                 document.querySelectorAll('.nav-link').forEach(link => {
                     let linkHash = link.getAttribute('href');
-                    if (linkHash === '#/boutique') linkHash = '#/homecare'; // Ajuste nav
+                    if (linkHash === '#/boutique') linkHash = '#/homecare'; 
 
                     if (linkHash === hash) {
                         link.classList.add('active-link');
@@ -834,14 +895,16 @@
                     }
                 });
 
-                // 4. Voltar ao topo da página e re-animar
+                // 4. Voltar ao topo da página 
                 window.scrollTo(0, 0);
                 
-                // Re-anexar o observer aos elementos 'reveal'
-                document.querySelectorAll('.reveal').forEach(el => {
-                    el.classList.remove('visible'); 
-                    observer.observe(el);
-                });
+                // Só anexa o observador se o preloader já tiver saído
+                if(document.body.style.overflow === 'auto') {
+                    document.querySelectorAll('.reveal').forEach(el => {
+                        el.classList.remove('visible'); 
+                        observer.observe(el);
+                    });
+                }
             };
 
             window.addEventListener('hashchange', handleRouting);
@@ -893,7 +956,7 @@
                 });
             });
 
-            // LÓGICA DO FAQ
+            // LÓGICA DO FAQ (ACORDEÃO)
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const answer = item.querySelector('.faq-answer');
