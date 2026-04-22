@@ -17,7 +17,7 @@
     <style>
         /* === CORES SEMÂNTICAS === */
         :root {
-            /* MODO NOITE: Onyx & Platinum (Intocado) */
+            /* MODO NOITE: Onyx & Platinum */
             --bg-primary: #040303;
             --bg-surface: rgba(18, 18, 18, 0.45);
             --border-glass: rgba(255, 255, 255, 0.05);
@@ -34,13 +34,13 @@
         }
 
         .light {
-            /* MODO DIA: Prata Frio, Chumbo Acetinado & Branco (ZERO AMARELO) */
+            /* MODO DIA: Prata Frio, Chumbo Acetinado (ZERO AMARELO) */
             --bg-primary: #F5F5F7; 
             --bg-surface: rgba(255, 255, 255, 0.65); 
             --border-glass: rgba(0, 0, 0, 0.1); 
             --text-main: #111111; 
             --text-muted: #555555; 
-            --accent-color: #3F3F46; /* Chumbo (Zinc-700) */
+            --accent-color: #3F3F46; /* Chumbo Metálico */
             --glow-color: rgba(0, 0, 0, 0.15); 
             --accent-glass: rgba(0, 0, 0, 0.04);
             --accent-border: rgba(0, 0, 0, 0.15);
@@ -69,138 +69,91 @@
         .text-high-contrast { color: var(--text-main); transition: color 0.8s ease; }
         .text-accent { color: var(--accent-color); transition: color 0.8s ease; }
 
-        /* === BLOQUEIO DE SCROLL ABSOLUTO === */
-        html.lock-scroll, body.lock-scroll {
-            overflow: hidden !important; height: 100dvh !important; width: 100vw !important;
-            touch-action: none !important; overscroll-behavior: none !important;
-        }
+        html.lock-scroll, body.lock-scroll { overflow: hidden !important; height: 100dvh !important; width: 100vw !important; touch-action: none !important; overscroll-behavior: none !important; }
 
         /* === PRÉ-LOADER === */
-        #luxury-preloader {
-            position: fixed; inset: 0; z-index: 999999; background-color: transparent; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-        }
-
+        #luxury-preloader { position: fixed; inset: 0; z-index: 999999; background-color: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 1s ease-in-out, visibility 1s ease-in-out; }
         @keyframes fadeInUpFixed { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
         .fade-in-up { animation: fadeInUpFixed 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .delay-1 { animation-delay: 0.3s; }
         .delay-2 { animation-delay: 0.7s; }
         .delay-3 { animation-delay: 1.2s; }
 
-        /* === LANTERNA SENSORIAL === */
-        #spotlight-wrapper {
-            position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--spotlight-beam) 0%, transparent 70%);
-            -webkit-mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 10%, rgba(0,0,0,0.3) 50%, transparent 100%);
-            mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 10%, rgba(0,0,0,0.3) 50%, transparent 100%);
-            will-change: mask-image, -webkit-mask-image, background;
-        }
-
-        .pattern-layer {
-            position: absolute; inset: -50%; width: 200%; height: 200%;
-            background-image: url('https://imagensagata.carrd.co/assets/images/image03.jpg?v=6b4b2f98');
-            background-size: 70px; background-repeat: repeat; transform: rotate(-12deg);
-            opacity: 0.18; filter: grayscale(1); mix-blend-mode: screen;
-            transition: opacity 1s ease; transform: rotate(-12deg) translateZ(0);
-        }
+        /* === LANTERNA === */
+        #spotlight-wrapper { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--spotlight-beam) 0%, transparent 70%); -webkit-mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 10%, rgba(0,0,0,0.3) 50%, transparent 100%); mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 10%, rgba(0,0,0,0.3) 50%, transparent 100%); will-change: mask-image, -webkit-mask-image, background; }
+        .pattern-layer { position: absolute; inset: -50%; width: 200%; height: 200%; background-image: url('https://imagensagata.carrd.co/assets/images/image03.jpg?v=6b4b2f98'); background-size: 70px; background-repeat: repeat; transform: rotate(-12deg); opacity: 0.18; filter: grayscale(1); mix-blend-mode: screen; transition: opacity 1s ease; transform: rotate(-12deg) translateZ(0); }
         .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.08; filter: grayscale(1) contrast(1.2); }
+        @media (max-width: 768px) { .pattern-layer { opacity: 0.30; } .light .pattern-layer { opacity: 0.15; } :root { --spotlight-beam: rgba(255, 255, 255, 0.09); } .light { --spotlight-beam: rgba(255, 255, 255, 0.5); } }
 
-        @media (max-width: 768px) {
-            .pattern-layer { opacity: 0.30; }
-            .light .pattern-layer { opacity: 0.15; }
-            :root { --spotlight-beam: rgba(255, 255, 255, 0.09); }
-            .light { --spotlight-beam: rgba(255, 255, 255, 0.5); }
-        }
-
-        /* === UI LUXURY COMPONENTS === */
-        .glass-panel {
-            background: var(--bg-surface); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--border-glass); border-radius: 2.5rem; transform: translateZ(0); 
-            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .glass-accent-card {
-            background: var(--accent-glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--accent-border); border-radius: 2rem;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease;
-        }
+        /* === UI COMPONENTS === */
+        .glass-panel { background: var(--bg-surface); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid var(--border-glass); border-radius: 2.5rem; transform: translateZ(0); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; }
+        .glass-accent-card { background: var(--accent-glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--accent-border); border-radius: 2rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease; }
         .glass-accent-card:hover, .glass-panel.group:hover { border-color: var(--accent-color); }
-        .btn-primary {
-            background: var(--text-main); color: var(--bg-primary);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
-        }
+        .btn-primary { background: var(--text-main); color: var(--bg-primary); transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease; }
         .btn-primary:hover { box-shadow: 0 15px 35px var(--glow-color); transform: translateY(-2px); }
-
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-
         .ignite-item { opacity: 0.2; transform: translateY(15px); filter: brightness(0.5); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .ignite-item.ignited {
-            opacity: 1; transform: translateY(0); filter: brightness(1);
-            box-shadow: 0 0 20px var(--glow-color); background-color: var(--accent-glass); border-color: var(--accent-color);
-        }
-
+        .ignite-item.ignited { opacity: 1; transform: translateY(0); filter: brightness(1); }
         .page-view { display: none; opacity: 0; animation: fadeInPage 0.8s forwards; width: 100%; }
         .page-view.active-view { display: block; }
         @keyframes fadeInPage { to { opacity: 1; } }
         .nav-link.active-link { color: var(--accent-color); opacity: 1; }
 
-        /* Slider */
+        /* === GAVETAS DE ATIVOS INTERATIVAS (UX MOBILE & DESKTOP) === */
+        .active-drawer {
+            border: 1px solid var(--border-glass);
+            border-radius: 1.2rem;
+            background: rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .light .active-drawer { background: rgba(255,255,255,0.2); }
+        .active-drawer:hover, .active-drawer:focus, .active-drawer:active {
+            border-color: var(--accent-color);
+            background: var(--accent-glass);
+        }
+        .active-drawer-content {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 1rem;
+        }
+        .active-drawer:hover .active-drawer-content,
+        .active-drawer:focus .active-drawer-content,
+        .active-drawer:active .active-drawer-content {
+            max-height: 80px;
+            opacity: 1;
+            padding: 0 1rem 1rem 1rem;
+        }
+        .active-drawer-icon { transition: transform 0.4s ease; }
+        .active-drawer:hover .active-drawer-icon,
+        .active-drawer:focus .active-drawer-icon,
+        .active-drawer:active .active-drawer-icon { transform: rotate(45deg); }
+
+
         .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 2.5rem; user-select: none; transform: translateZ(0); }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 50px; height: 50px; cursor: ew-resize; }
-
         @keyframes slideHorizontal { 0%, 25% { transform: translateX(0); } 33%, 58% { transform: translateX(-33.333%); } 66%, 91% { transform: translateX(-66.666%); } 100% { transform: translateX(0); } }
         .animate-slide-horizontal { animation: slideHorizontal 12s infinite ease-in-out; }
 
-        /* ==========================================
-           EFEITO HOT-STAMPING PRATA/CHUMBO (ZERO AMARELO)
-           ========================================== */
-        .text-hot-stamp {
-            background: linear-gradient(
-                110deg, 
-                #E8E8E8 0%, 
-                #B0B0B5 20%, 
-                #DCD9D5 40%, 
-                #FFFFFF 50%, 
-                #8C8C91 70%, 
-                #F9F9F9 100%
-            );
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: foilShine 7s linear infinite;
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.4));
-        }
-        .light .text-hot-stamp {
-            /* Modo Dia: Chumbo Metálico Acetinado Brilhante */
-            background: linear-gradient(110deg, #18181B 0%, #52525B 20%, #A1A1AA 40%, #FFFFFF 50%, #3F3F46 70%, #000000 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
-        }
+        .text-hot-stamp { background: linear-gradient( 110deg, #E8E8E8 0%, #B0B0B5 20%, #DCD9D5 40%, #FFFFFF 50%, #8C8C91 70%, #F9F9F9 100% ); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: foilShine 7s linear infinite; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.4)); }
+        .light .text-hot-stamp { background: linear-gradient(110deg, #18181B 0%, #52525B 20%, #A1A1AA 40%, #FFFFFF 50%, #3F3F46 70%, #000000 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2)); }
         @keyframes foilShine { 0% { background-position: 200% center; } 100% { background-position: 0% center; } }
-        
         .glow-molecular { text-shadow: var(--molecular-glow); }
-
         @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 var(--glow-color); } 70% { box-shadow: 0 0 0 20px rgba(0,0,0,0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
         .animate-pulse-ring { animation: pulseRing 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
 
-        /* === EFEITO VAPOR === */
         .vapor-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 20; mix-blend-mode: screen; }
-        .light .vapor-container { mix-blend-mode: normal; opacity: 0.5; filter: grayscale(1); } /* Vapor Frio */
-        .vapor-particle {
-            position: absolute; bottom: -20%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-            filter: blur(25px); opacity: 0; animation: vaporFlow 12s infinite ease-in;
-        }
+        .light .vapor-container { mix-blend-mode: normal; opacity: 0.5; filter: grayscale(1); }
+        .vapor-particle { position: absolute; bottom: -20%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); filter: blur(25px); opacity: 0; animation: vaporFlow 12s infinite ease-in; }
         @keyframes vaporFlow { 0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; } 30% { opacity: 0.5; } 100% { transform: translateY(-120vh) scale(3) translateX(10vw); opacity: 0; } }
         .v1 { left: 20%; width: 300px; height: 300px; animation-duration: 15s; animation-delay: 0s; }
         .v2 { left: 50%; width: 400px; height: 400px; animation-duration: 12s; animation-delay: -5s; }
         .v3 { left: 70%; width: 250px; height: 250px; animation-duration: 18s; animation-delay: -9s; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); }
 
-        /* === SACOLA INTELIGENTE (BLINDADA EM DARK MODE) === */
-        #cart-drawer {
-            transform: translateX(100%);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        #cart-drawer { transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         #cart-drawer.open { transform: translateX(0); }
         .cart-item-enter { animation: slideInRight 0.4s ease forwards; }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
@@ -225,7 +178,6 @@
         </button>
     </div>
 
-    <!-- CAMADA VFX FUNDO -->
     <div id="spotlight-wrapper">
         <div class="pattern-layer"></div>
     </div>
@@ -233,8 +185,6 @@
     <!-- SACOLA INTELIGENTE (CARRINHO OVERLAY - BLINDADA SEMPRE ESCURA) -->
     <div id="cart-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-500" onclick="CartSystem.toggle()"></div>
     <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-[#040303] border-l border-white/10 z-[210] flex flex-col shadow-2xl">
-        
-        <!-- Cart Header -->
         <div class="p-6 border-b border-white/10 flex justify-between items-center bg-black/40 backdrop-blur-md">
             <div class="flex items-center gap-3">
                 <i data-lucide="shopping-bag" class="w-5 h-5 text-[#C0C0C0]"></i>
@@ -244,13 +194,7 @@
                 <i data-lucide="x" class="w-4 h-4"></i>
             </button>
         </div>
-        
-        <!-- Cart Items -->
-        <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 space-y-4">
-            <!-- Items injectados via JS -->
-        </div>
-
-        <!-- Cart Footer -->
+        <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 space-y-4"></div>
         <div class="p-6 border-t border-white/10 bg-black/40 backdrop-blur-md">
             <div class="flex justify-between items-end mb-6 text-white">
                 <span class="font-tech text-[10px] uppercase tracking-widest opacity-60">Privilégio Adquirido</span>
@@ -283,18 +227,13 @@
                 <a href="#/homecare" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors" onclick="HapticEngine.light()">Boutique</a>
                 <a href="#/partnership" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors" onclick="HapticEngine.light()">B2B</a>
             </div>
-            
-            <!-- TEMA -->
             <button id="theme-toggle-btn" aria-label="Alternar Tema" class="w-10 h-10 md:w-12 md:h-12 rounded-full glass-panel flex items-center justify-center hover:scale-105 text-high-contrast shadow-lg">
                 <i id="theme-icon" data-lucide="moon" class="w-4 h-4 md:w-5 md:h-5"></i>
             </button>
-
-            <!-- ÍCONE DA SACOLA -->
             <button onclick="CartSystem.toggle()" aria-label="Ver Sacola" class="relative w-10 h-10 md:w-12 md:h-12 rounded-full glass-panel flex items-center justify-center hover:scale-105 text-high-contrast shadow-lg">
                 <i data-lucide="shopping-bag" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                 <span id="nav-cart-badge" class="absolute -top-1 -right-1 bg-high-contrast text-bg-primary text-[9px] font-black w-4 md:w-5 h-4 md:h-5 rounded-full flex items-center justify-center opacity-0 transition-opacity transform scale-0">0</span>
             </button>
-
             <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden w-10 h-10 rounded-full glass-panel flex items-center justify-center text-high-contrast shadow-lg">
                 <i id="menu-icon" data-lucide="menu" class="w-4 h-4"></i>
             </button>
@@ -569,8 +508,13 @@
                             </div>
                         </div>
                         
-                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-surface backdrop-blur-sm">
-                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">A Experiência Completa</span>
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16 lg:p-20 bg-surface backdrop-blur-sm relative">
+                            <!-- Medidor Escassez VIP -->
+                            <div class="absolute top-6 right-6 lg:top-8 lg:right-8 flex flex-col items-end">
+                                <span class="font-cta text-[8px] font-bold text-red-500 uppercase tracking-widest flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> Lote VIP Esgotando</span>
+                            </div>
+
+                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast mt-4">A Experiência Completa</span>
                             <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Gata Lambeu 8K</h3>
                             <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
                                 A rotina definitiva de engenharia cosmética. O luxo em 4 passos acondicionados na exclusiva Sacola Orange. O presente perfeito para si ou para a sua rotina de auto-cuidado absoluto.
@@ -579,16 +523,53 @@
                             <div class="w-8 h-px bg-high-contrast opacity-20 mb-8"></div>
                             
                             <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Conteúdo da Coleção</span>
-                            <div class="flex flex-wrap gap-2 mb-12">
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0s;">Banho Repair</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.1s;">Ouro Gloss</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.2s;">Baby Queen</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.3s;">Argan Oil</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.4s;"><i data-lucide="shopping-bag" class="w-3 h-3 inline mr-1 text-accent"></i> Sacola Orange</span>
+                            <div class="flex flex-col gap-2 mb-8">
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast flex items-center gap-2">Passo 1: Banho Repair</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Limpeza inteligente que não dilata a cutícula e prepara a haste capilar para a infusão de tratamento estrutural.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast flex items-center gap-2">Passo 2: Ouro Gloss</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Reposição intracelular ultraconcentrada para bloquear a porosidade e trancar a hidratação no núcleo da fibra.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast flex items-center gap-2">Passo 3: Baby Queen</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Blindagem termoprotetora de 10 ações contra calor e agressões externas, garantindo o caimento perfeito.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast flex items-center gap-2">Passo 4: Argan Oil</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Selamento final das pontas que emite o cobiçado reflexo espelhado tridimensional, eliminando qualquer frizz.</p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-glass text-high-contrast">
-                                <span class="font-editorial text-3xl">R$ 557,90</span>
+                                <div class="flex flex-col">
+                                    <span class="font-tech text-[9px] uppercase tracking-widest opacity-60 text-accent line-through mb-1">Valor Original: R$ 797,00</span>
+                                    <span class="font-editorial text-3xl text-accent">R$ 557,90</span>
+                                </div>
                                 <button type="button" onclick="CartSystem.add('Coleção Completa Gata Lambeu 8K', 557.90, 'https://testeessencia.carrd.co/assets/images/image68.jpg?v=7c53f00c', this)" class="px-8 py-4 border border-glass hover:bg-high-contrast hover:text-bg-primary uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
                                     Adicionar à Obra
                                 </button>
@@ -614,7 +595,7 @@
                             </div>
                         </div>
                         
-                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-surface backdrop-blur-sm">
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16 lg:p-20 bg-surface backdrop-blur-sm relative">
                             <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 1 • Limpeza Pós-Química</span>
                             <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Banho Repair Master</h3>
                             <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
@@ -623,17 +604,52 @@
                             
                             <div class="w-8 h-px bg-high-contrast opacity-20 mb-8"></div>
                             
-                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
-                            <div class="flex flex-wrap gap-2 mb-12">
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0s;">Queratina Pura</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.1s;">Ceramidas</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.2s;">D-Pantenol</span>
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Biotecnologia Ativa</span>
+                            <div class="grid grid-cols-1 gap-2 mb-6">
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Matriz Queratinizada Biomimética</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Reposição de massa inteligente que mimetiza a estrutura natural do fio, fortalecendo sem enrijecer a haste capilar.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Complexo Lipídico Cerâmico</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Cimento intracelular de alta pureza. Sela a cutícula, blindando a hidratação no núcleo e eliminando a porosidade indesejada.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Pró-Vitamina B5 Concentrada</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Umectante de longa duração. Atrai e retém moléculas de água de forma prolongada, devolvendo a elasticidade imediata.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Assinatura Olfativa -->
+                            <div class="flex items-center gap-4 py-4 px-2 border-l-2 border-accent/40 mb-8 mt-2">
+                                <i data-lucide="wind" class="w-5 h-5 text-accent opacity-70"></i>
+                                <div>
+                                    <span class="font-tech text-[8px] font-bold uppercase tracking-[0.2em] text-high-contrast opacity-60 block mb-1">Assinatura Olfativa</span>
+                                    <p class="font-editorial text-[13px] italic text-high-contrast opacity-90">Frescor mediterrâneo com notas de limão siciliano, maçã e fundo elegante de cedro.</p>
+                                </div>
                             </div>
 
                             <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-glass text-high-contrast">
                                 <span class="font-editorial text-3xl">R$ 102,90</span>
                                 <button type="button" onclick="CartSystem.add('Banho Repair Master', 102.90, 'https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855', this)" class="px-8 py-4 border border-glass hover:bg-high-contrast hover:text-bg-primary uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
-                                    Adicionar à Obra
+                                    Adicionar à Coleção
                                 </button>
                             </div>
                         </div>
@@ -657,7 +673,7 @@
                             </div>
                         </div>
                         
-                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-surface backdrop-blur-sm">
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16 lg:p-20 bg-surface backdrop-blur-sm">
                             <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 2 • Reposição Absoluta</span>
                             <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Ouro Repair Gloss</h3>
                             <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
@@ -666,17 +682,52 @@
                             
                             <div class="w-8 h-px bg-high-contrast opacity-20 mb-8"></div>
                             
-                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
-                            <div class="flex flex-wrap gap-2 mb-12">
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0s;">Nutramino Cap</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.1s;">Néctar de Abacate</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.2s;">Proteína da Seda</span>
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Biotecnologia Ativa</span>
+                            <div class="grid grid-cols-1 gap-2 mb-6">
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Infusão Amino-Nutritiva</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Um blend magistral de aminoácidos essenciais de rápida absorção, desenvolvido para uma reparação profunda e imediata do córtex danificado.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Néctar Lipídico de Avocado</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Rico em ômegas 3, 6 e 9. Promove uma lubrificação capilar profunda, devolvendo o peso, o alinhamento e o caimento luxuoso do fio.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Biopolímeros de Seda</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Fios de seda pura hidrolisada que formam um filme cristalino tridimensional em torno da cutícula, refletindo o máximo de brilho ótico.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Assinatura Olfativa -->
+                            <div class="flex items-center gap-4 py-4 px-2 border-l-2 border-accent/40 mb-8 mt-2">
+                                <i data-lucide="wind" class="w-5 h-5 text-accent opacity-70"></i>
+                                <div>
+                                    <span class="font-tech text-[8px] font-bold uppercase tracking-[0.2em] text-high-contrast opacity-60 block mb-1">Assinatura Olfativa</span>
+                                    <p class="font-editorial text-[13px] italic text-high-contrast opacity-90">Jardins cítricos entrelaçados com um coração frutado de maçã verde vibrante.</p>
+                                </div>
                             </div>
 
                             <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-glass text-high-contrast">
                                 <span class="font-editorial text-3xl">R$ 202,30</span>
-                                <button type="button" onclick="CartSystem.add('Ampola Ouro Repair', 202.30, 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855', this)" class="px-8 py-4 border border-glass hover:bg-high-contrast hover:text-bg-primary uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
-                                    Adicionar à Obra
+                                <button type="button" onclick="CartSystem.add('Ampola Ouro Repair Gloss', 202.30, 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855', this)" class="px-8 py-4 border border-glass hover:bg-high-contrast hover:text-bg-primary uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
+                                    Adicionar à Coleção
                                 </button>
                             </div>
                         </div>
@@ -700,7 +751,7 @@
                             </div>
                         </div>
                         
-                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-surface backdrop-blur-sm">
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16 lg:p-20 bg-surface backdrop-blur-sm">
                             <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 3 • Blindagem 10 em 1</span>
                             <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Baby Queen</h3>
                             <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
@@ -709,17 +760,52 @@
                             
                             <div class="w-8 h-px bg-high-contrast opacity-20 mb-8"></div>
                             
-                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
-                            <div class="flex flex-wrap gap-2 mb-12">
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0s;">Escudo Térmico & UV</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.1s;">Tecnologia Colágeno</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.2s;">Matriz Nanolink</span>
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Biotecnologia Ativa</span>
+                            <div class="grid grid-cols-1 gap-2 mb-6">
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Aegis Térmico-UV</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Blindagem fotoprotetora extrema contra altas temperaturas (ferramentas de styling) e radiação solar, prevenindo o envelhecimento da fibra.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Colágeno Hidrolisado Premium</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Aumenta consideravelmente a densidade arquitetónica e a resistência à tração diária, erradicando por completo o temido efeito elástico.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Tecnologia Nanolink</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Veículos bioativos em escala nanométrica que transpoem a cutícula para religar pontes de enxofre estruturais anteriormente rompidas.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Assinatura Olfativa -->
+                            <div class="flex items-center gap-4 py-4 px-2 border-l-2 border-accent/40 mb-8 mt-2">
+                                <i data-lucide="wind" class="w-5 h-5 text-accent opacity-70"></i>
+                                <div>
+                                    <span class="font-tech text-[8px] font-bold uppercase tracking-[0.2em] text-high-contrast opacity-60 block mb-1">Assinatura Olfativa</span>
+                                    <p class="font-editorial text-[13px] italic text-high-contrast opacity-90">Acordes limpos de maçã entrelaçados num fundo madeirado e revigorante de cedro.</p>
+                                </div>
                             </div>
 
                             <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-glass text-high-contrast">
                                 <span class="font-editorial text-3xl">R$ 172,90</span>
                                 <button type="button" onclick="CartSystem.add('Baby Queen 10 em 1', 172.90, 'https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855', this)" class="px-8 py-4 border border-glass hover:bg-high-contrast hover:text-bg-primary uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
-                                    Adicionar à Obra
+                                    Adicionar à Coleção
                                 </button>
                             </div>
                         </div>
@@ -743,7 +829,7 @@
                             </div>
                         </div>
                         
-                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-surface backdrop-blur-sm">
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16 lg:p-20 bg-surface backdrop-blur-sm">
                             <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 4 • O Toque Final</span>
                             <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">American Argan Oil</h3>
                             <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
@@ -752,11 +838,46 @@
                             
                             <div class="w-8 h-px bg-high-contrast opacity-20 mb-8"></div>
                             
-                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
-                            <div class="flex flex-wrap gap-2 mb-12">
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0s;">Óleo de Argan Puro</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.1s;">Vitamina E Antioxidante</span>
-                                <span class="ignite-item border border-border-glass px-3 py-1.5 rounded-full text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast transition-all" style="transition-delay: 0.2s;">Micropartículas de Brilho</span>
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Biotecnologia Ativa</span>
+                            <div class="grid grid-cols-1 gap-2 mb-6">
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Ouro Líquido de Argan Extração a Frio</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Extração puríssima que disciplina o frizz de forma categórica e imediata sem criar o indesejado aspeto pesado na fibra.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Vitamina E Estabilizada</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Poderoso complexo antioxidante que neutraliza radicais livres externos, preservando a intensidade da cor e a vivacidade do tom.</p>
+                                    </div>
+                                </div>
+
+                                <div tabindex="0" class="active-drawer group/drawer" onclick="HapticEngine.light()">
+                                    <div class="flex items-center justify-between p-3">
+                                        <span class="text-[10px] font-tech font-bold uppercase tracking-widest text-high-contrast">Pérolas de Refração Ligeira</span>
+                                        <i data-lucide="plus" class="w-3 h-3 text-accent active-drawer-icon"></i>
+                                    </div>
+                                    <div class="active-drawer-content">
+                                        <p class="font-tech text-[10px] opacity-60 font-light leading-relaxed text-high-contrast">Micro-cristais difusores de luz inseridos na fórmula para proporcionar o autêntico, magnético e cobiçado 'American Glow'.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Assinatura Olfativa -->
+                            <div class="flex items-center gap-4 py-4 px-2 border-l-2 border-accent/40 mb-8 mt-2">
+                                <i data-lucide="wind" class="w-5 h-5 text-accent opacity-70"></i>
+                                <div>
+                                    <span class="font-tech text-[8px] font-bold uppercase tracking-[0.2em] text-high-contrast opacity-60 block mb-1">Assinatura Olfativa</span>
+                                    <p class="font-editorial text-[13px] italic text-high-contrast opacity-90">Sofisticadas notas de limão siciliano envolvidas numa essência de maçã polida.</p>
+                                </div>
                             </div>
 
                             <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-glass text-high-contrast">
@@ -840,7 +961,6 @@
             heavy: () => { if (window.navigator && window.navigator.vibrate) window.navigator.vibrate([40, 50, 40]); }
         };
 
-        // SACOLA INTELIGENTE (SMART CART SYSTEM - DARK THEME LOCKED)
         const CartSystem = {
             items: [],
             
@@ -853,7 +973,7 @@
                 this.open();
                 
                 const originalText = btnElement.innerHTML;
-                btnElement.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Adicionado à Obra';
+                btnElement.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Na Coleção';
                 if (typeof lucide !== 'undefined') lucide.createIcons();
                 setTimeout(() => { 
                     btnElement.innerHTML = originalText; 
@@ -950,10 +1070,8 @@
             }
         };
 
-        // LÓGICA DO PRÉ-LOADER COM REMOÇÃO DE LOCK GARANTIDA
         function initExperience() {
             HapticEngine.heavy();
-            
             const preloader = document.getElementById('luxury-preloader');
             preloader.style.opacity = '0';
             
@@ -964,10 +1082,8 @@
 
             setTimeout(() => {
                 preloader.style.display = 'none'; 
-                
                 document.documentElement.classList.remove('lock-scroll');
                 document.body.classList.remove('lock-scroll');
-                
                 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             }, 1000);
         }
@@ -984,13 +1100,9 @@
                 mouseX = (window.innerWidth / 2) + Math.sin(autoTime) * (window.innerWidth * 0.3);
                 mouseY = (window.innerHeight / 2) + Math.cos(autoTime * 0.8) * (window.innerHeight * 0.3);
             }
-            
             spotlight.style.setProperty('--mouse-x', `${mouseX}px`);
             spotlight.style.setProperty('--mouse-y', `${mouseY}px`);
-            
-            if(autoSpotlightActive) {
-                requestAnimationFrame(updateSpotlight);
-            }
+            if(autoSpotlightActive) requestAnimationFrame(updateSpotlight);
         };
         requestAnimationFrame(updateSpotlight);
 
@@ -1008,67 +1120,32 @@
         window.addEventListener('touchmove', requestSpotlightUpdate, {passive: true});
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { 
-                if(e.isIntersecting) { 
-                    e.target.classList.add('visible'); 
-                } 
-            });
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
-
-        const igniteObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if(e.isIntersecting) {
-                    e.target.classList.add('ignited');
-                }
-            });
-        }, { threshold: 0.5 });
 
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') lucide.createIcons();
 
             const handleRouting = () => {
                 let hash = window.location.hash || '#/home';
-                
-                if (hash === '#/boutique') hash = '#/homecare';
-                
-                if (!['#/home', '#/homecare', '#/partnership'].includes(hash)) {
-                    hash = '#/home';
-                }
-
+                if (hash === '#/boutique') hash = '#/homecare'; 
+                if (!['#/home', '#/homecare', '#/partnership'].includes(hash)) hash = '#/home';
                 const viewName = hash.replace('#/', '');
 
-                document.querySelectorAll('.page-view').forEach(view => {
-                    view.classList.remove('active-view');
-                });
-
+                document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-view'));
                 const activeView = document.getElementById('view-' + viewName);
-                if (activeView) {
-                    activeView.classList.add('active-view');
-                }
+                if (activeView) activeView.classList.add('active-view');
 
                 document.querySelectorAll('.nav-link').forEach(link => {
                     let linkHash = link.getAttribute('href');
                     if (linkHash === '#/boutique') linkHash = '#/homecare'; 
-
-                    if (linkHash === hash) {
-                        link.classList.add('active-link');
-                    } else {
-                        link.classList.remove('active-link');
-                    }
+                    linkHash === hash ? link.classList.add('active-link') : link.classList.remove('active-link');
                 });
 
                 window.scrollTo(0, 0);
                 
                 if(!document.body.classList.contains('lock-scroll')) {
-                    document.querySelectorAll('.reveal').forEach(el => {
-                        el.classList.remove('visible'); 
-                        observer.observe(el);
-                    });
-                    
-                    document.querySelectorAll('.ignite-item').forEach(el => {
-                        el.classList.remove('ignited');
-                        igniteObserver.observe(el);
-                    });
+                    document.querySelectorAll('.reveal').forEach(el => { el.classList.remove('visible'); observer.observe(el); });
                 }
             };
 
@@ -1114,32 +1191,29 @@
             };
 
             if (mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
+            document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', () => { if(isMenuOpen) toggleMenu(); }));
 
-            document.querySelectorAll('.mobile-nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    if(isMenuOpen) toggleMenu();
-                });
-            });
-
-            document.querySelectorAll('.faq-item').forEach(item => {
+            document.querySelectorAll('.active-drawer, .faq-item').forEach(item => {
                 item.addEventListener('click', () => {
                     HapticEngine.light();
-                    const answer = item.querySelector('.faq-answer');
-                    const icon = item.querySelector('i[data-lucide="chevron-down"]');
+                    const answer = item.querySelector('.active-drawer-content') || item.querySelector('.faq-answer');
+                    const icon = item.querySelector('.active-drawer-icon') || item.querySelector('i[data-lucide="chevron-down"]');
                     const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
                     
-                    document.querySelectorAll('.faq-answer').forEach(a => { 
-                        a.style.maxHeight = '0px'; 
-                        a.style.opacity = '0'; 
-                    });
-                    document.querySelectorAll('.faq-item i[data-lucide="chevron-down"]').forEach(i => {
-                        i.style.transform = 'rotate(0deg)';
-                    });
+                    if(item.classList.contains('faq-item')) {
+                        document.querySelectorAll('.faq-answer').forEach(a => { a.style.maxHeight = '0px'; a.style.opacity = '0'; });
+                        document.querySelectorAll('.faq-item i[data-lucide="chevron-down"]').forEach(i => i.style.transform = 'rotate(0deg)');
+                    } else {
+                        const siblings = item.parentElement.querySelectorAll('.active-drawer-content');
+                        const siblingIcons = item.parentElement.querySelectorAll('.active-drawer-icon');
+                        siblings.forEach(a => { a.style.maxHeight = '0px'; a.style.opacity = '0'; });
+                        siblingIcons.forEach(i => i.style.transform = 'rotate(0deg)');
+                    }
 
                     if (!isOpen) {
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
                         answer.style.opacity = '1';
-                        icon.style.transform = 'rotate(180deg)';
+                        if(icon) icon.style.transform = item.classList.contains('faq-item') ? 'rotate(180deg)' : 'rotate(45deg)';
                     }
                 });
             });
@@ -1151,23 +1225,15 @@
 
                 btns.forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        btns.forEach(b => {
-                            b.classList.remove('opacity-100', 'border-white');
-                            b.classList.add('opacity-50', 'border-transparent');
-                        });
-                        
-                        btn.classList.remove('opacity-50', 'border-transparent');
-                        btn.classList.add('opacity-100', 'border-white');
+                        btns.forEach(b => { b.classList.remove('opacity-100', 'border-white'); b.classList.add('opacity-50', 'border-transparent'); });
+                        btn.classList.remove('opacity-50', 'border-transparent'); btn.classList.add('opacity-100', 'border-white');
 
                         if(btn.dataset.type === 'video') {
-                            photo.style.opacity = '0';
-                            video.style.opacity = '1';
+                            photo.style.opacity = '0'; video.style.opacity = '1';
                             if(video.dataset.src && !video.src) video.src = video.dataset.src; 
                             video.play();
                         } else {
-                            photo.style.opacity = '1';
-                            video.style.opacity = '0';
-                            video.pause();
+                            photo.style.opacity = '1'; video.style.opacity = '0'; video.pause();
                         }
                     });
                 });
