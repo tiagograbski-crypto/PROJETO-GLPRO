@@ -3,48 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>[GL.] PRO | Molecular Platinum Infusion</title>
+    <title>[GL.] PRO | Engenharia Capilar de Transformação</title>
+    
+    <!-- 10 PERF: Preconnect para reduzir latência de DNS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
     
     <!-- Google Fonts: Editorial & Tech Stack -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600&family=Montserrat:wght@300;500;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS & Lucide Icons -->
+    <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Defer no script de ícones -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     
     <style>
         /* === ARQUITETURA DE CORES SEMÂNTICAS === */
         :root {
-            /* MODO CREPÚSCULO (NOITE) */
             --bg-primary: #060404;
-            --bg-surface: rgba(18, 18, 18, 0.4);
+            --bg-surface: rgba(18, 18, 18, 0.45);
             --border-glass: rgba(255, 255, 255, 0.05);
             --text-main: #FFFFFF;
-            --text-muted: #888888;
-            --accent-color: #C0C0C0; /* Platina */
+            --text-muted: #8E8E93;
+            --accent-color: #C0C0C0; 
             --glow-color: rgba(255, 255, 255, 0.08); 
-            /* Novo Vidro Colorido (Jateado) */
-            --accent-glass: rgba(192, 192, 192, 0.08);
-            --accent-border: rgba(192, 192, 192, 0.2);
+            --accent-glass: rgba(192, 192, 192, 0.05);
+            --accent-border: rgba(192, 192, 192, 0.15);
         }
 
         .light {
-            /* MODO ALVORADA (DIA) - BRANCO QUENTE PÉROLA */
             --bg-primary: #F5F2EB; 
-            --bg-surface: rgba(255, 255, 255, 0.65); 
-            --border-glass: rgba(197, 166, 124, 0.2); 
+            --bg-surface: rgba(255, 255, 255, 0.7); 
+            --border-glass: rgba(197, 166, 124, 0.15); 
             --text-main: #1C1C1C; 
-            --text-muted: #737373; 
-            --accent-color: #C5A67C; /* Rose Gold */
-            --glow-color: rgba(197, 166, 124, 0.35); 
-            /* Novo Vidro Colorido (Jateado) */
-            --accent-glass: rgba(197, 166, 124, 0.15);
-            --accent-border: rgba(197, 166, 124, 0.35);
+            --text-muted: #636366; 
+            --accent-color: #C5A67C; 
+            --glow-color: rgba(197, 166, 124, 0.25); 
+            --accent-glass: rgba(197, 166, 124, 0.1);
+            --accent-border: rgba(197, 166, 124, 0.3);
         }
 
-        /* === TIPOGRAFIA E FLUIDEZ === */
-        h1, h2, .font-editorial { font-family: 'Playfair Display', serif; }
-        body, p, .font-tech { font-family: 'Inter', sans-serif; }
+        /* === TIPOGRAFIA FLUIDA E EDITORIAL === */
+        h1, h2, h3, .font-editorial, .font-serif { font-family: 'Playfair Display', serif; }
+        body, p, .font-tech, ul, li { font-family: 'Inter', sans-serif; }
         button, .font-cta, .logo-gl { font-family: 'Montserrat', sans-serif; }
 
         html, body {
@@ -52,15 +55,15 @@
             color: var(--text-muted);
             margin: 0;
             overflow-x: hidden;
-            transition: background-color 1s ease, color 1s ease;
+            scroll-behavior: smooth;
+            transition: background-color 0.8s ease, color 0.8s ease;
         }
 
-        .text-high-contrast { color: var(--text-main); transition: color 1s ease; }
-        .text-accent { color: var(--accent-color); transition: color 1s ease; }
-        .border-accent { border-color: var(--accent-color); transition: border-color 1s ease; }
-        .bg-accent { background-color: var(--accent-color); transition: background-color 1s ease; }
+        .text-high-contrast { color: var(--text-main); transition: color 0.8s ease; }
+        .text-accent { color: var(--accent-color); transition: color 0.8s ease; }
+        .bg-accent-solid { background-color: var(--accent-color); color: var(--bg-primary); }
 
-        /* === TEXTURA DE FUNDO (LANTERNA) === */
+        /* === VFX: LANTERNA SENSORIAL === */
         #spotlight-wrapper {
             position: fixed;
             inset: 0;
@@ -68,6 +71,7 @@
             pointer-events: none;
             -webkit-mask-image: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
             mask-image: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+            will-change: mask-image, -webkit-mask-image;
         }
 
         .pattern-layer {
@@ -75,43 +79,45 @@
             inset: -50%;
             width: 200%; height: 200%;
             background-image: url('https://imagensagata.carrd.co/assets/images/image03.jpg?v=6b4b2f98');
-            background-size: 100px;
+            background-size: 110px;
             background-repeat: repeat;
-            transform: rotate(-10deg);
-            opacity: 0.15; 
+            transform: rotate(-12deg);
+            opacity: 0.12; 
             filter: grayscale(1);
             mix-blend-mode: screen;
             transition: opacity 1s ease;
+            transform: rotate(-12deg) translateZ(0);
         }
 
-        .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.12; filter: grayscale(1) contrast(1.2); }
+        .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.1; }
 
-        /* === UI COMPONENTS === */
+        /* === UI COMPONENTS LUXURY === */
         .glass-panel {
             background: var(--bg-surface);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-glass);
             border-radius: 2.5rem;
-            transition: all 0.5s ease;
+            transform: translateZ(0); 
+            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
         }
 
-        /* NOVO: Vidro Jateado com a Cor do Acento (Platina/Rose Gold) */
         .glass-accent-card {
             background: var(--accent-glass);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--accent-border);
             border-radius: 2rem;
-            transition: all 0.5s ease;
+            transform: translateZ(0);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
         }
-        .glass-accent-card:hover {
+        
+        .glass-accent-card:hover, .glass-panel.group:hover {
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px var(--glow-color);
         }
 
         .title-gradient {
-            background: linear-gradient(to bottom, var(--text-main) 30%, transparent 180%);
+            background: linear-gradient(to bottom, var(--text-main) 40%, transparent 160%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -119,55 +125,90 @@
         .btn-primary {
             background: var(--text-main);
             color: var(--bg-primary);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
         }
         .btn-primary:hover {
             box-shadow: 0 15px 35px var(--glow-color);
             transform: translateY(-2px);
         }
 
-        /* Animação Scroll */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* Animações de entrada e Roteamento SPA */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); 
+            will-change: opacity, transform;
+        }
+        .reveal.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-        /* === SLIDER ANTES/DEPOIS === */
+        /* Classes do Sistema de Roteamento SPA (CORRIGIDO PARA FLEXBOX COMPATIBILITY) */
+        .page-view {
+            display: none;
+            opacity: 0;
+            animation: fadeInPage 0.8s forwards;
+            width: 100%;
+        }
+        .page-view.active-view {
+            display: block; /* O Wrapper principal é block, os elementos internos gerem o Flex */
+        }
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+
+        /* Estado ativo no menu */
+        .nav-link.active-link {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        /* === SLIDER INTERATIVO === */
         .slider-container {
             position: relative;
             width: 100%;
             overflow: hidden;
             border-radius: 2.5rem;
             user-select: none;
-            -webkit-user-select: none;
+            transform: translateZ(0);
         }
-        
-        .slider-container img { pointer-events: none; }
-
         input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 50px;
-            height: 50px;
-            cursor: ew-resize;
+            -webkit-appearance: none; appearance: none;
+            width: 50px; height: 50px; cursor: ew-resize;
         }
-        
-        input[type=range]::-moz-range-thumb {
-            width: 50px;
-            height: 50px;
-            cursor: ew-resize;
-            border: none;
-            background: transparent;
+
+        /* === ANIMAÇÕES EDITORIAL === */
+        @keyframes slideHorizontal {
+            0%, 25% { transform: translateX(0); }
+            33%, 58% { transform: translateX(-33.333%); }
+            66%, 91% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
         }
+        .animate-slide-horizontal {
+            animation: slideHorizontal 12s infinite ease-in-out;
+        }
+
+        /* NOVO: Animação de Flutuação Orgânica para as Cápsulas */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 6s ease-in-out 3s infinite; }
     </style>
 </head>
 <body class="dark overflow-x-hidden">
 
+    <!-- CAMADA VFX FUNDO -->
     <div id="spotlight-wrapper">
         <div class="pattern-layer"></div>
     </div>
 
-    <!-- NAVEGAÇÃO SUPERIOR E MENU -->
+    <!-- NAVEGAÇÃO SUPERIOR -->
     <nav class="fixed top-0 w-full p-6 lg:p-10 flex justify-between items-center z-[110] pointer-events-none">
         <div class="pointer-events-auto">
-            <a href="#home" class="logo-gl text-xl md:text-2xl font-black tracking-widest text-high-contrast flex items-center hover:opacity-80 transition-opacity">
+            <a href="#/home" class="logo-gl text-xl md:text-2xl font-black tracking-widest text-high-contrast flex items-center hover:opacity-80 transition-opacity">
                 <span class="text-accent font-light mr-1">[</span>
                 GL.
                 <span class="text-accent font-light ml-1 mr-3">]</span> 
@@ -175,463 +216,738 @@
             </a>
         </div>
         <div class="pointer-events-auto flex items-center gap-3 sm:gap-6">
-            
-            <!-- Links Desktop -->
-            <div class="hidden md:flex items-center gap-8 mr-2">
-                <a href="#home" class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-60 hover:opacity-100 hover:text-accent transition-colors">Home</a>
-                <a href="#boutique" class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-60 hover:opacity-100 hover:text-accent transition-colors">Boutique</a>
-                <a href="#b2b" class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-60 hover:opacity-100 hover:text-accent transition-colors">B2B</a>
+            <div class="hidden md:flex items-center gap-10 mr-4">
+                <a href="#/home" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors active-link">Home</a>
+                <a href="#/homecare" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors">Boutique</a>
+                <a href="#/partnership" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors">B2B</a>
             </div>
-
-            <button id="theme-toggle-btn" class="w-10 h-10 md:w-12 md:h-12 rounded-full glass-panel flex items-center justify-center hover:scale-105 transition-all text-high-contrast shadow-lg">
+            <button id="theme-toggle-btn" aria-label="Alternar Tema" class="w-10 h-10 md:w-12 md:h-12 rounded-full glass-panel flex items-center justify-center hover:scale-105 text-high-contrast shadow-lg">
                 <i id="theme-icon" data-lucide="moon" class="w-4 h-4 md:w-5 md:h-5"></i>
             </button>
-
-            <!-- Botão Menu Sanduíche (Mobile) -->
-            <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:scale-105 transition-all text-high-contrast shadow-lg">
+            <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden w-10 h-10 rounded-full glass-panel flex items-center justify-center text-high-contrast shadow-lg">
                 <i id="menu-icon" data-lucide="menu" class="w-4 h-4"></i>
             </button>
         </div>
     </nav>
 
-    <!-- OVERLAY DO MENU MOBILE (ULTRA LUXO) -->
+    <!-- MENU MOBILE OVERLAY -->
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-bg-primary/95 backdrop-blur-2xl z-[105] opacity-0 pointer-events-none transition-opacity duration-500 flex flex-col items-center justify-center">
         <div class="flex flex-col items-center gap-10 text-center">
-            <a href="#home" class="mobile-nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Home</a>
-            <a href="#boutique" class="mobile-nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">A Boutique</a>
-            <a href="#b2b" class="mobile-nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Partnership B2B</a>
+            <a href="#/home" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Home</a>
+            <a href="#/homecare" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">A Boutique</a>
+            <a href="#/partnership" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Partnership B2B</a>
         </div>
-        <!-- Detalhe Estético -->
-        <div class="mt-16 w-px h-16 bg-accent opacity-50"></div>
+        <div class="mt-16 w-px h-16 bg-accent opacity-30"></div>
         <p class="font-tech text-[9px] uppercase tracking-widest text-high-contrast opacity-40 mt-6">[GL.] PRO</p>
     </div>
 
-    <main class="relative z-10">
+    <!-- CONTAINER SPA (VIEWS) -->
+    <main class="relative z-10 pt-20 lg:pt-0">
         
         <!-- ==========================================
-             SEÇÃO 1: HERO (OFERTA E CURIOSIDADE)
+             PÁGINA 1: HOME 
              ========================================== -->
-        <section id="home" class="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 px-6 lg:px-20 py-32">
+        <div id="view-home" class="page-view active-view">
+            <!-- HERO -->
+            <section class="min-h-[90vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 lg:px-20 py-16 lg:py-32">
+                <div class="w-full lg:w-1/2 flex flex-col items-center lg:text-left text-center">
+                    <div class="reveal mb-8 opacity-60 inline-flex items-center gap-4">
+                        <div class="w-8 h-px bg-current"></div>
+                        <span class="font-tech text-[9px] font-bold uppercase tracking-[0.6em] text-high-contrast">Purity Control</span>
+                    </div>
                     
-                    <!-- Técnica 1: Soberano 8K -->
-                    <div class="p-4 sm:p-6 glass-accent-card group flex flex-col justify-start">
-                        <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-4">
-                            <i data-lucide="zap" class="w-4 h-4 sm:w-5 sm:h-5 text-accent"></i>
-                            <h3 class="font-tech text-[9px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-high-contrast leading-tight">Soberano 8K</h3>
-                        </div>
-                        <p class="font-tech text-[9px] sm:text-[11px] opacity-80 leading-relaxed font-light text-high-contrast">
-                            Técnica de alisamento estrutural. Redução total de volume com a fibra selada. <span class="font-medium">Finalização com prancha térmica.</span>
+                    <div class="reveal mb-8 py-4">
+                        <!-- Ajuste de clamp e padding para não cortar letras em ecrãs ultra pequenos -->
+                        <h1 class="font-editorial text-[clamp(2.8rem,8vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic title-gradient pb-3">
+                            Molecular
+                        </h1>
+                        <h2 class="font-editorial text-[clamp(1rem,3vw,2.25rem)] italic font-light opacity-50 mt-2 tracking-widest">
+                            Platinum Infusion
+                        </h2>
+                        
+                        <p class="font-tech text-xs md:text-sm opacity-70 mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l border-accent pl-5">
+                            Impulsionado pela patenteada <strong class="text-accent font-black tracking-widest">Tecnologia V.43</strong>: um sistema de pureza ótica que neutraliza tons oxidados, revelando um fundo cristalino de alta refração.
                         </p>
                     </div>
 
-                    <!-- Técnica 2: Glass Molecular -->
-                    <div class="p-4 sm:p-6 glass-accent-card group flex flex-col justify-start">
-                        <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-4">
-                            <i data-lucide="timer" class="w-4 h-4 sm:w-5 sm:h-5 text-accent"></i>
-                            <h3 class="font-tech text-[9px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-high-contrast leading-tight">Glass Molecular</h3>
+                    <div class="grid grid-cols-2 gap-3 sm:gap-6 w-full max-w-2xl mb-12 reveal">
+                        <div class="p-5 sm:p-7 glass-accent-card flex flex-col">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i data-lucide="zap" class="w-4 h-4 text-accent"></i>
+                                <h3 class="font-tech text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-high-contrast leading-tight">Soberano 8K</h3>
+                            </div>
+                            <p class="font-tech text-[9px] sm:text-[11px] opacity-70 leading-relaxed">
+                                Alisamento estrutural absoluto. Redução total de volume com selamento térmico de alta definição.
+                            </p>
                         </div>
-                        <p class="font-tech text-[9px] sm:text-[11px] opacity-80 leading-relaxed font-light text-high-contrast">
-                            Técnica de redução do frizz e brilho tridimensional. <span class="font-medium">Finalização de alto padrão apenas com escova.</span>
+                        <div class="p-5 sm:p-7 glass-accent-card flex flex-col">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i data-lucide="timer" class="w-4 h-4 text-accent"></i>
+                                <h3 class="font-tech text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-high-contrast leading-tight">Glass Molecular</h3>
+                            </div>
+                            <p class="font-tech text-[9px] sm:text-[11px] opacity-70 leading-relaxed">
+                                Técnica de redução de frizz e brilho tridimensional. Finalização de alto padrão apenas com escova.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal">
+                        <button onclick="document.getElementById('ciencia').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-xl">
+                            O Protocolo
+                        </button>
+                        <a href="#/partnership" class="w-full sm:w-1/2 py-6 border border-current opacity-60 text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center hover:bg-white/5 transition-all">
+                            Credenciamento
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal mt-12 lg:mt-0">
+                    <!-- Reduzido max-w-sm para max-w-[280px] em mobile para não colar nas bordas -->
+                    <div class="relative w-full max-w-[280px] sm:max-w-sm aspect-[3/4] z-10 group">
+                        <div class="absolute inset-0 rounded-[4.5rem] shadow-2xl glass-panel"></div>
+                        <div class="absolute inset-3 rounded-[3.8rem] overflow-hidden">
+                            <img src="https://testeessencia.carrd.co/assets/images/image71.jpg?v=0910aa8a" alt="Molecular Platinum" fetchpriority="high" decoding="sync" class="w-full h-full object-cover mix-blend-luminosity opacity-90 group-hover:scale-105 transition-transform duration-[5s]">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        </div>
+                        
+                        <!-- NOVA CÁPSULA: Glass Molecular (Direita) -->
+                        <div class="absolute -right-4 sm:-right-8 top-10 sm:top-16 z-20 glass-panel p-2 flex items-center gap-2 sm:gap-3 shadow-2xl animate-float group/badge hover:border-accent transition-colors">
+                            <div class="flex -space-x-3">
+                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-md">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image24.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Antes Glass">
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px] opacity-0 group-hover/badge:opacity-100 transition-opacity">
+                                        <span class="text-[6px] font-black text-white uppercase tracking-widest">Antes</span>
+                                    </div>
+                                </div>
+                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-accent shadow-md z-10">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image28.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Depois Glass">
+                                </div>
+                            </div>
+                            <div class="pr-2 sm:pr-3 text-left">
+                                <p class="font-cta text-[7px] sm:text-[8px] uppercase tracking-[0.2em] text-accent font-bold leading-tight">Glass<br>Molecular</p>
+                            </div>
+                        </div>
+                        
+                        <!-- NOVA CÁPSULA: Soberano 8K (Esquerda) -->
+                        <div class="absolute -left-4 sm:-left-8 bottom-16 sm:bottom-20 z-20 glass-panel p-2 flex items-center gap-2 sm:gap-3 shadow-2xl animate-float-delayed group/badge hover:border-accent transition-colors flex-row-reverse">
+                            <div class="flex -space-x-3 space-x-reverse">
+                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-accent shadow-md z-10">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image22.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Depois 8K">
+                                </div>
+                                <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-md">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image21.jpg?v=0910aa8a" loading="lazy" class="w-full h-full object-cover" alt="Antes 8K">
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px] opacity-0 group-hover/badge:opacity-100 transition-opacity">
+                                        <span class="text-[6px] font-black text-white uppercase tracking-widest">Antes</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pl-2 sm:pl-3 text-right">
+                                <p class="font-cta text-[7px] sm:text-[8px] uppercase tracking-[0.2em] text-accent font-bold leading-tight">Soberano<br>8K</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- INFUSÃO BIOTECNOLÓGICA -->
+            <section id="ciencia" class="py-24 lg:py-32 px-6 max-w-6xl mx-auto reveal">
+                <div class="flex flex-col items-center gap-5 text-center mb-20">
+                    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast">Infusão de Ativos Raros</h3>
+                    <div class="h-px w-20 bg-current opacity-30"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-10 border border-accent rounded-[2.5rem] bg-accent/5 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-[3s]"></div>
+                        <span class="font-editorial text-4xl italic text-accent opacity-80 block mb-6">01</span>
+                        <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-3">Extrato de Caviar</h4>
+                        <span class="font-editorial text-[11px] italic text-accent opacity-70 mb-4 block">Reconstrução Absoluta</span>
+                        <p class="font-tech text-xs sm:text-sm opacity-70 font-light leading-relaxed">
+                            A joia da reconstrução capilar. Uma matriz proteica raríssima que injeta densidade molecular diretamente no córtex, devolvendo a integridade estrutural perdida.
                         </p>
                     </div>
+                    <div class="p-10 glass-panel border-transparent rounded-[2.5rem] group transition-colors">
+                        <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-6">02</span>
+                        <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-3">Néctar Antioxidante</h4>
+                        <span class="font-editorial text-[11px] italic text-accent opacity-70 mb-4 block">Escudo Protetor de Cor</span>
+                        <p class="font-tech text-xs sm:text-sm opacity-60 font-light leading-relaxed">
+                            Um complexo lipídico derivado da selva amazônica. Atua como um escudo contra o envelhecimento da fibra, garantindo uma reflexão de luz espelhada e duradoura.
+                        </p>
+                    </div>
+                    <div class="p-10 glass-panel border-transparent rounded-[2.5rem] group transition-colors">
+                        <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-6">03</span>
+                        <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-3">Bálsamo Hidrolipídico</h4>
+                        <span class="font-editorial text-[11px] italic text-accent opacity-70 mb-4 block">Matriz de Preenchimento</span>
+                        <p class="font-tech text-xs sm:text-sm opacity-60 font-light leading-relaxed">
+                            Manteiga botânica de altíssima absorção. Retém a humidade vital no núcleo do fio, entregando flexibilidade superior e um toque de seda inesquecível.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
+            <!-- AUDITORIA VISUAL -->
+            <section class="py-24 px-6 max-w-5xl mx-auto reveal mb-10 text-center">
+                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">O Protocolo em Ação</h3>
+                
+                <div class="slider-container aspect-[4/5] sm:aspect-[4/3] glass-panel shadow-2xl border-2 border-accent">
+                    <img src="https://testeessencia.carrd.co/assets/images/image46.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Antes" id="before-img" class="absolute inset-0 w-full h-full object-cover" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path;">
+                    
+                    <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white flex items-center justify-center text-white">
+                            <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+
+                    <input type="range" aria-label="Comparar Antes e Depois" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
+                           oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; document.getElementById('slider-line').style.left = `${this.value}%`;">
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="py-24 px-6 max-w-4xl mx-auto reveal mb-20 border-t border-glass">
+                <div class="text-center mb-16">
+                    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast mb-4">Inteligência Técnica</h3>
+                    <h2 class="font-editorial text-4xl md:text-6xl italic text-high-contrast mb-4">
+                        Quebra de <span class="font-tech font-black not-italic text-accent uppercase tracking-tighter">Paradigmas</span>
+                    </h2>
                 </div>
 
-                <!-- CTAs do Funil Invisível (Com Links Reais) -->
-                <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xl reveal">
-                    <a href="#ciencia" class="w-full sm:w-1/2 py-5 btn-primary rounded-2xl font-cta font-black text-[10px] sm:text-[11px] uppercase tracking-[0.3em] transition-all text-center flex justify-center items-center">
-                        O Protocolo
+                <div class="flex flex-col gap-4">
+                    <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">O protocolo é compatível com descoloração e madeixas?</h4>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+                            <p class="font-tech text-xs sm:text-sm opacity-60 font-light mt-4 leading-relaxed text-high-contrast border-t border-glass pt-4">
+                                Absolutamente. A patenteada <strong class="text-accent">Tecnologia V.43</strong> foi desenvolvida para estabilizar fundos de clareamento. Ela neutraliza a oxidação termicamente provocada, preservando a integridade da fibra descolorida, sem chumbar ou quebrar.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">Qual a durabilidade do Liso Soberano 8K?</h4>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300 flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+                            <p class="font-tech text-xs sm:text-sm opacity-60 font-light mt-4 leading-relaxed text-high-contrast border-t border-glass pt-4">
+                                O alinhamento é definitivo na área aplicada, exigindo apenas o retoque de raiz (geralmente entre 3 a 6 meses).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- FIM PÁGINA 1: HOME -->
+
+
+        <!-- ==========================================
+             PÁGINA 2: A BOUTIQUE EDITORIAL (VOGUE STYLE)
+             ========================================== -->
+        <div id="view-homecare" class="page-view">
+            <div class="w-full flex flex-col items-center justify-center px-6 pb-24">
+                
+                <!-- HEADER EDITORIAL MINIMALISTA -->
+                <header class="pt-32 pb-16 text-center max-w-4xl reveal w-full">
+                    <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-6 block text-high-contrast">Coleção de Autor</span>
+                    <h1 class="font-editorial text-[clamp(3.5rem,8vw,7rem)] italic mb-6 text-high-contrast leading-[0.85]">
+                        La Boutique
+                    </h1>
+                    <p class="font-tech text-sm opacity-60 font-light max-w-xl mx-auto leading-relaxed text-high-contrast">
+                        A curadoria definitiva para a preservação do liso espelhado. Cosmética de vanguarda concebida como alta costura para o seu ritual diário de beleza.
+                    </p>
+                    <div class="w-px h-24 bg-accent opacity-30 mx-auto mt-16"></div>
+                </header>
+
+                <section class="w-full max-w-6xl mx-auto space-y-32">
+                    
+                    <!-- ITEM 1: KIT COMPLETO -->
+                    <article class="flex flex-col md:flex-row items-stretch min-h-[600px] border border-white/5 rounded-none border-x-0 pb-20 reveal group/media">
+                        <div class="w-full md:w-1/2 relative overflow-hidden bg-[#050505] aspect-[4/5] md:aspect-auto">
+                            <div class="media-photo absolute inset-0 w-full h-full transition-opacity duration-700 z-10">
+                                <img src="https://testeessencia.carrd.co/assets/images/image68.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="Kit Completo" class="w-full h-full object-cover mix-blend-luminosity opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-[2s]">
+                            </div>
+                            <video data-src="https://testeessencia.carrd.co/assets/videos/video13.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 z-0 pointer-events-none"></video>
+                            
+                            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6 z-30">
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-100 border-white text-white transition-all" data-type="photo">Editorial</button>
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-50 border-transparent text-white hover:opacity-100 transition-all" data-type="video">Motion</button>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-black/10 backdrop-blur-sm">
+                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">A Experiência Completa</span>
+                            <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Gata Lambeu 8K</h3>
+                            <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
+                                A rotina definitiva de engenharia cosmética. O luxo em 4 passos acondicionados na exclusiva Sacola Orange. O presente perfeito para si ou para a sua rotina de auto-cuidado absoluto.
+                            </p>
+                            
+                            <div class="w-8 h-px bg-white/20 mb-8"></div>
+                            
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Conteúdo da Coleção</span>
+                            <ul class="font-editorial italic text-sm opacity-80 mb-12 space-y-3 text-high-contrast">
+                                <li>• Banho Repair Master</li>
+                                <li>• Ouro Repair Gloss</li>
+                                <li>• Baby Queen</li>
+                                <li>• American Argan Oil</li>
+                                <li>• Sacola Personalizada Orange</li>
+                            </ul>
+
+                            <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-white/5 text-high-contrast">
+                                <span class="font-editorial text-3xl">R$ 557,90</span>
+                                <button type="button" onclick="CartSystem.add('Coleção Completa', 557.90, 'https://testeessencia.carrd.co/assets/images/image68.jpg?v=7c53f00c', this)" class="px-8 py-4 border border-white/20 hover:bg-white hover:text-black uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
+                                    Adicionar à Obra
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ITEM 2: SHAMPOO (INVERTIDO) -->
+                    <article class="flex flex-col md:flex-row-reverse items-stretch min-h-[600px] border border-white/5 rounded-none border-x-0 pb-20 reveal group/media">
+                        <div class="w-full md:w-1/2 relative overflow-hidden bg-[#050505] aspect-[4/5] md:aspect-auto">
+                            <div class="media-photo absolute inset-0 w-full h-full transition-opacity duration-700 z-10 overflow-hidden">
+                                <div class="flex w-[300%] h-full animate-slide-horizontal">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Shampoo 1" class="w-1/3 h-full object-cover shrink-0 mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image55.jpg?v=0dcd7ee2" loading="lazy" decoding="async" alt="Shampoo 2" class="w-1/3 h-full object-cover shrink-0 mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Shampoo 3" class="w-1/3 h-full object-cover shrink-0 mix-blend-luminosity">
+                                </div>
+                            </div>
+                            <video data-src="https://testeessencia.carrd.co/assets/videos/video17.mp4?v=701b88d2#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 z-0 pointer-events-none"></video>
+                            
+                            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6 z-30">
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-100 border-white text-white transition-all" data-type="photo">Editorial</button>
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-50 border-transparent text-white hover:opacity-100 transition-all" data-type="video">Motion</button>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-black/10 backdrop-blur-sm">
+                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 1 • Limpeza Pós-Química</span>
+                            <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Banho Repair Master</h3>
+                            <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
+                                Shampoos comuns utilizam sulfatos agressivos que desbotam a progressiva. O Repair Master limpa suavemente sem dilatar a cutícula, injetando hidratação e preparando a fibra.
+                            </p>
+                            
+                            <div class="w-8 h-px bg-white/20 mb-8"></div>
+                            
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
+                            <ul class="font-editorial italic text-sm opacity-80 mb-12 space-y-3 text-high-contrast">
+                                <li>• Queratina Pura</li>
+                                <li>• Ceramidas</li>
+                                <li>• D-Pantenol</li>
+                            </ul>
+
+                            <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-white/5 text-high-contrast">
+                                <span class="font-editorial text-3xl">R$ 102,90</span>
+                                <button type="button" onclick="CartSystem.add('Banho Repair', 102.90, 'https://testeessencia.carrd.co/assets/images/image53.jpg?v=f5d26855', this)" class="px-8 py-4 border border-white/20 hover:bg-white hover:text-black uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
+                                    Adicionar à Obra
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ITEM 3: AMPOLA -->
+                    <article class="flex flex-col md:flex-row items-stretch min-h-[600px] border border-white/5 rounded-none border-x-0 pb-20 reveal group/media">
+                        <div class="w-full md:w-1/2 relative overflow-hidden bg-[#050505] aspect-[4/5] md:aspect-auto">
+                            <div class="media-photo absolute inset-0 w-full h-full transition-opacity duration-700 z-10 overflow-hidden">
+                                <div class="flex w-[300%] h-full animate-slide-horizontal">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Ampola 1" class="w-1/3 h-full object-cover shrink-0 transform scale-[1.2] origin-bottom mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Ampola 2" class="w-1/3 h-full object-cover shrink-0 transform scale-[1.2] origin-bottom mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image57.jpg?v=0dcd7ee2" loading="lazy" decoding="async" alt="Ampola 3" class="w-1/3 h-full object-cover shrink-0 transform scale-[1.2] origin-bottom mix-blend-luminosity">
+                                </div>
+                            </div>
+                            <video data-src="https://testeessencia.carrd.co/assets/videos/video18.mp4?v=701b88d2#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 z-0 pointer-events-none"></video>
+                            
+                            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6 z-30">
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-100 border-white text-white transition-all" data-type="photo">Editorial</button>
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-50 border-transparent text-white hover:opacity-100 transition-all" data-type="video">Motion</button>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-black/10 backdrop-blur-sm">
+                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 2 • Reposição Absoluta</span>
+                            <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Ouro Repair Gloss</h3>
+                            <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
+                                O tratamento intensivo que atua na reconstrução do cimento intercelular. Tranca a hidratação no núcleo e ilumina intensamente o cabelo, recuperando a massa perdida no dia a dia.
+                            </p>
+                            
+                            <div class="w-8 h-px bg-white/20 mb-8"></div>
+                            
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
+                            <ul class="font-editorial italic text-sm opacity-80 mb-12 space-y-3 text-high-contrast">
+                                <li>• Complexo Nutramino Cap</li>
+                                <li>• Néctar de Abacate</li>
+                                <li>• Proteína da Seda</li>
+                            </ul>
+
+                            <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-white/5 text-high-contrast">
+                                <span class="font-editorial text-3xl">R$ 202,30</span>
+                                <button type="button" onclick="CartSystem.add('Ampola Ouro', 202.30, 'https://testeessencia.carrd.co/assets/images/image56.jpg?v=f5d26855', this)" class="px-8 py-4 border border-white/20 hover:bg-white hover:text-black uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
+                                    Adicionar à Obra
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ITEM 4: BABY QUEEN (INVERTIDO) -->
+                    <article class="flex flex-col md:flex-row-reverse items-stretch min-h-[600px] border border-white/5 rounded-none border-x-0 pb-20 reveal group/media">
+                        <div class="w-full md:w-1/2 relative overflow-hidden bg-[#050505] aspect-[4/5] md:aspect-auto">
+                            <div class="media-photo absolute inset-0 w-full h-full transition-opacity duration-700 z-10 overflow-hidden">
+                                <div class="flex w-[300%] h-full animate-slide-horizontal">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855" loading="lazy" decoding="async" alt="Baby Queen 1" class="w-1/3 h-full object-cover shrink-0 mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image66.jpg?v=0dcd7ee2" loading="lazy" decoding="async" alt="Baby Queen 2" class="w-1/3 h-full object-cover shrink-0 mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image64.jpg?v=0dcd7ee2" loading="lazy" decoding="async" alt="Baby Queen 3" class="w-1/3 h-full object-cover shrink-0 mix-blend-luminosity">
+                                </div>
+                            </div>
+                            <video data-src="https://testeessencia.carrd.co/assets/videos/video02.mp4?v=7c53f00c#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 z-0 pointer-events-none"></video>
+                            
+                            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6 z-30">
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-100 border-white text-white transition-all" data-type="photo">Editorial</button>
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-50 border-transparent text-white hover:opacity-100 transition-all" data-type="video">Motion</button>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-black/10 backdrop-blur-sm">
+                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 3 • Blindagem 10 em 1</span>
+                            <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">Baby Queen</h3>
+                            <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
+                                Um escudo termoprotetor absoluto. Ação antifrizz indomável, reposição de massa estrutural e hidratação profunda. O defensor perfeito contra agressões externas e térmicas.
+                            </p>
+                            
+                            <div class="w-8 h-px bg-white/20 mb-8"></div>
+                            
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
+                            <ul class="font-editorial italic text-sm opacity-80 mb-12 space-y-3 text-high-contrast">
+                                <li>• Escudo Térmico & UV</li>
+                                <li>• Tecnologia Colágeno</li>
+                                <li>• Matriz Nanolink</li>
+                            </ul>
+
+                            <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-white/5 text-high-contrast">
+                                <span class="font-editorial text-3xl">R$ 172,90</span>
+                                <button type="button" onclick="CartSystem.add('Baby Queen', 172.90, 'https://testeessencia.carrd.co/assets/images/image63.jpg?v=f5d26855', this)" class="px-8 py-4 border border-white/20 hover:bg-white hover:text-black uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
+                                    Adicionar à Obra
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ITEM 5: ARGAN -->
+                    <article class="flex flex-col md:flex-row items-stretch min-h-[600px] border border-white/5 rounded-none border-x-0 pb-20 reveal group/media">
+                        <div class="w-full md:w-1/2 relative overflow-hidden bg-[#050505] aspect-[4/5] md:aspect-auto">
+                            <div class="media-photo absolute inset-0 w-full h-full transition-opacity duration-700 z-10 overflow-hidden">
+                                <div class="flex w-[300%] h-full animate-slide-horizontal">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image79.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="Argan 1" class="w-1/3 h-full object-cover shrink-0 transform scale-[1.3] origin-bottom mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image79.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="Argan 2" class="w-1/3 h-full object-cover shrink-0 transform scale-[1.3] origin-bottom mix-blend-luminosity">
+                                    <img src="https://testeessencia.carrd.co/assets/images/image79.jpg?v=7c53f00c" loading="lazy" decoding="async" alt="Argan 3" class="w-1/3 h-full object-cover shrink-0 transform scale-[1.3] origin-bottom mix-blend-luminosity">
+                                </div>
+                            </div>
+                            <video data-src="https://testeessencia.carrd.co/assets/videos/video12.mp4?v=36e3212d#t=0.1" loop muted playsinline class="media-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 z-0 pointer-events-none"></video>
+                            
+                            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6 z-30">
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-100 border-white text-white transition-all" data-type="photo">Editorial</button>
+                                <button type="button" class="toggle-media-btn uppercase tracking-[0.3em] text-[9px] font-bold pb-1.5 border-b opacity-50 border-transparent text-white hover:opacity-100 transition-all" data-type="video">Motion</button>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 bg-black/10 backdrop-blur-sm">
+                            <span class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-50 mb-4 block text-high-contrast">Passo 4 • O Toque Final</span>
+                            <h3 class="font-editorial text-4xl lg:text-5xl mb-6 text-high-contrast italic">American Argan Oil</h3>
+                            <p class="font-tech text-xs opacity-60 mb-10 leading-relaxed text-high-contrast">
+                                O segredo do autêntico Hair with American Glow. Confere um brilho espelhado instantâneo, sela as pontas duplas e mantém os fios soltos e incrivelmente perfumados o dia inteiro.
+                            </p>
+                            
+                            <div class="w-8 h-px bg-white/20 mb-8"></div>
+                            
+                            <span class="font-tech text-[9px] uppercase tracking-widest opacity-50 mb-4 block text-high-contrast">Infusão Ativa</span>
+                            <ul class="font-editorial italic text-sm opacity-80 mb-12 space-y-3 text-high-contrast">
+                                <li>• Óleo de Argan Puro</li>
+                                <li>• Vitamina E Antioxidante</li>
+                                <li>• Micropartículas de Brilho</li>
+                            </ul>
+
+                            <div class="mt-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 pt-8 border-t border-white/5 text-high-contrast">
+                                <span class="font-editorial text-3xl">R$ 137,90</span>
+                                <button type="button" onclick="CartSystem.add('Argan Oil', 137.90, 'https://testeessencia.carrd.co/assets/images/image79.jpg?v=7c53f00c', this)" class="px-8 py-4 border border-white/20 hover:bg-white hover:text-black uppercase tracking-widest text-[10px] font-bold transition-all w-full xl:w-auto text-center">
+                                    Adicionar à Obra
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </section>
+            </div>
+        </div>
+        <!-- FIM PÁGINA 2: BOUTIQUE -->
+
+
+        <!-- ==========================================
+             PÁGINA 3: CREDENCIAMENTO B2B (PARTNERSHIP)
+             ========================================== -->
+        <div id="view-partnership" class="page-view">
+            <section class="min-h-[85vh] flex flex-col justify-center py-24 px-6 max-w-5xl mx-auto reveal">
+                <div class="p-10 md:p-24 glass-panel flex flex-col items-center text-center group relative overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                    
+                    <div class="logo-gl text-3xl font-black tracking-[0.3em] text-high-contrast mb-10 relative z-10">
+                        <span class="text-accent font-light">[</span>GL.<span class="text-accent font-light">]</span> PRO
+                    </div>
+                    
+                    <h3 class="font-editorial text-5xl md:text-7xl italic text-high-contrast mb-8 relative z-10">Partnership</h3>
+                    
+                    <div class="w-16 h-px bg-accent opacity-50 my-6 relative z-10"></div>
+
+                    <p class="font-tech text-sm md:text-base opacity-70 mb-12 max-w-2xl relative z-10 leading-relaxed uppercase tracking-widest">
+                        Acesso restrito ao protocolo clínico Molecular Platinum Infusion. Uma aliança desenhada exclusivamente para espaços de alta performance capilar.
+                    </p>
+                    
+                    <a href="https://wa.me/5549991618389?text=Desejo%20solicitar%20o%20credenciamento%20B2B%20[GL.]%20PRO" target="_blank" class="w-full max-w-sm py-7 bg-text-main text-bg-primary rounded-3xl font-cta font-bold text-[10px] uppercase tracking-[0.4em] hover:scale-105 transition-transform relative z-10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                        Submeter Pedido de Auditoria
                     </a>
-                    <a href="https://wa.me/5549991618389?text=Olá,%20desejo%20saber%20mais%20sobre%20o%20credenciamento%20profissional%20[GL.]%20PRO" target="_blank" rel="noopener noreferrer" class="w-full sm:w-1/2 py-5 border border-current opacity-60 text-high-contrast rounded-2xl font-cta font-medium text-[10px] sm:text-[11px] uppercase tracking-[0.3em] hover:bg-white/5 hover:opacity-100 transition-all text-center flex justify-center items-center">
-                        Credenciamento
-                    </a>
                 </div>
-            </div>
-
-            <!-- PRODUTO + MICRO-AUDITORIA (AS BOLINHAS) -->
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal mt-12 lg:mt-0">
-                <div class="relative w-full max-w-sm aspect-[3/4] z-10 group">
-                    <div class="absolute inset-0 rounded-[4rem] shadow-2xl glass-panel"></div>
-                    <div class="absolute inset-2 rounded-[3.5rem] overflow-hidden">
-                        <img src="https://testeessencia.carrd.co/assets/images/image71.jpg?v=0910aa8a" 
-                             alt="Molecular Platinum Infusion" 
-                             class="w-full h-full object-cover mix-blend-luminosity opacity-90 group-hover:scale-105 transition-transform duration-[4s]">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                    </div>
-                    <div class="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 pointer-events-none z-10">
-                        <p class="font-editorial text-3xl sm:text-4xl italic text-white tracking-widest uppercase drop-shadow-md">1000ML</p>
-                        <p class="font-tech text-[8px] sm:text-[9px] uppercase tracking-[0.4em] text-white/70 mt-2 font-bold drop-shadow-md">Uso Exclusivo em Salões</p>
-                    </div>
-
-                    <!-- BOLINHAS RESPONSIVAS: GLASS MOLECULAR (DIREITA) -->
-                    <div class="absolute right-0 translate-x-3 sm:translate-x-6 top-6 sm:top-12 flex flex-col gap-5 sm:gap-8 z-20 pointer-events-none">
-                        <!-- Antes (Glass) ATUALIZADO -->
-                        <div class="relative group-hover:-translate-y-2 transition-transform duration-[2s]">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/20 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.8)] bg-black/40 backdrop-blur-md p-1">
-                                <img src="https://testeessencia.carrd.co/assets/images/image24.jpg?v=0910aa8a" class="w-full h-full object-cover rounded-full" alt="Fibra Antes Glass">
-                            </div>
-                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black/90 text-white text-[6px] sm:text-[7px] font-black uppercase tracking-widest px-2 py-1 rounded-full border border-white/10 shadow-xl whitespace-nowrap">
-                                Antes (Glass)
-                            </div>
-                        </div>
-                        <!-- Depois (Glass) ATUALIZADO -->
-                        <div class="relative group-hover:-translate-y-4 transition-transform duration-[2s] delay-100">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full border-2 border-accent overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.8)] bg-black/40 backdrop-blur-md p-1">
-                                <img src="https://testeessencia.carrd.co/assets/images/image28.jpg?v=0910aa8a" class="w-full h-full object-cover rounded-full" alt="Fibra Depois Glass">
-                            </div>
-                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-black text-[6px] sm:text-[7px] font-black uppercase tracking-widest px-2 py-1 rounded-full border border-black/20 shadow-xl whitespace-nowrap">
-                                Depois (Glass)
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- NOVAS BOLINHAS: LISO SOBERANO 8K (ESQUERDA) -->
-                    <div class="absolute left-0 -translate-x-3 sm:-translate-x-6 bottom-16 sm:bottom-20 flex flex-col gap-5 sm:gap-8 z-20 pointer-events-none">
-                        <!-- Antes (8K) - Castanho Claro -->
-                        <div class="relative group-hover:-translate-y-2 transition-transform duration-[2s]">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/20 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.8)] bg-black/40 backdrop-blur-md p-1">
-                                <img src="https://testeessencia.carrd.co/assets/images/image21.jpg?v=0910aa8a" class="w-full h-full object-cover rounded-full" alt="Fibra Antes 8K">
-                            </div>
-                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black/90 text-white text-[6px] sm:text-[7px] font-black uppercase tracking-widest px-2 py-1 rounded-full border border-white/10 shadow-xl whitespace-nowrap">
-                                Antes (8K)
-                            </div>
-                        </div>
-                        <!-- Depois (8K) - Castanho Claro -->
-                        <div class="relative group-hover:-translate-y-4 transition-transform duration-[2s] delay-100">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full border-2 border-accent overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.8)] bg-black/40 backdrop-blur-md p-1">
-                                <img src="https://testeessencia.carrd.co/assets/images/image22.jpg?v=0910aa8a" class="w-full h-full object-cover rounded-full" alt="Fibra Depois 8K">
-                            </div>
-                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-black text-[6px] sm:text-[7px] font-black uppercase tracking-widest px-2 py-1 rounded-full border border-black/20 shadow-xl whitespace-nowrap">
-                                Depois (8K)
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             SEÇÃO 2: MANIFESTO (A AUTORIDADE)
-             ========================================== -->
-        <section class="py-32 px-6 max-w-4xl mx-auto text-center reveal">
-            <h2 class="font-editorial text-4xl md:text-6xl lg:text-7xl italic leading-tight mb-10 text-high-contrast">
-                Auditamos a fibra. <br>
-                <span class="font-tech font-black uppercase tracking-tighter not-italic text-accent">Perfeição Absoluta.</span>
-            </h2>
-            <p class="font-tech text-lg md:text-xl opacity-60 leading-relaxed font-light">
-                A <span class="font-bold text-high-contrast">[GL.] PRO</span> elevou o alisamento a um nível clínico. Através da nossa biotecnologia, garantimos o liso de alta definição, integridade estrutural e reflexão espelhada. Apenas para espaços que exigem a maestria capilar.
-            </p>
-        </section>
-
-        <!-- ==========================================
-             SEÇÃO 3: OS ATIVOS RAROS (AGORA COM ID PARA O SCROLL DO BOTÃO)
-             ========================================== -->
-        <section id="ciencia" class="py-20 px-6 max-w-6xl mx-auto reveal mb-20">
-            <div class="flex flex-col items-center gap-4 text-center mb-16">
-                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast">Infusão de Ativos Raros</h3>
-                <div class="h-px w-16 bg-current opacity-30"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                
-                <!-- ATIVO EM DESTAQUE: CAVIAR -->
-                <div class="p-8 border border-accent rounded-[2rem] bg-accent/5 backdrop-blur-md shadow-[0_20px_40px_rgba(0,0,0,0.3)] relative overflow-hidden transform transition-transform duration-500 hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
-                    <span class="font-editorial text-4xl italic text-accent opacity-90 block mb-4">01</span>
-                    <h4 class="font-tech text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast mb-1">Extrato de Caviar</h4>
-                    <span class="font-editorial text-[11px] italic text-accent opacity-80 mb-3 block">Reconstrução Absoluta</span>
-                    <p class="font-tech text-sm opacity-80 font-light leading-relaxed">
-                        A joia da reconstrução capilar. Uma matriz raríssima, rica em proteínas, lípidos e aminoácidos essenciais. Injeta densidade diretamente no córtex, devolvendo a integridade estrutural, a força e a juventude aos fios danificados de forma imediata.
-                    </p>
-                </div>
-
-                <!-- ATIVO 2: AÇAÍ OCULTO (Néctar Antioxidante) -->
-                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md transform transition-transform duration-500 hover:-translate-y-2">
-                    <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-4">02</span>
-                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-1">Néctar Antioxidante Púrpura</h4>
-                    <span class="font-editorial text-[11px] italic text-accent opacity-80 mb-3 block">Escudo Protetor de Cor</span>
-                    <p class="font-tech text-sm opacity-60 font-light leading-relaxed">
-                        Um complexo lipídico de reserva botânica. Atua como um escudo absoluto contra o envelhecimento da fibra e radicais livres, prolongando a integridade do tom e refletindo um brilho vívido e espelhado inigualável.
-                    </p>
-                </div>
-
-                <!-- ATIVO 3: CUPUAÇU OCULTO (Bálsamo Hidrolipídico) -->
-                <div class="p-8 border border-glass rounded-[2rem] bg-bg-surface backdrop-blur-md transform transition-transform duration-500 hover:-translate-y-2">
-                    <span class="font-editorial text-4xl italic text-accent opacity-30 block mb-4">03</span>
-                    <h4 class="font-tech text-xs font-black uppercase tracking-widest text-high-contrast mb-1">Bálsamo Hidrolipídico Botânico</h4>
-                    <span class="font-editorial text-[11px] italic text-accent opacity-80 mb-3 block">Matriz de Preenchimento</span>
-                    <p class="font-tech text-sm opacity-60 font-light leading-relaxed">
-                        Manteiga botânica de altíssima absorção projetada para o selamento cuticular. Retém a humidade vital no núcleo do fio, entregando uma flexibilidade superior, densidade luxuosa e um toque de seda inesquecível.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================
-             SEÇÃO 4: AUDITORIA VISUAL (SLIDER DA VERDADE)
-             ========================================== -->
-        <section class="py-20 px-6 max-w-5xl mx-auto reveal mb-10">
-            <div class="flex flex-col items-center gap-4 text-center mb-16">
-                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast">O Protocolo em Ação</h3>
-                <div class="h-px w-16 bg-current opacity-30"></div>
-                <p class="mt-4 opacity-50 font-light text-sm italic">Deslize e comprove a transformação arquitetónica da fibra.</p>
-            </div>
-
-            <div class="slider-container aspect-[4/5] sm:aspect-square md:aspect-[4/3] glass-panel shadow-[0_30px_60px_rgba(0,0,0,0.5)] border-2 border-accent">
-                <!-- DEPOIS (Cabelo Ruivo) -->
-                <img src="https://testeessencia.carrd.co/assets/images/image46.jpg?v=0910aa8a" alt="Depois" class="absolute inset-0 w-full h-full object-cover rounded-[2.3rem]">
-                <!-- ANTES (Cabelo Ruivo) -->
-                <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=0910aa8a" alt="Antes" id="before-img" class="absolute inset-0 w-full h-full object-cover rounded-[2.3rem]" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
-                
-                <div id="slider-line" class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.8)] z-20 pointer-events-none transform -translate-x-1/2" style="left: 50%;">
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-bg-primary/80 backdrop-blur-md border-2 border-white flex items-center justify-center text-text-main shadow-xl">
-                        <i data-lucide="chevrons-left-right" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                    </div>
-                    <div class="hidden sm:block absolute top-6 left-0 -translate-x-[calc(100%+20px)] bg-black/60 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/20 whitespace-nowrap">Antes</div>
-                    <div class="hidden sm:block absolute top-6 right-0 translate-x-[20px] bg-white/90 backdrop-blur-sm text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-black/10 whitespace-nowrap">Depois</div>
-                </div>
-
-                <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
-                       oninput="
-                           document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`;
-                           document.getElementById('slider-line').style.left = `${this.value}%`;
-                       ">
-            </div>
-        </section>
-
-        <!-- ==========================================
-             SEÇÃO 5: GALERIA (O DESEJO)
-             ========================================== -->
-        <section class="py-20 px-6 max-w-6xl mx-auto reveal mb-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Esquerda: Antes (Mulher de Branco) -->
-                <div class="group aspect-[4/5] glass-panel p-1 rounded-[2rem] overflow-hidden relative cursor-pointer shadow-xl">
-                    <img src="https://testeessencia.carrd.co/assets/images/image77.jpg?v=0910aa8a" alt="Antes" class="w-full h-full object-cover rounded-[1.8rem] transition-transform duration-1000 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[1.8rem]"></div>
-                    <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                        <span class="font-cta text-[10px] font-bold uppercase tracking-widest text-white">Antes</span>
-                    </div>
-                </div>
-                <!-- Meio: Imagem Central -->
-                <div class="group aspect-[4/5] glass-panel p-1 rounded-[2rem] overflow-hidden relative cursor-pointer shadow-xl">
-                    <img src="https://testeessencia.carrd.co/assets/images/image19.jpg?v=0910aa8a" alt="Brilho Espelhado" class="w-full h-full object-cover rounded-[1.8rem] transition-transform duration-1000 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[1.8rem]"></div>
-                    <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                        <span class="font-cta text-[10px] font-bold uppercase tracking-widest text-white">Brilho Espelhado</span>
-                    </div>
-                </div>
-                <!-- Direita: Depois (Mulher de Branco) -->
-                <div class="group aspect-[4/5] glass-panel p-1 rounded-[2rem] overflow-hidden relative cursor-pointer shadow-xl">
-                    <img src="https://testeessencia.carrd.co/assets/images/image76.jpg?v=0910aa8a" alt="Depois" class="w-full h-full object-cover rounded-[1.8rem] transition-transform duration-1000 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[1.8rem]"></div>
-                    <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                        <span class="font-cta text-[10px] font-bold uppercase tracking-widest text-white">Depois</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             SEÇÃO 6: A BOUTIQUE (B2C - GATA LAMBEU)
-             ========================================== -->
-        <section id="boutique" class="py-24 px-6 max-w-6xl mx-auto reveal mb-10 border-t border-glass">
-            <div class="text-center mb-16">
-                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast mb-4">A Boutique</h3>
-                <h2 class="font-editorial text-4xl md:text-6xl italic text-high-contrast mb-4">
-                    Coleção <span class="font-tech font-black not-italic text-accent uppercase tracking-tighter">Gata Lambeu</span>
-                </h2>
-                <p class="font-tech text-sm md:text-base opacity-60 font-light max-w-2xl mx-auto">
-                    A extensão do protocolo 8K para o seu santuário diário. Home Care de ultra luxo projetado para prolongar a integridade e a reflexão espelhada dos fios.
-                </p>
-            </div>
-
-            <!-- Produtos Home Care (Montra Minimalista) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Produto Home Care 1 -->
-                <div class="glass-panel p-4 sm:p-6 flex flex-col group hover:border-accent transition-colors cursor-pointer">
-                    <div class="w-full aspect-square rounded-[2rem] overflow-hidden mb-6 bg-black/20 relative">
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800" alt="Sérum Gata Lambeu" class="w-full h-full object-cover mix-blend-luminosity group-hover:scale-105 transition-transform duration-1000 opacity-80 group-hover:opacity-100">
-                    </div>
-                    <div class="flex justify-between items-start mb-2 px-2">
-                        <h4 class="font-cta text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast">Sérum Finalizador</h4>
-                        <span class="font-tech text-[10px] text-accent font-bold uppercase tracking-widest mt-0.5">Descobrir</span>
-                    </div>
-                    <p class="font-tech text-xs opacity-60 font-light px-2">Infusão diária de Caviar e Néctar Antioxidante para manutenção absoluta do brilho.</p>
-                </div>
-                
-                <!-- Produto Home Care 2 -->
-                <div class="glass-panel p-4 sm:p-6 flex flex-col group hover:border-accent transition-colors cursor-pointer">
-                    <div class="w-full aspect-square rounded-[2rem] overflow-hidden mb-6 bg-black/20 relative">
-                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=800" alt="Máscara Gata Lambeu" class="w-full h-full object-cover mix-blend-luminosity group-hover:scale-105 transition-transform duration-1000 opacity-80 group-hover:opacity-100">
-                    </div>
-                    <div class="flex justify-between items-start mb-2 px-2">
-                        <h4 class="font-cta text-xs sm:text-sm font-black uppercase tracking-widest text-high-contrast">Máscara Híbrida</h4>
-                        <span class="font-tech text-[10px] text-accent font-bold uppercase tracking-widest mt-0.5">Descobrir</span>
-                    </div>
-                    <p class="font-tech text-xs opacity-60 font-light px-2">Reposição lipídica intensiva que sela as cutículas e preserva a biotecnologia capilar.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             SEÇÃO 7: O CREDENCIAMENTO (B2B - PROFISSIONAIS)
-             ========================================== -->
-        <section id="b2b" class="py-16 px-6 max-w-5xl mx-auto reveal mb-24">
-            <div class="p-10 md:p-20 glass-panel flex flex-col items-center text-center group hover:border-accent transition-colors relative overflow-hidden">
-                <!-- Fundo de Acento Hover -->
-                <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                
-                <div class="logo-gl text-2xl md:text-4xl font-black tracking-widest text-high-contrast flex items-center mb-8 relative z-10">
-                    <span class="text-accent font-light mr-1">[</span>GL.<span class="text-accent font-light ml-1 mr-3">]</span><span class="font-medium tracking-[0.4em] mt-1">PRO</span>
-                </div>
-                
-                <h3 class="font-editorial text-4xl md:text-6xl italic text-high-contrast mb-6 relative z-10">
-                    Partnership <br>
-                    <span class="font-tech font-black not-italic text-accent uppercase tracking-tighter text-2xl md:text-4xl block mt-2">Salões Oficiais</span>
-                </h3>
-                
-                <p class="font-tech text-sm md:text-base opacity-60 font-light leading-relaxed mb-10 max-w-2xl relative z-10">
-                    Acesso exclusivo ao protocolo clínico Molecular Platinum Infusion. Eleve o padrão arquitetónico do seu espaço e ofereça a transformação que a elite do mercado exige. Restrito a especialistas.
-                </p>
-                
-                <a href="https://wa.me/5549991618389?text=Olá,%20desejo%20solicitar%20a%20auditoria%20para%20credenciamento%20do%20meu%20salão%20como%20parceiro%20[GL.]%20PRO." target="_blank" rel="noopener noreferrer" class="w-full max-w-md py-6 border border-current opacity-80 text-high-contrast rounded-2xl font-cta font-bold text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-white/10 hover:opacity-100 transition-all text-center relative z-10 shadow-xl">
-                    Submeter Pedido de Auditoria
-                </a>
-            </div>
-        </section>
+            </section>
+        </div>
+        <!-- FIM PÁGINA 3: PARTNERSHIP -->
 
     </main>
 
-    <!-- ==========================================
-         SEÇÃO 8: FOOTER CORPORATIVO
-         ========================================== -->
-    <footer class="pt-24 pb-12 border-t border-glass bg-black/20">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            
-            <div class="flex flex-col items-start gap-6">
-                <div class="logo-gl text-2xl font-black tracking-widest text-high-contrast flex items-center opacity-90">
-                    <span class="text-accent font-light mr-1">[</span>GL.<span class="text-accent font-light ml-1 mr-3">]</span><span class="font-medium text-lg tracking-[0.4em] mt-1">PRO</span>
+    <!-- FOOTER CORPORATIVO (MOSTRADO EM TODAS AS PÁGINAS) -->
+    <footer class="pt-32 pb-16 border-t border-glass bg-black/30">
+        <div class="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20 text-high-contrast">
+            <div class="flex flex-col gap-8">
+                <div class="logo-gl text-2xl font-black tracking-widest">
+                    <span class="text-accent">[</span>GL.<span class="text-accent">]</span> PRO
                 </div>
-                <p class="font-tech text-xs opacity-50 leading-relaxed max-w-xs text-high-contrast">
-                    Biotecnologia Aplicada. Redefinindo o padrão de luxo estrutural em salões de alta performance em todo o mundo.
-                </p>
+                <p class="font-tech text-[10px] opacity-50 uppercase tracking-[0.3em] leading-relaxed">Biotecnologia aplicada ao luxo capilar.</p>
             </div>
-
-            <div class="flex flex-col gap-4">
-                <h4 class="font-cta text-[10px] font-black uppercase tracking-[0.4em] text-high-contrast opacity-80 mb-2">Sistema</h4>
-                <a href="#ciencia" class="font-tech text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors text-high-contrast">A Ciência 8K</a>
-                <a href="#" class="font-tech text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors text-high-contrast">Auditoria Visual</a>
-                <a href="#" class="font-tech text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors text-high-contrast">Credenciamento</a>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-cta text-[10px] font-black uppercase tracking-[0.5em] mb-4">Acesso</h4>
+                <!-- Roteamento SPA no Footer também -->
+                <a href="#/home" class="nav-link text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors uppercase tracking-widest">A Tecnologia</a>
+                <a href="#/homecare" class="nav-link text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors uppercase tracking-widest">A Boutique</a>
+                <a href="#/partnership" class="nav-link text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors uppercase tracking-widest">Partnership B2B</a>
             </div>
-
-            <div class="flex flex-col gap-4">
-                <h4 class="font-cta text-[10px] font-black uppercase tracking-[0.4em] text-high-contrast opacity-80 mb-2">Contacto</h4>
-                <a href="mailto:assessoria@glpro.com" class="font-tech text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors flex items-center gap-2 text-high-contrast">
-                    <i data-lucide="mail" class="w-3 h-3"></i> assessoria@glpro.com
-                </a>
-                <a href="https://wa.me/5549991618389" target="_blank" rel="noopener noreferrer" class="font-tech text-xs opacity-50 hover:opacity-100 hover:text-accent transition-colors flex items-center gap-2 text-high-contrast">
-                    <i data-lucide="phone" class="w-3 h-3"></i> +55 (49) 99161-8389
-                </a>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-cta text-[10px] font-black uppercase tracking-[0.5em] mb-4">Contacto</h4>
+                <a href="mailto:assessoria@glpro.com" class="text-xs opacity-50 hover:opacity-100 transition-all uppercase tracking-widest">assessoria@glpro.com</a>
+                <a href="https://wa.me/5549991618389" target="_blank" rel="noopener noreferrer" class="text-xs opacity-50 hover:opacity-100 transition-all uppercase tracking-widest">+55 (49) 99161-8389</a>
             </div>
-
-            <div class="flex flex-col gap-4">
-                <h4 class="font-cta text-[10px] font-black uppercase tracking-[0.4em] text-high-contrast opacity-80 mb-2">Sede</h4>
-                <div class="font-tech text-xs opacity-50 flex items-center gap-2 text-high-contrast">
-                    <i data-lucide="map-pin" class="w-3 h-3"></i> Santa Catarina | Brasil
-                </div>
-                <div class="flex gap-4 mt-2">
-                    <a href="#" class="w-8 h-8 rounded-full border border-glass flex items-center justify-center opacity-50 hover:opacity-100 hover:border-accent transition-all text-high-contrast"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                    <a href="#" class="w-8 h-8 rounded-full border border-glass flex items-center justify-center opacity-50 hover:opacity-100 hover:border-accent transition-all text-high-contrast"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+            <div class="flex flex-col gap-5 items-start">
+                <h4 class="font-cta text-[10px] font-black uppercase tracking-[0.5em] mb-4">Redes</h4>
+                <div class="flex gap-6">
+                    <a href="#" aria-label="Instagram" class="opacity-50 hover:opacity-100 hover:text-accent transition-all hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" aria-label="YouTube" class="opacity-50 hover:opacity-100 hover:text-accent transition-all hover:scale-110"><i data-lucide="youtube" class="w-5 h-5"></i></a>
                 </div>
             </div>
         </div>
-
-        <div class="max-w-6xl mx-auto px-6 pt-8 border-t border-glass flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="font-editorial text-xs italic opacity-40 text-high-contrast">© 2026 [GL.] PRO. Engenharia Capilar de Transformação.</p>
-            <div class="flex gap-4 font-tech text-[9px] uppercase tracking-widest opacity-40 text-high-contrast">
-                <a href="#" class="hover:opacity-100 transition-opacity">Privacidade</a>
-            </div>
+        <div class="text-center pt-10 border-t border-glass mx-8">
+            <p class="font-editorial text-[10px] italic opacity-30 text-high-contrast">© 2026 [GL.] PRO. Engenharia Capilar de Transformação. Santa Catarina | Brasil</p>
         </div>
     </footer>
 
+    <!-- BOTÃO FLUTUANTE DE CONCIERGE -->
+    <a href="https://wa.me/5549991618389?text=Desejo%20falar%20com%20o%20Concierge%20[GL.]%20PRO" target="_blank" rel="noopener noreferrer" aria-label="Falar com Concierge no WhatsApp" class="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-[120] w-14 h-14 rounded-full glass-panel border border-accent flex items-center justify-center hover:scale-110 hover:bg-accent hover:text-bg-primary transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.5)] group text-accent">
+        <i data-lucide="message-circle" class="w-6 h-6 group-hover:text-bg-primary transition-colors"></i>
+    </a>
+
     <script>
-        lucide.createIcons();
+        // MOCK CARTSYSTEM (Para não dar erro ao clicar em botões)
+        const CartSystem = {
+            add: function(name, price, image, btnElement) {
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = 'Adicionado à Coleção';
+                setTimeout(() => { btnElement.innerHTML = originalText; }, 2000);
+            }
+        };
 
-        // LANTERNA DIRETA E LIMPA
+        // MOTOR DE LANTERNA
         const spotlight = document.getElementById('spotlight-wrapper');
-        
-        function updateSpotlight(x, y) {
-            spotlight.style.setProperty('--mouse-x', `${x}px`);
-            spotlight.style.setProperty('--mouse-y', `${y}px`);
-        }
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let isTicking = false;
 
-        window.addEventListener('mousemove', (e) => updateSpotlight(e.clientX, e.clientY));
-        window.addEventListener('touchmove', (e) => updateSpotlight(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
-        updateSpotlight(window.innerWidth / 2, window.innerHeight / 2);
+        const updateSpotlight = () => {
+            spotlight.style.setProperty('--mouse-x', `${mouseX}px`);
+            spotlight.style.setProperty('--mouse-y', `${mouseY}px`);
+            isTicking = false;
+        };
 
-        // CONFIGURAÇÃO DOS BOTÕES E MENU (Lógica Segura contra Erros)
+        const requestSpotlightUpdate = (e) => {
+            mouseX = e.clientX || (e.touches && e.touches[0].clientX);
+            mouseY = e.clientY || (e.touches && e.touches[0].clientY);
+            if (!isTicking) {
+                requestAnimationFrame(updateSpotlight);
+                isTicking = true;
+            }
+        };
+
+        window.addEventListener('mousemove', requestSpotlightUpdate, {passive: true});
+        window.addEventListener('touchmove', requestSpotlightUpdate, {passive: true});
+
+        // REVEAL OBSERVER REUTILIZÁVEL
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { 
+                if(e.isIntersecting) { 
+                    e.target.classList.add('visible'); 
+                } 
+            });
+        }, { threshold: 0.1 });
+
+        // INICIALIZAÇÃO SEGURA DO DOM E ROTEAMENTO SPA
         document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // ROTEADOR (ROUTER SPA)
+            const handleRouting = () => {
+                let hash = window.location.hash || '#/home';
+                
+                // Tratar rotas antigas (#/boutique -> #/homecare)
+                if (hash === '#/boutique') hash = '#/homecare';
+                
+                if (!['#/home', '#/homecare', '#/partnership'].includes(hash)) {
+                    hash = '#/home';
+                }
+
+                const viewName = hash.replace('#/', '');
+
+                // 1. Esconder todas as Views
+                document.querySelectorAll('.page-view').forEach(view => {
+                    view.classList.remove('active-view');
+                });
+
+                // 2. Mostrar a View pretendida
+                const activeView = document.getElementById('view-' + viewName);
+                if (activeView) {
+                    activeView.classList.add('active-view');
+                }
+
+                // 3. Atualizar estado dos Menus (Underlines/Cores)
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    let linkHash = link.getAttribute('href');
+                    if (linkHash === '#/boutique') linkHash = '#/homecare'; // Ajuste nav
+
+                    if (linkHash === hash) {
+                        link.classList.add('active-link');
+                    } else {
+                        link.classList.remove('active-link');
+                    }
+                });
+
+                // 4. Voltar ao topo da página e re-animar
+                window.scrollTo(0, 0);
+                
+                // Re-anexar o observer aos elementos 'reveal'
+                document.querySelectorAll('.reveal').forEach(el => {
+                    el.classList.remove('visible'); 
+                    observer.observe(el);
+                });
+            };
+
+            window.addEventListener('hashchange', handleRouting);
+            handleRouting();
+
+            // CONTROLO DE TEMA DIA/NOITE
+            const body = document.body;
             const themeBtn = document.getElementById('theme-toggle-btn');
             const themeIcon = document.getElementById('theme-icon');
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            const menuIcon = document.getElementById('menu-icon');
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
             
-            let isMenuOpen = false;
-
-            // Lógica do Tema Dia/Noite
-            function toggleTheme() {
-                const body = document.body;
+            const toggleTheme = () => {
                 body.classList.toggle('light');
                 const isLight = body.classList.contains('light');
-                themeIcon.setAttribute('data-lucide', isLight ? 'sun' : 'moon');
-                lucide.createIcons();
+                if (themeIcon) themeIcon.setAttribute('data-lucide', isLight ? 'sun' : 'moon');
                 localStorage.setItem('gl-pro-theme', isLight ? 'light' : 'dark');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            };
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+            if(localStorage.getItem('gl-pro-theme') === 'light') {
+                body.classList.add('light');
+                if(themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
             }
 
-            if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+            // CONTROLO DE MENU MOBILE
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const menuIcon = document.getElementById('menu-icon');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            let isMenuOpen = false;
 
-            // Lógica do Menu Mobile Sanduíche
-            function toggleMenu() {
+            const toggleMenu = () => {
                 isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-                    mobileMenuOverlay.classList.add('opacity-100', 'pointer-events-auto');
-                    menuIcon.setAttribute('data-lucide', 'x'); // Muda para fechar
-                } else {
-                    mobileMenuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
-                    mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
-                    menuIcon.setAttribute('data-lucide', 'menu'); // Muda para hambúrguer
+                if (overlay) {
+                    overlay.style.opacity = isMenuOpen ? '1' : '0';
+                    overlay.style.pointerEvents = isMenuOpen ? 'auto' : 'none';
                 }
-                lucide.createIcons();
-            }
+                if (menuIcon) {
+                    menuIcon.setAttribute('data-lucide', isMenuOpen ? 'x' : 'menu');
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                }
+            };
 
-            if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+            if (mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
 
-            // Fechar o menu ao clicar num link
-            mobileLinks.forEach(link => {
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
                 link.addEventListener('click', () => {
-                    if (isMenuOpen) toggleMenu();
+                    if(isMenuOpen) toggleMenu();
                 });
             });
 
-            // Carrega tema guardado ao abrir
-            if(localStorage.getItem('gl-pro-theme') === 'light') {
-                document.body.classList.add('light');
-                if(themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
-                lucide.createIcons();
-            }
+            // LÓGICA DO FAQ
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const answer = item.querySelector('.faq-answer');
+                    const icon = item.querySelector('i[data-lucide="chevron-down"]');
+                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                    
+                    document.querySelectorAll('.faq-answer').forEach(a => { 
+                        a.style.maxHeight = '0px'; 
+                        a.style.opacity = '0'; 
+                    });
+                    document.querySelectorAll('.faq-item i[data-lucide="chevron-down"]').forEach(i => {
+                        i.style.transform = 'rotate(0deg)';
+                    });
+
+                    if (!isOpen) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.style.opacity = '1';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // LÓGICA EDITORIAL DE VÍDEO/FOTO DA BOUTIQUE
+            document.querySelectorAll('.group\\/media').forEach(group => {
+                const photo = group.querySelector('.media-photo');
+                const video = group.querySelector('.media-video');
+                const btns = group.querySelectorAll('.toggle-media-btn');
+
+                btns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        // Reseta estados visuais dos botões
+                        btns.forEach(b => {
+                            b.classList.remove('opacity-100', 'border-white');
+                            b.classList.add('opacity-50', 'border-transparent');
+                        });
+                        
+                        // Ativa botão clicado
+                        btn.classList.remove('opacity-50', 'border-transparent');
+                        btn.classList.add('opacity-100', 'border-white');
+
+                        if(btn.dataset.type === 'video') {
+                            photo.style.opacity = '0';
+                            video.style.opacity = '1';
+                            if(video.dataset.src && !video.src) video.src = video.dataset.src; // Lazy load do vídeo
+                            video.play();
+                        } else {
+                            photo.style.opacity = '1';
+                            video.style.opacity = '0';
+                            video.pause();
+                        }
+                    });
+                });
+            });
         });
-
-        // SCROLL REVEAL (FADE IN SUAVE)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     </script>
 </body>
 </html>
