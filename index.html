@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-pt" class="dark">
+<html lang="pt-pt" class="dark lock-scroll">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,10 +23,13 @@
             --text-main: #FFFFFF;
             --text-muted: #8E8E93;
             --accent-color: #C0C0C0; 
-            --glow-color: rgba(255, 255, 255, 0.08); 
+            --glow-color: rgba(255, 255, 255, 0.15); 
             --accent-glass: rgba(192, 192, 192, 0.05);
             --accent-border: rgba(192, 192, 192, 0.15);
             --spotlight-beam: rgba(255, 255, 255, 0.05); 
+            
+            --platinum-grad: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 50%, #F3F4F6 100%);
+            --molecular-glow: 0 0 50px rgba(255, 255, 255, 0.15);
         }
 
         .light {
@@ -36,10 +39,13 @@
             --text-main: #1A1A1A; 
             --text-muted: #636366; 
             --accent-color: #B58A61; 
-            --glow-color: rgba(181, 138, 97, 0.20); 
+            --glow-color: rgba(181, 138, 97, 0.25); 
             --accent-glass: rgba(181, 138, 97, 0.08);
             --accent-border: rgba(181, 138, 97, 0.25);
             --spotlight-beam: rgba(181, 138, 97, 0.10); 
+            
+            --platinum-grad: linear-gradient(135deg, #D4AF37 0%, #B58A61 50%, #E6D070 100%);
+            --molecular-glow: 0 0 50px rgba(181, 138, 97, 0.15);
         }
 
         .logo-image { mix-blend-mode: screen; transition: all 0.8s ease; }
@@ -61,17 +67,33 @@
         .text-high-contrast { color: var(--text-main); transition: color 0.8s ease; }
         .text-accent { color: var(--accent-color); transition: color 0.8s ease; }
 
-        /* === PRÉ-LOADER === */
+        /* === BLOQUEIO DE SCROLL ABSOLUTO (PRÉ-LOADER) === */
+        html.lock-scroll, body.lock-scroll {
+            overflow: hidden !important;
+            height: 100dvh !important;
+            width: 100vw !important;
+            touch-action: none !important;
+            overscroll-behavior: none !important;
+        }
+
+        /* === PRÉ-LOADER BLINDADO (CSS NATIVO) === */
         #luxury-preloader {
-            position: fixed; inset: 0; z-index: 9999;
+            position: fixed; inset: 0; z-index: 999999;
             background-color: transparent; 
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
         }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .delay-500 { animation-delay: 0.5s; }
-        .delay-1000 { animation-delay: 1s; }
+
+        /* Animações Nativas à prova de falhas */
+        @keyframes fadeInUpFixed { 
+            0% { opacity: 0; transform: translateY(20px); } 
+            100% { opacity: 1; transform: translateY(0); } 
+        }
+        
+        .fade-in-up { animation: fadeInUpFixed 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.7s; }
+        .delay-3 { animation-delay: 1.2s; }
 
         /* === LANTERNA SENSORIAL === */
         #spotlight-wrapper {
@@ -145,6 +167,24 @@
         @keyframes slideHorizontal { 0%, 25% { transform: translateX(0); } 33%, 58% { transform: translateX(-33.333%); } 66%, 91% { transform: translateX(-66.666%); } 100% { transform: translateX(0); } }
         .animate-slide-horizontal { animation: slideHorizontal 12s infinite ease-in-out; }
 
+        /* === NOVOS EFEITOS ESPECIAIS === */
+        .text-platinum {
+            background: var(--platinum-grad); background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
+        }
+        
+        .glow-molecular { text-shadow: var(--molecular-glow); }
+
+        @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+
+        @keyframes pulseRing {
+            0% { box-shadow: 0 0 0 0 var(--glow-color); }
+            70% { box-shadow: 0 0 0 20px rgba(0,0,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+        }
+        .animate-pulse-ring { animation: pulseRing 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+
         /* === EFEITO VAPOR SENSORIAL === */
         .vapor-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 20; mix-blend-mode: screen; }
         .light .vapor-container { mix-blend-mode: normal; opacity: 0.5; }
@@ -163,18 +203,28 @@
         .v3 { left: 70%; width: 250px; height: 250px; animation-duration: 18s; animation-delay: -9s; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); }
     </style>
 </head>
-<body class="dark overflow-x-hidden" style="overflow: hidden;">
+<body class="dark overflow-x-hidden lock-scroll">
 
-    <!-- PRÉ-LOADER SENSORIAL -->
+    <!-- ==========================================
+         PRÉ-LOADER BLINDADO (O Botão NUNCA some)
+         ========================================== -->
     <div id="luxury-preloader">
-        <div class="mb-10 opacity-0 animate-fade-up delay-500 relative flex justify-center items-center w-full px-6">
+        <!-- Logo -->
+        <div class="mb-8 relative flex justify-center items-center w-full px-6 fade-in-up delay-1">
             <div class="absolute bg-accent/15 filter blur-[60px] rounded-full w-48 h-48 pointer-events-none"></div>
-            <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="relative z-10 w-48 md:w-64 max-h-[35vh] object-contain logo-image drop-shadow-2xl">
+            <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="relative z-10 w-48 md:w-64 max-h-[30vh] object-contain logo-image drop-shadow-2xl">
         </div>
-        <button id="btn-init-experience" class="group relative px-8 py-4 sm:px-10 sm:py-5 overflow-hidden rounded-full border border-accent/40 bg-surface backdrop-blur-sm opacity-0 animate-fade-up delay-1000 transition-all hover:border-accent shadow-xl">
+        
+        <!-- Copy -->
+        <p class="font-tech text-[9px] sm:text-[10px] uppercase tracking-[0.4em] opacity-50 mb-10 text-high-contrast fade-in-up delay-2 text-center px-6">
+            Acesso restrito à alta engenharia estrutural.
+        </p>
+
+        <!-- BOTÃO A PROVA DE FALHAS (Aparece a 100% via fade-in-up) -->
+        <button id="btn-init-experience" onclick="initExperience()" class="cursor-pointer group animate-pulse-ring relative px-10 py-5 sm:px-12 sm:py-6 overflow-hidden rounded-full border border-accent/40 bg-surface backdrop-blur-sm transition-all hover:border-accent hover:scale-105 z-[9999] pointer-events-auto fade-in-up delay-3">
             <div class="absolute inset-0 bg-accent transition-transform duration-700 origin-left scale-x-0 group-hover:scale-x-100"></div>
-            <span class="relative z-10 font-cta text-[10px] sm:text-xs font-bold uppercase tracking-[0.4em] text-high-contrast group-hover:text-bg-primary transition-colors duration-500">
-                Iniciar Experiência
+            <span class="relative z-10 font-cta text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.5em] text-high-contrast group-hover:text-bg-primary transition-colors duration-500 flex items-center gap-3">
+                Iniciar Experiência <i data-lucide="sparkles" class="w-3 h-3 group-hover:animate-spin"></i>
             </span>
         </button>
     </div>
@@ -221,11 +271,10 @@
     <main id="main-content" class="relative z-10 pt-20 lg:pt-0 opacity-0 transition-opacity duration-1000">
         
         <!-- ==========================================
-             PÁGINA 1: HOME (VISÃO EDITORIAL DA MARCA)
+             PÁGINA 1: HOME
              ========================================== -->
         <div id="view-home" class="page-view active-view">
             
-            <!-- HERO -->
             <section class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 px-6 lg:px-20 py-24 lg:py-32">
                 <div class="w-full lg:w-1/2 flex flex-col items-center lg:text-left text-center">
                     <div class="reveal mb-8 opacity-60 inline-flex items-center gap-4">
@@ -233,16 +282,17 @@
                         <span class="font-tech text-[9px] font-bold uppercase tracking-[0.6em] text-high-contrast">Fórmula Orgânica</span>
                     </div>
                     
-                    <div class="reveal mb-8 py-4">
-                        <h1 class="font-editorial text-[clamp(2.8rem,8vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic title-gradient pb-3">
+                    <div class="reveal mb-8 py-4 relative">
+                        <div class="absolute inset-0 bg-accent/5 filter blur-[100px] rounded-full pointer-events-none"></div>
+                        
+                        <h1 class="font-editorial text-[clamp(2.8rem,8vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic title-gradient pb-3 glow-molecular relative z-10">
                             Molecular
                         </h1>
-                        <h2 class="font-editorial text-[clamp(1.1rem,3vw,2.25rem)] italic font-light opacity-50 mt-2 tracking-widest text-accent">
+                        <h2 class="font-editorial text-[clamp(1.1rem,3vw,2.25rem)] italic font-light opacity-90 mt-2 tracking-widest text-platinum relative z-10">
                             Platinum Infusion
                         </h2>
                         
-                        <!-- COPYWRITING REFINADO (Neurovendas sem falsas patentes) -->
-                        <p class="font-tech text-xs md:text-sm opacity-70 mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l border-accent pl-5">
+                        <p class="font-tech text-xs md:text-sm opacity-70 mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l border-accent pl-5 relative z-10">
                             Formulação de vanguarda enriquecida com o <strong class="text-accent font-black tracking-widest">Complexo V.43</strong>: uma matriz de pigmentação violeta que neutraliza instantaneamente a oxidação térmica, garantindo um loiro cristalino inabalável.
                         </p>
                     </div>
@@ -272,41 +322,33 @@
                 </div>
             </section>
 
-            <!-- ==========================================
-                 BARRA DE SELOS SENSORIAIS (TRUST BADGES)
-                 ========================================== -->
+            <!-- BARRA DE SELOS -->
             <section class="w-full border-y border-glass bg-surface backdrop-blur-md py-6 md:py-8 relative z-20 reveal">
                 <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center lg:justify-between items-center gap-6 lg:gap-4">
-                    
                     <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
                         <i data-lucide="leaf" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                         <span class="font-cta text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-high-contrast">100% Orgânico</span>
                     </div>
-                    
                     <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
                         <i data-lucide="wind" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                         <span class="font-cta text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-high-contrast">Zero Formol</span>
                     </div>
-                    
                     <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
                         <i data-lucide="eye" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                         <span class="font-cta text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-high-contrast">Sem Ardência</span>
                     </div>
-                    
                     <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
                         <i data-lucide="sparkles" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                         <span class="font-cta text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-high-contrast">Experiência Sensorial</span>
                     </div>
-                    
                     <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
                         <i data-lucide="shield-check" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                         <span class="font-cta text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold text-high-contrast">Aprovado Anvisa</span>
                     </div>
-
                 </div>
             </section>
 
-            <!-- A PAREDE DE FUMO (VAPOR SENSORIAL S/ TEXTO) -->
+            <!-- VAPOR SENSORIAL -->
             <section class="w-full relative h-[40vh] md:h-[70vh] overflow-hidden my-0 reveal group border-b border-glass">
                 <img src="https://imagensagata.carrd.co/assets/images/image30.jpg?v=6b4b2f98" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[10s]" alt="Molecular Platinum Frascos">
                 <div class="absolute inset-0 bg-black/20"></div>
@@ -319,7 +361,7 @@
                 </div>
             </section>
 
-            <!-- PROTOCOLOS DE ASSINATURA (TOM EDITORIAL) -->
+            <!-- PROTOCOLOS -->
             <section id="protocolos" class="py-24 px-6 max-w-6xl mx-auto reveal">
                 <div class="text-center mb-20">
                     <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-4">A Versatilidade Orgânica</h3>
@@ -376,14 +418,12 @@
                 </div>
             </section>
 
-            <!-- AUDITORIA VISUAL (CORREÇÃO ÓTICA 1MM) -->
+            <!-- AUDITORIA VISUAL -->
             <section class="py-24 px-6 max-w-5xl mx-auto reveal mb-10 text-center border-t border-glass">
                 <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">Auditoria de Resultados</h3>
                 
                 <div class="slider-container aspect-[4/5] sm:aspect-[4/3] glass-panel shadow-2xl border-2 border-accent">
-                    <!-- FOTO DEPOIS -->
                     <img src="https://testeessencia.carrd.co/assets/images/image47.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
-                    <!-- FOTO ANTES -->
                     <img src="https://testeessencia.carrd.co/assets/images/image45.jpg?v=0910aa8a" loading="lazy" decoding="async" alt="Antes" id="before-img" class="absolute inset-0 w-full h-full object-cover" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path; transform: scale(1.008); transform-origin: center;">
                     
                     <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
@@ -402,7 +442,7 @@
                 <p class="font-tech text-xs opacity-40 mt-6 italic text-high-contrast">Deslize para auditar o alinhamento da fibra capilar.</p>
             </section>
 
-            <!-- FAQ: QUEBRA DE PARADIGMAS -->
+            <!-- FAQ -->
             <section class="py-24 px-6 max-w-4xl mx-auto reveal mb-20 border-t border-glass">
                 <div class="text-center mb-16">
                     <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast mb-4">Inteligência Clínica</h3>
@@ -451,8 +491,6 @@
                 </div>
             </section>
         </div>
-        <!-- FIM PÁGINA 1: HOME -->
-
 
         <!-- ==========================================
              PÁGINA 2: A BOUTIQUE EDITORIAL
@@ -689,8 +727,6 @@
                 </section>
             </div>
         </div>
-        <!-- FIM PÁGINA 2: BOUTIQUE -->
-
 
         <!-- ==========================================
              PÁGINA 3: CREDENCIAMENTO B2B (PARTNERSHIP)
@@ -718,8 +754,6 @@
                 </div>
             </section>
         </div>
-        <!-- FIM PÁGINA 3: PARTNERSHIP -->
-
     </main>
 
     <!-- FOOTER CORPORATIVO -->
@@ -756,14 +790,12 @@
     </footer>
 
     <script>
-        // MOTOR HÁPTICO SENSORIAL
         const HapticEngine = {
             light: () => { if (window.navigator && window.navigator.vibrate) window.navigator.vibrate(10); },
             medium: () => { if (window.navigator && window.navigator.vibrate) window.navigator.vibrate([20, 10, 20]); },
             heavy: () => { if (window.navigator && window.navigator.vibrate) window.navigator.vibrate([40, 50, 40]); }
         };
 
-        // MOCK CARTSYSTEM 
         const CartSystem = {
             add: function(name, price, image, btnElement) {
                 HapticEngine.heavy();
@@ -777,7 +809,29 @@
             }
         };
 
-        // MOTOR DE LANTERNA (COM AUTO-LOOP SENSORIAL)
+        // LÓGICA DO PRÉ-LOADER COM REMOÇÃO DE LOCK GARANTIDA
+        function initExperience() {
+            HapticEngine.heavy();
+            
+            const preloader = document.getElementById('luxury-preloader');
+            preloader.style.opacity = '0';
+            
+            const mainContent = document.getElementById('main-content');
+            const topNav = document.getElementById('top-nav');
+            if(mainContent) mainContent.style.opacity = '1';
+            if(topNav) topNav.style.opacity = '1';
+
+            setTimeout(() => {
+                preloader.style.display = 'none'; // Garante que desaparece do DOM visual
+                
+                // DESTRANCA O SCROLL DO ECRÃ:
+                document.documentElement.classList.remove('lock-scroll');
+                document.body.classList.remove('lock-scroll');
+                
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }, 1000);
+        }
+
         const spotlight = document.getElementById('spotlight-wrapper');
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
@@ -813,29 +867,6 @@
         window.addEventListener('mousemove', requestSpotlightUpdate, {passive: true});
         window.addEventListener('touchmove', requestSpotlightUpdate, {passive: true});
 
-
-        // LÓGICA DO PRÉ-LOADER
-        function initExperience() {
-            HapticEngine.heavy();
-            
-            const preloader = document.getElementById('luxury-preloader');
-            preloader.style.opacity = '0';
-            
-            const mainContent = document.getElementById('main-content');
-            const topNav = document.getElementById('top-nav');
-            if(mainContent) mainContent.style.opacity = '1';
-            if(topNav) topNav.style.opacity = '1';
-
-            setTimeout(() => {
-                preloader.style.visibility = 'hidden';
-                document.body.style.overflow = 'auto';
-                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            }, 1000);
-        }
-
-        document.getElementById('btn-init-experience').addEventListener('click', initExperience);
-
-        // REVEAL OBSERVER 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { 
                 if(e.isIntersecting) { 
@@ -844,7 +875,6 @@
             });
         }, { threshold: 0.1 });
 
-        // INGNIÇÃO DOS ATIVOS SENSORIAIS DA BOUTIQUE
         const igniteObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if(e.isIntersecting) {
@@ -853,8 +883,6 @@
             });
         }, { threshold: 0.5 });
 
-
-        // INICIALIZAÇÃO SEGURA DO DOM E ROTEAMENTO SPA
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -891,7 +919,7 @@
 
                 window.scrollTo(0, 0);
                 
-                if(document.body.style.overflow === 'auto') {
+                if(!document.body.classList.contains('lock-scroll')) {
                     document.querySelectorAll('.reveal').forEach(el => {
                         el.classList.remove('visible'); 
                         observer.observe(el);
@@ -907,7 +935,6 @@
             window.addEventListener('hashchange', handleRouting);
             handleRouting();
 
-            // CONTROLO DE TEMA
             const body = document.body;
             const themeBtn = document.getElementById('theme-toggle-btn');
             const themeIcon = document.getElementById('theme-icon');
@@ -928,7 +955,6 @@
                 if (typeof lucide !== 'undefined') lucide.createIcons();
             }
 
-            // CONTROLO DE MENU MOBILE
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const menuIcon = document.getElementById('menu-icon');
             const overlay = document.getElementById('mobile-menu-overlay');
@@ -955,7 +981,6 @@
                 });
             });
 
-            // LÓGICA DO FAQ (ACORDEÃO)
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.addEventListener('click', () => {
                     HapticEngine.light();
@@ -979,7 +1004,6 @@
                 });
             });
 
-            // LÓGICA EDITORIAL DE VÍDEO/FOTO DA BOUTIQUE
             document.querySelectorAll('.group\\/media').forEach(group => {
                 const photo = group.querySelector('.media-photo');
                 const video = group.querySelector('.media-video');
