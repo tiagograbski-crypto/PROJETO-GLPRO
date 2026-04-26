@@ -1013,29 +1013,85 @@
              PÁGINA 3: CREDENCIAMENTO B2B
              ========================================== -->
         <div id="view-partnership" class="page-view">
-            <section class="min-h-[85vh] flex flex-col justify-center py-24 px-6 max-w-5xl mx-auto reveal">
-                <div class="p-10 md:p-24 glass-panel flex flex-col items-center text-center group relative overflow-hidden shadow-2xl">
-                    <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                    
-                    <div class="mb-10 relative z-10">
-                        <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="w-32 md:w-48 object-contain logo-image mx-auto">
-                    </div>
-                    
-                    <h3 class="font-editorial text-5xl md:text-7xl italic text-high-contrast mb-8 relative z-10">Partnership</h3>
-                    
-                    <div class="w-16 h-px bg-accent opacity-50 my-6 relative z-10"></div>
+    <section class="min-h-[85vh] flex flex-col justify-center py-24 px-6 max-w-5xl mx-auto reveal">
+        <div class="p-10 md:p-16 glass-panel flex flex-col items-center text-center group relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            
+            <div class="mb-6 relative z-10">
+                <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="w-32 md:w-48 object-contain logo-image mx-auto">
+            </div>
 
-                    <p class="font-tech text-sm md:text-base opacity-70 mb-12 max-w-2xl relative z-10 leading-relaxed uppercase tracking-widest">
-                        Acesso restrito ao protocolo clínico Molecular Platinum Infusion com V.43 Purity Control e Black Caviar System. Uma aliança desenhada exclusivamente para espaços de alta performance capilar.
-                    </p>
-                    
-                    <a href="https://wa.me/5549991618389?text=Desejo%20solicitar%20o%20credenciamento%20B2B%20[GL.]%20PRO" target="_blank" onclick="HapticEngine.heavy()" class="w-full max-w-sm py-7 bg-high-contrast text-bg-primary rounded-3xl font-cta font-bold text-[10px] uppercase tracking-[0.4em] hover:scale-105 transition-transform relative z-10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-                        Submeter Pedido de Auditoria
-                    </a>
-                </div>
-            </section>
+            <div class="inline-flex items-center justify-center px-5 py-2 mb-8 border border-white/30 rounded-full bg-white/5 relative z-10 backdrop-blur-sm shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span class="font-tech text-white text-xs md:text-sm tracking-[0.2em] uppercase font-bold">
+                    Domínio Regional Garantido
+                </span>
+            </div>
+            
+            <h3 class="font-editorial text-4xl md:text-6xl italic text-high-contrast mb-2 relative z-10">Partnership B2B</h3>
+            <h4 class="font-tech text-accent font-bold text-sm md:text-lg tracking-[0.2em] uppercase mb-6 relative z-10">
+                Exclusividade Territorial Absoluta
+            </h4>
+            
+            <div class="w-16 h-px bg-accent opacity-50 my-4 relative z-10"></div>
+
+            <p class="font-tech text-sm md:text-base opacity-80 mb-10 max-w-2xl relative z-10 leading-relaxed tracking-wide">
+                O protocolo <strong>Molecular Platinum</strong> não é para todos. É uma tecnologia de elite reservada para espaços que ditam o padrão de luxo e performance nas suas cidades. Para garantir o alto valor do serviço, homologamos rigorosamente <strong>apenas um parceiro por município</strong>. Transforme o seu salão na única referência da sua região. Submeta os seus dados abaixo e inicie o processo de auditoria confidencial.
+            </p>
+            
+            <form id="form-auditoria-b2b" class="w-full max-w-md flex flex-col gap-4 relative z-10">
+                
+                <input type="text" id="nome-salao" placeholder="Nome do Salão ou Empresário" required
+                    class="w-full p-4 bg-black/40 border border-white/20 rounded-xl text-white placeholder-white/50 outline-none focus:border-accent transition-colors font-tech text-sm">
+                
+                <input type="text" id="cidade-salao" placeholder="Cidade e Estado" required
+                    class="w-full p-4 bg-black/40 border border-white/20 rounded-xl text-white placeholder-white/50 outline-none focus:border-accent transition-colors font-tech text-sm">
+                
+                <input type="text" id="instagram-salao" placeholder="Instagram (Ex: @seusalao)" required
+                    class="w-full p-4 bg-black/40 border border-white/20 rounded-xl text-white placeholder-white/50 outline-none focus:border-accent transition-colors font-tech text-sm">
+
+                <button type="submit" onclick="if(typeof HapticEngine !== 'undefined') HapticEngine.heavy()" 
+                    class="mt-4 w-full py-6 bg-high-contrast text-bg-primary rounded-3xl font-cta font-bold text-[10px] uppercase tracking-[0.4em] hover:scale-105 transition-transform shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                    Solicitar Auditoria de Exclusividade
+                </button>
+            </form>
+
         </div>
-    </main>
+    </section>
+</div>
+
+<script>
+    const formularioB2B = document.getElementById('form-auditoria-b2b');
+
+    formularioB2B.addEventListener('submit', function(evento) {
+        evento.preventDefault(); 
+
+        const nome = document.getElementById('nome-salao').value;
+        const cidade = document.getElementById('cidade-salao').value;
+        const instagram = document.getElementById('instagram-salao').value;
+
+        // Nova mensagem de WhatsApp com tom mais assertivo
+        const mensagem = 
+`Olá, Diretoria [GL.] PRO! 
+Tenho interesse em garantir a licença exclusiva do protocolo Molecular Platinum na minha cidade.
+
+*Dados do meu espaço para auditoria:*
+*Nome/Empresa:* ${nome}
+*Cidade/Estado:* ${cidade}
+*Instagram:* ${instagram}
+
+Aguardo as próximas diretrizes para darmos continuidade ao processo de homologação.`;
+
+        const mensagemCodificada = encodeURIComponent(mensagem);
+        const numeroWhatsApp = "5549991618389";
+        const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+        
+        window.open(linkWhatsApp, '_blank');
+    });
+</script>
 
     <!-- FOOTER CORPORATIVO -->
    <footer class="pt-32 pb-16 border-t border-glass bg-surface relative overflow-hidden">
