@@ -1014,8 +1014,8 @@
              ========================================== -->
 <div id="view-partnership" class="page-view">
     <section class="min-h-[85vh] flex flex-col justify-center py-20 px-6 max-w-5xl mx-auto reveal">
-        <div class="p-8 md:p-12 glass-panel group relative overflow-hidden shadow-2xl rounded-3xl">
-            <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+        <div class="p-8 md:p-12 glass-panel group relative overflow-hidden rounded-3xl border border-white/5">
+            <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-50 transition-opacity duration-1000"></div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10 items-center">
                 
@@ -1028,7 +1028,7 @@
                         <span class="font-tech text-white text-[10px] tracking-widest uppercase">1 Por Cidade</span>
                     </div>
 
-                    <img src="https://imagensagata.carrd.co/assets/images/image50.jpg?v=fc8c400d" alt="Molecular Platinum" class="w-full max-w-[280px] object-cover rounded-2xl mb-6 shadow-2xl mt-10">
+                    <img src="https://via.placeholder.com/400x500/1a1a1a/ffffff?text=Foto+Molecular+Platinum" alt="Molecular Platinum" class="w-full max-w-[280px] object-cover rounded-2xl mb-6 mt-10">
                     
                     <div class="text-center">
                         <h5 class="font-editorial text-4xl italic text-high-contrast mb-1">R$ 1.597</h5>
@@ -1037,9 +1037,7 @@
                 </div>
 
                 <div class="flex flex-col text-left">
-                    <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="w-24 object-contain mb-4">
-                    
-                    <h3 class="font-editorial text-3xl md:text-4xl italic text-high-contrast mb-4 leading-tight">
+                    <h3 class="font-editorial text-3xl md:text-4xl italic text-high-contrast mb-6 leading-tight">
                         Seja a única referência na sua região.
                     </h3>
                     
@@ -1082,6 +1080,33 @@
 </div>
 
 <script>
+    const formularioB2B = document.getElementById('form-auditoria-b2b');
+
+    formularioB2B.addEventListener('submit', function(evento) {
+        evento.preventDefault(); 
+
+        const nome = document.getElementById('nome-salao').value;
+        const cidade = document.getElementById('cidade-salao').value;
+        const instagram = document.getElementById('instagram-salao').value;
+
+        const mensagem = 
+`Olá, Equipe [GL.] PRO! 
+Tenho interesse em ser o parceiro exclusivo na minha cidade com o Molecular Platinum (R$ 1.597) e acessar o ecossistema de vendas de vocês.
+
+*Meus dados para curadoria:*
+*Empresa:* ${nome}
+*Cidade:* ${cidade}
+*Instagram:* ${instagram}
+
+Aguardo o contato para aprovação.`;
+
+        const mensagemCodificada = encodeURIComponent(mensagem);
+        const numeroWhatsApp = "5549991618389";
+        const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+        
+        window.open(linkWhatsApp, '_blank');
+    });
+</script>
     const formularioB2B = document.getElementById('form-auditoria-b2b');
 
     formularioB2B.addEventListener('submit', function(evento) {
