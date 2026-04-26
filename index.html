@@ -1,5 +1,312 @@
 
-<nav id="top-nav" class="fixed top-0 w-full pt-4 pb-4 px-6 lg:pt-8 lg:pb-6 lg:px-10 flex justify-between items-center z-[110] pointer-events-none opacity-0 transition-opacity duration-1000">
+<!DOCTYPE html>
+<html lang="pt-pt" class="dark lock-scroll">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>[GL.] PRO | Engenharia Capilar de Transformação</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    
+    <style>
+        /* === CORES SEMÂNTICAS === */
+        :root {
+            /* MODO NOITE: Onyx & Platinum */
+            --bg-primary: #040303;
+            --bg-surface: rgba(18, 18, 18, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.05);
+            --text-main: #FFFFFF;
+            --text-muted: #8E8E93;
+            --accent-color: #C0C0C0; 
+            --glow-color: rgba(255, 255, 255, 0.15); 
+            --accent-glass: rgba(192, 192, 192, 0.05);
+            --accent-border: rgba(192, 192, 192, 0.15);
+            --spotlight-beam: rgba(255, 255, 255, 0.05); 
+            
+            --platinum-grad: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 50%, #F3F4F6 100%);
+            --molecular-glow: 0 0 50px rgba(255, 255, 255, 0.15);
+        }
+
+        .light {
+            /* MODO DIA: Prata Frio, Chumbo Acetinado (ZERO AMARELO) */
+            --bg-primary: #F5F5F7; 
+            --bg-surface: rgba(255, 255, 255, 0.65); 
+            --border-glass: rgba(0, 0, 0, 0.1); 
+            --text-main: #111111; 
+            --text-muted: #555555; 
+            --accent-color: #3F3F46; /* Chumbo Metálico */
+            --glow-color: rgba(0, 0, 0, 0.15); 
+            --accent-glass: rgba(0, 0, 0, 0.04);
+            --accent-border: rgba(0, 0, 0, 0.15);
+            --spotlight-beam: rgba(255, 255, 255, 0.6); 
+            
+            --platinum-grad: linear-gradient(135deg, #111111 0%, #71717A 50%, #27272A 100%);
+            --molecular-glow: 0 0 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-image { mix-blend-mode: screen; transition: all 0.8s ease; }
+        .light .logo-image { filter: invert(1) brightness(0.2); mix-blend-mode: multiply; }
+
+        h1, h2, h3, .font-editorial, .font-serif { font-family: 'Playfair Display', serif; }
+        body, p, .font-tech, ul, li { font-family: 'Inter', sans-serif; }
+        button, .font-cta, .logo-gl { font-family: 'Montserrat', sans-serif; }
+
+        html, body {
+            background-color: var(--bg-primary);
+            color: var(--text-muted);
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.8s ease, color 0.8s ease;
+        }
+
+        .text-high-contrast { color: var(--text-main); transition: color 0.8s ease; }
+        .text-accent { color: var(--accent-color); transition: color 0.8s ease; }
+
+        /* === BLOQUEIO DE SCROLL ABSOLUTO === */
+        html.lock-scroll, body.lock-scroll {
+            overflow: hidden !important; height: 100dvh !important; width: 100vw !important;
+            touch-action: none !important; overscroll-behavior: none !important;
+        }
+
+        /* === PRÉ-LOADER === */
+        #luxury-preloader {
+            position: fixed; inset: 0; z-index: 999999; background-color: transparent; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        }
+
+        @keyframes fadeInUpFixed { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUpFixed 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.7s; }
+        .delay-3 { animation-delay: 1.2s; }
+
+        /* === LANTERNA SENSORIAL === */
+        #spotlight-wrapper {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--spotlight-beam) 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 10%, rgba(0,0,0,0.3) 50%, transparent 100%);
+            mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 10%, rgba(0,0,0,0.3) 50%, transparent 100%);
+            will-change: mask-image, -webkit-mask-image, background;
+        }
+
+        .pattern-layer {
+            position: absolute; inset: -50%; width: 200%; height: 200%;
+            background-image: url('https://imagensagata.carrd.co/assets/images/image03.jpg?v=6b4b2f98');
+            background-size: 70px; background-repeat: repeat; transform: rotate(-12deg);
+            opacity: 0.18; filter: grayscale(1); mix-blend-mode: screen;
+            transition: opacity 1s ease; transform: rotate(-12deg) translateZ(0);
+        }
+        .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.08; filter: grayscale(1) contrast(1.2); }
+
+        @media (max-width: 768px) {
+            .pattern-layer { opacity: 0.30; }
+            .light .pattern-layer { opacity: 0.15; }
+            :root { --spotlight-beam: rgba(255, 255, 255, 0.09); }
+            .light { --spotlight-beam: rgba(255, 255, 255, 0.5); }
+        }
+
+        /* === UI LUXURY COMPONENTS === */
+        .glass-panel {
+            background: var(--bg-surface); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border-glass); border-radius: 2.5rem; transform: translateZ(0); 
+            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .glass-accent-card {
+            background: var(--accent-glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--accent-border); border-radius: 2rem;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        .glass-accent-card:hover, .glass-panel.group:hover { border-color: var(--accent-color); }
+        .btn-primary {
+            background: var(--text-main); color: var(--bg-primary);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+        }
+        .btn-primary:hover { box-shadow: 0 15px 35px var(--glow-color); transform: translateY(-2px); }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .ignite-item { opacity: 0.2; transform: translateY(15px); filter: brightness(0.5); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .ignite-item.ignited {
+            opacity: 1; transform: translateY(0); filter: brightness(1);
+            box-shadow: 0 0 20px var(--glow-color); background-color: var(--accent-glass); border-color: var(--accent-color);
+        }
+
+        .page-view { display: none; opacity: 0; animation: fadeInPage 0.8s forwards; width: 100%; }
+        .page-view.active-view { display: block; }
+        @keyframes fadeInPage { to { opacity: 1; } }
+        .nav-link.active-link { color: var(--accent-color); opacity: 1; }
+
+        /* === GAVETAS DE ATIVOS INTERATIVAS (UX MOBILE & DESKTOP) === */
+        .active-drawer {
+            border: 1px solid var(--border-glass);
+            border-radius: 1.2rem;
+            background: rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .light .active-drawer { background: rgba(255,255,255,0.2); }
+        .active-drawer:hover, .active-drawer:focus, .active-drawer:active {
+            border-color: var(--accent-color);
+            background: var(--accent-glass);
+        }
+        .active-drawer-content {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 1rem;
+        }
+        @media (min-width: 769px) {
+            .active-drawer:hover .active-drawer-content,
+            .active-drawer:focus .active-drawer-content,
+            .active-drawer:active .active-drawer-content {
+                max-height: 80px;
+                opacity: 1;
+                padding: 0 1rem 1rem 1rem;
+            }
+            .active-drawer:hover .active-drawer-icon,
+            .active-drawer:focus .active-drawer-icon,
+            .active-drawer:active .active-drawer-icon { transform: rotate(45deg); }
+        }
+
+        .active-drawer-icon { transition: transform 0.4s ease; }
+
+        /* Slider */
+        .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 2.5rem; user-select: none; transform: translateZ(0); }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 50px; height: 50px; cursor: ew-resize; }
+        @keyframes slideHorizontal { 0%, 25% { transform: translateX(0); } 33%, 58% { transform: translateX(-33.333%); } 66%, 91% { transform: translateX(-66.666%); } 100% { transform: translateX(0); } }
+        .animate-slide-horizontal { animation: slideHorizontal 12s infinite ease-in-out; }
+
+        /* ==========================================
+           EFEITO HOT-STAMPING PRATA/CHUMBO (ZERO AMARELO)
+           ========================================== */
+        .text-hot-stamp {
+            background: linear-gradient(
+                110deg, 
+                #E8E8E8 0%, 
+                #B0B0B5 20%, 
+                #DCD9D5 40%, 
+                #FFFFFF 50%, 
+                #8C8C91 70%, 
+                #F9F9F9 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: foilShine 7s linear infinite;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.4));
+        }
+        .light .text-hot-stamp {
+            /* Modo Dia: Chumbo Metálico Acetinado Brilhante */
+            background: linear-gradient(110deg, #18181B 0%, #52525B 20%, #A1A1AA 40%, #FFFFFF 50%, #3F3F46 70%, #000000 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+        }
+        @keyframes foilShine { 0% { background-position: 200% center; } 100% { background-position: 0% center; } }
+        
+        .glow-molecular { text-shadow: var(--molecular-glow); }
+
+        @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 var(--glow-color); } 70% { box-shadow: 0 0 0 20px rgba(0,0,0,0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+        .animate-pulse-ring { animation: pulseRing 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+
+        /* === EFEITO VAPOR === */
+        .vapor-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 20; mix-blend-mode: screen; }
+        .light .vapor-container { mix-blend-mode: normal; opacity: 0.5; filter: grayscale(1); } /* Vapor Frio */
+        .vapor-particle {
+            position: absolute; bottom: -20%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            filter: blur(25px); opacity: 0; animation: vaporFlow 12s infinite ease-in;
+        }
+        @keyframes vaporFlow { 0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; } 30% { opacity: 0.5; } 100% { transform: translateY(-120vh) scale(3) translateX(10vw); opacity: 0; } }
+        .v1 { left: 20%; width: 300px; height: 300px; animation-duration: 15s; animation-delay: 0s; }
+        .v2 { left: 50%; width: 400px; height: 400px; animation-duration: 12s; animation-delay: -5s; }
+        .v3 { left: 70%; width: 250px; height: 250px; animation-duration: 18s; animation-delay: -9s; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); }
+
+        /* === SACOLA INTELIGENTE (BLINDADA EM DARK MODE) === */
+        #cart-drawer {
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #cart-drawer.open { transform: translateX(0); }
+        .cart-item-enter { animation: slideInRight 0.4s ease forwards; }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    </style>
+</head>
+<body class="dark overflow-x-hidden lock-scroll">
+
+    <!-- PRÉ-LOADER BLINDADO -->
+    <div id="luxury-preloader">
+        <div class="mb-8 relative flex justify-center items-center w-full px-6 fade-in-up delay-1">
+            <div class="absolute bg-accent/15 filter blur-[60px] rounded-full w-48 h-48 pointer-events-none"></div>
+            <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="relative z-10 w-48 md:w-64 max-h-[30vh] object-contain logo-image drop-shadow-2xl">
+        </div>
+        <p class="font-tech text-[9px] sm:text-[10px] uppercase tracking-[0.4em] opacity-50 mb-10 text-high-contrast fade-in-up delay-2 text-center px-6">
+            Acesse o código da sua arquitetura capilar.
+        </p>
+        <button id="btn-init-experience" onclick="initExperience()" class="cursor-pointer group animate-pulse-ring relative px-10 py-5 sm:px-12 sm:py-6 overflow-hidden rounded-full border border-accent/40 bg-surface backdrop-blur-sm transition-all hover:border-accent hover:scale-105 z-[9999] pointer-events-auto fade-in-up delay-3">
+            <div class="absolute inset-0 bg-accent transition-transform duration-700 origin-left scale-x-0 group-hover:scale-x-100"></div>
+            <span class="relative z-10 font-cta text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.5em] text-high-contrast group-hover:text-bg-primary transition-colors duration-500 flex items-center gap-3">
+                Iniciar Experiência <i data-lucide="sparkles" class="w-3 h-3 group-hover:animate-spin"></i>
+            </span>
+        </button>
+    </div>
+
+    <!-- CAMADA VFX FUNDO -->
+    <div id="spotlight-wrapper">
+        <div class="pattern-layer"></div>
+    </div>
+
+    <!-- SACOLA INTELIGENTE (CARRINHO OVERLAY - BLINDADA SEMPRE ESCURA) -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-500" onclick="CartSystem.toggle()"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-[#040303] border-l border-white/10 z-[210] flex flex-col shadow-2xl">
+        
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-white/10 flex justify-between items-center bg-black/40 backdrop-blur-md">
+            <div class="flex items-center gap-3">
+                <i data-lucide="shopping-bag" class="w-5 h-5 text-[#C0C0C0]"></i>
+                <h3 class="font-editorial text-2xl italic text-white">Sua Curadoria</h3>
+            </div>
+            <button onclick="CartSystem.toggle()" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-white hover:text-white transition-all text-gray-400">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+        
+        <!-- Cart Items -->
+        <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 space-y-4">
+            <!-- Items injectados via JS -->
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-6 border-t border-white/10 bg-black/40 backdrop-blur-md">
+            <div class="flex justify-between items-end mb-6 text-white">
+                <span class="font-tech text-[10px] uppercase tracking-widest opacity-60">Privilégio Adquirido</span>
+                <div class="text-right">
+                    <span class="font-tech text-[10px] uppercase tracking-widest opacity-60 block mb-1">Investimento Total</span>
+                    <span class="font-editorial text-3xl font-medium" id="cart-total">R$ 0,00</span>
+                </div>
+            </div>
+            <div class="flex flex-col gap-3">
+                <button onclick="CartSystem.checkout()" class="w-full bg-white text-black py-4 rounded-xl font-cta font-bold text-[10px] uppercase tracking-[0.4em] flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+                    Solicitar Reserva VIP <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <button onclick="CartSystem.toggle()" class="w-full bg-transparent border border-white/20 text-white py-4 rounded-xl font-cta font-bold text-[10px] uppercase tracking-[0.4em] flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Continuar Explorando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVEGAÇÃO SUPERIOR -->
+    <nav id="top-nav" class="fixed top-0 w-full pt-4 pb-4 px-6 lg:pt-8 lg:pb-6 lg:px-10 flex justify-between items-center z-[110] pointer-events-none opacity-0 transition-opacity duration-1000">
         <div class="pointer-events-auto">
             <a href="#/home" class="hover:opacity-80 transition-opacity flex items-center">
                 <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="w-20 md:w-28 object-contain logo-image">
@@ -7,15 +314,17 @@
         </div>
         <div class="pointer-events-auto flex items-center gap-3 sm:gap-5">
             <div class="hidden md:flex items-center gap-10 mr-4">
-                <a href="#/home" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors active-link" onclick="HapticEngine.light()">Tecnologia</a>
-                <a href="#/homecare" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors" onclick="HapticEngine.light()">Boutique VIP</a>
-                <a href="#/partnership" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors" onclick="HapticEngine.light()">Para Salões (B2B)</a>
+                <a href="#/home" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors active-link" onclick="HapticEngine.light()">Home</a>
+                <a href="#/homecare" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors" onclick="HapticEngine.light()">Boutique</a>
+                <a href="#/partnership" class="nav-link font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-high-contrast opacity-50 hover:opacity-100 hover:text-accent transition-colors" onclick="HapticEngine.light()">B2B</a>
             </div>
             
+            <!-- TEMA -->
             <button id="theme-toggle-btn" aria-label="Alternar Tema" class="w-10 h-10 md:w-12 md:h-12 rounded-full glass-panel flex items-center justify-center hover:scale-105 text-high-contrast shadow-lg">
                 <i id="theme-icon" data-lucide="moon" class="w-4 h-4 md:w-5 md:h-5"></i>
             </button>
 
+            <!-- ÍCONE DA SACOLA -->
             <button onclick="CartSystem.toggle()" aria-label="Ver Sacola" class="relative w-10 h-10 md:w-12 md:h-12 rounded-full glass-panel flex items-center justify-center hover:scale-105 text-high-contrast shadow-lg">
                 <i data-lucide="shopping-bag" class="w-4 h-4 md:w-5 md:h-5 text-accent"></i>
                 <span id="nav-cart-badge" class="absolute -top-1 -right-1 bg-high-contrast text-bg-primary text-[9px] font-black w-4 md:w-5 h-4 md:h-5 rounded-full flex items-center justify-center opacity-0 transition-opacity transform scale-0">0</span>
@@ -27,18 +336,23 @@
         </div>
     </nav>
 
+    <!-- MENU MOBILE OVERLAY -->
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-surface backdrop-blur-2xl z-[105] opacity-0 pointer-events-none transition-opacity duration-500 flex flex-col items-center justify-center">
         <div class="flex flex-col items-center gap-10 text-center">
-            <a href="#/home" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Tecnologia</a>
-            <a href="#/homecare" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Boutique VIP</a>
-            <a href="#/partnership" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Para Salões (B2B)</a>
+            <a href="#/home" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Home</a>
+            <a href="#/homecare" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">A Boutique</a>
+            <a href="#/partnership" class="mobile-nav-link nav-link font-editorial text-4xl italic text-high-contrast hover:text-accent transition-colors">Partnership B2B</a>
         </div>
         <div class="mt-16 w-px h-16 bg-accent opacity-30"></div>
         <img src="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98" alt="[GL.] PRO Logo" class="w-20 object-contain logo-image mt-6 opacity-40">
     </div>
 
+    <!-- CONTAINER SPA (VIEWS) -->
     <main id="main-content" class="relative z-10 pt-20 lg:pt-0 opacity-0 transition-opacity duration-1000">
         
+        <!-- ==========================================
+             PÁGINA 1: HOME
+             ========================================== -->
         <div id="view-home" class="page-view active-view">
             <section class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 px-6 lg:px-20 py-24 lg:py-32">
                 <div class="w-full lg:w-1/2 flex flex-col items-center lg:text-left text-center">
@@ -58,17 +372,18 @@
                             Platinum Infusion
                         </h2>
                         
+                        <!-- COPY REFINADA COM NOMENCLATURAS PREMIUM -->
                         <p class="font-tech text-xs md:text-sm opacity-70 mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l border-accent pl-5 relative z-10">
-                            Alta engenharia estrutural para loiros inabaláveis. A sinergia entre o <strong class="text-accent font-black tracking-widest">Black Caviar System</strong> e a <strong class="text-accent font-black tracking-widest">Synchronized Matrix</strong> reconstrói a fibra capilar, enquanto a <strong class="text-accent font-black tracking-widest">Restorative Mask</strong> com tecnologia <strong class="text-accent font-black tracking-widest">V.43 Purity Control</strong> neutraliza instantaneamente a oxidação térmica.
+                            Alta engenharia estrutural para loiros inabaláveis. A sinergia entre o <strong class="text-accent font-black tracking-widest">Black Caviar System</strong> e a <strong class="text-accent font-black tracking-widest">Synchronized Matrix</strong> reconstrói a fibra capilar, enquanto a <strong class="text-accent font-black tracking-widest">Restorative Mask</strong> com tecnologia <strong class="text-accent font-black tracking-widest">V.43 Purity Control</strong> neutraliza instantaneamente a oxidação térmica. Configure a sua versão: o alinhamento absoluto do Soberano 8K ou a fluidez vítrea do Glass Molecular.
                         </p>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal mt-4">
-                        <a href="#/homecare" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-xl hover:text-bg-primary transition-all flex items-center justify-center" onclick="HapticEngine.light()">
-                            Boutique VIP
-                        </a>
-                        <a href="#/partnership" class="w-full sm:w-1/2 py-6 border border-glass text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center hover:bg-high-contrast hover:text-bg-primary transition-all flex items-center justify-center" onclick="HapticEngine.light()">
-                            Para Salões
+                        <button onclick="document.getElementById('protocolos').scrollIntoView({behavior:'smooth'}); HapticEngine.light();" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-xl">
+                            A Coleção
+                        </button>
+                        <a href="#/partnership" class="w-full sm:w-1/2 py-6 border border-glass text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center hover:bg-high-contrast hover:text-bg-primary transition-all" onclick="HapticEngine.light()">
+                            Partnership
                         </a>
                     </div>
                 </div>
@@ -82,24 +397,13 @@
                         </div>
                         <div class="absolute bottom-10 left-10 pointer-events-none z-10 text-white">
                             <p class="font-editorial text-3xl sm:text-4xl italic tracking-widest uppercase drop-shadow-md">1L / 33.8fl.oz</p>
-                            <p class="font-tech text-[8px] sm:text-[9px] uppercase tracking-[0.4em] opacity-70 mt-2 font-bold drop-shadow-md">Engenharia de Transformação</p>
+                            <p class="font-tech text-[8px] sm:text-[9px] uppercase tracking-[0.4em] opacity-70 mt-2 font-bold drop-shadow-md">Exclusivo para Artistas Capilares</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="w-full py-16 px-6 relative z-20 reveal border-t border-glass bg-gradient-to-b from-transparent to-surface">
-                <div class="max-w-4xl mx-auto text-center">
-                    <i data-lucide="quote" class="w-8 h-8 text-accent opacity-30 mx-auto mb-6"></i>
-                    <h3 class="font-editorial text-2xl md:text-4xl italic text-high-contrast leading-relaxed mb-6">
-                        "O Molecular Platinum não é apenas um alisamento. É a devolução da dignidade estrutural ao fio. Uma verdadeira obra de arte da engenharia cosmética."
-                    </h3>
-                    <p class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
-                        — Especialista [GL.] PRO
-                    </p>
-                </div>
-            </section>
-
+            <!-- BARRA DE SELOS -->
             <section class="w-full border-y border-glass bg-surface backdrop-blur-md py-6 md:py-8 relative z-20 reveal">
                 <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center lg:justify-between items-center gap-6 lg:gap-4">
                     <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
@@ -125,6 +429,7 @@
                 </div>
             </section>
 
+            <!-- VAPOR SENSORIAL -->
             <section class="w-full relative h-[40vh] md:h-[70vh] overflow-hidden my-0 reveal group border-b border-glass">
                 <img src="https://imagensagata.carrd.co/assets/images/image30.jpg?v=6b4b2f98" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[10s]" alt="Molecular Platinum Frascos">
                 <div class="absolute inset-0 bg-black/20"></div>
@@ -137,6 +442,7 @@
                 </div>
             </section>
 
+            <!-- PROTOCOLOS DE ASSINATURA -->
             <section id="protocolos" class="py-24 px-6 max-w-6xl mx-auto reveal">
                 <div class="text-center mb-20">
                     <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-4">ARQUITETURA HÍBRIDA ATIVA</h3>
@@ -146,6 +452,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     
+                    <!-- PROTOCOLO 1: SOBERANO 8K -->
                     <div class="glass-panel p-8 md:p-12 flex flex-col group hover:border-accent transition-colors cursor-pointer" onclick="HapticEngine.light()">
                         <div class="flex items-center gap-3 mb-6">
                             <i data-lucide="zap" class="w-5 h-5 text-accent"></i>
@@ -154,11 +461,14 @@
                         <p class="font-tech text-xs opacity-70 leading-relaxed text-high-contrast mb-6">
                             A técnica master de alisamento estrutural. Redução total de volume impulsionada pelo <strong>Black Caviar System</strong> e <strong>Restorative Mask</strong> em matriz de alta performance.
                         </p>
+                        
+                        <!-- SELO DE ATIVAÇÃO TÉRMICA -->
                         <div class="mb-10">
                             <span class="inline-flex items-center gap-1.5 font-tech text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 border border-accent/30 px-3 py-1.5 rounded-md">
                                 <i data-lucide="zap" class="w-3 h-3"></i> Ativação: Estabilização Térmica 8K
                             </span>
                         </div>
+
                         <div class="flex items-center justify-between gap-2 mt-auto">
                             <div class="w-1/2 aspect-[4/5] relative rounded-2xl overflow-hidden border border-white/10 shadow-lg">
                                 <img src="https://testeessencia.carrd.co/assets/images/image21.jpg?v=0910aa8a" loading="lazy" class="object-cover h-full w-full grayscale-[30%]" alt="Antes">
@@ -174,6 +484,7 @@
                         </div>
                     </div>
 
+                    <!-- PROTOCOLO 2: GLASS MOLECULAR -->
                     <div class="glass-panel p-8 md:p-12 flex flex-col group hover:border-accent transition-colors cursor-pointer" onclick="HapticEngine.light()">
                         <div class="flex items-center gap-3 mb-6">
                             <i data-lucide="timer" class="w-5 h-5 text-accent"></i>
@@ -182,11 +493,14 @@
                         <p class="font-tech text-xs opacity-70 leading-relaxed text-high-contrast mb-6">
                             Matriz de selamento premium enriquecida com <strong>Synchronized Matrix</strong>. Reduz a porosidade e permite uma leve abertura de curvatura. A ciência exata para um acabamento espelhado e sem frizz.
                         </p>
+
+                        <!-- SELO DE ATIVAÇÃO TÉRMICA -->
                         <div class="mb-10">
                             <span class="inline-flex items-center gap-1.5 font-tech text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 border border-accent/30 px-3 py-1.5 rounded-md">
                                 <i data-lucide="timer" class="w-3 h-3"></i> Ativação: Termo-Polimento 15 MIN
                             </span>
                         </div>
+
                         <div class="flex items-center justify-between gap-2 mt-auto">
                             <div class="w-1/2 aspect-[4/5] relative rounded-2xl overflow-hidden border border-white/10 shadow-lg">
                                 <img src="https://testeessencia.carrd.co/assets/images/image24.jpg?v=0910aa8a" loading="lazy" class="object-cover h-full w-full grayscale-[30%]" alt="Antes">
@@ -204,33 +518,47 @@
                 </div>
             </section>
 
+            <!-- AUDITORIA VISUAL -->
             <section class="py-24 px-6 max-w-5xl mx-auto reveal mb-10 text-center border-t border-glass">
-                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">Auditoria de Resultados</h3>
-                <div class="slider-container relative aspect-[4/5] w-full max-w-sm mx-auto glass-panel shadow-2xl border-2 border-accent overflow-hidden rounded-2xl bg-black">
-                    <div class="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg">
-                        <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">After</span>
-                    </div>
-                    <img src="https://imagensagata.carrd.co/assets/images/image55.jpg?v=df5651e1" loading="lazy" decoding="async" alt="After" class="absolute inset-0 w-full h-full object-cover">
-                    <img src="https://imagensagata.carrd.co/assets/images/image54.jpg?v=df5651e1" loading="lazy" decoding="async" alt="Before" id="before-img" class="absolute inset-0 w-full h-full object-cover scale-[1.1] origin-top" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path;">
-                    <div id="label-before" class="absolute top-4 left-4 z-30 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg transition-opacity duration-200">
-                        <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">Before</span>
-                    </div>
-                    <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white flex items-center justify-center text-white shadow-xl pointer-events-none">
-                            <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                    <input type="range" aria-label="Comparar Antes e Depois" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
-                           oninput="
-                           document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; 
-                           document.getElementById('slider-line').style.left = `${this.value}%`;
-                           if(this.value < 15) { document.getElementById('label-before').style.opacity = '0'; } else { document.getElementById('label-before').style.opacity = '1'; }
-                           if(this.value % 5 === 0 && typeof HapticEngine !== 'undefined') HapticEngine.light();
-                           ">
-                </div>
-                <p class="font-tech text-xs opacity-40 mt-6 italic text-high-contrast">Deslize para auditar o alinhamento da fibra capilar.</p>
-            </section>
+    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">Auditoria de Resultados</h3>
+    
+    <div class="slider-container relative aspect-[4/5] w-full max-w-sm mx-auto glass-panel shadow-2xl border-2 border-accent overflow-hidden rounded-2xl bg-black">
+        
+        <div class="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg">
+            <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">After</span>
+        </div>
 
+        <img src="https://imagensagata.carrd.co/assets/images/image55.jpg?v=df5651e1" loading="lazy" decoding="async" alt="After" class="absolute inset-0 w-full h-full object-cover">
+        
+        <img src="https://imagensagata.carrd.co/assets/images/image54.jpg?v=df5651e1" loading="lazy" decoding="async" alt="Before" id="before-img" class="absolute inset-0 w-full h-full object-cover scale-[1.1] origin-top" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path;">
+        
+        <div id="label-before" class="absolute top-4 left-4 z-30 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg transition-opacity duration-200">
+            <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">Before</span>
+        </div>
+        
+        <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white flex items-center justify-center text-white shadow-xl pointer-events-none">
+                <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+            </div>
+        </div>
+
+        <input type="range" aria-label="Comparar Antes e Depois" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
+               oninput="
+               document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; 
+               document.getElementById('slider-line').style.left = `${this.value}%`;
+               
+               if(this.value < 15) {
+                   document.getElementById('label-before').style.opacity = '0';
+               } else {
+                   document.getElementById('label-before').style.opacity = '1';
+               }
+
+               if(this.value % 5 === 0 && typeof HapticEngine !== 'undefined') HapticEngine.light();
+               ">
+    </div>
+    <p class="font-tech text-xs opacity-40 mt-6 italic text-high-contrast">Deslize para auditar o alinhamento da fibra capilar.</p>
+</section>
+            <!-- FAQ -->
             <section class="py-24 px-6 max-w-4xl mx-auto reveal mb-20 border-t border-glass">
                 <div class="text-center mb-16">
                     <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-50 text-high-contrast mb-4">Inteligência Clínica</h3>
@@ -239,6 +567,7 @@
                     </h2>
                     <p class="font-tech text-sm opacity-50 max-w-xl mx-auto text-high-contrast">Respostas técnicas e transparentes sobre a performance química do protocolo.</p>
                 </div>
+
                 <div class="flex flex-col gap-4">
                     <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors" onclick="HapticEngine.light()">
                         <div class="flex justify-between items-center">
@@ -251,6 +580,7 @@
                             </p>
                         </div>
                     </div>
+
                     <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors" onclick="HapticEngine.light()">
                         <div class="flex justify-between items-center">
                             <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">É seguro para quem possui químicas anteriores (Guanidina, Hidróxidos)?</h4>
@@ -262,6 +592,7 @@
                             </p>
                         </div>
                     </div>
+
                     <div class="glass-panel p-6 sm:p-8 cursor-pointer group faq-item transition-colors" onclick="HapticEngine.light()">
                         <div class="flex justify-between items-center">
                             <h4 class="font-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-high-contrast pr-4">Otimização de tempo: O salão ganha rapidez no atendimento?</h4>
