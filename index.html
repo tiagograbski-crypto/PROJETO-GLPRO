@@ -353,66 +353,114 @@
         <!-- ==========================================
              PÁGINA 1: HOME
              ========================================== -->
-        <div id="view-home" class="page-view active-view">
-            <section class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 px-6 lg:px-20 py-24 lg:py-32">
-                <div class="w-full lg:w-1/2 flex flex-col items-center lg:text-left text-center">
-                    
-                    <div class="reveal mb-8 opacity-60 inline-flex items-center gap-4">
-                        <div class="w-8 h-px bg-current"></div>
-                        <span class="font-tech text-[9px] font-bold uppercase tracking-[0.6em] text-high-contrast">V.43 Purity Control</span>
-                    </div>
-                    
-                    <div class="reveal mb-8 py-4 relative">
-                        <div class="absolute inset-0 bg-accent/5 filter blur-[100px] rounded-full pointer-events-none"></div>
-                        
-                        <h1 class="font-editorial text-[clamp(2.8rem,8vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic pb-3 glow-molecular text-hot-stamp relative z-10">
-                            Molecular
-                        </h1>
-                        <h2 class="font-editorial text-[clamp(1.1rem,3vw,2.25rem)] italic font-light opacity-90 mt-2 tracking-widest text-platinum relative z-10">
-                            Platinum Infusion
-                        </h2>
-                        
-                        <p class="font-tech text-xs md:text-sm opacity-70 mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l border-accent pl-5 relative z-10">
-                            Alta engenharia estrutural para loiros inabaláveis. A sinergia entre o <strong class="text-accent font-black tracking-widest">Black Caviar System</strong> e a <strong class="text-accent font-black tracking-widest">Synchronized Matrix</strong> reconstrói a fibra capilar, enquanto a <strong class="text-accent font-black tracking-widest">Restorative Mask</strong> com tecnologia <strong class="text-accent font-black tracking-widest">V.43 Purity Control</strong> neutraliza instantaneamente a oxidação térmica. Configure a sua versão: o alinhamento absoluto do Soberano 8K ou a fluidez vítrea do Glass Molecular.
-                        </p>
-                    </div>
+        <style>
+    /* NOVO EFEITO: Prata com Flash (Esquerda para Direita em Loop com Pausa) */
+    .text-flash-silver {
+        background: linear-gradient(
+            110deg,
+            #8E8E93 0%,
+            #A1A1AA 35%,
+            #FFFFFF 50%, /* O feixe de luz / Flash */
+            #A1A1AA 65%,
+            #8E8E93 100%
+        );
+        background-size: 250% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        filter: drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.15));
+        /* A animação dura 6s no total: o flash passa rápido e faz uma pausa elegante */
+        animation: flashSilverAnim 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
 
-                    <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal mt-4">
-                        <a href="#/homecare" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-xl hover:text-bg-primary transition-all flex items-center justify-center" onclick="HapticEngine.light()">
-                            Boutique VIP
-                        </a>
-                        <a href="#/partnership" class="w-full sm:w-1/2 py-6 border border-glass text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center hover:bg-high-contrast hover:text-bg-primary transition-all flex items-center justify-center" onclick="HapticEngine.light()">
-                            Para Salões
-                        </a>
+    .light .text-flash-silver {
+        background: linear-gradient(110deg, #3F3F46 0%, #71717A 35%, #FFFFFF 50%, #71717A 65%, #3F3F46 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.2));
+    }
+
+    @keyframes flashSilverAnim {
+        0% { background-position: -150% center; }
+        35% { background-position: 200% center; } /* Flash cruza da esquerda para a direita */
+        100% { background-position: 200% center; } /* Pausa aguardando o próximo loop */
+    }
+</style>
+
+<div id="view-home" class="page-view active-view">
+    <section class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-24 px-6 lg:px-20 py-24 lg:py-32">
+        
+        <div class="w-full lg:w-1/2 flex flex-col items-center lg:text-left text-center">
+            
+            <div class="reveal mb-6 opacity-60 inline-flex items-center gap-4">
+                <div class="w-8 h-px bg-current"></div>
+                <span class="font-tech text-[9px] font-bold uppercase tracking-[0.6em] text-high-contrast">V.43 Purity Control</span>
+            </div>
+            
+            <div class="reveal py-2 relative w-full flex flex-col items-center lg:items-start">
+                <div class="absolute inset-0 bg-accent/5 filter blur-[100px] rounded-full pointer-events-none"></div>
+                
+                <h1 class="font-editorial text-[clamp(3.2rem,9vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic pb-3 glow-molecular text-flash-silver relative z-10">
+                    Molecular
+                </h1>
+                <h2 class="font-editorial text-[clamp(1.2rem,3.5vw,2.25rem)] italic font-light opacity-90 mt-2 tracking-widest text-platinum relative z-10">
+                    Platinum Infusion
+                </h2>
+                
+                <div class="w-full max-w-[320px] sm:max-w-md aspect-[3/4] relative z-10 group mt-12 mb-10 lg:hidden reveal">
+                    <div class="absolute inset-0 rounded-[3.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] glass-panel border border-accent/30"></div>
+                    <div class="absolute inset-2.5 rounded-[3rem] overflow-hidden">
+                        <img src="https://testeessencia.carrd.co/assets/images/image71.jpg?v=0910aa8a" alt="Molecular Platinum" fetchpriority="high" decoding="sync" class="w-full h-full object-cover mix-blend-luminosity opacity-95 group-hover:scale-105 transition-transform duration-[5s]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-8 left-8 pointer-events-none z-10 text-left text-white">
+                        <p class="font-editorial text-3xl italic tracking-widest uppercase drop-shadow-lg">1L / 33.8fl.oz</p>
+                        <p class="font-tech text-[8px] uppercase tracking-[0.4em] opacity-80 mt-2 font-bold drop-shadow-md text-accent">Alisamento Premium</p>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal mt-12 lg:mt-0">
-                    <div class="relative w-full max-w-[280px] sm:max-w-sm aspect-[3/4] z-10 group">
-                        <div class="absolute inset-0 rounded-[4.5rem] shadow-2xl glass-panel"></div>
-                        <div class="absolute inset-3 rounded-[3.8rem] overflow-hidden">
-                            <img src="https://testeessencia.carrd.co/assets/images/image71.jpg?v=0910aa8a" alt="Molecular Platinum" fetchpriority="high" decoding="sync" class="w-full h-full object-cover mix-blend-luminosity opacity-90 group-hover:scale-105 transition-transform duration-[5s]">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        </div>
-                        <div class="absolute bottom-10 left-10 pointer-events-none z-10 text-white">
-                            <p class="font-editorial text-3xl sm:text-4xl italic tracking-widest uppercase drop-shadow-md">1L / 33.8fl.oz</p>
-                            <p class="font-tech text-[8px] sm:text-[9px] uppercase tracking-[0.4em] opacity-70 mt-2 font-bold drop-shadow-md">Exclusivo para Artistas Capilares</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <p class="font-tech text-xs md:text-sm opacity-80 mt-2 lg:mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l-2 border-accent pl-5 relative z-10">
+                    O ápice do alisamento premium. Desenvolvido para o nível máximo de exigência: o <strong class="text-accent font-black">cabelo descolorido</strong>. A nossa matriz <strong class="text-accent font-black tracking-widest">Black Caviar System</strong> aliada à <strong class="text-accent font-black tracking-widest">Synchronized Matrix</strong> entrega um liso espelhado irretocável em qualquer estrutura capilar. Ao entrar em ação, a <strong class="text-accent font-black tracking-widest">Restorative Mask</strong> — equipada com tecnologia <strong class="text-accent font-black tracking-widest">V.43 Purity Control</strong> — bloqueia 100% da oxidação térmica. O resultado absoluto: fios blindados, estrutura regenerada e um platinado frio com brilho vítreo.
+                </p>
+            </div>
 
-            <section class="w-full py-16 px-6 relative z-20 reveal border-t border-glass bg-gradient-to-b from-transparent to-surface">
-                <div class="max-w-4xl mx-auto text-center">
-                    <i data-lucide="quote" class="w-8 h-8 text-accent opacity-30 mx-auto mb-6"></i>
-                    <h3 class="font-editorial text-2xl md:text-4xl italic text-high-contrast leading-relaxed mb-6">
-                        "O Molecular Platinum não é apenas um alisamento. É a devolução da dignidade estrutural ao fio. Uma verdadeira obra de arte da engenharia cosmética."
-                    </h3>
-                    <p class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
-                        — Especialista [GL.] PRO
-                    </p>
+            <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal mt-10">
+                <a href="#/homecare" class="w-full sm:w-1/2 py-6 btn-primary rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center shadow-[0_0_20px_rgba(192,192,192,0.2)] hover:shadow-[0_0_30px_rgba(192,192,192,0.5)] transition-all flex items-center justify-center" onclick="HapticEngine.light()">
+                    Boutique VIP
+                </a>
+                <a href="#/partnership" class="w-full sm:w-1/2 py-6 border border-accent/40 text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center hover:bg-accent hover:text-bg-primary transition-all flex items-center justify-center bg-accent/5 backdrop-blur-sm" onclick="HapticEngine.light()">
+                    Para Salões
+                </a>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex w-full lg:w-1/2 justify-end reveal">
+            <div class="relative w-full max-w-[380px] aspect-[3/4] z-10 group hover:-translate-y-2 transition-transform duration-700">
+                <div class="absolute inset-0 rounded-[4.5rem] shadow-2xl glass-panel border border-accent/30"></div>
+                <div class="absolute inset-3 rounded-[3.8rem] overflow-hidden">
+                    <img src="https://testeessencia.carrd.co/assets/images/image71.jpg?v=0910aa8a" alt="Molecular Platinum" fetchpriority="high" decoding="sync" class="w-full h-full object-cover mix-blend-luminosity opacity-95 group-hover:scale-105 transition-transform duration-[5s]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                 </div>
-            </section>
+                <div class="absolute bottom-10 left-10 pointer-events-none z-10 text-white">
+                    <p class="font-editorial text-4xl italic tracking-widest uppercase drop-shadow-md">1L / 33.8fl.oz</p>
+                    <p class="font-tech text-[9px] uppercase tracking-[0.4em] opacity-80 mt-3 font-bold drop-shadow-md text-accent">Serviço de Alisamento Premium</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-16 px-6 relative z-20 reveal border-t border-glass bg-gradient-to-b from-transparent to-surface">
+        <div class="max-w-4xl mx-auto text-center">
+            <i data-lucide="quote" class="w-8 h-8 text-accent opacity-30 mx-auto mb-6"></i>
+            <h3 class="font-editorial text-2xl md:text-4xl italic text-high-contrast leading-relaxed mb-6">
+                "O Molecular Platinum redefiniu o alisamento premium. Conseguimos alinhamento absoluto mesmo nos loiros mais sensíveis, devolvendo uma dignidade estrutural vítrea ao fio."
+            </h3>
+            <p class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+                — Especialista Curador [GL.] PRO
+            </p>
+        </div>
+    </section>
+</div>
 
             <!-- BARRA DE SELOS -->
             <section class="w-full border-y border-glass bg-surface backdrop-blur-md py-6 md:py-8 relative z-20 reveal">
