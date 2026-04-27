@@ -445,17 +445,50 @@
                 </div>
             </section>
 
-            <section class="w-full relative h-[40vh] md:h-[60vh] overflow-hidden my-0 reveal group border-b border-glass">
-                <img src="https://imagensagata.carrd.co/assets/images/image30.jpg?v=6b4b2f98" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[10s]" alt="Molecular Platinum Frascos">
-                <div class="absolute inset-0 bg-black/20"></div>
-                <div class="absolute inset-0" style="background: linear-gradient(to top, var(--bg-primary) 0%, transparent 15%, transparent 85%, var(--bg-primary) 100%);"></div>
+           <section id="sensorial-mirage-section" class="w-full relative h-[40vh] md:h-[60vh] overflow-hidden my-0 reveal group border-y border-glass bg-black">
                 
-                <div class="vapor-container">
+                <video id="mirage-video" src="https://imagensagata.carrd.co/assets/videos/video10.mp4?v=43690f11" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover object-center scale-[1.05] z-0"></video>
+
+                <img id="mirage-image" src="https://imagensagata.carrd.co/assets/images/image30.jpg?v=6b4b2f98" class="absolute inset-0 w-full h-full object-cover object-center z-10 transition-opacity duration-[1500ms] ease-in-out" alt="Molecular Platinum Frascos">
+
+                <div class="absolute inset-0 z-20 pointer-events-none" style="background: linear-gradient(to top, var(--bg-primary) 0%, transparent 15%, transparent 85%, var(--bg-primary) 100%);"></div>
+                
+                <div class="vapor-container z-30">
                     <div class="vapor-particle v1"></div>
                     <div class="vapor-particle v2"></div>
                     <div class="vapor-particle v3"></div>
                 </div>
             </section>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const mirageSection = document.getElementById('sensorial-mirage-section');
+                    const mirageImage = document.getElementById('mirage-image');
+
+                    if (mirageSection && mirageImage) {
+                        // Cria a zona mágica: O efeito só dispara quando 30% da secção atinge o centro exato da tela
+                        const observerOptions = {
+                            root: null,
+                            rootMargin: '-30% 0px -30% 0px', 
+                            threshold: 0
+                        };
+
+                        const mirageObserver = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    // Cliente no centro: Derrete a imagem, revela a textura ASMR do vídeo
+                                    mirageImage.style.opacity = '0';
+                                } else {
+                                    // Cliente saiu do centro: Reconstrói a imagem luxuosa dos frascos
+                                    mirageImage.style.opacity = '1';
+                                }
+                            });
+                        }, observerOptions);
+
+                        mirageObserver.observe(mirageSection);
+                    }
+                });
+            </script>
 
             <section id="protocolos" class="py-24 px-6 max-w-6xl mx-auto reveal">
                 <div class="text-center mb-20">
