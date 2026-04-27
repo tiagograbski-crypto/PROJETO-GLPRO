@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>[GL.] PRO | Engenharia Capilar de Transformação</title>
     
+    <link rel="icon" type="image/png" href="https://imagensagata.carrd.co/assets/images/image34.png?v=6b4b2f98">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -44,7 +46,7 @@
             --glow-color: rgba(0, 0, 0, 0.15); 
             --accent-glass: rgba(0, 0, 0, 0.04);
             --accent-border: rgba(0, 0, 0, 0.15);
-            --spotlight-beam: rgba(255, 255, 255, 0.6); 
+            --spotlight-beam: rgba(255, 255, 255, 0.8); /* Feixe mais forte no modo dia */
             
             --platinum-grad: linear-gradient(135deg, #111111 0%, #71717A 50%, #27272A 100%);
             --molecular-glow: 0 0 40px rgba(0, 0, 0, 0.15);
@@ -95,7 +97,7 @@
         .delay-2 { animation-delay: 0.7s; }
         .delay-3 { animation-delay: 1.2s; }
 
-        /* === LANTERNA SENSORIAL === */
+        /* === LANTERNA SENSORIAL E MONOGRAMA === */
         #spotlight-wrapper {
             position: fixed; inset: 0; z-index: 0; pointer-events: none;
             background: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--spotlight-beam) 0%, transparent 70%);
@@ -111,13 +113,19 @@
             opacity: 0.18; filter: grayscale(1); mix-blend-mode: screen;
             transition: opacity 1s ease; transform: rotate(-12deg) translateZ(0);
         }
-        .light .pattern-layer { mix-blend-mode: multiply; opacity: 0.08; filter: grayscale(1) contrast(1.2); }
+        
+        /* AQUI: Ajuste do Modo Dia para revelar melhor o monograma com a lanterna */
+        .light .pattern-layer { 
+            mix-blend-mode: multiply; 
+            opacity: 0.18; /* Aumentado para mais destaque */
+            filter: grayscale(1) contrast(1.3); /* Contraste ajustado */
+        }
 
         @media (max-width: 768px) {
             .pattern-layer { opacity: 0.30; }
-            .light .pattern-layer { opacity: 0.15; }
+            .light .pattern-layer { opacity: 0.22; } /* Aumentado no mobile modo dia */
             :root { --spotlight-beam: rgba(255, 255, 255, 0.09); }
-            .light { --spotlight-beam: rgba(255, 255, 255, 0.5); }
+            .light { --spotlight-beam: rgba(255, 255, 255, 0.6); }
         }
 
         /* === UI LUXURY COMPONENTS === */
@@ -310,8 +318,9 @@
         
         <div id="view-home" class="page-view active-view">
             
-            <section class="min-h-[90vh] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-24 px-6 lg:px-20 py-24">
-                <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <section class="min-h-[90vh] flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-[auto_auto] gap-x-12 gap-y-10 lg:gap-y-6 items-center justify-center px-6 lg:px-20 py-24">
+                
+                <div class="w-full flex flex-col items-center lg:items-start text-center lg:text-left order-1 lg:col-start-1 lg:row-start-1">
                     <div class="reveal mb-6 opacity-60 inline-flex items-center gap-4">
                         <div class="w-8 h-px bg-current"></div>
                         <span class="font-tech text-[9px] font-bold uppercase tracking-[0.6em] text-high-contrast">V.43 Purity Control</span>
@@ -320,29 +329,20 @@
                     <div class="reveal py-2 relative w-full">
                         <div class="absolute inset-0 bg-accent/5 filter blur-[100px] rounded-full pointer-events-none"></div>
                         
-                        <h1 class="font-editorial text-[clamp(3.2rem,9vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic pb-3 glow-molecular liquid-platinum relative z-10">
+                        <h1 class="font-editorial text-[clamp(2.8rem,6vw,6.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic pb-3 glow-molecular liquid-platinum relative z-10">
                             Molecular
                         </h1>
-                        <h2 class="font-editorial text-[clamp(1.2rem,3.5vw,2.25rem)] italic font-light opacity-90 mt-2 tracking-widest text-platinum relative z-10">
+                        <h2 class="font-editorial text-[clamp(1.2rem,3vw,2rem)] italic font-light opacity-90 mt-2 tracking-widest text-platinum relative z-10">
                             Platinum Infusion
                         </h2>
                         
-                        <p class="font-tech text-xs md:text-sm opacity-80 mt-8 font-light max-w-lg leading-relaxed text-high-contrast border-l-2 border-accent pl-5 relative z-10">
+                        <p class="font-tech text-xs md:text-sm opacity-80 mt-6 lg:mt-8 font-light max-w-lg leading-relaxed text-high-contrast border-l-2 border-accent pl-5 relative z-10 mx-auto lg:mx-0">
                             A primeira <strong class="text-accent font-black tracking-widest uppercase text-[10px] mx-1">Plástica Híbrida</strong> formulada como autêntica <strong class="text-accent font-black">Máscara Restaurativa</strong>. A infusão de lípidos do <strong class="text-accent font-black">Black Caviar</strong> penetra no córtex através da <strong class="text-accent font-black">Synchronized Matrix</strong>, devolvendo a densidade aos fios descoloridos. Alinhamento espelhado de toque vítreo e neutralização cirúrgica.
                         </p>
                     </div>
-
-                    <div class="flex flex-col sm:flex-row gap-5 w-full max-w-xl reveal mt-10">
-                        <a href="#/homecare" class="w-full sm:w-1/2 py-5 rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center btn-luxury flex items-center justify-center" onclick="HapticEngine.light()">
-                            Boutique VIP
-                        </a>
-                        <a href="#/partnership" class="w-full sm:w-1/2 py-5 text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center btn-outline-luxury transition-all flex items-center justify-center" onclick="HapticEngine.light()">
-                            Para Salões
-                        </a>
-                    </div>
                 </div>
 
-                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal mt-12 lg:mt-0">
+                <div class="w-full flex justify-center lg:justify-end reveal order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2">
                     <div class="slider-container relative aspect-[4/5] w-full max-w-md mx-auto glass-image-wrapper transition-colors duration-700 overflow-hidden rounded-[3.5rem]">
                         
                         <div class="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg">
@@ -372,6 +372,16 @@
                                ">
                     </div>
                 </div>
+
+                <div class="w-full flex flex-col sm:flex-row gap-5 max-w-xl mx-auto lg:mx-0 reveal order-3 lg:col-start-1 lg:row-start-2 self-start mt-4 lg:mt-0">
+                    <a href="#/homecare" class="w-full sm:w-1/2 py-5 rounded-2xl font-cta font-black text-[10px] uppercase tracking-[0.4em] text-center btn-luxury flex items-center justify-center" onclick="HapticEngine.light()">
+                        Boutique VIP
+                    </a>
+                    <a href="#/partnership" class="w-full sm:w-1/2 py-5 text-high-contrast rounded-2xl font-cta font-medium text-[10px] uppercase tracking-[0.4em] text-center btn-outline-luxury transition-all flex items-center justify-center" onclick="HapticEngine.light()">
+                        Para Salões
+                    </a>
+                </div>
+
             </section>
 
             <section class="w-full py-12 px-6 relative z-20 reveal border-t border-glass bg-gradient-to-b from-transparent to-surface/20">
@@ -551,6 +561,8 @@
                     </div>
                 </div>
             </section>
+            
+        </div> ```
             
         </div>
             
