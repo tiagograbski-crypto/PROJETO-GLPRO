@@ -1047,25 +1047,19 @@
         <!-- ==========================================
              PÁGINA 3: CREDENCIAMENTO B2B
              ========================================== -->
-<div id="view-partnership" class="page-view">
-            
-            <section id="b2b-luxury-hero" class="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-6 lg:px-20 py-24 overflow-hidden border-b border-glass transition-colors duration-[800ms]" style="background-color: #181818;">
+<section id="b2b-luxury-hero" class="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-6 lg:px-20 py-24 overflow-hidden border-b border-glass bg-[#000000]">
                 
-                <div class="absolute inset-0 z-0 b2b-pattern-layer opacity-[0.03] mix-blend-luminosity" 
+                <div class="absolute inset-0 z-0 b2b-pattern-layer opacity-[0.02] mix-blend-overlay" 
                      style="background-image: url('https://imagensagata.carrd.co/assets/images/image03.jpg?v=6b4b2f98'); background-size: 80px; background-repeat: repeat;">
                 </div>
 
                 <div id="b2b-spotlight" class="absolute inset-0 z-1 pointer-events-none" 
-                     style="background: radial-gradient(circle 350px at var(--b2b-x, 50%) var(--b2b-y, 50%), rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 20%, transparent 70%);">
-                </div>
-
-                <div class="absolute inset-0 z-2 flex items-center justify-center pointer-events-none mix-blend-color-dodge opacity-80" 
-                     style="background-image: url('https://imagensagata.carrd.co/assets/images/image28.png?v=43690f11'); background-size: clamp(200px, 30vw, 350px); background-repeat: no-repeat; background-position: center; filter: blur(1px) drop-shadow(0 0 10px rgba(255,255,255,0.3));">
+                     style="background: radial-gradient(circle 350px at var(--b2b-x, 50%) var(--b2b-y, 50%), rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 20%, transparent 70%);">
                 </div>
 
                 <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center">
                     
-                    <div class="reveal mb-10 inline-flex items-center gap-3 bg-black/40 backdrop-blur-xl border border-white/10 px-6 py-2 rounded-full shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <div class="reveal mb-10 inline-flex items-center gap-3 bg-black/40 backdrop-blur-xl border border-white/10 px-6 py-2 rounded-full shadow-[0_0_40px_rgba(0,0,0,0.6)]">
                         <i data-lucide="shield-check" class="w-4 h-4 text-accent"></i>
                         <span class="font-tech text-[clamp(0.6rem,1.5vw,0.7rem)] font-black uppercase tracking-[0.5em] text-white">Ecossistema de Alta Performance</span>
                     </div>
@@ -1086,29 +1080,29 @@
                 </div>
             </section>
 
-            <script>
-                document.addEventListener('mousemove', (e) => {
-                    const b2bHero = document.getElementById('b2b-luxury-hero');
-                    if (b2bHero) {
-                        const rect = b2bHero.getBoundingClientRect();
-                        const x = ((e.clientX - rect.left) / rect.width) * 100;
-                        const y = ((e.clientY - rect.top) / rect.height) * 100;
-                        b2bHero.style.setProperty('--b2b-x', `${x}%`);
-                        b2bHero.style.setProperty('--b2b-y', `${y}%`);
-                    }
-                });
+<script>
+    document.addEventListener('mousemove', (e) => {
+        const b2bHero = document.getElementById('b2b-luxury-hero');
+        if (b2bHero) {
+            const rect = b2bHero.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            b2bHero.style.setProperty('--b2b-x', `${x}%`);
+            b2bHero.style.setProperty('--b2b-y', `${y}%`);
+        }
+    });
 
-                document.addEventListener('touchmove', (e) => {
-                    const b2bHero = document.getElementById('b2b-luxury-hero');
-                    if (b2bHero && e.touches[0]) {
-                        const rect = b2bHero.getBoundingClientRect();
-                        const x = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-                        const y = ((e.touches[0].clientY - rect.top) / rect.height) * 100;
-                        b2bHero.style.setProperty('--b2b-x', `${x}%`);
-                        b2bHero.style.setProperty('--b2b-y', `${y}%`);
-                    }
-                });
-            </script>
+    document.addEventListener('touchmove', (e) => {
+        const b2bHero = document.getElementById('b2b-luxury-hero');
+        if (b2bHero && e.touches[0]) {
+            const rect = b2bHero.getBoundingClientRect();
+            const x = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+            const y = ((e.touches[0].clientY - rect.top) / rect.height) * 100;
+            b2bHero.style.setProperty('--b2b-x', `${x}%`);
+            b2bHero.style.setProperty('--b2b-y', `${y}%`);
+        }
+    });
+</script>
         
     <!-- FOOTER CORPORATIVO -->
    <footer class="pt-32 pb-16 border-t border-glass bg-surface relative overflow-hidden">
