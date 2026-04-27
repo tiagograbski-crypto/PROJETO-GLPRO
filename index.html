@@ -676,43 +676,44 @@
             </section>
 
             <section class="py-24 px-6 max-w-5xl mx-auto reveal mb-10 text-center border-t border-glass">
-                <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">Auditoria de Resultados</h3>
-                
-                <div class="slider-container relative aspect-[4/5] w-full max-w-sm mx-auto glass-panel shadow-2xl border-2 border-accent overflow-hidden rounded-2xl bg-black">
-                    <div class="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg">
-                        <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">After</span>
-                    </div>
+    <h3 class="font-tech text-[10px] font-black uppercase tracking-[0.8em] opacity-40 text-high-contrast mb-16">Auditoria de Resultados</h3>
+    
+    <div class="slider-container relative aspect-[4/5] w-full max-w-sm mx-auto glass-panel shadow-2xl border-2 border-accent overflow-hidden rounded-2xl bg-black">
+        
+        <div class="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg">
+            <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">After</span>
+        </div>
 
-                    <img src="https://imagensagata.carrd.co/assets/images/image55.jpg?v=df5651e1" loading="lazy" decoding="async" alt="After" class="absolute inset-0 w-full h-full object-cover object-center scale-[1.08] origin-center">
-                    
-                    <img src="https://imagensagata.carrd.co/assets/images/image54.jpg?v=df5651e1" loading="lazy" decoding="async" alt="Before" id="before-img" class="absolute inset-0 w-full h-full object-cover object-center" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path;">
-                    
-                    <div id="label-before" class="absolute top-4 left-4 z-30 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg transition-opacity duration-200">
-                        <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">Before</span>
-                    </div>
-                    
-                    <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white flex items-center justify-center text-white shadow-xl pointer-events-none">
-                            <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
-                        </div>
-                    </div>
+        <img src="https://imagensagata.carrd.co/assets/images/image55.jpg?v=df5651e1" loading="lazy" decoding="async" alt="After" class="absolute inset-0 w-full h-full object-cover object-center scale-[1.08] origin-center">
+        
+        <img src="https://imagensagata.carrd.co/assets/images/image54.jpg?v=df5651e1" loading="lazy" decoding="async" alt="Before" id="before-img" class="absolute inset-0 w-full h-full object-cover object-center scale-[1.04] origin-center" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); will-change: clip-path;">
+        
+        <div id="label-before" class="absolute top-4 left-4 z-30 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 pointer-events-none shadow-lg transition-opacity duration-200">
+            <span class="font-tech text-white text-[10px] tracking-widest uppercase font-bold">Before</span>
+        </div>
+        
+        <div id="slider-line" class="absolute top-0 bottom-0 w-0.5 bg-white z-20 transform -translate-x-1/2 will-change-transform" style="left: 50%;">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white flex items-center justify-center text-white shadow-xl pointer-events-none">
+                <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+            </div>
+        </div>
 
-                    <input type="range" aria-label="Comparar Antes e Depois" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
-                           oninput="
-                           document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; 
-                           document.getElementById('slider-line').style.left = `${this.value}%`;
-                           
-                           if(this.value < 15) {
-                               document.getElementById('label-before').style.opacity = '0';
-                           } else {
-                               document.getElementById('label-before').style.opacity = '1';
-                           }
+        <input type="range" aria-label="Comparar Antes e Depois" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 m-0" 
+               oninput="
+               document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; 
+               document.getElementById('slider-line').style.left = `${this.value}%`;
+               
+               if(this.value < 15) {
+                   document.getElementById('label-before').style.opacity = '0';
+               } else {
+                   document.getElementById('label-before').style.opacity = '1';
+               }
 
-                           if(this.value % 5 === 0 && typeof HapticEngine !== 'undefined') HapticEngine.light();
-                           ">
-                </div>
-                <p class="font-tech text-xs opacity-40 mt-6 italic text-high-contrast">Deslize para auditar o alinhamento da fibra capilar.</p>
-            </section>
+               if(this.value % 5 === 0 && typeof HapticEngine !== 'undefined') HapticEngine.light();
+               ">
+    </div>
+    <p class="font-tech text-xs opacity-40 mt-6 italic text-high-contrast">Deslize para auditar o alinhamento da fibra capilar.</p>
+</section>
 
             <section class="py-24 px-6 max-w-4xl mx-auto reveal mb-20 border-t border-glass">
                 <div class="text-center mb-16">
