@@ -1079,30 +1079,6 @@
                     </div>
                 </div>
             </section>
-
-<script>
-    document.addEventListener('mousemove', (e) => {
-        const b2bHero = document.getElementById('b2b-luxury-hero');
-        if (b2bHero) {
-            const rect = b2bHero.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            b2bHero.style.setProperty('--b2b-x', `${x}%`);
-            b2bHero.style.setProperty('--b2b-y', `${y}%`);
-        }
-    });
-
-    document.addEventListener('touchmove', (e) => {
-        const b2bHero = document.getElementById('b2b-luxury-hero');
-        if (b2bHero && e.touches[0]) {
-            const rect = b2bHero.getBoundingClientRect();
-            const x = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-            const y = ((e.touches[0].clientY - rect.top) / rect.height) * 100;
-            b2bHero.style.setProperty('--b2b-x', `${x}%`);
-            b2bHero.style.setProperty('--b2b-y', `${y}%`);
-        }
-    });
-</script>
         
     <!-- FOOTER CORPORATIVO -->
    <footer class="pt-32 pb-16 border-t border-glass bg-surface relative overflow-hidden">
