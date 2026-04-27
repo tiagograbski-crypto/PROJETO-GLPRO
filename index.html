@@ -353,48 +353,41 @@
         <!-- ==========================================
              PÁGINA 1: HOME
              ========================================== -->
-        <style>
-    /* === EFEITO LUXURY SWEEP (Minimalista na Borda) === */
-    .luxury-sweep {
-        /* Define a cor base da borda (bem suave) e o interior transparente */
-        color: transparent;
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-        
-        /* O gradiente que vai "pintar" a borda e um pouco do interior ao passar */
+<style>
+    /* === ESTILOS: TENDÊNCIA 2026 - LIQUID PLATINUM === */
+    .liquid-platinum {
         background: linear-gradient(
-            110deg,
-            rgba(255,255,255, 0) 0%,
-            rgba(255,255,255, 0) 40%,
-            rgba(255,255,255, 0.8) 50%, /* O feixe de luz principal */
-            rgba(255,255,255, 0) 60%,
-            rgba(255,255,255, 0) 100%
+            135deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.9) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.8) 75%,
+            rgba(255, 255, 255, 0.2) 100%
         );
-        background-size: 250% 100%;
+        background-size: 300% 300%;
         -webkit-background-clip: text;
-        background-clip: text;
-        
-        /* Animação com pausa longa para ser subtil */
-        animation: sweepLight 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        -webkit-text-fill-color: transparent;
+        animation: liquidMetal 8s ease-in-out infinite alternate;
     }
 
-    .light .luxury-sweep {
-        -webkit-text-stroke: 1px rgba(0, 0, 0, 0.15);
+    .light .liquid-platinum {
         background: linear-gradient(
-            110deg,
-            rgba(0,0,0, 0) 0%,
-            rgba(0,0,0, 0) 40%,
-            rgba(0,0,0, 0.8) 50%,
-            rgba(0,0,0, 0) 60%,
-            rgba(0,0,0, 0) 100%
+            135deg,
+            #71717A 0%,
+            #18181B 25%,
+            #FFFFFF 50%,
+            #3F3F46 75%,
+            #A1A1AA 100%
         );
+        background-size: 300% 300%;
         -webkit-background-clip: text;
-        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: liquidMetal 8s ease-in-out infinite alternate;
     }
 
-    @keyframes sweepLight {
-        0% { background-position: 200% center; } /* Começa totalmente fora, à direita */
-        40% { background-position: -100% center; } /* Atravessa até à esquerda */
-        100% { background-position: -100% center; } /* Pausa elegante */
+    @keyframes liquidMetal {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
     }
 </style>
 
@@ -411,7 +404,7 @@
             <div class="reveal py-2 relative w-full flex flex-col items-center lg:items-start">
                 <div class="absolute inset-0 bg-accent/5 filter blur-[100px] rounded-full pointer-events-none"></div>
                 
-                <h1 class="font-editorial text-[clamp(3.2rem,9vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic pb-3 glow-molecular luxury-sweep relative z-10">
+                <h1 class="font-editorial text-[clamp(3.2rem,9vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] italic pb-3 glow-molecular liquid-platinum relative z-10">
                     Molecular
                 </h1>
                 <h2 class="font-editorial text-[clamp(1.2rem,3.5vw,2.25rem)] italic font-light opacity-90 mt-2 tracking-widest text-platinum relative z-10">
@@ -430,8 +423,8 @@
                     </div>
                 </div>
 
-                <p class="font-tech text-xs md:text-sm opacity-80 mt-2 lg:mt-10 font-light max-w-lg leading-relaxed text-high-contrast border-l-2 border-accent pl-5 relative z-10">
-                    A quintessência do alinhamento estrutural. Concebida para o mais alto nível de exigência cosmética — a integridade do <strong class="text-accent font-black">fio descolorido</strong> —, a nossa Máscara Restaurativa transcende o método comum. A fusão entre o <strong class="text-accent font-black tracking-widest">Black Caviar System</strong> e a <strong class="text-accent font-black tracking-widest">Synchronized Matrix</strong> confere uma disciplina magnética a qualquer tipologia capilar, desde as bases mais escuras aos platinados mais sensíveis. Através da tecnologia <strong class="text-accent font-black tracking-widest">V.43 Purity Control</strong>, atua na prevenção da oxidação térmica, revelando um brilho vítreo e uma cor inalterada. Uma única matriz inteligente para duas técnicas de assinatura: a redução master do Soberano 8K ou a fluidez do Glass Molecular.
+                <p class="font-tech text-xs md:text-sm opacity-80 mt-2 lg:mt-8 font-light max-w-lg leading-relaxed text-high-contrast border-l-2 border-accent pl-5 relative z-10">
+                    A primeira <strong class="text-accent font-black tracking-widest uppercase text-[10px] mx-1">Plástica Híbrida</strong> formulada como autêntica <strong class="text-accent font-black">Máscara Restaurativa</strong>. A alta carga de lípidos do <strong class="text-accent font-black">Black Caviar</strong> penetra no córtex através da <strong class="text-accent font-black">Synchronized Matrix</strong>, devolvendo a densidade e o cimento intracelular perdidos. O resultado arquitetónico é uma haste inabalável, um alinhamento de toque vítreo e um fundo platinado cirurgicamente neutralizado.
                 </p>
             </div>
 
